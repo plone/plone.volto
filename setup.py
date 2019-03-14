@@ -42,9 +42,7 @@ setup(
         'Products.GenericSetup>=1.8.2',
         'setuptools',
         'z3c.jbot',
-        # 'plone.restapi',
-        # 'Products.PloneFormGen',
-        # 'plone.formwidget.captcha',
+        'plone.restapi',
     ],
     extras_require={
         'test': [

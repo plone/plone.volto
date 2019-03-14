@@ -1,0 +1,23 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    xmlns:i18n="http://namespaces.zope.org/i18n"
+    i18n_domain="kitconcept.volto">
+
+  <!-- <genericsetup:upgradeDepends
+    source="1000"
+    destination="1001"
+    profile="kitconcept.volto:default"
+    title="Apply types.xml to update typesinfo"
+    import_steps="typeinfo"
+    /> -->
+
+  <!-- <genericsetup:upgradeStep
+    source="1001"
+    destination="1002"
+    profile="kitconcept.volto:default"
+    title="Does some upgrade task"
+    handler=".upgrades.do_upgrade"
+    /> -->
+
+</configure>

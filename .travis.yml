@@ -1,0 +1,30 @@
+language: python
+python: "2.7.15"
+sudo: required
+cache:
+  pip: true
+  directories:
+    - $HOME/buildout-cache
+env:
+  matrix:
+    - PLONE_VERSION=4.3.x
+    - PLONE_VERSION=5.0.x
+    - PLONE_VERSION=5.1.x
+    - PLONE_VERSION=5.2.x
+before_install:
+  - mkdir -p $HOME/buildout-cache/{eggs,downloads}
+  - mkdir $HOME/.buildout
+  - echo "[buildout]" > $HOME/.buildout/default.cfg
+  - echo "download-cache = $HOME/buildout-cache/downloads" >> $HOME/.buildout/default.cfg
+  - echo "eggs-directory = $HOME/buildout-cache/eggs" >> $HOME/.buildout/default.cfg
+  - pip install cookiecutter
+  - export DISPLAY=:99.0
+  - sh -e /etc/init.d/xvfb start
+  - wget "http://chromedriver.storage.googleapis.com/2.44/chromedriver_linux64.zip"
+  - unzip chromedriver_linux64.zip
+  - sudo mv chromedriver /usr/local/bin
+install:
+  - sed -ie "s#plone-x.x.x.cfg#plone-$PLONE_VERSION.cfg#" travis.cfg
+script:
+  - make build-travis
+  - make test

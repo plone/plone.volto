@@ -4,5 +4,4 @@
     meta_type="Factory-based Type Information with dynamic views"/>
   <object meta_type="Dexterity FTI" name="Collection" />
   <object meta_type="Dexterity FTI" name="Link" />
-  <object meta_type="Dexterity FTI" name="Document" />
 </object>

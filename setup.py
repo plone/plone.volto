@@ -43,7 +43,7 @@ setup(
         'setuptools',
         'z3c.jbot',
         'plone.restapi',
-        'collective.folderishtypes'
+        'collective.folderishtypes[dexterity]'
     ],
     extras_require={
         'test': [

@@ -8,6 +8,10 @@
 
   <i18n:registerTranslations directory="locales" />
 
+  <configure zcml:condition="installed plone.app.imaging">
+    <include package="plone.app.imaging" />
+  </configure>
+
   <includeDependencies package="." />
 
   <include package=".browser" />

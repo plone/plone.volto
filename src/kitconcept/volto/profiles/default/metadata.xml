@@ -4,5 +4,6 @@
   <dependencies>
     <dependency>profile-collective.folderishtypes.dx:default</dependency>
     <dependency>profile-plone.restapi:default</dependency>
+    <dependency>profile-plone.restapi:tiles</dependency>
   </dependencies>
 </metadata>

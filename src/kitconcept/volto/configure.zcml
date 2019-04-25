@@ -6,17 +6,11 @@
     xmlns:plone="http://namespaces.plone.org/plone"
     i18n_domain="kitconcept.volto">
 
-  <i18n:registerTranslations directory="locales" />
-
   <configure zcml:condition="installed plone.app.imaging">
     <include package="plone.app.imaging" />
   </configure>
 
   <includeDependencies package="." />
-
-  <include package=".browser" />
-
-  <include file="upgrades.zcml" />
 
   <genericsetup:registerProfile
       name="default"

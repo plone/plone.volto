@@ -19,8 +19,7 @@ class HiddenProfiles(object):
 def post_install(context):
     """Post install script"""
     # portal = api.portal.get()
-
-    create_default_homepage()
+    # create_default_homepage()
 
 
 def uninstall(context):

@@ -30,6 +30,15 @@
       post_handler=".setuphandlers.uninstall"
       />
 
+  <genericsetup:registerProfile
+      name="default-homepage"
+      title="kitconcept.volto site (Default content on homepage)"
+      directory="profiles/homepage"
+      description="Creates a default page for the site"
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      post_handler=".setuphandlers.create_default_homepage"
+      />
+
   <utility
       factory=".setuphandlers.HiddenProfiles"
       name="kitconcept.volto-hiddenprofiles" />

@@ -41,7 +41,7 @@ def add_catalog_indexes(context, wanted=None):
         catalog.manage_reindexIndex(ids=indexables)
 
 
-def create_default_homepage():
+def create_default_homepage(context):
     portal = api.portal.get()
 
     tiles = {

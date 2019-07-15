@@ -27,16 +27,13 @@ class KitconceptvoltoCoreLayer(PloneSandboxLayer):
         self.loadZCML(package=kitconcept.volto)
 
     def setUpPloneSite(self, portal):
-        setRoles(portal, TEST_USER_ID, ['Manager'])
+        setRoles(portal, TEST_USER_ID, ["Manager"])
         login(portal, TEST_USER_NAME)
         api.content.create(
-            type='Document',
-            id='front-page',
-            title='Welcome',
-            container=portal
+            type="Document", id="front-page", title="Welcome", container=portal
         )
         logout()
-        applyProfile(portal, 'kitconcept.volto:default')
+        applyProfile(portal, "kitconcept.volto:default")
 
 
 KITCONCEPTVOLTO_CORE_FIXTURE = KitconceptvoltoCoreLayer()
@@ -44,13 +41,13 @@ KITCONCEPTVOLTO_CORE_FIXTURE = KitconceptvoltoCoreLayer()
 
 KITCONCEPTVOLTO_CORE_INTEGRATION_TESTING = IntegrationTesting(
     bases=(KITCONCEPTVOLTO_CORE_FIXTURE,),
-    name='KitconceptvoltoCoreLayer:IntegrationTesting'
+    name="KitconceptvoltoCoreLayer:IntegrationTesting",
 )
 
 
 KITCONCEPTVOLTO_CORE_FUNCTIONAL_TESTING = FunctionalTesting(
     bases=(KITCONCEPTVOLTO_CORE_FIXTURE, z2.ZSERVER_FIXTURE),
-    name='KitconceptvoltoCoreLayer:FunctionalTesting'
+    name="KitconceptvoltoCoreLayer:FunctionalTesting",
 )
 
 
@@ -58,7 +55,7 @@ KITCONCEPTVOLTO_CORE_ACCEPTANCE_TESTING = FunctionalTesting(
     bases=(
         KITCONCEPTVOLTO_CORE_FIXTURE,
         REMOTE_LIBRARY_BUNDLE_FIXTURE,
-        z2.ZSERVER_FIXTURE
+        z2.ZSERVER_FIXTURE,
     ),
-    name='KitconceptvoltoCoreLayer:AcceptanceTesting'
+    name="KitconceptvoltoCoreLayer:AcceptanceTesting",
 )

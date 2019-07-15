@@ -20,30 +20,24 @@ class TestSetup(unittest.TestCase):
 
     def setUp(self):
         """Custom shared utility setup for tests."""
-        self.portal = self.layer['portal']
+        self.portal = self.layer["portal"]
         if HAS_INSTALLER:
             self.installer = get_installer(self.portal)
         else:
-            self.installer = api.portal.get_tool('portal_quickinstaller')
+            self.installer = api.portal.get_tool("portal_quickinstaller")
 
     def test_product_installed(self):
         """Test if kitconcept.volto is installed."""
         if HAS_INSTALLER:
-            self.assertTrue(
-                self.installer.is_product_installed('kitconcept.volto')
-            )
+            self.assertTrue(self.installer.is_product_installed("kitconcept.volto"))
         else:
-            self.assertTrue(
-                self.installer.isProductInstalled(
-                    'kitconcept.volto'
-                )
-            )
+            self.assertTrue(self.installer.isProductInstalled("kitconcept.volto"))
 
     def test_browserlayer(self):
         """Test that IKitconceptvoltoCoreLayer is registered."""
-        from kitconcept.volto.interfaces import (
-            IKitconceptvoltoCoreLayer)
+        from kitconcept.volto.interfaces import IKitconceptvoltoCoreLayer
         from plone.browserlayer import utils
+
         self.assertIn(IKitconceptvoltoCoreLayer, utils.registered_layers())
 
 
@@ -52,29 +46,24 @@ class TestUninstall(unittest.TestCase):
     layer = KITCONCEPTVOLTO_CORE_INTEGRATION_TESTING
 
     def setUp(self):
-        self.portal = self.layer['portal']
+        self.portal = self.layer["portal"]
         if HAS_INSTALLER:
             self.installer = get_installer(self.portal)
-            self.installer.uninstall_product('kitconcept.volto')
+            self.installer.uninstall_product("kitconcept.volto")
         else:
-            self.installer = api.portal.get_tool('portal_quickinstaller')
-            self.installer.uninstallProducts(['kitconcept.volto'])
+            self.installer = api.portal.get_tool("portal_quickinstaller")
+            self.installer.uninstallProducts(["kitconcept.volto"])
 
     def test_product_uninstalled(self):
         """Test if kitconcept.volto is cleanly uninstalled."""
         if HAS_INSTALLER:
-            self.assertFalse(
-                self.installer.is_product_installed('kitconcept.volto')
-            )
+            self.assertFalse(self.installer.is_product_installed("kitconcept.volto"))
         else:
-            self.assertFalse(
-                self.installer.isProductInstalled(
-                    'kitconcept.volto'
-                )
-            )
+            self.assertFalse(self.installer.isProductInstalled("kitconcept.volto"))
 
     def test_browserlayer_removed(self):
         """Test that IKitconceptvoltoCoreLayer is removed."""
         from kitconcept.volto.interfaces import IKitconceptvoltoCoreLayer
         from plone.browserlayer import utils
+
         self.assertNotIn(IKitconceptvoltoCoreLayer, utils.registered_layers())

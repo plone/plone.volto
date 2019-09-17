@@ -1,9 +1,24 @@
 # -*- coding: utf-8 -*-
 from plone import api
+from plone.dexterity.interfaces import IDexterityFTI
+from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone.interfaces import INonInstallable
+from Products.CMFPlone.utils import get_installer
+from zope.component import queryUtility
 from zope.interface import implementer
-
+from zope.component import getMultiAdapter
+from zope.component import getUtility
+from zope.component.interfaces import IFactory
+from zope.container.interfaces import INameChooser
+from plone.app.portlets.utils import assignment_mapping_from_key
+from plone.portlets.constants import CONTEXT_CATEGORY
+from plone.portlets.interfaces import IPortletAssignmentMapping
+from plone.portlets.interfaces import IPortletManager
 import json
+import logging
+
+
+logger = logging.getLogger("kitconcept.volto")
 
 
 @implementer(INonInstallable)
@@ -24,6 +39,39 @@ def uninstall(context):
     # Do something at the end of the uninstallation of this package.
 
 
+def change_content_type_title(portal, old_name, new_name):
+    """
+        change_content_type_title(portal, 'News Item', 'Meldung')
+    """
+    portal_types = getToolByName(portal, "portal_types")
+    news_item_fti = getattr(portal_types, old_name)
+    news_item_fti.title = new_name
+
+
+def disable_content_type(portal, fti_id):
+    portal_types = getToolByName(portal, "portal_types")
+    document_fti = getattr(portal_types, fti_id)
+    document_fti.global_allow = False
+
+
+def enable_content_type(portal, fti_id):
+    portal_types = getToolByName(portal, "portal_types")
+    document_fti = getattr(portal_types, fti_id)
+    document_fti.global_allow = True
+
+
+def copy_content_type(portal, name, newid, newname):
+    """Create a new content type by copying an existing one
+    """
+    portal_types = getToolByName(portal, "portal_types")
+    tmp_obj = portal_types.manage_copyObjects([name])
+    tmp_obj = portal_types.manage_pasteObjects(tmp_obj)
+    tmp_id = tmp_obj[0]["new_id"]
+    new_type_fti = getattr(portal_types, tmp_id)
+    new_type_fti.title = newname
+    portal_types.manage_renameObjects([tmp_id], [newid])
+
+
 def add_catalog_indexes(context, wanted=None):
     """Method to add our wanted indexes to the portal_catalog.
     """
@@ -38,7 +86,154 @@ def add_catalog_indexes(context, wanted=None):
         catalog.manage_reindexIndex(ids=indexables)
 
 
-def create_default_homepage(context):
+def add_behavior(portal_type, behavior):
+    fti = queryUtility(IDexterityFTI, name=portal_type)
+    new = [
+        currentbehavior
+        for currentbehavior in fti.behaviors
+        if currentbehavior != behavior
+    ]
+    new.append(behavior)
+    fti.behaviors = tuple(new)
+
+
+def setupNavigationPortlet(
+    context,
+    name="",
+    root=None,
+    includeTop=False,
+    currentFolderOnly=False,
+    bottomLevel=0,
+    topLevel=0,
+):
+    """
+        setupNavigationPortlet(portal['vereinigungen']['fachliche-vereinigungen']['sektion-materie-und-kosmos']['gravitation-und-relativitaetstheorie']) # noqa
+    """
+    from plone.app.portlets.portlets.navigation import (
+        Assignment as NavAssignment,
+    )  # noqa
+
+    target_manager = queryUtility(
+        IPortletManager, name="plone.leftcolumn", context=context
+    )
+    target_manager_assignments = getMultiAdapter(
+        (context, target_manager), IPortletAssignmentMapping
+    )
+
+    navtree = NavAssignment(
+        includeTop=includeTop,
+        currentFolderOnly=currentFolderOnly,
+        bottomLevel=bottomLevel,
+        topLevel=topLevel,
+    )
+
+    if "navigation" not in target_manager_assignments.keys():
+        target_manager_assignments["navigation"] = navtree
+
+
+def setupPortletAt(portal, portlet_type, manager, path, name="", **kw):
+    """
+        setupPortletAt(portal, 'portlets.Events', 'plone.rightcolumn', '/vereinigungen/fachliche-vereinigungen/sektion-kondensierte-materie/halbleiterphysik') # noqa
+    """
+    portlet_factory = getUtility(IFactory, name=portlet_type)
+    assignment = portlet_factory(**kw)
+    mapping = assignment_mapping_from_key(
+        portal, manager, CONTEXT_CATEGORY, path, create=True
+    )
+
+    if not name:
+        chooser = INameChooser(mapping)
+        name = chooser.chooseName(None, assignment)
+
+    mapping[name] = assignment
+
+
+homepage_en = {
+    "tiles": {
+        "15068807-cfc9-444a-97db-8c736809ff51": {"@type": "title"},
+        "59d41d8a-ef05-4e21-8820-2a64f5878098": {
+            "@type": "text",
+            "text": {
+                "blocks": [
+                    {
+                        "key": "618bl",
+                        "text": "Nulla porttitor accumsan tincidunt. Sed porttitor lectus nibh. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Nulla porttitor accumsan tincidunt. Nulla porttitor accumsan tincidunt. Nulla porttitor accumsan tincidunt. Quisque velit nisi, pretium ut lacinia in, elementum id enim. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Sed porttitor lectus nibh. Pellentesque in ipsum id orci porta dapibus.",
+                        "type": "unstyled",
+                        "depth": 0,
+                        "inlineStyleRanges": [],
+                        "entityRanges": [],
+                        "data": {},
+                    }
+                ],
+                "entityMap": {},
+            },
+        },
+    },
+    "tiles_layout": {
+        "items": [
+            "15068807-cfc9-444a-97db-8c736809ff51",
+            "59d41d8a-ef05-4e21-8820-2a64f5878098",
+        ]
+    },
+}
+
+homepage_de = {
+    "tiles": {
+        "15068807-cfc9-444a-97db-8c736809ff52": {"@type": "title"},
+        "59d41d8a-ef05-4e21-8820-2a64f5878092": {
+            "@type": "text",
+            "text": {
+                "blocks": [
+                    {
+                        "key": "618bl",
+                        "text": "Nulla porttitor accumsan tincidunt. Sed porttitor lectus nibh. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Nulla porttitor accumsan tincidunt. Nulla porttitor accumsan tincidunt. Nulla porttitor accumsan tincidunt. Quisque velit nisi, pretium ut lacinia in, elementum id enim. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Sed porttitor lectus nibh. Pellentesque in ipsum id orci porta dapibus.",
+                        "type": "unstyled",
+                        "depth": 0,
+                        "inlineStyleRanges": [],
+                        "entityRanges": [],
+                        "data": {},
+                    }
+                ],
+                "entityMap": {},
+            },
+        },
+    },
+    "tiles_layout": {
+        "items": [
+            "15068807-cfc9-444a-97db-8c736809ff52",
+            "59d41d8a-ef05-4e21-8820-2a64f5878092",
+        ]
+    },
+}
+
+
+def create_default_homepage(
+    context, default_home=homepage_de, english_home=homepage_en
+):
+    """ This method allows to pass a dict with the homepage tiles and tiles_layout keys"""
+    portal = api.portal.get()
+    # Test for PAM installed
+    is_pam_installed = get_installer(portal, context.REQUEST).isProductInstalled(
+        "plone.app.multilingual"
+    )
+
+    if is_pam_installed:
+        # Make sure that the LRFs have the tiles enabled
+        add_behavior("LRF", "plone.restapi.behaviors.ITiles")
+
+        logger.info("Creating default homepages - PAM enabled")
+
+        portal.de.tiles = default_home["tiles"]
+        portal.de.tiles_layout = default_home["tiles_layout"]
+
+        portal.en.tiles = default_home["tiles"]
+        portal.en.tiles_layout = default_home["tiles_layout"]
+
+    else:
+        create_not_pam_homepage(context)
+
+
+def create_not_pam_homepage(context):
     portal = api.portal.get()
 
     tiles = {
@@ -325,6 +520,8 @@ def create_default_homepage(context):
             "e0ca2fbc-7800-4b9b-afe5-8e42af9f5dd6",
         ]
     }
+
+    logger.info("Creating default homepage in Plone site root - not PAM enabled")
 
     if not getattr(portal, "tiles", False):
         portal.manage_addProperty("tiles", json.dumps(tiles), "string")

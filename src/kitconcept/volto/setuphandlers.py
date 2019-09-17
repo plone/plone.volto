@@ -226,8 +226,8 @@ def create_default_homepage(
         portal.de.tiles = default_home["tiles"]
         portal.de.tiles_layout = default_home["tiles_layout"]
 
-        portal.en.tiles = default_home["tiles"]
-        portal.en.tiles_layout = default_home["tiles_layout"]
+        portal.en.tiles = english_home["tiles"]
+        portal.en.tiles_layout = english_home["tiles_layout"]
 
     else:
         create_not_pam_homepage(context)

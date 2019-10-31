@@ -149,7 +149,7 @@ def setupPortletAt(portal, portlet_type, manager, path, name="", **kw):
 
 
 homepage_en = {
-    "tiles": {
+    "blocks": {
         "15068807-cfc9-444a-97db-8c736809ff51": {"@type": "title"},
         "59d41d8a-ef05-4e21-8820-2a64f5878098": {
             "@type": "text",
@@ -169,7 +169,7 @@ homepage_en = {
             },
         },
     },
-    "tiles_layout": {
+    "blocks_layout": {
         "items": [
             "15068807-cfc9-444a-97db-8c736809ff51",
             "59d41d8a-ef05-4e21-8820-2a64f5878098",
@@ -178,7 +178,7 @@ homepage_en = {
 }
 
 homepage_de = {
-    "tiles": {
+    "blocks": {
         "15068807-cfc9-444a-97db-8c736809ff52": {"@type": "title"},
         "59d41d8a-ef05-4e21-8820-2a64f5878092": {
             "@type": "text",
@@ -198,7 +198,7 @@ homepage_de = {
             },
         },
     },
-    "tiles_layout": {
+    "blocks_layout": {
         "items": [
             "15068807-cfc9-444a-97db-8c736809ff52",
             "59d41d8a-ef05-4e21-8820-2a64f5878092",
@@ -210,7 +210,7 @@ homepage_de = {
 def create_default_homepage(
     context, default_home=homepage_de, english_home=homepage_en
 ):
-    """ This method allows to pass a dict with the homepage tiles and tiles_layout keys"""
+    """ This method allows to pass a dict with the homepage blocks and blocks_layout keys"""
     portal = api.portal.get()
     # Test for PAM installed
     is_pam_installed = get_installer(portal, context.REQUEST).isProductInstalled(
@@ -218,16 +218,16 @@ def create_default_homepage(
     )
 
     if is_pam_installed:
-        # Make sure that the LRFs have the tiles enabled
-        add_behavior("LRF", "plone.restapi.behaviors.ITiles")
+        # Make sure that the LRFs have the blocks enabled
+        add_behavior("LRF", "plone.restapi.behaviors.Iblocks")
 
         logger.info("Creating default homepages - PAM enabled")
 
-        portal.de.tiles = default_home["tiles"]
-        portal.de.tiles_layout = default_home["tiles_layout"]
+        portal.de.blocks = default_home["blocks"]
+        portal.de.blocks_layout = default_home["blocks_layout"]
 
-        portal.en.tiles = english_home["tiles"]
-        portal.en.tiles_layout = english_home["tiles_layout"]
+        portal.en.blocks = english_home["blocks"]
+        portal.en.blocks_layout = english_home["blocks_layout"]
 
     else:
         create_not_pam_homepage(context)
@@ -236,7 +236,7 @@ def create_default_homepage(
 def create_not_pam_homepage(context):
     portal = api.portal.get()
 
-    tiles = {
+    blocks = {
         "0358abe2-b4f1-463d-a279-a63ea80daf19": {"@type": "description"},
         "07c273fc-8bfc-4e7d-a327-d513e5a945bb": {"@type": "title"},
         "2dfe8e4c-5bf6-43f1-93e1-6c320ede7226": {
@@ -502,7 +502,7 @@ def create_not_pam_homepage(context):
         },
     }
 
-    tiles_layout = {
+    blocks_layout = {
         "items": [
             "07c273fc-8bfc-4e7d-a327-d513e5a945bb",
             "0358abe2-b4f1-463d-a279-a63ea80daf19",
@@ -523,12 +523,12 @@ def create_not_pam_homepage(context):
 
     logger.info("Creating default homepage in Plone site root - not PAM enabled")
 
-    if not getattr(portal, "tiles", False):
-        portal.manage_addProperty("tiles", json.dumps(tiles), "string")
+    if not getattr(portal, "blocks", False):
+        portal.manage_addProperty("blocks", json.dumps(blocks), "string")
 
-    if not getattr(portal, "tiles_layout", False):
+    if not getattr(portal, "blocks_layout", False):
         portal.manage_addProperty(
-            "tiles_layout", json.dumps(tiles_layout), "string"
+            "blocks_layout", json.dumps(blocks_layout), "string"
         )  # noqa
 
     portal.setTitle("Welcome to Volto!")

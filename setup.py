@@ -16,7 +16,7 @@ long_description = "\n\n".join(
 
 setup(
     name="kitconcept.volto",
-    version="1.0.0a1",
+    version="1.0.0",
     description="",
     long_description=long_description,
     # Get more from https://pypi.python.org/pypi?%3Aaction=list_classifiers

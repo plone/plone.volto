@@ -2,7 +2,7 @@ Changelog
 =========
 
 
-1.0.1 (unreleased)
+1.1.0 (2019-11-19)
 ------------------
 
 - Prepare for baseline release

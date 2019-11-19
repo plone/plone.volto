@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
-from brh.internet import _
+from kitconcept.volto import _
 from plone.autoform.interfaces import IFormFieldProvider
+from plone.namedfile import field as namedfile
 from plone.supermodel import model
 from zope.interface import provider
 from zope.schema import TextLine
-from plone.namedfile import field as namedfile
 
 
 @provider(IFormFieldProvider)

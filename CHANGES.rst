@@ -5,8 +5,8 @@ Changelog
 1.0.1 (unreleased)
 ------------------
 
-- Nothing changed yet.
-
+- Prepare for baseline release
+  [sneridagh]
 
 1.0.0 (2019-11-06)
 ------------------

@@ -1,0 +1,17 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    xmlns:i18n="http://namespaces.zope.org/i18n"
+    i18n_domain="brh.internet">
+
+  <include package="plone.behavior" file="meta.zcml"/>
+
+  <plone:behavior
+      name="volto.preview_image"
+      title="Preview Image"
+      description="Preview image for listings"
+      provides=".preview.IPreview"
+      for="plone.dexterity.interfaces.IDexterityContent"
+    />
+
+</configure>

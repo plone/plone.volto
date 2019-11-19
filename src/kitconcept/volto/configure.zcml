@@ -10,6 +10,8 @@
     <include package="plone.app.imaging" />
   </configure>
 
+  <include package=".behaviors" />
+
   <includeDependencies package="." />
 
   <genericsetup:registerProfile

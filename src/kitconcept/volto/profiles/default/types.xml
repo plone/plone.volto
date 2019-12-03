@@ -4,4 +4,5 @@
     meta_type="Factory-based Type Information with dynamic views"/>
   <object meta_type="Dexterity FTI" name="Event" />
   <object meta_type="Dexterity FTI" name="LRF" />
+  <object meta_type="Dexterity FTI" name="Document" />
 </object>

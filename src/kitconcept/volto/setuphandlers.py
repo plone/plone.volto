@@ -219,7 +219,7 @@ def create_default_homepage(
 
     if is_pam_installed:
         # Make sure that the LRFs have the blocks enabled
-        add_behavior("LRF", "plone.restapi.behaviors.IBlocks")
+        add_behavior("LRF", "volto.blocks")
 
         logger.info("Creating default homepages - PAM enabled")
 

@@ -13,7 +13,6 @@
     <element value="plone.shortname" />
     <element value="plone.dublincore" />
     <element value="plone.relateditems" />
-    <element value="plone.versioning" />
     <element value="plone.locking" />
     <element value="volto.blocks" />
   </property>

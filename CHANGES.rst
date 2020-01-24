@@ -5,7 +5,8 @@ Changelog
 1.1.1 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Remove versioning behavior from Document type.
+  [timo]
 
 
 1.1.0 (2019-11-19)
@@ -13,6 +14,7 @@ Changelog
 
 - Prepare for baseline release
   [sneridagh]
+
 
 1.0.0 (2019-11-06)
 ------------------

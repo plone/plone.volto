@@ -1,4 +1,3 @@
-from zope.interface import Interface
 from Products.Five.browser import BrowserView
 from plone import api
 from plone.restapi.behaviors import IBlocks

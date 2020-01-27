@@ -19,7 +19,7 @@
     for="Products.CMFPlone.interfaces.IPloneSiteRoot"
     name="blocksuuidfixer"
     permission="cmf.ManagePortal"
-    class=".blocksuuidfixer.BlocksUUIDFixer"
+    class=".blocksuuidfixer.DuplicatedBlocksUUIDFixer"
     />
 
   <genericsetup:registerProfile

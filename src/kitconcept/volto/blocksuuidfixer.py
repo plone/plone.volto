@@ -8,8 +8,9 @@ from plone.protect.interfaces import IDisableCSRFProtection
 import uuid
 
 
-class BlocksUUIDFixer(BrowserView):
-    """ """
+class DuplicatedBlocksUUIDFixer(BrowserView):
+    """ This script refreshes all UUIDs found in blocks with a new UUID to ensure all
+    UUIDs are unique"""
 
     def __call__(self):
         alsoProvides(self.request, IDisableCSRFProtection)

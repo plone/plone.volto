@@ -9,8 +9,7 @@ import uuid
 
 
 class DuplicatedBlocksUUIDFixer(BrowserView):
-    """ This script refreshes all UUIDs found in blocks with a new UUID to ensure all
-    UUIDs are unique"""
+    """ This script refreshes all UUIDs found in blocks with a new UUID to ensure all UUIDs are unique"""
 
     def __call__(self):
         alsoProvides(self.request, IDisableCSRFProtection)
@@ -46,4 +45,3 @@ class DuplicatedBlocksUUIDFixer(BrowserView):
             )
 
         return "".join(output)
-

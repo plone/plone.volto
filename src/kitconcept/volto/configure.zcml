@@ -49,6 +49,14 @@
       post_handler=".setuphandlers.create_default_homepage"
       />
 
+  <genericsetup:registerProfile
+      name="p51"
+      title="kitconcept.volto p51 profile"
+      directory="profiles/p51"
+      description="Plone 5.1 specific profile for re-adding the richtext behavior"
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      />
+
   <utility
       factory=".setuphandlers.HiddenProfiles"
       name="kitconcept.volto-hiddenprofiles" />

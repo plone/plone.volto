@@ -1,0 +1,15 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:monkey="http://namespaces.plone.org/monkey"
+    i18n_domain="bfs.korruptionspraevention">
+
+  <include package="collective.monkeypatcher" />
+
+  <monkey:patch
+      description="Change default SiteErrorLog logger to file for fix Sentry logs"
+      class="Products.SiteErrorLog.SiteErrorLog.SiteErrorLog"
+      original="_do_copy_to_zlog"
+      replacement=".patches._do_copy_to_zlog"
+      />
+
+</configure>

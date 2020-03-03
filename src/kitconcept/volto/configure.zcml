@@ -13,6 +13,8 @@
 
   <include package=".behaviors" />
 
+  <include file="patches.zcml" />
+
   <includeDependencies package="." />
 
   <browser:page

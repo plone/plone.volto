@@ -5,6 +5,12 @@ Changelog
 1.1.1 (unreleased)
 ------------------
 
+- Add Zope log patch
+  [sneridagh]
+
+- Add nav_title behavior
+  [sneridagh]
+
 - override plone.app.vocabularies.Keywords with a version that
   uses the unencode subject value as the token.
   [csenger]

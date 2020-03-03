@@ -13,4 +13,11 @@
       provides=".preview.IPreview"
     />
 
+  <plone:behavior
+      name="volto.navttitle"
+      title="Navigation title"
+      description="Navigation title used in sections, menus and doormats"
+      provides=".navtitle.INavTitle"
+    />
+
 </configure>

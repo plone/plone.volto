@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from bfs.korruptionspraevention import _
+from kitconcept.volto import _
 from plone.autoform.interfaces import IFormFieldProvider
 from plone.supermodel import model
 from zope.interface import provider

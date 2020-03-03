@@ -13,6 +13,8 @@
 
   <include package=".behaviors" />
 
+  <include file="patches.zcml" />
+
   <includeDependencies package="." />
 
   <browser:page
@@ -47,6 +49,14 @@
       description="Creates a default page for the site"
       provides="Products.GenericSetup.interfaces.EXTENSION"
       post_handler=".setuphandlers.create_default_homepage"
+      />
+
+  <genericsetup:registerProfile
+      name="p51"
+      title="kitconcept.volto p51 profile"
+      directory="profiles/p51"
+      description="Plone 5.1 specific profile for re-adding the richtext behavior"
+      provides="Products.GenericSetup.interfaces.EXTENSION"
       />
 
   <utility

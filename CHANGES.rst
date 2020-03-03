@@ -5,6 +5,10 @@ Changelog
 1.1.1 (unreleased)
 ------------------
 
+- override plone.app.vocabularies.Keywords with a version that
+  uses the unencode subject value as the token.
+  [csenger]
+
 - Remove versioning behavior from Document type.
   [timo]
 

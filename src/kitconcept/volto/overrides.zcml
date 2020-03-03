@@ -3,7 +3,7 @@
   xmlns:zcml="http://namespaces.zope.org/zcml">
 
   <utility
-    component=".fixsubject.KeywordsVocabularyFactory"
+    component=".vocabularies.subject.KeywordsVocabularyFactory"
     name="plone.app.vocabularies.Keywords"
     />
 

@@ -52,10 +52,10 @@
       />
 
   <genericsetup:registerProfile
-      name="p51"
+      name="richtext"
       title="kitconcept.volto p51 profile"
-      directory="profiles/p51"
-      description="Plone 5.1 specific profile for re-adding the richtext behavior"
+      directory="profiles/richtext"
+      description="Specific profile for re-adding the richtext behavior"
       provides="Products.GenericSetup.interfaces.EXTENSION"
       />
 

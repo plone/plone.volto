@@ -2,13 +2,13 @@ Changelog
 =========
 
 
-1.1.1 (unreleased)
+1.0.0 (unreleased)
 ------------------
 
 - Add Zope log patch
   [sneridagh]
 
-- Add nav_title behavior
+- Add nav_title and preview_image behaviors
   [sneridagh]
 
 - override plone.app.vocabularies.Keywords with a version that
@@ -18,16 +18,17 @@ Changelog
 - Remove versioning behavior from Document type.
   [timo]
 
-
-1.1.0 (2019-11-19)
-------------------
-
-- Prepare for baseline release
+- Backport all features that were in kitconcept.voltodemo
   [sneridagh]
 
+- Homepage profile for demo purposes
+  [sneridagh]
 
-1.0.0 (2019-11-06)
-------------------
+- CORS profile
+  [sneridagh]
+
+- Enable Volto Blocks for Document and LRF
+  [sneridagh]
 
 - Initial release.
   [kitconcept]

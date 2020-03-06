@@ -83,7 +83,7 @@ CORS profile
 ------------
 
 A quick helper for enable CORS for development config is also provided in the
-``kitconcept.voltodemo`` module. So you can call::
+``kitconcept.volto`` module. So you can call::
 
   <include package="kitconcept.volto.cors" />
 

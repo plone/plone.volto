@@ -1,7 +1,7 @@
 <configure
     xmlns="http://namespaces.zope.org/zope"
     xmlns:monkey="http://namespaces.plone.org/monkey"
-    i18n_domain="bfs.korruptionspraevention">
+    i18n_domain="kitconcept.volto">
 
   <include package="collective.monkeypatcher" />
 

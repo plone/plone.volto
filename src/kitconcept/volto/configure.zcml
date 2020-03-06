@@ -75,12 +75,4 @@
     factory=".controlpanel.VoltoControlpanel"
     name="volto-settings" />
 
-  <monkey:patch
-      description="Patch password reset tool construct URL to cater for different frontend domain"
-      class="Products.CMFPlone.browser.login.password_reset.PasswordResetToolView"
-      original="construct_url"
-      replacement=".patches.construct_url"
-      docstringWarning="True"
-      />
-
 </configure>

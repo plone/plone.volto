@@ -10,11 +10,11 @@ class IKitconceptvoltoCoreLayer(IDefaultBrowserLayer):
 
 
 class IVoltoSettings(Interface):
-    """ Volto settings necessary to store ont he backend
+    """ Volto settings necessary to store in the backend
     """
 
     frontend_domain = schema.URI(
-        title="Frontend domain",
-        description="Used for rewriting URL's sent in the password reset e-mail by Plone.",
+        title=u"Frontend domain",
+        description=u"Used for rewriting URL's sent in the password reset e-mail by Plone.",
         default="http://localhost:3000",
     )

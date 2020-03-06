@@ -33,7 +33,7 @@ https://github.com/plone/volto/blob/master/api/base.cfg#L13
 Features
 ========
 
-It has all the following features:
+kitconcept.volto provides the following features:
 
 Demo home page and Plone site blocks support
 --------------------------------------------
@@ -47,7 +47,7 @@ Install the provided profile to install it by default:
 
   kitconcept.volto:default-homepage
 
-e.g. in your GS ``metadata.xml`` along with your other dependencies:
+e.g. in your GS ``metadata.xml`` along with your other dependencies::
 
   <metadata>
   <version>1000</version>

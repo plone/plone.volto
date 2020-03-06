@@ -21,6 +21,13 @@ Changelog
 - Backport all features that were in kitconcept.voltodemo
   [sneridagh]
 
+- Patch Password reset tool in Products.CMFPlone to use the optional volto_domain in the
+  e-email which is sent to users, only if the request is made through REST.
+  [fredvd]
+
+- Add Volto settings control panel with frontend_domain field.
+  [fredvd]
+
 - Homepage profile for demo purposes
   [sneridagh]
 

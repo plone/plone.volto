@@ -1,5 +1,8 @@
+<?xml version='1.0' encoding='UTF-8'?>
 <registry>
-  <record name="plone.nonfolderish_tabs" interface="Products.CMFPlone.interfaces.controlpanel.INavigationSchema" field="nonfolderish_tabs">
-    <value>False</value>
-  </record>
+  <records interface="Products.CMFPlone.interfaces.controlpanel.INavigationSchema" prefix="plone">
+    <value key="nonfolderish_tabs">False</value>
+  </records>
+  <records interface="kitconcept.volto.interfaces.IVoltoSettings" prefix="volto">
+  </records>
 </registry>

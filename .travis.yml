@@ -14,5 +14,6 @@ before_install:
   - echo "download-cache = $HOME/buildout-cache/downloads" >> $HOME/.buildout/default.cfg
   - echo "eggs-directory = $HOME/buildout-cache/eggs" >> $HOME/.buildout/default.cfg
 script:
-  - make
-  - make test
+  - pip install -r requirements.txt
+  - buildout
+  - bin/test

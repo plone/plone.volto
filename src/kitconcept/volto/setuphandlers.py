@@ -25,7 +25,7 @@ logger = logging.getLogger("kitconcept.volto")
 class HiddenProfiles(object):
     def getNonInstallableProfiles(self):
         """Hide uninstall profile from site-creation and quickinstaller"""
-        return ["kitconcept.voltodemo:uninstall"]
+        return ["kitconcept.volto:uninstall"]
 
 
 def post_install(context):

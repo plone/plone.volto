@@ -2,10 +2,11 @@ Changelog
 =========
 
 
-1.0.1 (unreleased)
+1.0.1 (2020-03-08)
 ------------------
 
-- Nothing changed yet.
+- Update version numbers in default home page.
+  [sneridagh]
 
 
 1.0.0 (2020-03-06)

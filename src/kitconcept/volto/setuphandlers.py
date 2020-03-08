@@ -290,7 +290,7 @@ def create_not_pam_homepage(context):
                         ],
                         "inlineStyleRanges": [],
                         "key": "behki",
-                        "text": "Plone is a CMS built on Python with over 17 years of experience. Plone has very interesting features that appeal to developers and users alike, such as customizable content types, hierarchical URL object traversing and a sophisticated content workflow powered by a granular permissions model. This allows you to build anything from simple websites to enterprise-grade intranets. Volto exposes all these features and communicates with Plone via its mature REST API. Volto can be esily themed and is highly customizable.",
+                        "text": "Plone is a CMS built on Python with over 19 years of experience. Plone has very interesting features that appeal to developers and users alike, such as customizable content types, hierarchical URL object traversing and a sophisticated content workflow powered by a granular permissions model. This allows you to build anything from simple websites to enterprise-grade intranets. Volto exposes all these features and communicates with Plone via its mature REST API. Volto can be esily themed and is highly customizable.",
                         "type": "unstyled",
                     }
                 ],
@@ -430,7 +430,7 @@ def create_not_pam_homepage(context):
                         "entityRanges": [],
                         "inlineStyleRanges": [],
                         "key": "55n44",
-                        "text": "You can use this site to test Volto. It runs Volto 2.0.0 using Plone 5.1.6 Backend and Plone REST API 3.8.1",
+                        "text": "You can use this site to test Volto. It runs on the master branch of Volto using latest Plone 5.2 Backend running on Python 3.",
                         "type": "unstyled",
                     }
                 ],
@@ -466,7 +466,7 @@ def create_not_pam_homepage(context):
                         "entityRanges": [],
                         "inlineStyleRanges": [],
                         "key": "f0prj",
-                        "text": "2019 - Volto Team - Plone Foundation",
+                        "text": "2020 - Volto Team - Plone Foundation",
                         "type": "unstyled",
                     }
                 ],

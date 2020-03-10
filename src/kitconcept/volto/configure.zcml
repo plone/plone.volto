@@ -75,4 +75,9 @@
     factory=".controlpanel.VoltoControlpanel"
     name="volto-settings" />
 
+  <adapter
+    factory=".scaling.VoltoImageScalingFactory"
+    for="plone.app.contenttypes.interfaces.IImage"
+  />
+
 </configure>

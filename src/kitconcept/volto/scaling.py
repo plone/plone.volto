@@ -87,8 +87,8 @@ class VoltoImageScalingFactory(object):
             except Exception:
                 logger.exception(
                     'Could not scale "{0!r}" of {1!r}'.format(
-                        orig_value, self.context.absolute_url(),
-                    ),
+                        orig_value, self.context.absolute_url()
+                    )
                 )
                 return
             if result is None:
@@ -99,7 +99,7 @@ class VoltoImageScalingFactory(object):
         data, format_, dimensions = result
         mimetype = "image/{0}".format(format_.lower())
         value = orig_value.__class__(
-            data, contentType=mimetype, filename=orig_value.filename,
+            data, contentType=mimetype, filename=orig_value.filename
         )
         value.fieldname = fieldname
         return value, format_, dimensions

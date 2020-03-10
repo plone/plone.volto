@@ -2,7 +2,7 @@ Changelog
 =========
 
 
-1.0.2 (unreleased)
+1.1.0 (2020-03-10)
 ------------------
 
 - Added a specific IImageScaleFactory for ``Image`` content type, to fix SVG handling

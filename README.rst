@@ -71,14 +71,6 @@ Document content type
 behaviors since it's confusing for the users if they shows in the form. Both have been
 superseeded by blocks in the editor.
 
-Disabled content types
-----------------------
-
-It disables (fti) of some default content types since they are not ready or
-full working yet on Volto side. At this moment only the event content type is disabled.
-
-The event content type will be enabled when the upcoming new dates widget is complete.
-
 CORS profile
 ------------
 

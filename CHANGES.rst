@@ -5,8 +5,11 @@ Changelog
 1.1.1 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Bring back the event type, since it's fully working in Volto now
+  [sneridagh]
 
+- fix typo in behavior name ``navttitle`` -> ``navtitle``
+  [sneridagh]
 
 1.1.0 (2020-03-10)
 ------------------

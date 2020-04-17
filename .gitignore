@@ -34,3 +34,4 @@ report.html
 !.gitignore
 !.gitkeep
 !.travis.yml
+pyvenv.cfg

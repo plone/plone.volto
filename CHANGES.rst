@@ -2,7 +2,7 @@ Changelog
 =========
 
 
-1.1.1 (unreleased)
+1.2.0 (2020-04-17)
 ------------------
 
 - Bring back the event type, since it's fully working in Volto now

@@ -3,6 +3,12 @@
   <records interface="Products.CMFPlone.interfaces.controlpanel.INavigationSchema" prefix="plone">
     <value key="nonfolderish_tabs">False</value>
   </records>
+
+  <!-- This is for the elements in the root, not show the current item in navigation-->
+  <record name="plone.show_excluded_items" interface="Products.CMFPlone.interfaces.controlpanel.INavigationSchema" field="show_excluded_items">
+    <value>False</value>
+  </record>
+
   <records interface="kitconcept.volto.interfaces.IVoltoSettings" prefix="volto">
   </records>
 </registry>

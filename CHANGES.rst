@@ -5,7 +5,8 @@ Changelog
 1.2.1 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Add registry navigation setting for not show the current item in navigations
+  [sneridagh]
 
 
 1.2.0 (2020-04-17)

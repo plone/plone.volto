@@ -8,6 +8,8 @@ Changelog
 - Add registry navigation setting for not show the current item in navigations
   [sneridagh]
 
+- New enable_pam setuphandlers helper
+  [sneridagh]
 
 1.2.0 (2020-04-17)
 ------------------

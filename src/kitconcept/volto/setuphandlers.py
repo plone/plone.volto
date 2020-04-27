@@ -1,19 +1,22 @@
 # -*- coding: utf-8 -*-
 from plone import api
-from plone.dexterity.interfaces import IDexterityFTI
-from Products.CMFCore.utils import getToolByName
-from Products.CMFPlone.interfaces import INonInstallable
-from Products.CMFPlone.utils import get_installer
-from zope.component import queryUtility
-from zope.interface import implementer
-from zope.component import getMultiAdapter
-from zope.component import getUtility
-from zope.component.interfaces import IFactory
-from zope.container.interfaces import INameChooser
+from plone.app.multilingual.browser.setup import SetupMultilingualSite
+from plone.app.multilingual.setuphandlers import enable_translatable_behavior
 from plone.app.portlets.utils import assignment_mapping_from_key
+from plone.dexterity.interfaces import IDexterityFTI
 from plone.portlets.constants import CONTEXT_CATEGORY
 from plone.portlets.interfaces import IPortletAssignmentMapping
 from plone.portlets.interfaces import IPortletManager
+from Products.CMFCore.utils import getToolByName
+from Products.CMFPlone.interfaces import INonInstallable
+from Products.CMFPlone.utils import get_installer
+from zope.component import getMultiAdapter
+from zope.component import getUtility
+from zope.component import queryUtility
+from zope.component.interfaces import IFactory
+from zope.container.interfaces import INameChooser
+from zope.interface import implementer
+
 import json
 import logging
 
@@ -37,6 +40,13 @@ def post_install(context):
 def uninstall(context):
     """Uninstall script"""
     # Do something at the end of the uninstallation of this package.
+
+
+def enable_pam(portal):
+    # Setup the plone.app.multilingual data
+    sms = SetupMultilingualSite(portal)
+    sms.setupSite(portal)
+    enable_translatable_behavior(portal)
 
 
 def change_content_type_title(portal, old_name, new_name):

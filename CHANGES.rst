@@ -11,6 +11,9 @@ Changelog
 - New enable_pam setuphandlers helper
   [sneridagh]
 
+- New enable_pam_consistency setuphandlers helper
+  [sneridagh]
+
 1.2.0 (2020-04-17)
 ------------------
 

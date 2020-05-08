@@ -49,6 +49,29 @@ def enable_pam(portal):
     enable_translatable_behavior(portal)
 
 
+def ensure_pam_consistency(portal):
+    """ Makes sure that all the content in a language branch has language """
+
+    # Ensure that all the objects below an LFR is of the intended language
+    pc = getToolByName(portal, "portal_catalog")
+    pl = getToolByName(portal, "portal_languages")
+
+    supported_langs = pl.getSupportedLanguages()
+
+    for lang in supported_langs:
+        objects = pc.searchResults(path={"query": f"/Plone/{lang}"})
+
+        for brain in objects:
+            obj = brain.getObject()
+            if not obj.language or obj.language != lang:
+                print(f"Setting missing lang to object: {obj.absolute_url()}")
+                obj.language = lang
+
+    pc.clearFindAndRebuild()
+
+    transaction.commit()
+
+
 def change_content_type_title(portal, old_name, new_name):
     """
         change_content_type_title(portal, 'News Item', 'Meldung')

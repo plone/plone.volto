@@ -19,7 +19,7 @@ from zope.interface import implementer
 
 import json
 import logging
-
+import transaction
 
 logger = logging.getLogger("kitconcept.volto")
 

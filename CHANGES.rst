@@ -2,7 +2,7 @@ Changelog
 =========
 
 
-1.2.1 (unreleased)
+1.3.0 (2020-05-11)
 ------------------
 
 - Add registry navigation setting for not show the current item in navigations

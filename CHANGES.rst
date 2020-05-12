@@ -2,7 +2,7 @@ Changelog
 =========
 
 
-1.3.1 (unreleased)
+1.3.1 (2020-05-12)
 ------------------
 
 - Fix LRF global allow and ensure default behaviors

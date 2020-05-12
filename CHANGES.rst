@@ -5,8 +5,8 @@ Changelog
 1.3.1 (unreleased)
 ------------------
 
-- Nothing changed yet.
-
+- Fix LRF global allow and ensure default behaviors
+  [sneridagh]
 
 1.3.0 (2020-05-11)
 ------------------

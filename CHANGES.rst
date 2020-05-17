@@ -2,7 +2,7 @@ Changelog
 =========
 
 
-1.3.2 (unreleased)
+1.3.2 (2020-05-17)
 ------------------
 
 - Make sure that the enable_pam helper does its job.

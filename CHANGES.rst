@@ -5,8 +5,8 @@ Changelog
 1.3.2 (unreleased)
 ------------------
 
-- Nothing changed yet.
-
+- Make sure that the enable_pam helper does its job.
+  [sneridagh]
 
 1.3.1 (2020-05-12)
 ------------------

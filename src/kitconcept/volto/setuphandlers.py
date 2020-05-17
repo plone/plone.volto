@@ -43,6 +43,8 @@ def uninstall(context):
 
 
 def enable_pam(portal):
+    # Ensure that portal is portal
+    portal = api.portal.get()
     # Setup the plone.app.multilingual data
     sms = SetupMultilingualSite(portal)
     sms.setupSite(portal)

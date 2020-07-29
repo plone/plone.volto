@@ -2,7 +2,7 @@ Changelog
 =========
 
 
-1.3.3 (unreleased)
+1.4.0 (2020-07-29)
 ------------------
 
 - Add volto.preview_image behavior to Page type.

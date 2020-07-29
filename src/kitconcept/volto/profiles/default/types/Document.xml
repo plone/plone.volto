@@ -15,6 +15,7 @@
     <element value="plone.relateditems" />
     <element value="plone.locking" />
     <element value="volto.blocks" />
+    <element value="volto.preview_image" />
   </property>
 
 </object>

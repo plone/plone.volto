@@ -16,4 +16,5 @@ before_install:
 script:
   - pip install -r requirements.txt
   - buildout -c travis.cfg
+  - if [ -f "bin/black" ]; then bin/black src/ ; fi
   - bin/test

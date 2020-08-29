@@ -10,8 +10,7 @@ class IKitconceptvoltoCoreLayer(IDefaultBrowserLayer):
 
 
 class IVoltoSettings(Interface):
-    """ Volto settings necessary to store in the backend
-    """
+    """Volto settings necessary to store in the backend"""
 
     frontend_domain = schema.URI(
         title=u"Frontend domain",

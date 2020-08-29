@@ -24,7 +24,7 @@ def _do_copy_to_zlog(self, now, strtype, entry_id, url, tb_text):
 
 def construct_url(self, randomstring):
     """Return URL used in registered_nodify_template to allow user to
-       change password
+    change password
     """
     # domain as seen by Plone backend
     frontend_domain = self.portal_state().navigation_root_url()

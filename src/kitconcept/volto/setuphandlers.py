@@ -76,7 +76,7 @@ def ensure_pam_consistency(portal):
 
 def change_content_type_title(portal, old_name, new_name):
     """
-        change_content_type_title(portal, 'News Item', 'Meldung')
+    change_content_type_title(portal, 'News Item', 'Meldung')
     """
     portal_types = getToolByName(portal, "portal_types")
     news_item_fti = getattr(portal_types, old_name)
@@ -96,8 +96,7 @@ def enable_content_type(portal, fti_id):
 
 
 def copy_content_type(portal, name, newid, newname):
-    """Create a new content type by copying an existing one
-    """
+    """Create a new content type by copying an existing one"""
     portal_types = getToolByName(portal, "portal_types")
     tmp_obj = portal_types.manage_copyObjects([name])
     tmp_obj = portal_types.manage_pasteObjects(tmp_obj)
@@ -108,8 +107,7 @@ def copy_content_type(portal, name, newid, newname):
 
 
 def add_catalog_indexes(context, wanted=None):
-    """Method to add our wanted indexes to the portal_catalog.
-    """
+    """Method to add our wanted indexes to the portal_catalog."""
     catalog = api.portal.get_tool("portal_catalog")
     indexes = catalog.indexes()
     indexables = []
@@ -142,7 +140,7 @@ def setupNavigationPortlet(
     topLevel=0,
 ):
     """
-        setupNavigationPortlet(portal['vereinigungen']['fachliche-vereinigungen']['sektion-materie-und-kosmos']['gravitation-und-relativitaetstheorie']) # noqa
+    setupNavigationPortlet(portal['vereinigungen']['fachliche-vereinigungen']['sektion-materie-und-kosmos']['gravitation-und-relativitaetstheorie']) # noqa
     """
     from plone.app.portlets.portlets.navigation import (
         Assignment as NavAssignment,
@@ -168,7 +166,7 @@ def setupNavigationPortlet(
 
 def setupPortletAt(portal, portlet_type, manager, path, name="", **kw):
     """
-        setupPortletAt(portal, 'portlets.Events', 'plone.rightcolumn', '/vereinigungen/fachliche-vereinigungen/sektion-kondensierte-materie/halbleiterphysik') # noqa
+    setupPortletAt(portal, 'portlets.Events', 'plone.rightcolumn', '/vereinigungen/fachliche-vereinigungen/sektion-kondensierte-materie/halbleiterphysik') # noqa
     """
     portlet_factory = getUtility(IFactory, name=portlet_type)
     assignment = portlet_factory(**kw)
@@ -269,14 +267,14 @@ def create_default_homepage(
 
 
 def create_root_homepage(context, default_home=None):
-    """ It takes a default object:
-        {
-            "title": "The title",
-            "description": "The description",
-            "blocks": {...},
-            "blocks_layout": [...]
-        }
-        and sets it as default page in the Plone root object.
+    """It takes a default object:
+    {
+        "title": "The title",
+        "description": "The description",
+        "blocks": {...},
+        "blocks_layout": [...]
+    }
+    and sets it as default page in the Plone root object.
     """
 
     portal = api.portal.get()

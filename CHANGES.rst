@@ -5,7 +5,8 @@ Changelog
 1.4.1 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Define good known to work well with Volto image scales
+  [timo]
 
 
 1.4.0 (2020-07-29)

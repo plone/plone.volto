@@ -15,5 +15,6 @@ before_install:
   - echo "eggs-directory = $HOME/buildout-cache/eggs" >> $HOME/.buildout/default.cfg
 script:
   - pip install -r requirements.txt
-  - buildout
+  - buildout -c travis.cfg
+  - if [ -f "bin/black" ]; then bin/black src/ ; fi
   - bin/test

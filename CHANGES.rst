@@ -2,7 +2,34 @@ Changelog
 =========
 
 
-1.2.1 (unreleased)
+1.4.1 (unreleased)
+------------------
+
+- Nothing changed yet.
+
+
+1.4.0 (2020-07-29)
+------------------
+
+- Add volto.preview_image behavior to Page type.
+  [timo]
+
+
+1.3.2 (2020-05-17)
+------------------
+
+- Make sure that the enable_pam helper does its job.
+  [sneridagh]
+
+
+1.3.1 (2020-05-12)
+------------------
+
+- Fix LRF global allow and ensure default behaviors
+  [sneridagh]
+
+
+1.3.0 (2020-05-11)
 ------------------
 
 - Add registry navigation setting for not show the current item in navigations
@@ -10,6 +37,10 @@ Changelog
 
 - New enable_pam setuphandlers helper
   [sneridagh]
+
+- New enable_pam_consistency setuphandlers helper
+  [sneridagh]
+
 
 1.2.0 (2020-04-17)
 ------------------
@@ -19,6 +50,7 @@ Changelog
 
 - fix typo in behavior name ``navttitle`` -> ``navtitle``
   [sneridagh]
+
 
 1.1.0 (2020-03-10)
 ------------------

@@ -52,8 +52,7 @@ safe_simplevocabulary_from_values = unsafe_simplevocabulary_from_values
 
 @implementer(IVocabularyFactory)
 class KeywordsVocabulary(object):
-    """Override Keywords vocabulary to provide the real Keyword as the token.
-    """
+    """Override Keywords vocabulary to provide the real Keyword as the token."""
 
     # Allow users to customize the index to easily create
     # KeywordVocabularies for other keyword indexes
@@ -61,8 +60,7 @@ class KeywordsVocabulary(object):
     path_index = "path"
 
     def section(self, context):
-        """gets section from which subjects are used.
-        """
+        """gets section from which subjects are used."""
         registry = queryUtility(IRegistry)
         if registry is None:
             return None
@@ -80,8 +78,7 @@ class KeywordsVocabulary(object):
         return safe_simplevocabulary_from_values(index._index, query=kwfilter)
 
     def keywords_of_section(self, section, kwfilter):
-        """Valid keywords under the given section.
-        """
+        """Valid keywords under the given section."""
         pcat = getToolByName(section, "portal_catalog")
         cat = pcat._catalog
         path_idx = cat.indexes[self.path_index]

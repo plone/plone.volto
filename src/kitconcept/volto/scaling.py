@@ -42,8 +42,7 @@ class VoltoImageScalingFactory(object):
         **parameters
     ):
 
-        """Factory for image scales`.
-        """
+        """Factory for image scales`."""
         orig_value = getattr(self.context, fieldname, None)
         if orig_value is None:
             return

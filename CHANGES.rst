@@ -5,7 +5,8 @@ Changelog
 1.4.1 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Fix locales default in German
+  [sneridagh]
 
 
 1.4.0 (2020-07-29)

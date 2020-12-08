@@ -9,4 +9,4 @@ from zope.schema import TextLine
 @provider(IFormFieldProvider)
 class INavTitle(model.Schema):
 
-    nav_title = TextLine(title=_(u"Navigation titel"), required=False)
+    nav_title = TextLine(title=_(u"Navigation title"), required=False)

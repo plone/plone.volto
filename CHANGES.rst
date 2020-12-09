@@ -2,7 +2,7 @@ Changelog
 =========
 
 
-1.4.1 (unreleased)
+1.5.0 (2020-12-09)
 ------------------
 
 - Fix locales default in German

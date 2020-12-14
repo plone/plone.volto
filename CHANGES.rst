@@ -5,7 +5,8 @@ Changelog
 1.5.1 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Add zest.pocompile
+  [sneridagh]
 
 
 1.5.0 (2020-12-09)

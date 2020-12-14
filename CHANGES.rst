@@ -5,7 +5,8 @@ Changelog
 1.5.2 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Missing ZCML for translations
+  [sneridagh]
 
 
 1.5.1 (2020-12-14)

@@ -12,6 +12,8 @@
     <include package="plone.app.imaging" />
   </configure>
 
+  <i18n:registerTranslations directory="locales" />
+
   <include package=".behaviors" />
 
   <include file="patches.zcml" />

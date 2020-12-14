@@ -2,10 +2,13 @@ Changelog
 =========
 
 
-1.5.1 (unreleased)
+1.5.1 (2020-12-14)
 ------------------
 
 - Add zest.pocompile
+  [sneridagh]
+
+- Add missing .mo
   [sneridagh]
 
 

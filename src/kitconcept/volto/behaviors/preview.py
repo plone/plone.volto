@@ -11,13 +11,13 @@ from zope.schema import TextLine
 class IPreview(model.Schema):
 
     preview_image = namedfile.NamedBlobImage(
-        title=_(u"label_previewimage", default=u"Vorschaubild"),
+        title=_(u"label_previewimage", default=u"Preview image"),
         description=u"",
         required=False,
     )
 
     preview_caption = TextLine(
-        title=_(u"Legende zum Vorschaubild"),
-        description=_(u"Bitte Lizenzinformationen in folgender Form angeben"),
+        title=_(u"Preview image caption"),
+        description=u"",
         required=False,
     )

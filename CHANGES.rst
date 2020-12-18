@@ -2,11 +2,35 @@ Changelog
 =========
 
 
-1.4.1 (unreleased)
+1.5.3 (unreleased)
 ------------------
 
 - Define good known to work well with Volto image scales (specific installable imagesizes profile)
   [timo, sneridagh]
+
+
+1.5.2 (2020-12-14)
+------------------
+
+- Missing ZCML for translations
+  [sneridagh]
+
+
+1.5.1 (2020-12-14)
+------------------
+
+- Add zest.pocompile
+  [sneridagh]
+
+- Add missing .mo
+  [sneridagh]
+
+
+1.5.0 (2020-12-09)
+------------------
+
+- Fix locales default in German
+  [sneridagh]
 
 
 1.4.0 (2020-07-29)

@@ -1,0 +1,76 @@
+# --- PLEASE EDIT THE LINES BELOW CORRECTLY ---
+# SOME DESCRIPTIVE TITLE.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2020-12-08 12:21+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: de\n"
+"Language-Name: Deutsch\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: kitconcept.volto\n"
+
+#: ../configure.zcml:53
+msgid "Creates a default page for the site"
+msgstr ""
+
+#: ../configure.zcml:35
+msgid "Installs the kitconcept.volto add-on."
+msgstr ""
+
+#: ../behaviors/configure.zcml:21
+#: ../behaviors/navtitle.py:12
+msgid "Navigation title"
+msgstr "Navigation titel"
+
+#: ../behaviors/configure.zcml:21
+msgid "Navigation title used in sections, menus and doormats"
+msgstr ""
+
+#: ../behaviors/configure.zcml:14
+msgid "Preview Image"
+msgstr "Vorschaubild"
+
+#: ../behaviors/preview.py:20
+msgid "Preview image caption"
+msgstr "Legende zum Vorschaubild"
+
+#: ../behaviors/configure.zcml:14
+msgid "Preview image for listings"
+msgstr "Vorschaubild für Listings"
+
+#: ../configure.zcml:61
+msgid "Specific profile for re-adding the richtext behavior"
+msgstr ""
+
+#: ../configure.zcml:44
+msgid "Uninstalls the kitconcept.volto add-on."
+msgstr ""
+
+#: ../configure.zcml:61
+msgid "kitconcept.volto p51 profile"
+msgstr ""
+
+#: ../configure.zcml:53
+msgid "kitconcept.volto site (Default content on homepage)"
+msgstr ""
+
+#: ../configure.zcml:35
+msgid "kitconcept.volto site (kitconcept.volto)"
+msgstr ""
+
+#: ../configure.zcml:44
+msgid "kitconcept.volto site (kitconcept.volto): uninstall"
+msgstr ""
+
+#. Default: "Preview image"
+#: ../behaviors/preview.py:14
+msgid "label_previewimage"
+msgstr "Vorschaubild"

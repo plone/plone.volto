@@ -11,8 +11,8 @@ kitconcept.volto
    :target: https://kitconcept.com/
 
 
-.. image:: https://secure.travis-ci.org/kitconcept/kitconcept.volto.png
-    :target: http://travis-ci.org/kitconcept/kitconcept.volto
+.. image:: https://github.com/kitconcept/kitconcept.volto/workflows/Basic%20tests/badge.svg
+    :target: https://github.com/kitconcept/kitconcept.volto/actions?query=workflow%3A%22Basic+tests%22
 
 kitconcept.volto is a helper package to setup a Plone site ready to use with Volto. It
 installs several convenience packages, Plone configuration and patches to prepare Plone

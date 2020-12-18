@@ -60,6 +60,14 @@
       provides="Products.GenericSetup.interfaces.EXTENSION"
       />
 
+  <genericsetup:registerProfile
+      name="imagesizes"
+      title="kitconcept.volto imagesizes profile"
+      directory="profiles/imagesizes"
+      description="Specific profile for using good known scales sizes"
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      />
+
   <utility
       factory=".setuphandlers.HiddenProfiles"
       name="kitconcept.volto-hiddenprofiles" />

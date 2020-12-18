@@ -5,8 +5,8 @@ Changelog
 1.4.1 (unreleased)
 ------------------
 
-- Define good known to work well with Volto image scales
-  [timo]
+- Define good known to work well with Volto image scales (specific installable imagesizes profile)
+  [timo, sneridagh]
 
 
 1.4.0 (2020-07-29)

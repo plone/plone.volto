@@ -134,6 +134,8 @@ existing ones. These are know to work well with Volto layout and grid system.
     great 1200:65536
     huge 1600:65536
 
+since this change is opinionated, it's optional from a profile ``imagesizes``.
+
 Versions compatibility
 ----------------------
 

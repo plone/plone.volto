@@ -82,4 +82,6 @@
     for="plone.app.contenttypes.interfaces.IImage"
   />
 
+  <adapter name="hasPreviewImage" factory=".indexers.hasPreviewImage" />
+
 </configure>

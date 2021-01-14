@@ -5,7 +5,8 @@ Changelog
 1.5.3 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Added indexers for `preview_image`, it allows the Volto object browser widget to access it
+  [sneridagh]
 
 
 1.5.2 (2020-12-14)

@@ -2,11 +2,18 @@ Changelog
 =========
 
 
-1.5.3 (unreleased)
+1.6.1 (unreleased)
 ------------------
 
 - Define good known to work well with Volto image scales (specific installable imagesizes profile)
   [timo, sneridagh]
+
+
+1.6.0 (2021-01-14)
+------------------
+
+- Added indexers for `preview_image`, it allows the Volto object browser widget to access it
+  [sneridagh]
 
 
 1.5.2 (2020-12-14)

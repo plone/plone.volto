@@ -5,7 +5,8 @@ Changelog
 1.6.1 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Add ``breadcrumbs_view`` override to include ``nav_title``
+  [sneridagh]
 
 
 1.6.0 (2021-01-14)

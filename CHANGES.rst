@@ -2,7 +2,7 @@ Changelog
 =========
 
 
-1.6.1 (unreleased)
+1.7.0 (2021-01-21)
 ------------------
 
 - Add ``breadcrumbs_view`` override to include ``nav_title``

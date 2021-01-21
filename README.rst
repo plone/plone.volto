@@ -110,6 +110,13 @@ Some behaviors that have proven to be complementary to Volto views. ``preview_im
 image for listings and teasers (different than a lead image). ``nav_title`` a field to
 store titles used in navigation components, teasers or doormats.
 
+nav_title in breadcrumbs
+------------------------
+
+The support behavior ``nav_title`` has been added to the list of attributes that
+``breadcrumbs_view`` is returning, this is done via a customized layered view on
+``breadcrumbs_view`` browser view.
+
 Volto blocks enabled LRF
 ------------------------
 

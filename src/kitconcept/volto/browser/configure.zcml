@@ -1,0 +1,16 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:cache="http://namespaces.zope.org/cache"
+    xmlns:plone="http://namespaces.plone.org/plone">
+
+  <browser:page
+    for="*"
+    name="breadcrumbs_view"
+    class=".breadcrumbs.PhysicalNavigationBreadcrumbs"
+    permission="zope.Public"
+    allowed_attributes="breadcrumbs"
+    layer="kitconcept.volto.interfaces.IKitconceptvoltoCoreLayer"
+    />
+
+</configure>

@@ -7,6 +7,8 @@ Changelog
 
 - Define good known to work well with Volto image scales (specific installable imagesizes profile)
   [timo, sneridagh]
+- Add ``breadcrumbs_view`` override to include ``nav_title``
+  [sneridagh]
 
 
 1.6.0 (2021-01-14)

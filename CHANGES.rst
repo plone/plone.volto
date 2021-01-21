@@ -2,7 +2,13 @@ Changelog
 =========
 
 
-1.6.1 (unreleased)
+1.7.1 (unreleased)
+------------------
+
+- Nothing changed yet.
+
+
+1.7.0 (2021-01-21)
 ------------------
 
 - Define good known to work well with Volto image scales (specific installable imagesizes profile)

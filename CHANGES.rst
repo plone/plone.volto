@@ -2,7 +2,7 @@ Changelog
 =========
 
 
-1.7.1 (unreleased)
+1.7.1 (2021-01-25)
 ------------------
 
 - Fix first level tabs and add nav_title to them

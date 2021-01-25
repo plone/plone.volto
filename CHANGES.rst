@@ -5,7 +5,8 @@ Changelog
 1.7.1 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Fix first level tabs and add nav_title to them
+  [sneridagh]
 
 
 1.7.0 (2021-01-21)

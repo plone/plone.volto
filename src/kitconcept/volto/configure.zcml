@@ -15,6 +15,7 @@
   <i18n:registerTranslations directory="locales" />
 
   <include package=".behaviors" />
+  <include package=".browser" />
 
   <include file="patches.zcml" />
 

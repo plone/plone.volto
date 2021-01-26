@@ -5,7 +5,8 @@ Changelog
 1.7.2 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Improve ensure_pam setuphandlers helper
+  [sneridagh]
 
 
 1.7.1 (2021-01-25)

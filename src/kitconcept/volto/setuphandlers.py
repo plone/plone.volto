@@ -49,6 +49,7 @@ def enable_pam(portal):
     sms = SetupMultilingualSite(portal)
     sms.setupSite(portal)
     enable_translatable_behavior(portal)
+    ensure_pam_consistency(portal)
 
 
 def ensure_pam_consistency(portal):

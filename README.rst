@@ -124,6 +124,26 @@ Multilingual support for LRF (Language Root Folders) is supported. Install PAM b
 installing this package and demo homepages will be created in each enabled language.
 Currently only support for EN/DE.
 
+Image Scales
+------------
+
+This package introduces new Plone image scales in Plone and redefines a couple of
+existing ones. These are know to work well with Volto layout and grid system.
+
+    icon 32:32
+    tile 64:64
+    thumb 128:128
+    mini 200:65536
+    preview 400:65536
+    teaser 600:65536
+    large 800:65536
+    larger 1000:65536
+    great 1200:65536
+    huge 1600:65536
+
+**This change is opinionated and may collide with your previously defined ones, so make
+sure your add-on's profiles are applied AFTER this one.**
+
 Versions compatibility
 ----------------------
 

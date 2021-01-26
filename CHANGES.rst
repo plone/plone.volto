@@ -5,7 +5,14 @@ Changelog
 1.7.3 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- [Breaking] Define good known to work well with Volto image scales in ``registry.xml``
+  GenericSetup profile. When this add-on is installed or the profile is applied, it will
+  overwrite the existing scales in your Plone site. If you are using specific scales for
+  your project, make sure they are installed after this addon's profile.
+
+  This scales have been tested in real production projects and work well with Volto's
+  layout and responsive viewports.
+  [timo, sneridagh]
 
 
 1.7.2 (2021-01-26)

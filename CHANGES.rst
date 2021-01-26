@@ -2,7 +2,7 @@ Changelog
 =========
 
 
-1.7.2 (unreleased)
+1.7.2 (2021-01-26)
 ------------------
 
 - Improve ensure_pam setuphandlers helper

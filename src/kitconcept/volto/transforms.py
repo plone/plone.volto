@@ -1,3 +1,4 @@
+from copy import deepcopy
 from plone.restapi.behaviors import IBlocks
 from plone.restapi.deserializer.blocks import path2uid
 from plone.restapi.interfaces import IBlockFieldDeserializationTransformer
@@ -35,10 +36,26 @@ class NestedResolveUIDDeserializerBase(object):
                                 context=self.context, link=link
                             )
                         elif link and isinstance(link, list):
-                            block[column_name][index][field] = [
-                                path2uid(context=self.context, link=linkitem)
-                                for linkitem in link
-                            ]
+                            # Detect if it has an object inside with an "@id" key (object_widget)
+                            if (
+                                len(link) > 0
+                                and isinstance(link[0], dict)
+                                and "@id" in link[0]
+                            ):
+                                result = []
+                                for itemlink in link:
+                                    item_clone = deepcopy(itemlink)
+                                    item_clone["@id"] = path2uid(
+                                        context=self.context, link=item_clone["@id"]
+                                    )
+                                    result.append(item_clone)
+
+                                block[column_name][index][field] = result
+                            else:
+                                block[column_name][index][field] = [
+                                    path2uid(context=self.context, link=linkitem)
+                                    for linkitem in link
+                                ]
         return block
 
 
@@ -73,9 +90,24 @@ class NestedResolveUIDSerializerBase(object):
                             if isinstance(link, string_types):
                                 value[column_name][index][field] = uid_to_url(link)
                             elif isinstance(link, list):
-                                value[column_name][index][field] = [
-                                    uid_to_url(linkitem) for linkitem in link
-                                ]
+                                if (
+                                    len(link) > 0
+                                    and isinstance(link[0], dict)
+                                    and "@id" in link[0]
+                                ):
+                                    result = []
+                                    for itemlink in link:
+                                        item_clone = deepcopy(itemlink)
+                                        item_clone["@id"] = uid_to_url(
+                                            item_clone["@id"]
+                                        )
+                                        result.append(item_clone)
+
+                                    value[column_name][index][field] = result
+                                else:
+                                    value[column_name][index][field] = [
+                                        uid_to_url(linkitem) for linkitem in link
+                                    ]
 
         return value
 

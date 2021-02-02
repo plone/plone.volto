@@ -87,6 +87,22 @@ class TestBlocksTransforms(unittest.TestCase):
             "../resolveuid/{}".format(doc_uid),
         )
 
+    def test_deserialize_nested_fields_arrayed_object_browser_resolveuid(self):
+        self.deserialize(
+            blocks={
+                "123": {
+                    "@type": "teaserGrid",
+                    "columns": [{"href": [{"@id": self.portal.doc1.absolute_url()}]}],
+                }
+            }
+        )
+        doc_uid = IUUID(self.portal.doc1)
+
+        self.assertEqual(
+            self.portal.doc1.blocks["123"]["columns"][0]["href"][0]["@id"],
+            "../resolveuid/{}".format(doc_uid),
+        )
+
     def test_serialize_nested_fields_resolveuid(self):
         doc_uid = IUUID(self.portal.doc1)
         value = self.serialize(
@@ -117,4 +133,23 @@ class TestBlocksTransforms(unittest.TestCase):
 
         self.assertEqual(
             value["123"]["columns"][0]["href"][0], self.portal.doc1.absolute_url()
+        )
+
+    def test_serialize_nested_fields_arrayed_object_browser_resolveuid(self):
+        doc_uid = IUUID(self.portal.doc1)
+        value = self.serialize(
+            context=self.portal.doc1,
+            blocks={
+                "123": {
+                    "@type": "teaserGrid",
+                    "columns": [
+                        {"href": [{"@id": "../resolveuid/{}".format(doc_uid)}]}
+                    ],
+                }
+            },
+        )
+
+        self.assertEqual(
+            value["123"]["columns"][0]["href"][0]["@id"],
+            self.portal.doc1.absolute_url(),
         )

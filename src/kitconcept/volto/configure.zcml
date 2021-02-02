@@ -85,4 +85,13 @@
 
   <adapter name="hasPreviewImage" factory=".indexers.hasPreviewImage" />
 
+  <subscriber factory=".transforms.NestedResolveUIDDeserializer"
+  provides="plone.restapi.interfaces.IBlockFieldDeserializationTransformer"/>
+  <subscriber factory=".transforms.NestedResolveUIDDeserializerRoot"
+  provides="plone.restapi.interfaces.IBlockFieldDeserializationTransformer"/>
+  <subscriber factory=".transforms.NestedResolveUIDSerializer"
+  provides="plone.restapi.interfaces.IBlockFieldSerializationTransformer"/>
+  <subscriber factory=".transforms.NestedResolveUIDSerializerRoot"
+  provides="plone.restapi.interfaces.IBlockFieldSerializationTransformer"/>
+
 </configure>

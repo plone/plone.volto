@@ -49,6 +49,7 @@ setup(
         "z3c.jbot",
         "plone.restapi",
         "collective.folderishtypes[dexterity]",
+        "jq",
     ],
     extras_require={
         "test": [

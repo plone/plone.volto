@@ -1,3 +1,8 @@
+"""
+bin/instance -O Plone run scripts/auditblocks.py <block_name>
+    This script audits the blocks that you have in a site. If an optional block_name is
+    defined, then it returns where is that block defined.
+"""
 from plone import api
 from plone.restapi.behaviors import IBlocks
 from collections import Counter
@@ -12,13 +17,7 @@ def audit_blocks():
         blocks = obj.blocks
         for blockuid in blocks:
             block = blocks[blockuid]
-            if (
-                block["@type"] != "text"
-                and block["@type"] != "image"
-                and block["@type"] != "html"
-                and block["@type"] != "title"
-            ):
-                types.append(block["@type"])
+            types.append(block["@type"])
 
     count = Counter(types)
     print(count.most_common())

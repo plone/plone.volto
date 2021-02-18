@@ -11,6 +11,7 @@ from kitconcept.volto.scripts.blocksremoveserver import array_url_replace_server
 from kitconcept.volto.scripts.blocksremoveserver import (
     array_preview_image_replace_server,
 )
+from kitconcept.volto.scripts.listingaddsummary import migrate_listing_block_to_summary
 
 import unittest
 
@@ -391,3 +392,12 @@ class TestBlocksTransforms(unittest.TestCase):
             ],
             "https://kitconcept.com/image1",
         )
+
+    def test_migrate_listing_block_to_summary(self):
+        blocks = {
+            "@type": "listing",
+        }
+
+        result = migrate_listing_block_to_summary(blocks)
+
+        self.assertEqual(result["template"], "summary")

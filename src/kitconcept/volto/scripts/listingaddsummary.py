@@ -1,7 +1,7 @@
 """
-time bin/instance -O Plone run scripts/blocksremoveserver.py
-    This script search and replace old server name (pre-production)
-    for a new one. It searches in all good known places
+time bin/instance -O Plone run scripts/listingaddsummary.py
+    This scripts moves all default (non existent) template property
+    to "summary"
 """
 
 from plone import api

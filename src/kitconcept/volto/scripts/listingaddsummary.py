@@ -24,3 +24,5 @@ if __name__ == "__main__":
             block = blocks[blockuid]
             if block["@type"] == "listing":
                 migrate_listing_block_to_summary(block)
+
+        obj.blocks = blocks

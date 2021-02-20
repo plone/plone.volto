@@ -2,7 +2,7 @@ Changelog
 =========
 
 
-1.7.3 (unreleased)
+2.0.0 (2021-02-20)
 ------------------
 
 - [Breaking] Define good known to work well with Volto image scales in ``registry.xml``

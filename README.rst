@@ -41,6 +41,12 @@ Compatibility
 |         |  2.x                   |  7.0.0 and above      |
 +---------+------------------------+-----------------------+
 
+plone.restapi 7.0.0 is included in Plone 5.3.4 (and above).
+
+You can still use 2.x in p.restapi 7.0.0 based installations but the transforms included
+won't work. It is recommeneded that you always use the latest plone.restapi release in
+your projects.
+
 Features
 ========
 

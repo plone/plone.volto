@@ -7,6 +7,8 @@ time bin/instance -O Plone run scripts/listingaddsummary.py
 from plone import api
 from plone.restapi.behaviors import IBlocks
 
+import transaction
+
 
 def migrate_listing_block_to_summary(block):
     if not block.get("template", False):
@@ -26,3 +28,5 @@ if __name__ == "__main__":
                 migrate_listing_block_to_summary(block)
 
         obj.blocks = blocks
+
+    transaction.commit()

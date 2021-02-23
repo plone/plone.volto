@@ -12,6 +12,14 @@
   <records interface="kitconcept.volto.interfaces.IVoltoSettings" prefix="volto">
   </records>
 
+  <record 
+    name="plone.types_use_view_action_in_listings"
+    interface="Products.CMFPlone.interfaces.controlpanel.ITypesSchema"
+    field="types_use_view_action_in_listings"
+    purge="true">
+    <value></value>
+  </record>
+
   <!-- Allowed sizes -->
   <record 
     name="plone.allowed_sizes" 

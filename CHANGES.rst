@@ -2,11 +2,10 @@ Changelog
 =========
 
 
-2.0.1 (unreleased)
+2.1.0 (2021-02-23)
 ------------------
 
-- Remove Images and Files from types_use_view_action_in_listings since in Volto it's no
-used at all
+- Remove Images and Files from types_use_view_action_in_listings since in Volto it's no used at all.
   [sneridagh]
 
 

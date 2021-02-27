@@ -246,9 +246,14 @@ def create_default_homepage(
     """ This method allows to pass a dict with the homepage blocks and blocks_layout keys"""
     portal = api.portal.get()
     # Test for PAM installed
-    is_pam_installed = get_installer(portal, context.REQUEST).isProductInstalled(
-        "plone.app.multilingual"
-    )
+    try:
+        is_pam_installed = get_installer(portal, context.REQUEST).isProductInstalled(
+            "plone.app.multilingual"
+        )
+    except: # noqa
+        is_pam_installed = get_installer(portal, context.REQUEST).is_product_installed(
+            "plone.app.multilingual"
+        )
 
     if is_pam_installed:
         # Make sure that the LRFs have the blocks enabled

@@ -250,7 +250,7 @@ def create_default_homepage(
         is_pam_installed = get_installer(portal, context.REQUEST).isProductInstalled(
             "plone.app.multilingual"
         )
-    except: # noqa
+    except:  # noqa
         is_pam_installed = get_installer(portal, context.REQUEST).is_product_installed(
             "plone.app.multilingual"
         )
@@ -592,3 +592,351 @@ def create_root_homepage(context, default_home=None):
         portal.manage_addProperty(
             "blocks_layout", json.dumps(blocks_layout), "string"
         )  # noqa
+
+
+def create_demo_homepage(context):
+    demo_home_page = {
+        "title": "Welcome to Plone 6!",
+        "description": "Congratulations! You have successfully installed Plone.",
+        "blocks": {
+            "0358abe2-b4f1-463d-a279-a63ea80daf19": {"@type": "description"},
+            "07c273fc-8bfc-4e7d-a327-d513e5a945bb": {"@type": "title"},
+            "2dfe8e4c-5bf6-43f1-93e1-6c320ede7226": {
+                "@type": "text",
+                "text": {
+                    "blocks": [
+                        {
+                            "data": {},
+                            "depth": 0,
+                            "entityRanges": [],
+                            "inlineStyleRanges": [
+                                {"length": 10, "offset": 0, "style": "BOLD"}
+                            ],
+                            "key": "6470b",
+                            "text": "Disclaimer: This instance is reset every night, so all changes will be lost afterwards.",
+                            "type": "unstyled",
+                        }
+                    ],
+                    "entityMap": {},
+                },
+            },
+            "3c881f51-f75b-4959-834a-6e1d5edc32ae": {
+                "@type": "text",
+                "text": {
+                    "blocks": [
+                        {
+                            "data": {},
+                            "depth": 0,
+                            "entityRanges": [],
+                            "inlineStyleRanges": [
+                                {"length": 5, "offset": 6, "style": "BOLD"}
+                            ],
+                            "key": "ekn3l",
+                            "text": "user: admin",
+                            "type": "unstyled",
+                        }
+                    ],
+                    "entityMap": {},
+                },
+            },
+            "5e1c30b1-ec6c-4dc0-9483-9768c3c416e4": {
+                "@type": "text",
+                "text": {
+                    "blocks": [
+                        {
+                            "data": {},
+                            "depth": 0,
+                            "entityRanges": [],
+                            "inlineStyleRanges": [],
+                            "key": "behki",
+                            "text": "Plone is a powerful content management system built on a rock-solid application stack written using the Python programming language. More about these technologies:",
+                            "type": "unstyled",
+                        }
+                    ],
+                    "entityMap": {},
+                },
+            },
+            "5f7e6846-e27c-48c4-8c9a-f0d93eadb185": {
+                "@type": "text",
+                "text": {
+                    "blocks": [
+                        {
+                            "data": {},
+                            "depth": 0,
+                            "entityRanges": [],
+                            "inlineStyleRanges": [],
+                            "key": "75pke",
+                            "text": "\u2026protects and promotes Plone.",
+                            "type": "unordered-list-item",
+                        },
+                        {
+                            "data": {},
+                            "depth": 0,
+                            "entityRanges": [],
+                            "inlineStyleRanges": [],
+                            "key": "2mo73",
+                            "text": "\u2026is a registered 501(c)(3) charitable organization.",
+                            "type": "unordered-list-item",
+                        },
+                        {
+                            "data": {},
+                            "depth": 0,
+                            "entityRanges": [],
+                            "inlineStyleRanges": [],
+                            "key": "9qhkg",
+                            "text": "\u2026donations are tax-deductible.",
+                            "type": "unordered-list-item",
+                        },
+                        {
+                            "data": {},
+                            "depth": 0,
+                            "entityRanges": [{"key": 0, "length": 50, "offset": 0}],
+                            "inlineStyleRanges": [],
+                            "key": "5528b",
+                            "text": "Support the Foundation and help make Plone better!",
+                            "type": "unordered-list-item",
+                        },
+                    ],
+                    "entityMap": {
+                        "0": {
+                            "data": {"url": "https://plone.org/sponsors/be-a-hero"},
+                            "mutability": "MUTABLE",
+                            "type": "LINK",
+                        }
+                    },
+                },
+            },
+            "61cc1bc0-d4f5-4e2b-9152-79512045a4dd": {
+                "@type": "text",
+                "text": {
+                    "blocks": [
+                        {
+                            "data": {},
+                            "depth": 0,
+                            "entityRanges": [],
+                            "inlineStyleRanges": [],
+                            "key": "9qsa4",
+                            "text": "Demo",
+                            "type": "header-two",
+                        }
+                    ],
+                    "entityMap": {},
+                },
+            },
+            "874049e7-629e-489a-b46c-1adf35ad40ee": {
+                "@type": "text",
+                "text": {
+                    "blocks": [
+                        {
+                            "data": {},
+                            "depth": 0,
+                            "entityRanges": [],
+                            "inlineStyleRanges": [],
+                            "key": "9pnjr",
+                            "text": "Happy hacking!",
+                            "type": "unstyled",
+                        }
+                    ],
+                    "entityMap": {},
+                },
+            },
+            "8bba235c-7a52-4ce2-bde1-c505e5746dce": {
+                "@type": "text",
+                "text": {
+                    "blocks": [
+                        {
+                            "data": {},
+                            "depth": 0,
+                            "entityRanges": [],
+                            "inlineStyleRanges": [],
+                            "key": "692gs",
+                            "text": "Plone is made possible only through the efforts of thousands of dedicated individuals and hundreds of companies. The Plone Foundation:",
+                            "type": "unstyled",
+                        }
+                    ],
+                    "entityMap": {},
+                },
+            },
+            "942b6530-2407-420f-9c24-597adda6b2ce": {
+                "@type": "text",
+                "text": {
+                    "blocks": [
+                        {
+                            "data": {},
+                            "depth": 0,
+                            "entityRanges": [],
+                            "inlineStyleRanges": [],
+                            "key": "6a248",
+                            "text": "Support the Plone Foundation",
+                            "type": "header-two",
+                        }
+                    ],
+                    "entityMap": {},
+                },
+            },
+            "9a976b8e-72ba-468a-bea8-b37a31bb386b": {
+                "@type": "text",
+                "text": {
+                    "blocks": [
+                        {
+                            "data": {},
+                            "depth": 0,
+                            "entityRanges": [],
+                            "inlineStyleRanges": [
+                                {"length": 12, "offset": 51, "style": "BOLD"}
+                            ],
+                            "key": "94arl",
+                            "text": "You can log in and use it as admin user using these credentials:",
+                            "type": "unstyled",
+                        }
+                    ],
+                    "entityMap": {},
+                },
+            },
+            "b3717238-448f-406e-b06f-57a9715c3326": {
+                "@type": "text",
+                "text": {
+                    "blocks": [
+                        {
+                            "data": {},
+                            "depth": 0,
+                            "entityRanges": [],
+                            "inlineStyleRanges": [],
+                            "key": "1bnna",
+                            "text": "Find out more about Plone",
+                            "type": "header-two",
+                        }
+                    ],
+                    "entityMap": {},
+                },
+            },
+            "c049ff8b-3e5a-4cfb-bca6-e4a6cca9be28": {
+                "@type": "text",
+                "text": {
+                    "blocks": [
+                        {
+                            "data": {},
+                            "depth": 0,
+                            "entityRanges": [],
+                            "inlineStyleRanges": [],
+                            "key": "55n44",
+                            "text": "You can use this site to test Plone 6. These are the versions used in this demo:",
+                            "type": "unstyled",
+                        }
+                    ],
+                    "entityMap": {},
+                },
+            },
+            "c91f0fe9-f2e9-4a17-84a5-8e4f2678ed3c": {
+                "@type": "text",
+                "text": {
+                    "blocks": [
+                        {
+                            "data": {},
+                            "depth": 0,
+                            "entityRanges": [],
+                            "inlineStyleRanges": [
+                                {"length": 5, "offset": 10, "style": "BOLD"}
+                            ],
+                            "key": "buncq",
+                            "text": "password: admin",
+                            "type": "unstyled",
+                        }
+                    ],
+                    "entityMap": {},
+                },
+            },
+            "e0ca2fbc-7800-4b9b-afe5-8e42af9f5dd6": {
+                "@type": "text",
+                "text": {
+                    "blocks": [
+                        {
+                            "data": {},
+                            "depth": 0,
+                            "entityRanges": [],
+                            "inlineStyleRanges": [],
+                            "key": "f0prj",
+                            "text": "2021 - Plone Foundation",
+                            "type": "unstyled",
+                        }
+                    ],
+                    "entityMap": {},
+                },
+            },
+            "effbdcdc-253c-41a7-841e-5edb3b56ce32": {
+                "@type": "text",
+                "text": {
+                    "blocks": [
+                        {
+                            "data": {},
+                            "depth": 0,
+                            "entityRanges": [{"key": 0, "length": 43, "offset": 4}],
+                            "inlineStyleRanges": [],
+                            "key": "68rve",
+                            "text": "The Plone open source Content Management System web site for evaluators and decision makers.",
+                            "type": "unordered-list-item",
+                        },
+                        {
+                            "data": {},
+                            "depth": 0,
+                            "entityRanges": [{"key": 1, "length": 16, "offset": 4}],
+                            "inlineStyleRanges": [],
+                            "key": "4ec08",
+                            "text": "The Plone community web site for developers.",
+                            "type": "unordered-list-item",
+                        },
+                        {
+                            "data": {},
+                            "depth": 0,
+                            "entityRanges": [{"key": 2, "length": 27, "offset": 4}],
+                            "inlineStyleRanges": [],
+                            "key": "4q5m2",
+                            "text": "The Python programming language web site.",
+                            "type": "unordered-list-item",
+                        },
+                    ],
+                    "entityMap": {
+                        "0": {
+                            "data": {"url": "https://plone.com/"},
+                            "mutability": "MUTABLE",
+                            "type": "LINK",
+                        },
+                        "1": {
+                            "data": {"url": "https://plone.org/"},
+                            "mutability": "MUTABLE",
+                            "type": "LINK",
+                        },
+                        "2": {
+                            "data": {"url": "https://www.python.org/"},
+                            "mutability": "MUTABLE",
+                            "type": "LINK",
+                        },
+                    },
+                },
+            },
+            "3b5ac7a5-2d98-423e-807c-5eebc0bf0054": {"@type": "system"},
+        },
+        "blocks_layout": {
+            "items": [
+                "07c273fc-8bfc-4e7d-a327-d513e5a945bb",
+                "0358abe2-b4f1-463d-a279-a63ea80daf19",
+                "b3717238-448f-406e-b06f-57a9715c3326",
+                "5e1c30b1-ec6c-4dc0-9483-9768c3c416e4",
+                "effbdcdc-253c-41a7-841e-5edb3b56ce32",
+                "942b6530-2407-420f-9c24-597adda6b2ce",
+                "8bba235c-7a52-4ce2-bde1-c505e5746dce",
+                "5f7e6846-e27c-48c4-8c9a-f0d93eadb185",
+                "61cc1bc0-d4f5-4e2b-9152-79512045a4dd",
+                "c049ff8b-3e5a-4cfb-bca6-e4a6cca9be28",
+                "3b5ac7a5-2d98-423e-807c-5eebc0bf0054",
+                "9a976b8e-72ba-468a-bea8-b37a31bb386b",
+                "3c881f51-f75b-4959-834a-6e1d5edc32ae",
+                "c91f0fe9-f2e9-4a17-84a5-8e4f2678ed3c",
+                "2dfe8e4c-5bf6-43f1-93e1-6c320ede7226",
+                "874049e7-629e-489a-b46c-1adf35ad40ee",
+                "e0ca2fbc-7800-4b9b-afe5-8e42af9f5dd6",
+            ]
+        },
+    }
+
+    create_root_homepage(context, default_home=demo_home_page)

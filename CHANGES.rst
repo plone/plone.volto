@@ -5,7 +5,8 @@ Changelog
 2.1.2 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Add a demo home page for demo site
+  [sneridagh]
 
 
 2.1.1 (2021-03-06)

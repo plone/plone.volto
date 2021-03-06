@@ -5,7 +5,8 @@ Changelog
 2.1.1 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Add demo site profile
+  [sneridagh]
 
 
 2.1.0 (2021-02-23)

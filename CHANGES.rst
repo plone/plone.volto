@@ -2,7 +2,7 @@ Changelog
 =========
 
 
-2.1.1 (unreleased)
+2.1.1 (2021-03-06)
 ------------------
 
 - Add demo site profile

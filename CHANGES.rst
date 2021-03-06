@@ -2,7 +2,7 @@ Changelog
 =========
 
 
-2.1.2 (unreleased)
+2.1.2 (2021-03-07)
 ------------------
 
 - Add a demo home page for demo site

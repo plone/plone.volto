@@ -56,6 +56,14 @@
       />
 
   <genericsetup:registerProfile
+      name="demo"
+      title="kitconcept.volto demo special requirements"
+      directory="profiles/demo"
+      description="Special requirements and setup for demo site"
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      />
+
+  <genericsetup:registerProfile
       name="richtext"
       title="kitconcept.volto p51 profile"
       directory="profiles/richtext"

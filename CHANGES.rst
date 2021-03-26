@@ -2,7 +2,7 @@ Changelog
 =========
 
 
-2.1.3 (unreleased)
+2.1.3 (2021-03-26)
 ------------------
 
 - Add ``requests`` as dependency

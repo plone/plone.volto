@@ -5,7 +5,8 @@ Changelog
 2.1.3 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Add ``requests`` as dependency
+  [sneridagh]
 
 
 2.1.2 (2021-03-07)

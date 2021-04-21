@@ -5,7 +5,8 @@ Changelog
 2.1.4 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Add multilingual test fixture for Cypress tests
+  [sneridagh]
 
 
 2.1.3 (2021-03-26)

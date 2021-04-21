@@ -16,7 +16,7 @@ long_description = "\n\n".join(
 
 setup(
     name="kitconcept.volto",
-    version="2.2.1",
+    version="2.2.2.dev0",
     description="Volto integration add-on for Plone",
     long_description=long_description,
     # Get more from https://pypi.python.org/pypi?%3Aaction=list_classifiers

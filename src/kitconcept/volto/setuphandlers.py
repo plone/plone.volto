@@ -42,6 +42,12 @@ def uninstall(context):
     # Do something at the end of the uninstallation of this package.
 
 
+def post_install_multilingual(context):
+    """Post install script for multilingual fixture"""
+    enable_pam(context)
+    create_default_homepage(context)
+
+
 def enable_pam(portal):
     # Ensure that portal is portal
     portal = api.portal.get()
@@ -181,36 +187,7 @@ def setupPortletAt(portal, portlet_type, manager, path, name="", **kw):
     mapping[name] = assignment
 
 
-homepage_en = {
-    "blocks": {
-        "15068807-cfc9-444a-97db-8c736809ff51": {"@type": "title"},
-        "59d41d8a-ef05-4e21-8820-2a64f5878098": {
-            "@type": "text",
-            "text": {
-                "blocks": [
-                    {
-                        "key": "618bl",
-                        "text": "Nulla porttitor accumsan tincidunt. Sed porttitor lectus nibh. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Nulla porttitor accumsan tincidunt. Nulla porttitor accumsan tincidunt. Nulla porttitor accumsan tincidunt. Quisque velit nisi, pretium ut lacinia in, elementum id enim. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Sed porttitor lectus nibh. Pellentesque in ipsum id orci porta dapibus.",
-                        "type": "unstyled",
-                        "depth": 0,
-                        "inlineStyleRanges": [],
-                        "entityRanges": [],
-                        "data": {},
-                    }
-                ],
-                "entityMap": {},
-            },
-        },
-    },
-    "blocks_layout": {
-        "items": [
-            "15068807-cfc9-444a-97db-8c736809ff51",
-            "59d41d8a-ef05-4e21-8820-2a64f5878098",
-        ]
-    },
-}
-
-homepage_de = {
+default_lrf_home = {
     "blocks": {
         "15068807-cfc9-444a-97db-8c736809ff52": {"@type": "title"},
         "59d41d8a-ef05-4e21-8820-2a64f5878092": {
@@ -240,9 +217,7 @@ homepage_de = {
 }
 
 
-def create_default_homepage(
-    context, default_home=homepage_de, english_home=homepage_en
-):
+def create_default_homepage(context, default_home=default_lrf_home):
     """ This method allows to pass a dict with the homepage blocks and blocks_layout keys"""
     portal = api.portal.get()
     # Test for PAM installed
@@ -261,11 +236,9 @@ def create_default_homepage(
 
         logger.info("Creating default homepages - PAM enabled")
 
-        portal.de.blocks = default_home["blocks"]
-        portal.de.blocks_layout = default_home["blocks_layout"]
-
-        portal.en.blocks = english_home["blocks"]
-        portal.en.blocks_layout = english_home["blocks_layout"]
+        for lang in api.portal.get_registry_record("plone.available_languages"):
+            portal[lang].blocks = default_home["blocks"]
+            portal[lang].blocks_layout = default_home["blocks_layout"]
 
     else:
         create_root_homepage(context)

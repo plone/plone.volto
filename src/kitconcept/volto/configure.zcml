@@ -70,6 +70,7 @@
       directory="profiles/multilingual"
       description="Special test fixture for multilingual use case"
       provides="Products.GenericSetup.interfaces.EXTENSION"
+      post_handler=".setuphandlers.post_install_multilingual"
       />
 
   <genericsetup:registerProfile

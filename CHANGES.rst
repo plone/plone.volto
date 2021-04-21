@@ -2,7 +2,7 @@ Changelog
 =========
 
 
-2.1.4 (unreleased)
+2.2.0 (2021-04-21)
 ------------------
 
 - Add multilingual test fixture for Cypress tests

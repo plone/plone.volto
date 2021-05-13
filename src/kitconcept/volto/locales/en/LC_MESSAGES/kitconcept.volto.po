@@ -12,20 +12,20 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0\n"
-"Language-Code: de\n"
-"Language-Name: Deutsch\n"
+"Language-Code: en\n"
+"Language-Name: English\n"
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: kitconcept.volto\n"
 
 #: ../behaviors/navtitle.py:12
 msgid "Navigation title"
-msgstr "Navigation titel"
+msgstr "Navigation title"
 
 #: ../behaviors/preview.py:20
 msgid "Preview image caption"
-msgstr "Legende zum Vorschaubild"
+msgstr "Preview image caption"
 
 #. Default: "Preview image"
 #: ../behaviors/preview.py:14
 msgid "label_previewimage"
-msgstr "Vorschaubild"
+msgstr "Preview image"

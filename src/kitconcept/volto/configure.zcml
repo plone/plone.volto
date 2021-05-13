@@ -6,7 +6,7 @@
     xmlns:i18n="http://namespaces.zope.org/i18n"
     xmlns:plone="http://namespaces.plone.org/plone"
     xmlns:monkey="http://namespaces.plone.org/monkey"
-    i18n_domain="kitconcept.volto">
+    >
 
   <configure zcml:condition="installed plone.app.imaging">
     <include package="plone.app.imaging" />

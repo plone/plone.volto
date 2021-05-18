@@ -8,7 +8,7 @@
     source="1010"
     destination="1011"
     profile="kitconcept.volto:default"
-    title="Migrates listings from Volto 12 to Volto 13"
+    title="Migrate listing blocks from Volto 12 to Volto 13"
     handler=".upgrades.from12to13_migrate_listings"
     />
 

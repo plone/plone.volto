@@ -2,7 +2,7 @@ Changelog
 =========
 
 
-2.2.2 (unreleased)
+2.3.0 (2021-05-19)
 ------------------
 
 - Add upgrade step facility

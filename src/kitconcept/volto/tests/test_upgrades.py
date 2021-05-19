@@ -61,25 +61,25 @@ class TestBlocksUpgrades(unittest.TestCase):
 
         self.assertEqual(
             self.portal.doc1.blocks["123"],
-            {"@type": "listing", "variation": "summary"},
+            {"@type": "listing", "variation": "summary", "querystring": {}},
         )
 
-        self.deserialize(blocks={"123": {"@type": "listing", "query": {}}})
+        self.deserialize(blocks={"123": {"@type": "listing", "query": []}})
         from12to13_migrate_listings(self.app)
 
         self.assertEqual(
             self.portal.doc1.blocks["123"],
-            {"@type": "listing", "query": {}},
+            {"@type": "listing", "querystring": {"query": []}},
         )
 
         self.deserialize(
-            blocks={"123": {"@type": "listing", "variation": "summary", "query": {}}}
+            blocks={"123": {"@type": "listing", "variation": "summary", "query": []}}
         )
         from12to13_migrate_listings(self.app)
 
         self.assertEqual(
             self.portal.doc1.blocks["123"],
-            {"@type": "listing", "variation": "summary", "query": {}},
+            {"@type": "listing", "variation": "summary", "querystring": {"query": []}},
         )
 
         self.deserialize(
@@ -88,7 +88,7 @@ class TestBlocksUpgrades(unittest.TestCase):
                     "@type": "listing",
                     "template": "summary",
                     "variation": "summary",
-                    "query": {},
+                    "query": [],
                 }
             }
         )
@@ -96,7 +96,7 @@ class TestBlocksUpgrades(unittest.TestCase):
 
         self.assertEqual(
             self.portal.doc1.blocks["123"],
-            {"@type": "listing", "variation": "summary", "query": {}},
+            {"@type": "listing", "variation": "summary", "querystring": {"query": []}},
         )
 
         self.deserialize(
@@ -105,7 +105,7 @@ class TestBlocksUpgrades(unittest.TestCase):
                     "@type": "listing",
                     "template": "summary",
                     "variation": "summary",
-                    "query": {},
+                    "query": [],
                 },
                 "222": {"@type": "image", "url": ""},
             }
@@ -118,8 +118,74 @@ class TestBlocksUpgrades(unittest.TestCase):
                 "123": {
                     "@type": "listing",
                     "variation": "summary",
-                    "query": {},
+                    "querystring": {"query": []},
                 },
                 "222": {"@type": "image", "url": ""},
             },
+        )
+
+    def test_upgradefrom12to13listing_block_query_part(self):
+        self.deserialize(
+            blocks={
+                "123": {
+                    "@type": "listing",
+                    "id": "87def7d6-e019-4026-a8a2-e1c289941fac",
+                    "limit": "2",
+                    "sort_on": "created",
+                    "sort_order": True,
+                    "batch_size": "10",
+                    "depth": "3",
+                    "query": [
+                        {
+                            "i": "path",
+                            "o": "plone.app.querystring.operation.string.absolutePath",
+                            "v": "/de/beispiele",
+                        },
+                        {
+                            "i": "portal_type",
+                            "o": "plone.app.querystring.operation.selection.any",
+                            "v": ["Document"],
+                        },
+                    ],
+                    "template": "newsListing",
+                }
+            }
+        )
+        from12to13_migrate_listings(self.app)
+
+        self.assertEqual(
+            self.portal.doc1.blocks["123"],
+            {
+                "@type": "listing",
+                "id": "87def7d6-e019-4026-a8a2-e1c289941fac",
+                "querystring": {
+                    "limit": "2",
+                    "sort_on": "created",
+                    "sort_order": "descending",
+                    "batch_size": "10",
+                    "depth": "3",
+                    "sort_order_boolean": True,
+                    "query": [
+                        {
+                            "i": "path",
+                            "o": "plone.app.querystring.operation.string.absolutePath",
+                            "v": "/de/beispiele",
+                        },
+                        {
+                            "i": "portal_type",
+                            "o": "plone.app.querystring.operation.selection.any",
+                            "v": ["Document"],
+                        },
+                    ],
+                },
+                "variation": "newsListing",
+            },
+        )
+
+        self.deserialize(blocks={"123": {"@type": "listing", "query": []}})
+        from12to13_migrate_listings(self.app)
+
+        self.assertEqual(
+            self.portal.doc1.blocks["123"],
+            {"@type": "listing", "querystring": {"query": []}},
         )

@@ -5,7 +5,8 @@ Changelog
 2.2.2 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Add upgrade step facility and from Volto 12 to Volto 13
+  [sneridagh]
 
 
 2.2.1 (2021-04-21)

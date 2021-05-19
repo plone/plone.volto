@@ -18,6 +18,7 @@
   <include package=".browser" />
 
   <include file="patches.zcml" />
+  <include file="upgrades.zcml" />
 
   <includeDependencies package="." />
 

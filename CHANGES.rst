@@ -5,7 +5,8 @@ Changelog
 2.2.2 (unreleased)
 ------------------
 
-- Add upgrade step facility and from Volto 12 to Volto 13
+- Add upgrade step facility
+- Add upgrade steo from Volto 12 to Volto 13
   [sneridagh]
 
 

@@ -18,7 +18,10 @@ PATH = "/Plone"
 
 # Make other scripts in this folder available
 sys.path.append(os.path.abspath(os.path.join("..", "api")))
-from . import utils  # noqa
+try:
+    from . import utils  # noqa
+except ImportError:
+    from scripts import utils  # noqa
 
 
 def remove_image_scales(blocks):
@@ -36,14 +39,19 @@ def remove_image_scales(blocks):
 if __name__ == "__main__":
 
     for brain in api.content.find(object_provides=IBlocks.__identifier__, path=PATH):
-        obj = brain.getObject()
-        blocks = obj.blocks
+        try:
+            obj = brain.getObject()
+        except KeyError:
+            obj = None
 
-        utils.print_info(f"Processing: {obj.absolute_url()}")
+        if obj:
+            blocks = obj.blocks
 
-        # Search for any image block and replaces scales
-        blocks = remove_image_scales(blocks)
+            utils.print_info(f"Processing: {obj.absolute_url()}")
 
-        obj.blocks = blocks
+            # Search for any image block and replaces scales
+            blocks = remove_image_scales(blocks)
+
+            obj.blocks = blocks
 
     transaction.commit()

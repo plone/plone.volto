@@ -12,6 +12,7 @@ from kitconcept.volto.scripts.blocksremoveserver import (
     array_preview_image_replace_server,
 )
 from kitconcept.volto.scripts.listingaddsummary import migrate_listing_block_to_summary
+from kitconcept.volto.scripts.searchscalesinimageblocks import remove_image_scales
 
 import unittest
 
@@ -401,3 +402,32 @@ class TestBlocksTransforms(unittest.TestCase):
         result = migrate_listing_block_to_summary(blocks)
 
         self.assertEqual(result["template"], "summary")
+
+    def test_remove_image_scales(self):
+        blocks = {
+            "b53feefa-e6f7-42f0-8f04-534655c6c594": {
+                "@type": "image",
+                "url": "/foo/bar/@@images/image/large",
+            }
+        }
+
+        result = remove_image_scales(blocks)
+
+        self.assertEqual(
+            result["b53feefa-e6f7-42f0-8f04-534655c6c594"]["url"], "/foo/bar"
+        )
+        self.assertEqual(result["b53feefa-e6f7-42f0-8f04-534655c6c594"]["size"], "l")
+
+    def test_remove_image_scales_no_large(self):
+        blocks = {
+            "b53feefa-e6f7-42f0-8f04-534655c6c594": {
+                "@type": "image",
+                "url": "/foo/bar/@@images/image/teaser",
+            }
+        }
+
+        result = remove_image_scales(blocks)
+
+        self.assertEqual(
+            result["b53feefa-e6f7-42f0-8f04-534655c6c594"]["url"], "/foo/bar"
+        )

@@ -33,12 +33,15 @@ def remove_image_scales(blocks):
                 if block["url"].split("/")[-1] == "large":
                     block["size"] = "l"
                 block["url"] = block["url"].split("/@@images")[0]
+                utils.print_ok(f"Fixing: {block['url']} - {obj.absolute_url()}")
     return blocks
 
 
 if __name__ == "__main__":
-
-    for brain in api.content.find(object_provides=IBlocks.__identifier__, path=PATH):
+    pc = api.portal.get_tool("portal_catalog")
+    for brain in pc.unrestrictedSearchResults(
+        object_provides=IBlocks.__identifier__, path=PATH
+    ):
         try:
             obj = brain.getObject()
         except KeyError:

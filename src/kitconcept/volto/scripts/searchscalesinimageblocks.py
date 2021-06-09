@@ -33,7 +33,6 @@ def remove_image_scales(blocks):
                 if block["url"].split("/")[-1] == "large":
                     block["size"] = "l"
                 block["url"] = block["url"].split("/@@images")[0]
-                utils.print_ok(f"Fixing: {block['url']} - {obj.absolute_url()}")
     return blocks
 
 

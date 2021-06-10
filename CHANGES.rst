@@ -5,14 +5,17 @@ Changelog
 2.3.1 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Fix and complete upgrade step from Volto 12 to Volto 13
+  [sneridagh]
+- Add helper scripts
+  [sneridagh]
 
 
 2.3.0 (2021-05-19)
 ------------------
 
 - Add upgrade step facility
-- Add upgrade steo from Volto 12 to Volto 13
+- Add upgrade step from Volto 12 to Volto 13
   [sneridagh]
 
 

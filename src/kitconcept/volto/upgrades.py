@@ -49,10 +49,16 @@ def from12to13_migrate_listings(context):
                     block["querystring"]["depth"] = block["depth"]
                     del block["depth"]
 
+                # batch_size to b_size, idempotent
+                if block["querystring"].get("batch_size", False):
+                    block["querystring"]["b_size"] = block["querystring"]["batch_size"]
+                    del block["querystring"]["batch_size"]
+
                 print(f"Migrated listing in {obj.absolute_url()}")
 
         return blocks
 
-    for brain in api.content.find(object_provides=IBlocks.__identifier__):
+    pc = api.portal.get_tool("portal_catalog")
+    for brain in pc.unrestrictedSearchResults(object_provides=IBlocks.__identifier__):
         obj = brain.getObject()
         obj.blocks = migrate_listing(obj.blocks)

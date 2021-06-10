@@ -162,7 +162,7 @@ class TestBlocksUpgrades(unittest.TestCase):
                     "limit": "2",
                     "sort_on": "created",
                     "sort_order": "descending",
-                    "batch_size": "10",
+                    "b_size": "10",
                     "depth": "3",
                     "sort_order_boolean": True,
                     "query": [

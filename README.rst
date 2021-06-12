@@ -145,7 +145,7 @@ Image Scales
 ------------
 
 This package introduces new Plone image scales in Plone and redefines a couple of
-existing ones. These are know to work well with Volto layout and grid system.
+existing ones. These are know to work well with Volto layout and grid system::
 
     icon 32:32
     tile 64:64

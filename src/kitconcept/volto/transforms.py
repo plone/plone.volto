@@ -29,7 +29,7 @@ class NestedResolveUIDDeserializerBase(object):
             column_field = block.get(column_name, [])
             if block.get(column_name, False):
                 for index, item in enumerate(column_field):
-                    for field in ["url", "href"]:
+                    for field in ["url", "href", "preview_image"]:
                         link = item.get(field, "")
                         if link and isinstance(link, string_types):
                             block[column_name][index][field] = path2uid(
@@ -84,7 +84,7 @@ class NestedResolveUIDSerializerBase(object):
             column_field = value.get(column_name, [])
             if value.get(column_name, False):
                 for index, item in enumerate(column_field):
-                    for field in ["url", "href"]:
+                    for field in ["url", "href", "preview_image"]:
                         if field in item.keys():
                             link = item.get(field, "")
                             if isinstance(link, string_types):

@@ -9,7 +9,8 @@ Changelog
   [sneridagh]
 - Add helper scripts
   [sneridagh]
-
+- Add preview_image to transforms
+  [sneridagh]
 
 2.3.0 (2021-05-19)
 ------------------

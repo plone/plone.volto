@@ -5,12 +5,18 @@ Changelog
 2.3.1 (unreleased)
 ------------------
 
+- Fix German translation for "Navigation title" ("Navigation titel" -> "Navigationstitel")
+  [timo]
+
 - Fix and complete upgrade step from Volto 12 to Volto 13
   [sneridagh]
+
 - Add helper scripts
   [sneridagh]
-- Add preview_image to transforms
+
+  - Add preview_image to transforms
   [sneridagh]
+
 
 2.3.0 (2021-05-19)
 ------------------

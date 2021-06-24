@@ -19,7 +19,7 @@ msgstr ""
 
 #: ../behaviors/navtitle.py:12
 msgid "Navigation title"
-msgstr "Navigation titel"
+msgstr "Navigationstitel"
 
 #: ../behaviors/preview.py:20
 msgid "Preview image caption"

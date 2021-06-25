@@ -126,32 +126,29 @@ Preview Image Behavior
 The preview image behavior makes content types provide a preview_image field that can store a preview image that Volto views can pick up. 
 This is especially userful for listings (e.g. listing block customizations) and teaser elements (e.g. teaser blocks such as [volto-blocks-grid](https://github.com/kitconcept/volto-blocks-grid)).
 
-The "volto.preview_image behavior can be enabled in the generic setup XML definition of a content type (e.g. "/profiles/default/types/MyContentType.xml"):
+The "volto.preview_image behavior can be enabled in the generic setup XML definition of a content type (e.g. "/profiles/default/types/MyContentType.xml")::
 
-````
-<?xml version="1.0" encoding="UTF-8" ?>
-<object i18n:domain="fzj.internet" meta_type="Dexterity FTI" name="MyContentType"
-  xmlns:i18n="http://xml.zope.org/namespaces/i18n">
+   <?xml version="1.0" encoding="UTF-8" ?>
+   <object i18n:domain="fzj.internet" meta_type="Dexterity FTI" name="MyContentType"
+     xmlns:i18n="http://xml.zope.org/namespaces/i18n">
 
-  ...
-  
-  <!-- Enabled behaviors -->
-  <property name="behaviors" purge="false">
-    ...
-    <element value="volto.preview_image" />
-  </property>
-  ...
-</object>
-````
+     ...
+
+     <!-- Enabled behaviors -->
+     <property name="behaviors" purge="false">
+       ...
+       <element value="volto.preview_image" />
+     </property>
+     ...
+   </object>
 
 Navigation Title Behavior
 -------------------------
 
 The navigation title makes content types provide a nav_title field that is used by Volto in the main navigation, the breadcrumbs and the navigation portlet.
 
-The "volto.navtitle behavior can be enabled in the generic setup XML definition of a content type (e.g. "/profiles/default/types/MyContentType.xml"):
+The "volto.navtitle behavior can be enabled in the generic setup XML definition of a content type (e.g. "/profiles/default/types/MyContentType.xml")::
 
-````
 <?xml version="1.0" encoding="UTF-8" ?>
 <object i18n:domain="fzj.internet" meta_type="Dexterity FTI" name="MyContentType"
   xmlns:i18n="http://xml.zope.org/namespaces/i18n">
@@ -165,7 +162,6 @@ The "volto.navtitle behavior can be enabled in the generic setup XML definition 
   </property>
   ...
 </object>
-````
 
 Volto blocks enabled LRF
 ------------------------

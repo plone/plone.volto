@@ -149,19 +149,19 @@ The navigation title makes content types provide a nav_title field that is used 
 
 The "volto.navtitle behavior can be enabled in the generic setup XML definition of a content type (e.g. "/profiles/default/types/MyContentType.xml")::
 
-<?xml version="1.0" encoding="UTF-8" ?>
-<object i18n:domain="fzj.internet" meta_type="Dexterity FTI" name="MyContentType"
-  xmlns:i18n="http://xml.zope.org/namespaces/i18n">
+   <?xml version="1.0" encoding="UTF-8" ?>
+   <object i18n:domain="fzj.internet" meta_type="Dexterity FTI" name="MyContentType"
+     xmlns:i18n="http://xml.zope.org/namespaces/i18n">
 
-  ...
-  
-  <!-- Enabled behaviors -->
-  <property name="behaviors" purge="false">
-    ...
-    <element value="volto.navtitle" />
-  </property>
-  ...
-</object>
+     ...
+
+     <!-- Enabled behaviors -->
+     <property name="behaviors" purge="false">
+       ...
+       <element value="volto.navtitle" />
+     </property>
+     ...
+   </object>
 
 Volto blocks enabled LRF
 ------------------------

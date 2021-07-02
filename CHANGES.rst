@@ -14,9 +14,11 @@ Changelog
 - Add helper scripts
   [sneridagh]
 
-  - Add preview_image to transforms
+- Add preview_image to transforms
   [sneridagh]
 
+- Add headtitle behavior
+  [sneridagh]
 
 2.3.0 (2021-05-19)
 ------------------

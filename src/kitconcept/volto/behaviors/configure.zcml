@@ -20,4 +20,11 @@
       provides=".navtitle.INavTitle"
     />
 
+  <plone:behavior
+    name="volto.headtitle"
+    title="HeadTitle field"
+    description="Adds HeadTitle field"
+    provides=".headtitle.IHeadTitle"
+  />
+
 </configure>

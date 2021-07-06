@@ -163,12 +163,12 @@ The "volto.navtitle behavior can be enabled in the generic setup XML definition 
      ...
    </object>
 
-Headtitle Behavior
-------------------
+Head Title Behavior
+-------------------
 
 The headtitle makes content types provide a headtitle field that can be used by Volto in teasers and alikes.
 
-The "volto.headtitle behavior can be enabled in the generic setup XML definition of a content type (e.g. "/profiles/default/types/MyContentType.xml")::
+The "volto.head_title" behavior can be enabled in the generic setup XML definition of a content type (e.g. "/profiles/default/types/MyContentType.xml")::
 
    <?xml version="1.0" encoding="UTF-8" ?>
    <object i18n:domain="fzj.internet" meta_type="Dexterity FTI" name="MyContentType"
@@ -179,7 +179,7 @@ The "volto.headtitle behavior can be enabled in the generic setup XML definition
      <!-- Enabled behaviors -->
      <property name="behaviors" purge="false">
        ...
-       <element value="volto.headtitle" />
+       <element value="volto.head_title" />
      </property>
      ...
    </object>

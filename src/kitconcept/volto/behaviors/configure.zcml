@@ -21,9 +21,9 @@
     />
 
   <plone:behavior
-    name="volto.headtitle"
-    title="HeadTitle field"
-    description="Adds HeadTitle field"
+    name="volto.head_title"
+    title="Head title field"
+    description="Adds Head title field"
     provides=".headtitle.IHeadTitle"
   />
 

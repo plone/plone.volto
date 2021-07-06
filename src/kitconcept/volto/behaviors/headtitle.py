@@ -9,7 +9,7 @@ from zope import schema
 @provider(IFormFieldProvider)
 class IHeadTitle(model.Schema):
 
-    headtitle = schema.TextLine(
+    head_title = schema.TextLine(
         title=_("Header title"),
         required=False,
         description=_("Header title should consist of year and number of the report"),

@@ -20,6 +20,9 @@ Changelog
 - Add headtitle behavior
   [sneridagh]
 
+- Guard for setuphandlers disablecontenttype
+  [sneridagh]
+
 2.3.0 (2021-05-19)
 ------------------
 

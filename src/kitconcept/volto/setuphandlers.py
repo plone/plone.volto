@@ -91,14 +91,16 @@ def change_content_type_title(portal, old_name, new_name):
 
 def disable_content_type(portal, fti_id):
     portal_types = getToolByName(portal, "portal_types")
-    document_fti = getattr(portal_types, fti_id)
-    document_fti.global_allow = False
+    document_fti = getattr(portal_types, fti_id, False)
+    if document_fti:
+        document_fti.global_allow = False
 
 
 def enable_content_type(portal, fti_id):
     portal_types = getToolByName(portal, "portal_types")
-    document_fti = getattr(portal_types, fti_id)
-    document_fti.global_allow = True
+    document_fti = getattr(portal_types, fti_id, False)
+    if document_fti:
+        document_fti.global_allow = True
 
 
 def copy_content_type(portal, name, newid, newname):

@@ -12,7 +12,8 @@ import sys
 
 def audit_blocks():
     types = []
-    for brain in api.content.find(object_provides=IBlocks.__identifier__):
+    pc = api.portal.get_tool("portal_catalog")
+    for brain in pc.unrestrictedSearchResults(object_provides=IBlocks.__identifier__):
         obj = brain.getObject()
         blocks = obj.blocks
         for blockuid in blocks:
@@ -24,7 +25,8 @@ def audit_blocks():
 
 
 def where_is_this_block():
-    for brain in api.content.find(object_provides=IBlocks.__identifier__):
+    pc = api.portal.get_tool("portal_catalog")
+    for brain in pc.unrestrictedSearchResults(object_provides=IBlocks.__identifier__):
         obj = brain.getObject()
         blocks = obj.blocks
         for blockuid in blocks:

@@ -23,6 +23,9 @@ Changelog
 - Guard for setuphandlers disablecontenttype
   [sneridagh]
 
+- Fix audit script
+  [sneridagh]
+
 2.3.0 (2021-05-19)
 ------------------
 

@@ -2,12 +2,14 @@ from copy import deepcopy
 from plone.restapi.behaviors import IBlocks
 from plone.restapi.deserializer.blocks import path2uid
 from plone.restapi.interfaces import IBlockFieldDeserializationTransformer
+from plone.restapi.interfaces import IBlockFieldSerializationTransformer
 from plone.restapi.serializer.blocks import uid_to_url
 from Products.CMFPlone.interfaces import IPloneSiteRoot
 from six import string_types
 from zope.component import adapter
 from zope.interface import implementer
 from zope.publisher.interfaces.browser import IBrowserRequest
+from zope.component import subscribers
 
 
 class NestedResolveUIDDeserializerBase(object):
@@ -23,6 +25,23 @@ class NestedResolveUIDDeserializerBase(object):
     def __init__(self, context, request):
         self.context = context
         self.request = request
+
+    def _transform(self, block):
+        """ this mutates the object directly """
+
+        block_type = block.get("@type", "")
+        handlers = []
+        for h in subscribers(
+            (self.context, self.request), IBlockFieldDeserializationTransformer
+        ):
+            if h.block_type == block_type or h.block_type is None:
+                h.blockid = block.get("id", None)
+                handlers.append(h)
+
+        for handler in sorted(handlers, key=lambda h: h.order):
+            block = handler(block)
+
+        return block
 
     def __call__(self, block):
         for column_name in ["columns", "hrefList", "slides"]:
@@ -56,6 +75,11 @@ class NestedResolveUIDDeserializerBase(object):
                                     path2uid(context=self.context, link=linkitem)
                                     for linkitem in link
                                 ]
+
+                    # Support for applying transforms to the subblocks in volto-blocks-grid
+                    # TODO: It's the upper code needed any longer?
+                    self._transform(item)
+
         return block
 
 
@@ -78,6 +102,23 @@ class NestedResolveUIDSerializerBase(object):
     def __init__(self, context, request):
         self.context = context
         self.request = request
+
+    def _transform(self, block):
+        """ this mutates the object directly """
+
+        block_type = block.get("@type", "")
+        handlers = []
+        for h in subscribers(
+            (self.context, self.request), IBlockFieldSerializationTransformer
+        ):
+            if h.block_type == block_type or h.block_type is None:
+                h.blockid = block.get("id", None)
+                handlers.append(h)
+
+        for handler in sorted(handlers, key=lambda h: h.order):
+            block = handler(block)
+
+        return block
 
     def __call__(self, value):
         for column_name in ["columns", "hrefList"]:
@@ -108,6 +149,10 @@ class NestedResolveUIDSerializerBase(object):
                                     value[column_name][index][field] = [
                                         uid_to_url(linkitem) for linkitem in link
                                     ]
+
+                    # Support for applying transforms to the subblocks in volto-blocks-grid
+                    # TODO: It's the upper code needed any longer?
+                    self._transform(item)
 
         return value
 

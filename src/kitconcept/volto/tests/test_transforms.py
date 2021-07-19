@@ -30,7 +30,7 @@ class TestBlocksTransforms(unittest.TestCase):
 
         self.portal.invokeFactory(
             "Document",
-            id=u"doc1",
+            id="doc1",
         )
         self.image = self.portal[
             self.portal.invokeFactory("Image", id="image-1", title="Target image")
@@ -205,7 +205,68 @@ class TestBlocksTransforms(unittest.TestCase):
             }
         )
 
-        value = res.blocks["2caef9e6-93ff-4edf-896f-8c16654a9923"]["value"]
+        value = res.blocks["e248ecb5-b787-4e04-b1b3-98febf4539d1"]["columns"][0][
+            "value"
+        ]
         link = value[0]["children"][1]["children"][1]
         resolve_link = link["data"]["link"]["internal"]["internal_link"][0]["@id"]
         self.assertTrue(resolve_link.startswith("../resolveuid/"))
+
+    def test_serialize_slate(self):
+        doc_uid = IUUID(self.portal["doc1"])
+        resolve_uid_link = {
+            "@id": f"../resolveuid/{doc_uid}",
+            "title": "Welcome to Plone",
+        }
+        blocks = {
+            "e248ecb5-b787-4e04-b1b3-98febf4539d1": {
+                "@type": "__grid",
+                "columns": [
+                    {
+                        "@type": "slate",
+                        "plaintext": "this is a slate link inside some text",
+                        "value": [
+                            {
+                                "children": [
+                                    {"text": "this is a "},
+                                    {
+                                        "children": [
+                                            {"text": ""},
+                                            {
+                                                "children": [{"text": "slate link"}],
+                                                "data": {
+                                                    "link": {
+                                                        "internal": {
+                                                            "internal_link": [
+                                                                resolve_uid_link
+                                                            ]
+                                                        }
+                                                    }
+                                                },
+                                                "type": "a",
+                                            },
+                                            {"text": ""},
+                                        ],
+                                        "type": "strong",
+                                    },
+                                    {"text": " inside some text"},
+                                ],
+                                "type": "p",
+                            }
+                        ],
+                    }
+                ],
+            },
+            "6b2be2e6-9857-4bcc-a21a-29c0449e1c68": {"@type": "title"},
+        }
+
+        res = self.serialize(
+            context=self.portal["doc1"],
+            blocks=blocks,
+        )
+
+        value = res["e248ecb5-b787-4e04-b1b3-98febf4539d1"]["columns"][0]["value"]
+        link = value[0]["children"][1]["children"][1]
+        resolve_link = link["data"]["link"]["internal"]["internal_link"][0]["@id"]
+
+        self.assertTrue(resolve_link == self.portal.absolute_url() + "/doc1")

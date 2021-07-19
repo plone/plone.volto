@@ -26,6 +26,9 @@ Changelog
 - Fix audit script
   [sneridagh]
 
+- Add support for subblocks in the custom transforms for ``volto-blocks-grid``
+  [sneridagh]
+
 2.3.0 (2021-05-19)
 ------------------
 

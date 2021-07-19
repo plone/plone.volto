@@ -270,35 +270,3 @@ class TestBlocksTransforms(unittest.TestCase):
         resolve_link = link["data"]["link"]["internal"]["internal_link"][0]["@id"]
 
         self.assertTrue(resolve_link == self.portal.absolute_url() + "/doc1")
-
-    def test_serialize_nested_fields_arrayed_resolveuid_thref(self):
-        doc_uid = IUUID(self.portal.doc1)
-        value = self.serialize(
-            context=self.portal.doc1,
-            blocks={
-                "123": {
-                    "@type": "teaserGrid",
-                    "columns": [{"thref": ["../resolveuid/{}".format(doc_uid)]}],
-                }
-            },
-        )
-
-        self.assertEqual(
-            value["123"]["columns"][0]["thref"][0], self.portal.doc1.absolute_url()
-        )
-
-    def test_deserialize_nested_fields_arrayed_resolveuid_href(self):
-        self.deserialize(
-            blocks={
-                "123": {
-                    "@type": "aktuelles",
-                    "thref": [{"@id": self.portal.doc1.absolute_url()}],
-                }
-            }
-        )
-        doc_uid = IUUID(self.portal.doc1)
-
-        self.assertEqual(
-            self.portal.doc1.blocks["123"]["thref"][0]["@id"],
-            "../resolveuid/{}".format(doc_uid),
-        )

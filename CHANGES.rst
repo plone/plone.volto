@@ -2,7 +2,7 @@ Changelog
 =========
 
 
-2.3.1 (unreleased)
+2.4.0 (2021-07-19)
 ------------------
 
 - Fix German translation for "Navigation title" ("Navigation titel" -> "Navigationstitel")

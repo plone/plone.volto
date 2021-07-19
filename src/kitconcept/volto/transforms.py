@@ -121,7 +121,7 @@ class NestedResolveUIDSerializerBase(object):
         return block
 
     def __call__(self, value):
-        for column_name in ["columns", "hrefList"]:
+        for column_name in ["columns", "hrefList", "slides"]:
             column_field = value.get(column_name, [])
             if value.get(column_name, False):
                 for index, item in enumerate(column_field):

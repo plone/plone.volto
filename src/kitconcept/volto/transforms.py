@@ -25,7 +25,7 @@ class NestedResolveUIDDeserializerBase(object):
         self.request = request
 
     def __call__(self, block):
-        for column_name in ["columns", "hrefList"]:
+        for column_name in ["columns", "hrefList", "slides"]:
             column_field = block.get(column_name, [])
             if block.get(column_name, False):
                 for index, item in enumerate(column_field):

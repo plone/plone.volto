@@ -153,3 +153,59 @@ class TestBlocksTransforms(unittest.TestCase):
             value["123"]["columns"][0]["href"][0]["@id"],
             self.portal.doc1.absolute_url(),
         )
+
+    def test_deserialize_slate(self):
+        res = self.deserialize(
+            blocks={
+                "e248ecb5-b787-4e04-b1b3-98febf4539d1": {
+                    "@type": "__grid",
+                    "columns": [
+                        {
+                            "@type": "slate",
+                            "id": "5abdabe7-e8b8-4a9b-8b92-9ab1dcd83b71",
+                            "value": [
+                                {
+                                    "type": "p",
+                                    "children": [
+                                        {"text": "this is a "},
+                                        {
+                                            "children": [
+                                                {"text": ""},
+                                                {
+                                                    "type": "a",
+                                                    "children": [
+                                                        {"text": "slate link"}
+                                                    ],
+                                                    "data": {
+                                                        "link": {
+                                                            "internal": {
+                                                                "internal_link": [
+                                                                    {
+                                                                        "@id": "%s/image-1"
+                                                                        % self.portal.absolute_url(),
+                                                                        "title": "Image 1",
+                                                                    }
+                                                                ]
+                                                            }
+                                                        }
+                                                    },
+                                                },
+                                                {"text": ""},
+                                            ],
+                                            "type": "strong",
+                                        },
+                                        {"text": " inside some text"},
+                                    ],
+                                }
+                            ],
+                            "plaintext": "this is a slate link inside some text",
+                        }
+                    ],
+                }
+            }
+        )
+
+        value = res.blocks["2caef9e6-93ff-4edf-896f-8c16654a9923"]["value"]
+        link = value[0]["children"][1]["children"][1]
+        resolve_link = link["data"]["link"]["internal"]["internal_link"][0]["@id"]
+        self.assertTrue(resolve_link.startswith("../resolveuid/"))

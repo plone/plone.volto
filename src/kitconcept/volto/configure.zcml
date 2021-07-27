@@ -15,13 +15,15 @@
 
   <i18n:registerTranslations directory="locales" />
 
+  <include package="collective.folderishtypes" />
+  <include package="plone.restapi" />
+
   <include package=".behaviors" />
   <include package=".browser" />
 
   <include file="patches.zcml" />
   <include file="upgrades.zcml" />
 
-  <includeDependencies package="." />
 
   <browser:page
     for="Products.CMFPlone.interfaces.IPloneSiteRoot"

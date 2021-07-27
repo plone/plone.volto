@@ -5,7 +5,8 @@ Changelog
 2.4.1 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Support pip-based Plone installation by explicitly including dependencies on configure.zcml
+  [ericof]
 
 
 2.4.0 (2021-07-19)

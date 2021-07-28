@@ -16,6 +16,4 @@
   <include package="plone.api" />
   <include package="collective.folderishtypes" />
 
-  <includeOverrides package="kitconcept.volto" file="overrides.zcml" />
-
 </configure>

@@ -9,11 +9,9 @@
     i18n_domain="kitconcept.volto"
     >
 
-  <configure zcml:condition="installed plone.app.imaging">
-    <include package="plone.app.imaging" />
-  </configure>
-
   <i18n:registerTranslations directory="locales" />
+
+  <include file="dependencies.zcml" />
 
   <include package=".behaviors" />
   <include package=".browser" />
@@ -21,7 +19,6 @@
   <include file="patches.zcml" />
   <include file="upgrades.zcml" />
 
-  <includeDependencies package="." />
 
   <browser:page
     for="Products.CMFPlone.interfaces.IPloneSiteRoot"

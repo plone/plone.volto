@@ -1,0 +1,19 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:zcml="http://namespaces.zope.org/zcml"
+>
+
+  <configure zcml:condition="installed plone.app.imaging">
+    <include package="plone.app.imaging" />
+  </configure>
+
+  <include package="Products.GenericSetup" file="meta.zcml" />
+  <include package="Products.GenericSetup" />
+  <include package="z3c.jbot" file="meta.zcml" />
+  <include package="z3c.jbot" />
+  <include package="plone.restapi" file="meta.zcml" />
+  <include package="plone.restapi" />
+  <include package="plone.api" />
+  <include package="collective.folderishtypes" />
+
+</configure>

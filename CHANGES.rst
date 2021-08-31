@@ -5,6 +5,9 @@ Changelog
 2.4.1 (unreleased)
 ------------------
 
+- Support pip-based Plone installation by explicitly including dependencies on configure.zcml
+  [ericof]
+
 - Add Lock-Token to default CORS allow_headers
   [avoinea]
 

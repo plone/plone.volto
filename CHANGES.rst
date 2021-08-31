@@ -5,7 +5,8 @@ Changelog
 2.4.1 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Add Lock-Token to default CORS allow_headers
+  [avoinea]
 
 
 2.4.0 (2021-07-19)

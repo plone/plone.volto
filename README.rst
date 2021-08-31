@@ -14,8 +14,8 @@ kitconcept.volto
 .. image:: https://github.com/kitconcept/kitconcept.volto/workflows/Basic%20tests/badge.svg
     :target: https://github.com/kitconcept/kitconcept.volto/actions?query=workflow%3A%22Basic+tests%22
 
-kitconcept.volto is a helper package to setup a Plone site ready to use with Volto. It
-installs several convenience packages, Plone configuration and patches to prepare Plone
+kitconcept.volto is a helper package to set up a Plone site to use with Volto. It
+installs several convenience packages, Plone configurations and patches to prepare Plone
 to be ready for support all the Volto features. Drop it in your buildout and then
 install it. It is used in Volto development itself for testing it.
 
@@ -33,6 +33,8 @@ https://github.com/plone/volto/blob/master/api/base.cfg#L13
 Compatibility
 =============
 
+Volto requires specific versions of kitconcept.volto and plone.restapi:
+
 +---------+------------------------+-----------------------+
 |         |  kitconcept.volto      |  plone.restapi        |
 +---------+------------------------+-----------------------+
@@ -41,11 +43,10 @@ Compatibility
 |         |  2.x                   |  7.0.0 and above      |
 +---------+------------------------+-----------------------+
 
-plone.restapi 7.0.0 is included in Plone 5.3.4 (and above).
+plone.restapi 7.0.0 is included in Plone 5.3.4 (and later).
 
-You can still use 2.x in p.restapi 7.0.0 based installations but the transforms included
-won't work. It is recommeneded that you always use the latest plone.restapi release in
-your projects.
+You can still use 2.x in p.restapi 7.0.0 based installations but the transforms included won't work. 
+Volto only supports the latest plone.restapi branch, therefore it is recommended to always use the latest version in your Volto projects.
 
 Features
 ========
@@ -73,20 +74,17 @@ e.g. in your GS ``metadata.xml`` along with your other dependencies::
   </dependencies>
   </metadata>
 
-Volto Pastanaga Editor
------------------------
+Volto Blocks Support
+--------------------
 
-It enables the Volto Blocks behavior on the ``Document`` content type by
-default, enabling Volto editor for that content type.
+It enables the Volto Blocks behavior on the ``Document`` content type by default, enabling Volto editor for that content type.
 
 Just use the same pattern to enable your own content types to have blocks.
 
 Document content type
 ---------------------
 
-``Richtext`` and ``table of contents`` behaviors has been removed from the ``Document``
-behaviors since it's confusing for the users if they shows in the form. Both have been
-superseeded by blocks in the editor.
+``Richtext`` and ``table of contents`` behaviors has been removed from the ``Document`` behaviors since it's confusing for the users if they shows in the form. Both have been superseeded by blocks in the editor.
 
 CORS profile
 ------------

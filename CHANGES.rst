@@ -11,6 +11,8 @@ Changelog
 - Add Lock-Token to default CORS allow_headers
   [avoinea]
 
+- Add guard for not overwrite blocks in default home pages (if PAM enabled) if they are already set
+  [sneridagh]
 
 2.4.0 (2021-07-19)
 ------------------

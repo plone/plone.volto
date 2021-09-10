@@ -239,8 +239,10 @@ def create_default_homepage(context, default_home=default_lrf_home):
         logger.info("Creating default homepages - PAM enabled")
 
         for lang in api.portal.get_registry_record("plone.available_languages"):
-            portal[lang].blocks = default_home["blocks"]
-            portal[lang].blocks_layout = default_home["blocks_layout"]
+            # Do not write them if there are blocks set already
+            if portal[lang].blocks == {} and portal[lang].blocks_layout["items"] == []:
+                portal[lang].blocks = default_home["blocks"]
+                portal[lang].blocks_layout = default_home["blocks_layout"]
 
     else:
         create_root_homepage(context)

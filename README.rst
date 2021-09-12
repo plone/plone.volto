@@ -212,4 +212,4 @@ sure your add-on's profiles are applied AFTER this one.**
 Versions compatibility
 ----------------------
 
-plone.voltodemo is deprecated in favor of this package as of since March, 5th 2020.
+kitconcept.voltodemo is deprecated in favor of this package as of since March, 5th 2020.

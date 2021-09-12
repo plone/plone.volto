@@ -3,7 +3,7 @@
    This text does not appear on pypi or github. It is a comment.
 
 ==============================================================================
-kitconcept.volto
+plone.volto
 ==============================================================================
 
 .. image:: https://kitconcept.com/logo.svg
@@ -11,10 +11,10 @@ kitconcept.volto
    :target: https://kitconcept.com/
 
 
-.. image:: https://github.com/kitconcept/kitconcept.volto/workflows/Basic%20tests/badge.svg
-    :target: https://github.com/kitconcept/kitconcept.volto/actions?query=workflow%3A%22Basic+tests%22
+.. image:: https://github.com/plone/plone.volto/workflows/Basic%20tests/badge.svg
+    :target: https://github.com/plone/plone.volto/actions?query=workflow%3A%22Basic+tests%22
 
-kitconcept.volto is a helper package to set up a Plone site to use with Volto. It
+plone.volto is a helper package to set up a Plone site to use with Volto. It
 installs several convenience packages, Plone configurations and patches to prepare Plone
 to be ready for support all the Volto features. Drop it in your buildout and then
 install it. It is used in Volto development itself for testing it.
@@ -33,10 +33,10 @@ https://github.com/plone/volto/blob/master/api/base.cfg#L13
 Compatibility
 =============
 
-Volto requires specific versions of kitconcept.volto and plone.restapi:
+Volto requires specific versions of plone.volto and plone.restapi:
 
 +---------+------------------------+-----------------------+
-|         |  kitconcept.volto      |  plone.restapi        |
+|         |  plone.volto      |  plone.restapi        |
 +---------+------------------------+-----------------------+
 |         |  1.x                   |  6.0.0 and below      |
 +---------+------------------------+-----------------------+
@@ -51,7 +51,7 @@ Volto only supports the latest plone.restapi branch, therefore it is recommended
 Features
 ========
 
-kitconcept.volto provides the following features:
+plone.volto provides the following features:
 
 Demo home page and Plone site blocks support
 --------------------------------------------
@@ -63,14 +63,14 @@ You can see it in action in the Volto demo: https://volto.kitconcept.com
 
 Install the provided profile to install it by default:
 
-  kitconcept.volto:default-homepage
+  plone.volto:default-homepage
 
 e.g. in your GS ``metadata.xml`` along with your other dependencies::
 
   <metadata>
   <version>1000</version>
   <dependencies>
-    <dependency>kitconcept.volto:default-homepage</dependency>
+    <dependency>plone.volto:default-homepage</dependency>
   </dependencies>
   </metadata>
 
@@ -90,9 +90,9 @@ CORS profile
 ------------
 
 A quick helper for enable CORS for development config is also provided in the
-``kitconcept.volto`` module. So you can call::
+``plone.volto`` module. So you can call::
 
-  <include package="kitconcept.volto.cors" />
+  <include package="plone.volto.cors" />
 
 from your ZCML while developing.
 

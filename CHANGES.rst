@@ -5,7 +5,8 @@ Changelog
 2.5.1 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Rename kitconcept.volto to plone.volto.
+  [tisto] 
 
 
 2.5.0 (2021-09-12)
@@ -235,7 +236,7 @@ Changelog
 - Remove versioning behavior from Document type.
   [timo]
 
-- Backport all features that were in kitconcept.voltodemo
+- Backport all features that were in plone.voltodemo
   [sneridagh]
 
 - Patch Password reset tool in Products.CMFPlone to use the optional volto_domain in the

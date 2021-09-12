@@ -1,5 +1,5 @@
 ====================
-kitconcept.volto
+plone.volto
 ====================
 
 User documentation

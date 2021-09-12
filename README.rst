@@ -6,8 +6,6 @@
 plone.volto
 ==============================================================================
 
-<img align="right" width="300" alt="Volto png" src="./docs/logos/volto-colorful.png" />
-
 .. image:: https://github.com/plone/plone.volto/actions/workflows/tests.yml/badge.svg
     :target: https://github.com/plone/plone.volto/actions/workflows/tests.yml
 

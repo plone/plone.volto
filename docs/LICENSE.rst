@@ -1,4 +1,4 @@
-kitconcept.volto Copyright 2018, kitconcept GmbH
+plone.volto Copyright 2018, kitconcept GmbH
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License version 2

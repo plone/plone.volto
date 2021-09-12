@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Installer for the kitconcept.volto package."""
+"""Installer for the plone.volto package."""
 
 from setuptools import find_packages
 from setuptools import setup
@@ -15,7 +15,7 @@ long_description = "\n\n".join(
 
 
 setup(
-    name="kitconcept.volto",
+    name="plone.volto",
     version="2.5.1.dev0",
     description="Volto integration add-on for Plone",
     long_description=long_description,
@@ -35,10 +35,10 @@ setup(
     keywords="Python Plone",
     author="kitconcept GmbH",
     author_email="info@kitconcept.com",
-    url="https://github.com/kitconcept/kitconcept.volto",
+    url="https://github.com/plone/plone.volto",
     license="GPL version 2",
     packages=find_packages("src", exclude=["ez_setup"]),
-    namespace_packages=["kitconcept"],
+    namespace_packages=["plone"],
     package_dir={"": "src"},
     include_package_data=True,
     zip_safe=False,

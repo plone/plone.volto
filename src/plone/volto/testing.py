@@ -40,8 +40,7 @@ PLONE_VOLTO_CORE_FIXTURE = PloneVoltoCoreLayer()
 
 
 PLONE_VOLTO_CORE_INTEGRATION_TESTING = IntegrationTesting(
-    bases=(PLONE_VOLTO_CORE_FIXTURE,),
-    name="PloneVoltoCoreLayer:IntegrationTesting",
+    bases=(PLONE_VOLTO_CORE_FIXTURE,), name="PloneVoltoCoreLayer:IntegrationTesting"
 )
 
 
@@ -52,10 +51,6 @@ PLONE_VOLTO_CORE_FUNCTIONAL_TESTING = FunctionalTesting(
 
 
 PLONE_VOLTO_CORE_ACCEPTANCE_TESTING = FunctionalTesting(
-    bases=(
-        PLONE_VOLTO_CORE_FIXTURE,
-        REMOTE_LIBRARY_BUNDLE_FIXTURE,
-        z2.ZSERVER_FIXTURE,
-    ),
+    bases=(PLONE_VOLTO_CORE_FIXTURE, REMOTE_LIBRARY_BUNDLE_FIXTURE, z2.ZSERVER_FIXTURE),
     name="PloneVoltoCoreLayer:AcceptanceTesting",
 )

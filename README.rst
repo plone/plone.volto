@@ -36,7 +36,7 @@ Compatibility
 Volto requires specific versions of plone.volto and plone.restapi:
 
 +---------+------------------------+-----------------------+
-|         |  plone.volto      |  plone.restapi        |
+|         |  plone.volto           |  plone.restapi        |
 +---------+------------------------+-----------------------+
 |         |  1.x                   |  6.0.0 and below      |
 +---------+------------------------+-----------------------+

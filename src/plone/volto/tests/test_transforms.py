@@ -28,10 +28,7 @@ class TestBlocksTransforms(unittest.TestCase):
         behavior_list.append("volto.blocks")
         fti.behaviors = tuple(behavior_list)
 
-        self.portal.invokeFactory(
-            "Document",
-            id="doc1",
-        )
+        self.portal.invokeFactory("Document", id="doc1")
         self.image = self.portal[
             self.portal.invokeFactory("Image", id="image-1", title="Target image")
         ]
@@ -260,10 +257,7 @@ class TestBlocksTransforms(unittest.TestCase):
             "6b2be2e6-9857-4bcc-a21a-29c0449e1c68": {"@type": "title"},
         }
 
-        res = self.serialize(
-            context=self.portal["doc1"],
-            blocks=blocks,
-        )
+        res = self.serialize(context=self.portal["doc1"], blocks=blocks)
 
         value = res["e248ecb5-b787-4e04-b1b3-98febf4539d1"]["columns"][0]["value"]
         link = value[0]["children"][1]["children"][1]

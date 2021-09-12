@@ -17,7 +17,5 @@ class IPreview(model.Schema):
     )
 
     preview_caption = TextLine(
-        title=_(u"Preview image caption"),
-        description=u"",
-        required=False,
+        title=_(u"Preview image caption"), description=u"", required=False
     )

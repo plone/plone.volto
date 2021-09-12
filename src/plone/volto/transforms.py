@@ -27,7 +27,7 @@ class NestedResolveUIDDeserializerBase(object):
         self.request = request
 
     def _transform(self, block):
-        """ this mutates the object directly """
+        """this mutates the object directly"""
 
         block_type = block.get("@type", "")
         handlers = []
@@ -86,13 +86,13 @@ class NestedResolveUIDDeserializerBase(object):
 @adapter(IBlocks, IBrowserRequest)
 @implementer(IBlockFieldDeserializationTransformer)
 class NestedResolveUIDDeserializer(NestedResolveUIDDeserializerBase):
-    """ Deserializer for content-types that implements IBlocks behavior """
+    """Deserializer for content-types that implements IBlocks behavior"""
 
 
 @adapter(IPloneSiteRoot, IBrowserRequest)
 @implementer(IBlockFieldDeserializationTransformer)
 class NestedResolveUIDDeserializerRoot(NestedResolveUIDDeserializerBase):
-    """ Deserializer for site root """
+    """Deserializer for site root"""
 
 
 class NestedResolveUIDSerializerBase(object):
@@ -104,7 +104,7 @@ class NestedResolveUIDSerializerBase(object):
         self.request = request
 
     def _transform(self, block):
-        """ this mutates the object directly """
+        """this mutates the object directly"""
 
         block_type = block.get("@type", "")
         handlers = []
@@ -160,10 +160,10 @@ class NestedResolveUIDSerializerBase(object):
 @adapter(IBlocks, IBrowserRequest)
 @implementer(IBlockFieldDeserializationTransformer)
 class NestedResolveUIDSerializer(NestedResolveUIDSerializerBase):
-    """ Deserializer for content-types that implements IBlocks behavior """
+    """Deserializer for content-types that implements IBlocks behavior"""
 
 
 @adapter(IPloneSiteRoot, IBrowserRequest)
 @implementer(IBlockFieldDeserializationTransformer)
 class NestedResolveUIDSerializerRoot(NestedResolveUIDSerializerBase):
-    """ Deserializer for site root """
+    """Deserializer for site root"""

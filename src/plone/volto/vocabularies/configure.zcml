@@ -1,5 +1,6 @@
 <configure
     xmlns="http://namespaces.zope.org/zope"
-    i18n_domain="plone.volto">
+    i18n_domain="plone.volto"
+    >
 
 </configure>

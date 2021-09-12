@@ -9,7 +9,7 @@ plone.volto
 .. image:: https://github.com/plone/plone.volto/actions/workflows/tests.yml/badge.svg
     :target: https://github.com/plone/plone.volto/actions/workflows/tests.yml
 
-plone.volto configures Plone to work with [Volto](https://www.npmjs.com/package/@plone/volto), the new default frontend for Plone 6.
+plone.volto configures Plone to work with `Volto<https://www.npmjs.com/package/@plone/volto>`_, the new default frontend for Plone 6.
 
 
 Installation
@@ -215,4 +215,5 @@ Credits and History
 
 The code of plone.volto has been under active development and is used in production since 2018.
 First as kitconcept.voltodemo (deprecated since March, 5th 2020), then as kitconcept.volto.
-In September 2021 kitconcept.volto has been renamed to plone.volto and has been contributed to the Plone core as part of [PLIP #2703](https://github.com/plone/Products.CMFPlone/issues/2703).
+In September 2021 kitconcept.volto has been renamed to plone.volto and has been contributed to the Plone core as part of `PLIP #2703
+<https://github.com/plone/Products.CMFPlone/issues/2703>`_.

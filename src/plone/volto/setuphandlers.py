@@ -58,7 +58,7 @@ def enable_pam(portal):
 
 
 def ensure_pam_consistency(portal):
-    """ Makes sure that all the content in a language branch has language """
+    """Makes sure that all the content in a language branch has language"""
 
     # Ensure that all the objects below an LFR is of the intended language
     pc = getToolByName(portal, "portal_catalog")
@@ -220,7 +220,7 @@ default_lrf_home = {
 
 
 def create_default_homepage(context, default_home=default_lrf_home):
-    """ This method allows to pass a dict with the homepage blocks and blocks_layout keys"""
+    """This method allows to pass a dict with the homepage blocks and blocks_layout keys"""
     portal = api.portal.get()
     # Test for PAM installed
     try:

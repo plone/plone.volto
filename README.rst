@@ -6,8 +6,8 @@
 plone.volto
 ==============================================================================
 
-.. image:: https://github.com/plone/plone.volto/workflows/Basic%20tests/badge.svg
-    :target: https://github.com/plone/plone.volto/actions?query=workflow%3A%22Basic+tests%22
+.. image:: https://github.com/plone/plone.volto/actions/workflows/tests.yml/badge.svg
+    :target: https://github.com/plone/plone.volto/actions/workflows/tests.yml
 
 plone.volto is a helper package to set up a Plone site to use with Volto. It
 installs several convenience packages, Plone configurations and patches to prepare Plone

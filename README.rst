@@ -6,11 +6,6 @@
 plone.volto
 ==============================================================================
 
-.. image:: https://kitconcept.com/logo.svg
-   :alt: kitconcept
-   :target: https://kitconcept.com/
-
-
 .. image:: https://github.com/plone/plone.volto/workflows/Basic%20tests/badge.svg
     :target: https://github.com/plone/plone.volto/actions?query=workflow%3A%22Basic+tests%22
 
@@ -209,7 +204,14 @@ existing ones. These are know to work well with Volto layout and grid system::
 **This change is opinionated and may collide with your previously defined ones, so make
 sure your add-on's profiles are applied AFTER this one.**
 
-Versions compatibility
-----------------------
+Credits and History
+-------------------
 
-kitconcept.voltodemo is deprecated in favor of this package as of since March, 5th 2020.
+.. image:: https://kitconcept.com/logo.svg
+   :width: 150px
+   :alt: kitconcept
+   :target: https://kitconcept.com/
+
+The code of plone.volto has been under active development and is used in production since 2018.
+First as kitconcept.voltodemo (deprecated since March, 5th 2020), then as kitconcept.volto.
+In September 2021 kitconcept.volto has been renamed to plone.volto and has been contributed to the Plone core as part of [PLIP #2703](https://github.com/plone/Products.CMFPlone/issues/2703).

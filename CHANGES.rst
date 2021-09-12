@@ -2,7 +2,7 @@ Changelog
 =========
 
 
-2.4.1 (unreleased)
+2.5.0 (2021-09-12)
 ------------------
 
 - Support pip-based Plone installation by explicitly including dependencies on configure.zcml

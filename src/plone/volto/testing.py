@@ -16,7 +16,7 @@ from plone.testing import z2
 import plone.volto
 
 
-class KitconceptvoltoCoreLayer(PloneSandboxLayer):
+class PloneVoltoCoreLayer(PloneSandboxLayer):
 
     defaultBases = (PLONE_APP_CONTENTTYPES_FIXTURE,)
 
@@ -36,26 +36,26 @@ class KitconceptvoltoCoreLayer(PloneSandboxLayer):
         applyProfile(portal, "plone.volto:default")
 
 
-KITCONCEPTVOLTO_CORE_FIXTURE = KitconceptvoltoCoreLayer()
+PLONE_VOLTO_CORE_FIXTURE = PloneVoltoCoreLayer()
 
 
-KITCONCEPTVOLTO_CORE_INTEGRATION_TESTING = IntegrationTesting(
-    bases=(KITCONCEPTVOLTO_CORE_FIXTURE,),
-    name="KitconceptvoltoCoreLayer:IntegrationTesting",
+PLONE_VOLTO_CORE_INTEGRATION_TESTING = IntegrationTesting(
+    bases=(PLONE_VOLTO_CORE_FIXTURE,),
+    name="PloneVoltoCoreLayer:IntegrationTesting",
 )
 
 
-KITCONCEPTVOLTO_CORE_FUNCTIONAL_TESTING = FunctionalTesting(
-    bases=(KITCONCEPTVOLTO_CORE_FIXTURE, z2.ZSERVER_FIXTURE),
-    name="KitconceptvoltoCoreLayer:FunctionalTesting",
+PLONE_VOLTO_CORE_FUNCTIONAL_TESTING = FunctionalTesting(
+    bases=(PLONE_VOLTO_CORE_FIXTURE, z2.ZSERVER_FIXTURE),
+    name="PloneVoltoCoreLayer:FunctionalTesting",
 )
 
 
-KITCONCEPTVOLTO_CORE_ACCEPTANCE_TESTING = FunctionalTesting(
+PLONE_VOLTO_CORE_ACCEPTANCE_TESTING = FunctionalTesting(
     bases=(
-        KITCONCEPTVOLTO_CORE_FIXTURE,
+        PLONE_VOLTO_CORE_FIXTURE,
         REMOTE_LIBRARY_BUNDLE_FIXTURE,
         z2.ZSERVER_FIXTURE,
     ),
-    name="KitconceptvoltoCoreLayer:AcceptanceTesting",
+    name="PloneVoltoCoreLayer:AcceptanceTesting",
 )

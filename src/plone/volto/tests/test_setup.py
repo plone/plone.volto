@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """Setup tests for this package."""
-from plone.volto.testing import KITCONCEPTVOLTO_CORE_INTEGRATION_TESTING  # noqa
+from plone.volto.testing import PLONE_VOLTO_CORE_INTEGRATION_TESTING  # noqa
 from plone import api
 
 try:
@@ -16,7 +16,7 @@ import unittest
 class TestSetup(unittest.TestCase):
     """Test that plone.volto is properly installed."""
 
-    layer = KITCONCEPTVOLTO_CORE_INTEGRATION_TESTING
+    layer = PLONE_VOLTO_CORE_INTEGRATION_TESTING
 
     def setUp(self):
         """Custom shared utility setup for tests."""
@@ -34,16 +34,16 @@ class TestSetup(unittest.TestCase):
             self.assertTrue(self.installer.isProductInstalled("plone.volto"))
 
     def test_browserlayer(self):
-        """Test that IKitconceptvoltoCoreLayer is registered."""
-        from plone.volto.interfaces import IKitconceptvoltoCoreLayer
+        """Test that IPloneVoltoCoreLayer is registered."""
+        from plone.volto.interfaces import IPloneVoltoCoreLayer
         from plone.browserlayer import utils
 
-        self.assertIn(IKitconceptvoltoCoreLayer, utils.registered_layers())
+        self.assertIn(IPloneVoltoCoreLayer, utils.registered_layers())
 
 
 class TestUninstall(unittest.TestCase):
 
-    layer = KITCONCEPTVOLTO_CORE_INTEGRATION_TESTING
+    layer = PLONE_VOLTO_CORE_INTEGRATION_TESTING
 
     def setUp(self):
         self.portal = self.layer["portal"]
@@ -62,8 +62,8 @@ class TestUninstall(unittest.TestCase):
             self.assertFalse(self.installer.isProductInstalled("plone.volto"))
 
     def test_browserlayer_removed(self):
-        """Test that IKitconceptvoltoCoreLayer is removed."""
-        from plone.volto.interfaces import IKitconceptvoltoCoreLayer
+        """Test that IPloneVoltoCoreLayer is removed."""
+        from plone.volto.interfaces import IPloneVoltoCoreLayer
         from plone.browserlayer import utils
 
-        self.assertNotIn(IKitconceptvoltoCoreLayer, utils.registered_layers())
+        self.assertNotIn(IPloneVoltoCoreLayer, utils.registered_layers())

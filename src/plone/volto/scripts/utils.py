@@ -2,7 +2,7 @@ import logging
 import csv
 
 
-logger = logging.getLogger("kitconcept.migrator.scripts")
+logger = logging.getLogger("plone.volto.scripts")
 fh = logging.FileHandler("scripts.log", mode="w")
 formatter = logging.Formatter(
     fmt="%(asctime)s %(levelname)s %(message)s", datefmt="%Y-%m-%d %H:%M:%S"

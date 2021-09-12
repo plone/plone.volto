@@ -2,6 +2,6 @@
 <layers>
   <layer
       name="plone.volto"
-      interface="plone.volto.interfaces.IKitconceptvoltoCoreLayer"
+      interface="plone.volto.interfaces.IPloneVoltoCoreLayer"
       />
 </layers>

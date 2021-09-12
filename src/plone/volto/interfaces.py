@@ -5,7 +5,7 @@ from zope.interface import Interface
 from zope.publisher.interfaces.browser import IDefaultBrowserLayer
 
 
-class IKitconceptvoltoCoreLayer(IDefaultBrowserLayer):
+class IPloneVoltoCoreLayer(IDefaultBrowserLayer):
     """Marker interface that defines a browser layer."""
 
 

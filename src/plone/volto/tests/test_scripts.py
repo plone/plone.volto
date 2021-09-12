@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from plone.dexterity.interfaces import IDexterityFTI
-from plone.volto.testing import KITCONCEPTVOLTO_CORE_INTEGRATION_TESTING  # noqa
+from plone.volto.testing import PLONE_VOLTO_CORE_INTEGRATION_TESTING  # noqa
 from zope.component import queryUtility
 from plone.volto.scripts.blocksremoveserver import draftjs_replace_server
 from plone.volto.scripts.blocksremoveserver import string_href_replace_server
@@ -19,7 +19,7 @@ import unittest
 
 class TestBlocksTransforms(unittest.TestCase):
 
-    layer = KITCONCEPTVOLTO_CORE_INTEGRATION_TESTING
+    layer = PLONE_VOLTO_CORE_INTEGRATION_TESTING
 
     def setUp(self):
         self.app = self.layer["app"]

@@ -2,7 +2,7 @@
 
 from plone.dexterity.interfaces import IDexterityFTI
 from plone.restapi.interfaces import IDeserializeFromJson
-from plone.volto.testing import KITCONCEPTVOLTO_CORE_INTEGRATION_TESTING  # noqa
+from plone.volto.testing import PLONE_VOLTO_CORE_INTEGRATION_TESTING  # noqa
 from zope.component import getMultiAdapter
 from zope.component import queryUtility
 from plone.dexterity.utils import iterSchemata
@@ -16,7 +16,7 @@ import unittest
 
 class TestBlocksUpgrades(unittest.TestCase):
 
-    layer = KITCONCEPTVOLTO_CORE_INTEGRATION_TESTING
+    layer = PLONE_VOLTO_CORE_INTEGRATION_TESTING
 
     def setUp(self):
         self.app = self.layer["app"]

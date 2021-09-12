@@ -12,7 +12,7 @@
     class=".breadcrumbs.PhysicalNavigationBreadcrumbs"
     permission="zope.Public"
     allowed_attributes="breadcrumbs"
-    layer="plone.volto.interfaces.IKitconceptvoltoCoreLayer"
+    layer="plone.volto.interfaces.IPloneVoltoCoreLayer"
     />
 
   <browser:page
@@ -22,7 +22,7 @@
     class=".navigation.CatalogNavigationTabs"
     permission="zope.Public"
     allowed_attributes="topLevelTabs"
-    layer="plone.volto.interfaces.IKitconceptvoltoCoreLayer"
+    layer="plone.volto.interfaces.IPloneVoltoCoreLayer"
     />
 
 </configure>

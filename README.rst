@@ -9,7 +9,7 @@ plone.volto
 .. image:: https://github.com/plone/plone.volto/actions/workflows/tests.yml/badge.svg
     :target: https://github.com/plone/plone.volto/actions/workflows/tests.yml
 
-plone.volto configures Plone to work with `Volto<https://www.npmjs.com/package/@plone/volto>`_., the new default frontend for Plone 6.
+plone.volto configures Plone to work with `Volto <https://www.npmjs.com/package/@plone/volto>`_, the new default frontend for Plone 6.
 
 
 Installation

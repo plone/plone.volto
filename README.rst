@@ -6,46 +6,42 @@
 plone.volto
 ==============================================================================
 
-.. image:: https://kitconcept.com/logo.svg
-   :alt: kitconcept
-   :target: https://kitconcept.com/
+.. image:: https://github.com/plone/plone.volto/actions/workflows/tests.yml/badge.svg
+    :target: https://github.com/plone/plone.volto/actions/workflows/tests.yml
+
+plone.volto configures Plone to work with [Volto](https://www.npmjs.com/package/@plone/volto), the new default frontend for Plone 6.
 
 
-.. image:: https://github.com/plone/plone.volto/workflows/Basic%20tests/badge.svg
-    :target: https://github.com/plone/plone.volto/actions?query=workflow%3A%22Basic+tests%22
+Installation
+============
 
-plone.volto is a helper package to set up a Plone site to use with Volto. It
-installs several convenience packages, Plone configurations and patches to prepare Plone
-to be ready for support all the Volto features. Drop it in your buildout and then
-install it. It is used in Volto development itself for testing it.
+Install plone.volto by adding it to your buildout::
 
-If you want, take it as base of your own integration package.
+    [buildout]
 
-Usage
-=====
+    ...
 
-https://github.com/plone/volto/blob/master/api/base.cfg#L13
+    eggs =
+        plone.volto
 
-and along with plonesite recipe:
-
-https://github.com/plone/volto/blob/master/api/base.cfg#L13
 
 Compatibility
 =============
 
 Volto requires specific versions of plone.volto and plone.restapi:
 
-+---------+------------------------+-----------------------+
-|         |  plone.volto           |  plone.restapi        |
-+---------+------------------------+-----------------------+
-|         |  1.x                   |  6.0.0 and below      |
-+---------+------------------------+-----------------------+
-|         |  2.x                   |  7.0.0 and above      |
-+---------+------------------------+-----------------------+
++---------+-------------------------+-----------------------+
+|         |  plone|kitconcept.volto |  plone.restapi        |
++---------+-------------------------+-----------------------+
+|         |  1.x                    |  6.0.0 and below      |
++---------+-------------------------+-----------------------+
+|         |  2.x                    |  7.0.0 and above      |
++---------+-------------------------+-----------------------+
 
-plone.restapi 7.0.0 is included in Plone 5.3.4 (and later).
+plone.restapi 7.x.x is included in Plone 5.3.4 (and later).
 
-You can still use 2.x in p.restapi 7.0.0 based installations but the transforms included won't work. 
+You can still use 2.x in p.restapi 7.0.0 based installations but the transforms included won't work.
+
 Volto only supports the latest plone.restapi branch, therefore it is recommended to always use the latest version in your Volto projects.
 
 Features
@@ -81,12 +77,12 @@ It enables the Volto Blocks behavior on the ``Document`` content type by default
 
 Just use the same pattern to enable your own content types to have blocks.
 
-Document content type
+Document Content Type
 ---------------------
 
 ``Richtext`` and ``table of contents`` behaviors has been removed from the ``Document`` behaviors since it's confusing for the users if they shows in the form. Both have been superseeded by blocks in the editor.
 
-CORS profile
+CORS Profile
 ------------
 
 A quick helper for enable CORS for development config is also provided in the
@@ -102,7 +98,7 @@ productions sites.
 It's planned that Volto will feature a development pass-through proxy to the backend in
 the future. It will be addressed in next sprints.
 
-ZLog patch
+ZLog Patch
 ----------
 
 p.restapi low level errors are routed through the ancient ZLog and are ``plone_error``
@@ -110,8 +106,8 @@ enabled, making it difficult to follow since all are marked with a UUID. Special
 using helpers like Sentry. This patch removes the UUID so the same error is categorized
 all together. This is planned to be addressed in next sprints.
 
-Patch fix for Plone ``subject`` field
--------------------------------------
+Patch for ``subject`` Field
+---------------------------
 
 There are some problems of serialization on special characters derivated from how the
 current shape of the Plone's default Dexterity ``subjects`` field that has to be
@@ -182,7 +178,7 @@ The "volto.head_title" behavior can be enabled in the generic setup XML definiti
      ...
    </object>
 
-Volto blocks enabled LRF
+Volto Blocks Enabled LRF
 ------------------------
 
 Multilingual support for LRF (Language Root Folders) is supported. Install PAM before
@@ -209,7 +205,14 @@ existing ones. These are know to work well with Volto layout and grid system::
 **This change is opinionated and may collide with your previously defined ones, so make
 sure your add-on's profiles are applied AFTER this one.**
 
-Versions compatibility
-----------------------
+Credits and History
+-------------------
 
-kitconcept.voltodemo is deprecated in favor of this package as of since March, 5th 2020.
+.. image:: https://kitconcept.com/logo.svg
+   :width: 150px
+   :alt: kitconcept
+   :target: https://kitconcept.com/
+
+The code of plone.volto has been under active development and is used in production since 2018.
+First as kitconcept.voltodemo (deprecated since March, 5th 2020), then as kitconcept.volto.
+In September 2021 kitconcept.volto has been renamed to plone.volto and has been contributed to the Plone core as part of [PLIP #2703](https://github.com/plone/Products.CMFPlone/issues/2703).

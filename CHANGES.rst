@@ -1,12 +1,14 @@
 Changelog
 =========
 
-
-2.5.1 (unreleased)
+3.0.0 (unreleased)
 ------------------
 
 - Rename kitconcept.volto to plone.volto.
   [tisto]
+
+2.5.1 (2021-09-12)
+------------------
 
 - Backport "More agnostic and simplify GS profile for Plone Site definition" (https://github.com/kitconcept/kitconcept.volto/pull/38)
   [sneridagh]

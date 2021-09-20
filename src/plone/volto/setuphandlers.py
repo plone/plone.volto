@@ -240,8 +240,8 @@ def create_default_homepage(context, default_home=default_lrf_home):
             # Do not write them if there are blocks set already
             # Get the attr first, in case it's not there yet (error in docker image)
             if getattr(portal[lang], "blocks", {}) == {} and (
-                getattr(portal[lang], "blocks_layout", []).get("items") is None
-                or getattr(portal[lang], "blocks_layout", []).get("items") == []
+                getattr(portal[lang], "blocks_layout", {}).get("items") is None
+                or getattr(portal[lang], "blocks_layout", {}).get("items") == []
             ):
                 logger.info(
                     "Creating default homepage for {} - PAM enabled".format(lang)

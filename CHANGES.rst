@@ -7,6 +7,12 @@ Changelog
 - Rename kitconcept.volto to plone.volto.
   [tisto]
 
+2.5.3 (2021-09-13)
+------------------
+
+- Fix condition of the guard for the multilingual fixture in the docker image.
+  [sneridagh]
+
 
 2.5.2 (2021-09-13)
 ------------------

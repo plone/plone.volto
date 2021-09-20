@@ -246,7 +246,9 @@ def create_default_homepage(context, default_home=default_lrf_home):
                 logger.info(
                     "Creating default homepage for {} - PAM enabled".format(lang)
                 )
-                portal[lang]
+                portal[lang].blocks = default_home["blocks"]
+                portal[lang].blocks_layout = default_home["blocks_layout"]
+
     else:
         create_root_homepage(context)
 

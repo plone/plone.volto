@@ -7,10 +7,17 @@ Changelog
 - Rename kitconcept.volto to plone.volto.
   [tisto]
 
+
+2.5.2 (2021-09-13)
+------------------
+
+- Fix multilingual fixture for docker image, the guard seems not to work there, for some reason the blocks and blocks_layout are not set yet (?)
+  [sneridagh]
+
 2.5.1 (2021-09-12)
 ------------------
 
-- Backport "More agnostic and simplify GS profile for Plone Site definition" (https://github.com/kitconcept/kitconcept.volto/pull/38)
+- "More agnostic and simplify GS profile for Plone Site definition" (https://github.com/kitconcept/kitconcept.volto/pull/38)
   [sneridagh]
 
 2.5.0 (2021-09-12)

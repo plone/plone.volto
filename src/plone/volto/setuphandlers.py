@@ -236,11 +236,16 @@ def create_default_homepage(context, default_home=default_lrf_home):
         # Make sure that the LRFs have the blocks enabled
         add_behavior("LRF", "volto.blocks")
 
-        logger.info("Creating default homepages - PAM enabled")
-
         for lang in api.portal.get_registry_record("plone.available_languages"):
             # Do not write them if there are blocks set already
-            if portal[lang].blocks == {} and portal[lang].blocks_layout["items"] == []:
+            # Get the attr first, in case it's not there yet (error in docker image)
+            if getattr(portal[lang], "blocks", {}) == {} and (
+                getattr(portal[lang], "blocks_layout", []).get("items") is None
+                or getattr(portal[lang], "blocks_layout", []).get("items") == []
+            ):
+                logger.info(
+                    "Creating default homepage for {} - PAM enabled".format(lang)
+                )
                 portal[lang].blocks = default_home["blocks"]
                 portal[lang].blocks_layout = default_home["blocks_layout"]
 

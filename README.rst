@@ -44,6 +44,30 @@ You can still use 2.x in p.restapi 7.0.0 based installations but the transforms 
 
 Volto only supports the latest plone.restapi branch, therefore it is recommended to always use the latest version in your Volto projects.
 
+Architecture
+============
+
+Frontend
+┌──────────────────────────────┐
+│                              │
+│            Volto             │
+│                              │
+└────────┬────────────┬────────┘
+         │            ▲
+         │    HTTP    │
+Backend  ▼            │
+┌────────┴────────────┴────────┐
+│┌────────────────────────────┐│
+││        plone.restapi       ││
+│└────────────────────────────┘│
+│┌────────────────────────────┐│
+││         plone.volto        ││
+│└────────────────────────────┘│
+│┌────────────┐ ┌─────────────┐│
+││   Plone    │ │   Add-Ons   ││
+│└────────────┘ └─────────────┘│
+└──────────────────────────────┘
+
 Features
 ========
 

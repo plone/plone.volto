@@ -76,11 +76,26 @@ Features
 
 plone.volto provides the following features:
 
-Demo home page and Plone site blocks support
---------------------------------------------
 
-It features a hack to make the Plone site Volto blocks-enabled with some demo
-content. You can take only the hack to enable the blocks on your site.
+Volto Blocks Support
+--------------------
+
+plone.volto enables the new Volto Blocks editor on ``Document``, ``Language Root Folder`` and ``Site Root```.
+
+
+Multilingual Support
+--------------------
+
+plone.volto supports multilingual websites. 
+Install PAM before installing this package and demo homepages will be created in each enabled language.
+Currently only support for EN/DE.
+
+
+Volto Blocks for Plone Site Root
+--------------------------------
+
+plone.volto contains a hack to make the Plone site Volto blocks-enabled with some demo content. 
+You can take only the hack to enable the blocks on your site.
 
 You can see it in action in the Volto demo: https://volto.kitconcept.com
 
@@ -97,17 +112,14 @@ e.g. in your GS ``metadata.xml`` along with your other dependencies::
   </dependencies>
   </metadata>
 
-Volto Blocks Support
---------------------
-
-It enables the Volto Blocks behavior on the ``Document`` content type by default, enabling Volto editor for that content type.
-
-Just use the same pattern to enable your own content types to have blocks.
 
 Document Content Type
 ---------------------
 
-``Richtext`` and ``table of contents`` behaviors has been removed from the ``Document`` behaviors since it's confusing for the users if they shows in the form. Both have been superseeded by blocks in the editor.
+plone.volto disables the ``Richtext`` and ``Table of Contents`` behaviors for the ``Document`` content type.
+Rich Text functionality is provided by the new Volto Blocks editor.
+The ``Table of Contents`` functionality is provided by the ``Table of Contents Block`` in Volto.
+
 
 CORS Profile
 ------------
@@ -133,6 +145,7 @@ enabled, making it difficult to follow since all are marked with a UUID. Special
 using helpers like Sentry. This patch removes the UUID so the same error is categorized
 all together. This is planned to be addressed in next sprints.
 
+
 Patch for ``subject`` Field
 ---------------------------
 
@@ -140,6 +153,7 @@ There are some problems of serialization on special characters derivated from ho
 current shape of the Plone's default Dexterity ``subjects`` field that has to be
 addressed in order to make it work properly with Volto (and other systems that are not
 Plone). This will be fixed in core in upcoming sprints.
+
 
 Preview Image Behavior
 ----------------------
@@ -163,6 +177,7 @@ The "volto.preview_image behavior can be enabled in the generic setup XML defini
      ...
    </object>
 
+
 Navigation Title Behavior
 -------------------------
 
@@ -183,6 +198,7 @@ The "volto.navtitle behavior can be enabled in the generic setup XML definition 
      </property>
      ...
    </object>
+
 
 Head Title Behavior
 -------------------
@@ -205,12 +221,6 @@ The "volto.head_title" behavior can be enabled in the generic setup XML definiti
      ...
    </object>
 
-Volto Blocks Enabled LRF
-------------------------
-
-Multilingual support for LRF (Language Root Folders) is supported. Install PAM before
-installing this package and demo homepages will be created in each enabled language.
-Currently only support for EN/DE.
 
 Image Scales
 ------------
@@ -231,6 +241,7 @@ existing ones. These are know to work well with Volto layout and grid system::
 
 **This change is opinionated and may collide with your previously defined ones, so make
 sure your add-on's profiles are applied AFTER this one.**
+
 
 Credits and History
 -------------------

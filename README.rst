@@ -47,7 +47,6 @@ Volto only supports the latest plone.restapi branch, therefore it is recommended
 Architecture
 ============
 
-````
 Frontend
 ┌──────────────────────────────┐
 │                              │

@@ -80,7 +80,7 @@ plone.volto provides the following features:
 Volto Blocks Support
 --------------------
 
-plone.volto enables the new Volto Blocks editor on ``Document``, ``Language Root Folder`` and ``Site Root```.
+plone.volto enables the new Volto Blocks editor on ``Document``, ``Language Root Folder`` and ``Site Root``.
 
 
 Multilingual Support

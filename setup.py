@@ -7,9 +7,9 @@ from setuptools import setup
 
 long_description = "\n\n".join(
     [
-        open("README.rst").read(),
-        open("CONTRIBUTORS.rst").read(),
-        open("CHANGES.rst").read(),
+        open("README.md").read_text(),
+        open("CONTRIBUTORS.md").read_text(),
+        open("CHANGES.md").read_text(),
     ]
 )
 
@@ -19,6 +19,7 @@ setup(
     version="2.5.1.dev0",
     description="Volto integration add-on for Plone",
     long_description=long_description,
+    long_description_content_type='text/markdown',
     # Get more from https://pypi.python.org/pypi?%3Aaction=list_classifiers
     classifiers=[
         "Development Status :: 5 - Production/Stable",

@@ -1,10 +1,4 @@
-.. This README is meant for consumption by humans and pypi. Pypi can render rst files so please do not use Sphinx features.
-   If you want to learn more about writing documentation, please check out: http://docs.plone.org/about/documentation_styleguide.html
-   This text does not appear on pypi or github. It is a comment.
-
-==============================================================================
-plone.volto
-==============================================================================
+# plone.volto
 
 .. image:: https://github.com/plone/plone.volto/actions/workflows/tests.yml/badge.svg
     :target: https://github.com/plone/plone.volto/actions/workflows/tests.yml
@@ -12,24 +6,24 @@ plone.volto
 plone.volto configures Plone to work with `Volto <https://www.npmjs.com/package/@plone/volto>`_, the new default frontend for Plone 6.
 
 
-Installation
-============
+# Installation
 
-Install plone.volto by adding it to your buildout::
+Install plone.volto by adding it to your buildout:
 
-    [buildout]
+````
+[buildout]
 
-    ...
+...
 
-    eggs =
-        plone.volto
+eggs =
+    plone.volto
+````
 
-
-Compatibility
-=============
+# Compatibility
 
 Volto requires specific versions of plone.volto and plone.restapi:
 
+````
 +-------------------------+-----------------------+------------------------------+
 |  plone.volto            |  plone.restapi        | Reason                       |
 +-------------------------+-----------------------+------------------------------+
@@ -37,6 +31,7 @@ Volto requires specific versions of plone.volto and plone.restapi:
 +-------------------------+-----------------------+------------------------------+
 |  1.x (kitconcept.volto) |  6.0.0 and below      | New transforms and features  |
 +-------------------------+-----------------------+------------------------------+
+````
 
 plone.restapi 7.x.x is included in Plone 5.3.4 (and later).
 
@@ -44,8 +39,7 @@ You can still use 2.x in p.restapi 7.0.0 based installations but the transforms 
 
 Volto only supports the latest plone.restapi branch, therefore it is recommended to always use the latest version in your Volto projects.
 
-Architecture
-============
+# Architecture
 
 Frontend
 ┌──────────────────────────────┐
@@ -67,15 +61,12 @@ Backend  ▼            │
 ││   Plone    │ │   Add-Ons   ││
 │└────────────┘ └─────────────┘│
 └──────────────────────────────┘
-````
 
-Features
-========
+# Features
 
 plone.volto provides the following features:
 
-Demo home page and Plone site blocks support
---------------------------------------------
+## Demo home page and Plone site blocks support
 
 It features a hack to make the Plone site Volto blocks-enabled with some demo
 content. You can take only the hack to enable the blocks on your site.
@@ -95,20 +86,17 @@ e.g. in your GS ``metadata.xml`` along with your other dependencies::
   </dependencies>
   </metadata>
 
-Volto Blocks Support
---------------------
+## Volto Blocks Support
 
 It enables the Volto Blocks behavior on the ``Document`` content type by default, enabling Volto editor for that content type.
 
 Just use the same pattern to enable your own content types to have blocks.
 
-Document Content Type
----------------------
+## Document Content Type
 
 ``Richtext`` and ``table of contents`` behaviors has been removed from the ``Document`` behaviors since it's confusing for the users if they shows in the form. Both have been superseeded by blocks in the editor.
 
-CORS Profile
-------------
+## CORS Profile
 
 A quick helper for enable CORS for development config is also provided in the
 ``plone.volto`` module. So you can call::
@@ -123,24 +111,21 @@ productions sites.
 It's planned that Volto will feature a development pass-through proxy to the backend in
 the future. It will be addressed in next sprints.
 
-ZLog Patch
-----------
+## ZLog Patch
 
 p.restapi low level errors are routed through the ancient ZLog and are ``plone_error``
 enabled, making it difficult to follow since all are marked with a UUID. Specially if
 using helpers like Sentry. This patch removes the UUID so the same error is categorized
 all together. This is planned to be addressed in next sprints.
 
-Patch for ``subject`` Field
----------------------------
+## Patch for ``subject`` Field
 
 There are some problems of serialization on special characters derivated from how the
 current shape of the Plone's default Dexterity ``subjects`` field that has to be
 addressed in order to make it work properly with Volto (and other systems that are not
 Plone). This will be fixed in core in upcoming sprints.
 
-Preview Image Behavior
-----------------------
+## Preview Image Behavior
 
 The preview image behavior makes content types provide a preview_image field that can store a preview image that Volto views can pick up.
 This is especially userful for listings (e.g. listing block customizations) and teaser elements (e.g. teaser blocks such as [volto-blocks-grid](https://github.com/kitconcept/volto-blocks-grid)).
@@ -161,8 +146,7 @@ The "volto.preview_image behavior can be enabled in the generic setup XML defini
      ...
    </object>
 
-Navigation Title Behavior
--------------------------
+## Navigation Title Behavior
 
 The navigation title makes content types provide a nav_title field that is used by Volto in the main navigation, the breadcrumbs and the navigation portlet.
 
@@ -182,8 +166,7 @@ The "volto.navtitle behavior can be enabled in the generic setup XML definition 
      ...
    </object>
 
-Head Title Behavior
--------------------
+## Head Title Behavior
 
 The headtitle makes content types provide a headtitle field that can be used by Volto in teasers and alikes.
 
@@ -203,15 +186,13 @@ The "volto.head_title" behavior can be enabled in the generic setup XML definiti
      ...
    </object>
 
-Volto Blocks Enabled LRF
-------------------------
+## Volto Blocks Enabled LRF
 
 Multilingual support for LRF (Language Root Folders) is supported. Install PAM before
 installing this package and demo homepages will be created in each enabled language.
 Currently only support for EN/DE.
 
-Image Scales
-------------
+## Image Scales
 
 This package introduces new Plone image scales in Plone and redefines a couple of
 existing ones. These are know to work well with Volto layout and grid system::
@@ -230,8 +211,7 @@ existing ones. These are know to work well with Volto layout and grid system::
 **This change is opinionated and may collide with your previously defined ones, so make
 sure your add-on's profiles are applied AFTER this one.**
 
-Credits and History
--------------------
+## Credits and History
 
 .. image:: https://kitconcept.com/logo.svg
    :width: 150px

@@ -1,6 +1,24 @@
-graft src/kitconcept/volto
+graft src/plone/volto
 graft docs
 include *.rst
-global-exclude *.pyc
-exclude requirements.txt
+include *.txt
+exclude *.cfg
+exclude *.yml
+exclude *.in
+exclude *.jmx
+exclude *.yaml
+exclude .coveragerc
+exclude .editorconfig
+exclude .flake8
+exclude Dockerfile
 exclude Makefile
+exclude CODEOWNERS
+exclude docs/make.bat
+recursive-exclude docs/doctrees *
+recursive-exclude docs/html *
+recursive-exclude performance *
+exclude docs/Makefile
+prune docs/Makefile
+prune news
+global-exclude *.pyc
+include pyproject.toml

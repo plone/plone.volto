@@ -9,6 +9,9 @@ Internal:
 - Add Plone 6.0.0-pre-alpha configuration.
   [tisto]
 
+- Upgrade to Plone 5.2.5
+  [tisto]
+
 - Change GS setup profile label to "Plone 6 Frontend (plone.volto)".
   [tisto]
   

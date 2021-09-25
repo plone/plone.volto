@@ -2,14 +2,21 @@
    If you want to learn more about writing documentation, please check out: http://docs.plone.org/about/documentation_styleguide.html
    This text does not appear on pypi or github. It is a comment.
 
-==============================================================================
-plone.volto
-==============================================================================
 
 .. image:: https://github.com/plone/plone.volto/actions/workflows/tests.yml/badge.svg
     :target: https://github.com/plone/plone.volto/actions/workflows/tests.yml
 
+==============================================================================
+plone.volto
+==============================================================================
+
 plone.volto configures Plone to work with `Volto <https://www.npmjs.com/package/@plone/volto>`_, the new default frontend for Plone 6.
+
+Compatibility
+=============
+
+plone.volto currently works for both Plone 5.2 and Plone 6 (pre-alpha).
+It support Python 3.7, 3.8 and 3.9.
 
 
 Installation

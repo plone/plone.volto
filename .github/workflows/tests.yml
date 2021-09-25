@@ -1,29 +1,63 @@
 name: Tests
-'on':
-  push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
+on: [push]
 jobs:
-  Build:
+  build:
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
         python-version: [3.8]
+        plone-version: [5.2, 6.0]
+
     steps:
+      # git checkout
       - uses: actions/checkout@v2
-      - name: 'Set up Python ${{ matrix.python-version }}'
-        uses: actions/setup-python@v2
+
+      # python setup
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v1
         with:
-          python-version: '${{ matrix.python-version }}'
-      - name: Cache multiple paths
-        uses: actions/cache@v2
+          python-version: ${{ matrix.python-version }}
+
+      # python cache
+      - uses: actions/cache@v1
         with:
-          path: $HOME/buildout-cache
-          key: '${{ runner.os }}-${{ hashFiles(''TODO'') }}'
-      - run: pip install -r requirements.txt
-      - run: buildout -c ci.cfg
-      - run: 'if [ -f "bin/black" ]; then bin/black src/ ; fi'
-      - run: bin/test
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+
+      # python install
+      - run: pip install virtualenv
+      - run: pip install wheel
+      - name: pip install
+        run: pip install -r requirements.txt
+
+      # buildout
+      - name: buildout
+        run: buildout -t 10 -c plone-${{ matrix.plone-version }}.x.cfg code-analysis:return-status-codes=True
+        env:
+          CI: true
+
+      # code analysis
+      - name: code analysis
+        run: bin/code-analysis
+
+      # build sphinx
+      - name: sphinx
+        run: if [ "${{ matrix.plone-version }}" == "5.2" ] && [ ${{ matrix.python-version }} == '3.7' ]; then bin/sphinxbuilder; fi
+
+      # test
+      - name: test
+        run: bin/test
+
+      # test no uncommited changes
+      - name: test no uncommited changes
+        run: bin/test-no-uncommitted-doc-changes
+        env:
+          PYTHON_VERSION: ${{ matrix.python-version }}
+          PLONE_VERSION: ${{ matrix.plone-version }}
+
+      # test sphinx warnings
+      - name: sphinx
+        run: if [ "${{ matrix.plone-version }}" == "5.2" ] && [ ${{ matrix.python-version }} == '3.7' ]; then bin/test-no-sphinx-warnings; fi

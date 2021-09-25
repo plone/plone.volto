@@ -4,14 +4,20 @@ Changelog
 3.0.0a2 (unreleased)
 --------------------
 
-- Nothing changed yet.
+Internal:
+
+- Add Plone 6.0.0-pre-alpha configuration.
+  [tisto]
 
 
 3.0.0a1 (2021-09-25)
 --------------------
 
+Breaking Change:
+
 - Rename kitconcept.volto to plone.volto.
   [tisto]
+
 
 2.5.3 (2021-09-13)
 ------------------

@@ -25,11 +25,14 @@ Installation
 Install plone.volto by adding it to your buildout::
 
     [buildout]
-
+    ...
+    
+    [instance]
     ...
 
     eggs =
         plone.volto
+        ...
 
 
 Compatibility

@@ -29,8 +29,8 @@
 
   <genericsetup:registerProfile
       name="default"
-      title="plone.volto site (plone.volto)"
-      description="Installs the plone.volto add-on."
+      title="Plone 6 Frontend (plone.volto)"
+      description="Configures the Plone backend to work with Volto, the new default frontend for Plone 6."
       provides="Products.GenericSetup.interfaces.EXTENSION"
       directory="profiles/default"
       post_handler=".setuphandlers.post_install"
@@ -38,7 +38,7 @@
 
   <genericsetup:registerProfile
       name="uninstall"
-      title="plone.volto site (plone.volto): uninstall"
+      title="Plone 6 Frontend (plone.volto): uninstall"
       description="Uninstalls the plone.volto add-on."
       provides="Products.GenericSetup.interfaces.EXTENSION"
       directory="profiles/uninstall"
@@ -47,7 +47,7 @@
 
   <genericsetup:registerProfile
       name="default-homepage"
-      title="plone.volto site (Default content on homepage)"
+      title="Plone 6 Frontend (Default content on homepage)"
       description="Creates a default page for the site"
       provides="Products.GenericSetup.interfaces.EXTENSION"
       directory="profiles/homepage"

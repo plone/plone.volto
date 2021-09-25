@@ -12,6 +12,9 @@ Internal:
 - Upgrade to Plone 5.2.5
   [tisto]
 
+- Change GS setup profile label to "Plone 6 Frontend (plone.volto)".
+  [tisto]
+  
 
 3.0.0a1 (2021-09-25)
 --------------------

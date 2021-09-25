@@ -9,6 +9,9 @@ Internal:
 - Add Plone 6.0.0-pre-alpha configuration.
   [tisto]
 
+- Change GS setup profile label to "Plone 6 Frontend (plone.volto)".
+  [tisto]
+  
 
 3.0.0a1 (2021-09-25)
 --------------------

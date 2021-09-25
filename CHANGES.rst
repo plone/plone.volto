@@ -1,8 +1,8 @@
 Changelog
 =========
 
-3.0.0 (unreleased)
-------------------
+3.0.0a1 (2021-09-25)
+--------------------
 
 - Rename kitconcept.volto to plone.volto.
   [tisto]

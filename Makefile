@@ -52,7 +52,7 @@ build: .installed.cfg  ## Build Plone 5.2
 build-plone-6.0:  bin/pip ## Build Plone 6.0
 	bin/pip install --upgrade pip
 	bin/pip install -r https://dist.plone.org/release/6.0-dev/requirements.txt
-	bin/buildout -c plone-6.x.x.cfg
+	bin/buildout -c plone-6.0.x.cfg
 
 .PHONY: Test
 test:  ## Test

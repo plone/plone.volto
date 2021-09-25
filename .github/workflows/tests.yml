@@ -33,6 +33,9 @@ jobs:
       - name: pip install
         run: pip install -r requirements.txt
 
+      - name: debug
+        run: echo ${{ matrix.plone-version }}
+
       # buildout
       - name: buildout
         run: buildout -t 10 -c plone-${{ matrix.plone-version }}.x.cfg

@@ -48,7 +48,7 @@ Volto requires specific versions of plone.volto and plone.restapi:
 |  1.x (kitconcept.volto) |  6.0.0 and below      | New transforms and features  |
 +-------------------------+-----------------------+------------------------------+
 
-plone.restapi 7.x.x is included in Plone 5.3.4 (and later).
+plone.restapi 7.x.x is included in Plone 5.2.4 (and later).
 
 You can still use 2.x in p.restapi 7.0.0 based installations but the transforms included won't work.
 

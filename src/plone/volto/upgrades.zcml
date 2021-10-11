@@ -13,4 +13,12 @@
       handler=".upgrades.from12to13_migrate_listings"
       />
 
+  <genericsetup:upgradeDepends
+      title="Add new unified indexer for images"
+      profile="plone.volto:default"
+      source="1011"
+      destination="1012"
+      import_steps="catalog"
+      />
+
 </configure>

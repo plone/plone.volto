@@ -4,6 +4,11 @@ Changelog
 3.0.0a2 (unreleased)
 --------------------
 
+Feature:
+
+- Add new ``image_field`` metadata for image detection in catalog
+  [sneridagh]
+
 Internal:
 
 - Add Plone 6.0.0-pre-alpha configuration.
@@ -14,7 +19,7 @@ Internal:
 
 - Change GS setup profile label to "Plone 6 Frontend (plone.volto)".
   [tisto]
-  
+
 
 3.0.0a1 (2021-09-25)
 --------------------

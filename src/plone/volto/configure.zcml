@@ -106,6 +106,7 @@
       factory=".indexers.hasPreviewImage"
       name="hasPreviewImage"
       />
+  <adapter name="image_field" factory=".indexers.image_field_indexer" />
 
   <configure zcml:condition="have plonerestapi-7">
     <subscriber

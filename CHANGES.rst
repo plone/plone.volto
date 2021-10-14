@@ -4,7 +4,10 @@ Changelog
 3.1.0a2 (unreleased)
 --------------------
 
-- Nothing changed yet.
+Bug fix:
+
+- Fixed install on Windows, `issue 14 <https://github.com/plone/plone.volto/issues/14>`_.
+  [maurits]
 
 
 3.1.0a1 (2021-10-11)

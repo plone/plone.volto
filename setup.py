@@ -5,30 +5,35 @@ from setuptools import find_packages
 from setuptools import setup
 
 
+def readfile(name):
+    with open(name, encoding="utf-8") as myfile:
+        return myfile.read()
+
+
 long_description = "\n\n".join(
     [
-        open("README.rst").read(),
-        open("CONTRIBUTORS.rst").read(),
-        open("CHANGES.rst").read(),
+        readfile("README.rst"),
+        readfile("CONTRIBUTORS.rst"),
+        readfile("CHANGES.rst"),
     ]
 )
-
 
 setup(
     name="plone.volto",
     version="3.1.0a2.dev0",
     description="Volto integration add-on for Plone",
     long_description=long_description,
-    # Get more from https://pypi.python.org/pypi?%3Aaction=list_classifiers
+    # Get more from https://pypi.org/classifiers/
     classifiers=[
         "Development Status :: 5 - Production/Stable",
         "Environment :: Web Environment",
         "Framework :: Plone",
-        "Framework :: Plone :: 5.1",
         "Framework :: Plone :: 5.2",
+        "Framework :: Plone :: 6.0",
         "Programming Language :: Python",
-        "Programming Language :: Python :: 2.7",
         "Programming Language :: Python :: 3.7",
+        "Programming Language :: Python :: 3.8",
+        "Programming Language :: Python :: 3.9",
         "Operating System :: OS Independent",
         "License :: OSI Approved :: GNU General Public License v2 (GPLv2)",
     ],

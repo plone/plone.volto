@@ -49,7 +49,7 @@ setup(
     zip_safe=False,
     install_requires=[
         "plone.api",
-        "Products.GenericSetup>=1.8.2",
+        "Products.GenericSetup",
         "setuptools",
         "plone.restapi",
         "collective.folderishtypes[dexterity]",
@@ -58,10 +58,7 @@ setup(
     extras_require={
         "test": [
             "plone.app.testing",
-            # Plone KGS does not use this version, because it would break
-            # Remove if your package shall be part of coredev.
-            # plone_coredev tests as of 2016-04-01.
-            "plone.testing>=5.0.0",
+            "plone.testing",
             "plone.app.contenttypes",
             "plone.app.robotframework[debug]",
         ]

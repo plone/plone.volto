@@ -4,7 +4,9 @@ Changelog
 3.1.0a3 (unreleased)
 --------------------
 
-- Nothing changed yet.
+- Remove ``requests`` from dependencies
+  [ericof]
+
 
 
 3.1.0a2 (2021-10-14)

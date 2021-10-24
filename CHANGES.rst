@@ -4,6 +4,9 @@ Changelog
 3.1.0a3 (unreleased)
 --------------------
 
+- Remove ``z3c.jbot`` from dependencies
+  [ericof]
+
 - Remove ``requests`` from dependencies
   [ericof]
 

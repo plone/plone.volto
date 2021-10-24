@@ -13,11 +13,6 @@
       />
   <include package="Products.GenericSetup" />
   <include
-      package="z3c.jbot"
-      file="meta.zcml"
-      />
-  <include package="z3c.jbot" />
-  <include
       package="plone.restapi"
       file="meta.zcml"
       />

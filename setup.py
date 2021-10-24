@@ -51,7 +51,6 @@ setup(
         "plone.api",
         "Products.GenericSetup>=1.8.2",
         "setuptools",
-        "z3c.jbot",
         "plone.restapi",
         "collective.folderishtypes[dexterity]",
         "jq",

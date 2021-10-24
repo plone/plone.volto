@@ -4,6 +4,9 @@ Changelog
 3.1.0a3 (unreleased)
 --------------------
 
+- Remove ``jq`` from dependencies and remove old ``blocksremoveserver.py`` script.
+  [ericof]
+
 - Remove ``z3c.jbot`` from dependencies
   [ericof]
 

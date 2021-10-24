@@ -53,7 +53,6 @@ setup(
         "setuptools",
         "plone.restapi",
         "collective.folderishtypes[dexterity]",
-        "jq",
     ],
     extras_require={
         "test": [

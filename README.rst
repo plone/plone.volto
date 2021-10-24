@@ -15,7 +15,7 @@ plone.volto configures Plone to work with `Volto <https://www.npmjs.com/package/
 Compatibility
 =============
 
-plone.volto currently works for both Plone 5.2 and Plone 6 (pre-alpha).
+plone.volto currently works for both Plone 5.2 and Plone 6 (pre-alpha and alpha).
 It support Python 3.7, 3.8 and 3.9.
 
 
@@ -107,7 +107,7 @@ Volto Blocks for Plone Site Root
 plone.volto contains a hack to make the Plone site Volto blocks-enabled with some demo content. 
 You can take only the hack to enable the blocks on your site.
 
-You can see it in action in the Volto demo: https://volto.kitconcept.com
+You can see it in action in the Volto demo: https://6.demo.plone.org
 
 Install the provided profile to install it by default:
 

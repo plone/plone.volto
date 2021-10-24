@@ -4,6 +4,9 @@ Changelog
 3.1.0a3 (unreleased)
 --------------------
 
+- Explicitly require Python 3.7 or superior.
+  [ericof]
+
 - Remove ``jq`` from dependencies and remove old ``blocksremoveserver.py`` script.
   [ericof]
 

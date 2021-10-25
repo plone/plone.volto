@@ -1,7 +1,7 @@
 Changelog
 =========
 
-3.1.0a3 (unreleased)
+3.1.0a3 (2021-10-25)
 --------------------
 
 - Explicitly require Python 3.7 or superior.

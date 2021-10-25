@@ -4,7 +4,18 @@ Changelog
 3.1.0a3 (unreleased)
 --------------------
 
-- Nothing changed yet.
+- Explicitly require Python 3.7 or superior.
+  [ericof]
+
+- Remove ``jq`` from dependencies and remove old ``blocksremoveserver.py`` script.
+  [ericof]
+
+- Remove ``z3c.jbot`` from dependencies
+  [ericof]
+
+- Remove ``requests`` from dependencies
+  [ericof]
+
 
 
 3.1.0a2 (2021-10-14)

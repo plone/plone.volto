@@ -37,9 +37,9 @@ setup(
         "Operating System :: OS Independent",
         "License :: OSI Approved :: GNU General Public License v2 (GPLv2)",
     ],
-    keywords="Python Plone",
-    author="kitconcept GmbH",
-    author_email="info@kitconcept.com",
+    keywords="Python Plone CMS",
+    author='Plone Foundation',
+    author_email='releasemanager@plone.org',
     url="https://github.com/plone/plone.volto",
     license="GPL version 2",
     packages=find_packages("src", exclude=["ez_setup"]),
@@ -47,23 +47,18 @@ setup(
     package_dir={"": "src"},
     include_package_data=True,
     zip_safe=False,
+    python_requires=">=3.7",
     install_requires=[
         "plone.api",
-        "Products.GenericSetup>=1.8.2",
+        "Products.GenericSetup",
         "setuptools",
-        "z3c.jbot",
         "plone.restapi",
         "collective.folderishtypes[dexterity]",
-        "requests",
-        "jq",
     ],
     extras_require={
         "test": [
             "plone.app.testing",
-            # Plone KGS does not use this version, because it would break
-            # Remove if your package shall be part of coredev.
-            # plone_coredev tests as of 2016-04-01.
-            "plone.testing>=5.0.0",
+            "plone.testing",
             "plone.app.contenttypes",
             "plone.app.robotframework[debug]",
         ]

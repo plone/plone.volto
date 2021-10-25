@@ -3,6 +3,10 @@
 
 from setuptools import find_packages
 from setuptools import setup
+import sys
+
+
+assert sys.version_info >= (3, 6, 0), "plone.volto requires Python 3.7.0."
 
 
 def readfile(name):

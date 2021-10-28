@@ -4,8 +4,10 @@ Changelog
 3.1.0a4 (unreleased)
 --------------------
 
-- Nothing changed yet.
+Internal:
 
+- Initial support and tests using Github Actions for Plone with pip installations.
+  [ericof]
 
 3.1.0a3 (2021-10-25)
 --------------------

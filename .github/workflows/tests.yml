@@ -53,4 +53,4 @@ jobs:
       # test
       - name: test
         run: |
-          ./bin/zope-testrunner --auto-color --auto-progress --test-path src/plone.volto/src/
+          ./bin/zope-testrunner --auto-color --auto-progress --test-path src/plone.volto/tests/

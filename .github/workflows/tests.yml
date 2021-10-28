@@ -6,8 +6,11 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        python-version: [3.8]
-        plone-version: ["6.0", "5.2"]
+        python-version: [3.7, 3.8, 3.9]
+        plone-version: ["6.0.0a1", "5.2.6"]
+        exclude:
+          - plone-version: "5.2.6"
+            python-version: 3.9
 
     steps:
       # git checkout
@@ -20,26 +23,34 @@ jobs:
           python-version: ${{ matrix.python-version }}
 
       # python cache
-      - uses: actions/cache@v1
+      - name: Setup cache
+        id: cache
+        uses: actions/cache@v2
         with:
-          path: ~/.cache/pip
-          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+          path: |
+            ~/.cache/pip
+            ~/.cache/plone
+          key: ${{ runner.os }}-pip-${{ matrix.python-version }}-${{ matrix.plone-version }}-${{ hashFiles('requirements/dev.txt') }}
           restore-keys: |
-            ${{ runner.os }}-pip-
+            ${{ runner.os }}-pip-${{ matrix.python-version }}-
 
       # python install
-      - run: pip install virtualenv
-      - run: pip install wheel
-      - name: pip install
-        run: pip install -r requirements.txt
+      - name: Create virtual environment
+        run: |
+          python -m venv .
+          ./bin/pip install -U pip setuptools wheel
 
-      - name: debug
-        run: echo ${{ matrix.plone-version }}
+      # Plone install
+      - name: Install Plone
+        run: |
+          ./bin/pip install Plone -c https://dist.plone.org/release/${{ matrix.plone-version }}/constraints.txt  --use-deprecated legacy-resolver -f ~/.cache/plone
 
-      # buildout
-      - name: buildout
-        run: buildout -t 10 -c plone-${{ matrix.plone-version }}.x.cfg
+      # Install plone.volto with test extras
+      - name: Install plone.volto
+        run: |
+          ./bin/pip install ".[test]" --use-deprecated legacy-resolver
 
       # test
       - name: test
-        run: bin/test
+        run: |
+          ./bin/zope-testrunner --auto-color --auto-progress --test-path src/plone.volto/src/

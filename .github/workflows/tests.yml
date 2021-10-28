@@ -29,7 +29,6 @@ jobs:
         with:
           path: |
             ~/.cache/pip
-            ~/.cache/plone
           key: ${{ runner.os }}-pip-${{ matrix.python-version }}-${{ matrix.plone-version }}-${{ hashFiles('requirements/dev.txt') }}
           restore-keys: |
             ${{ runner.os }}-pip-${{ matrix.python-version }}-
@@ -43,7 +42,7 @@ jobs:
       # Plone install
       - name: Install Plone
         run: |
-          ./bin/pip install Plone -c https://dist.plone.org/release/${{ matrix.plone-version }}/constraints.txt  --use-deprecated legacy-resolver -f ~/.cache/plone
+          ./bin/pip install Plone -c https://dist.plone.org/release/${{ matrix.plone-version }}/constraints.txt  --use-deprecated legacy-resolver
 
       # Install plone.volto with test extras
       - name: Install plone.volto

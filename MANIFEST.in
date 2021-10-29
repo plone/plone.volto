@@ -2,6 +2,7 @@ graft src/plone/volto
 graft docs
 include *.rst
 include *.txt
+recursive-include requirements *.txt
 exclude *.cfg
 exclude *.yml
 exclude *.in

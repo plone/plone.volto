@@ -4,7 +4,10 @@ Changelog
 3.1.0a5 (unreleased)
 --------------------
 
-- Nothing changed yet.
+Internal:
+
+- Use plone/setup-plone github action.
+  [ericof]
 
 
 3.1.0a4 (2021-10-29)

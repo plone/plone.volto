@@ -16,9 +16,11 @@ jobs:
       # git checkout
       - uses: actions/checkout@v2
         name: Testing on Plone ${{ matrix.plone }} with Python ${{ matrix.python }}
-        id: tests
+        id: setup
         with:
           python-version: ${{ matrix.python }}
           plone-version: ${{ matrix.plone }}
+
+      - name: tests
         run: |
           docker run -i --rm -v $(pwd):/app/${{ github.event.repository.name }} -e ADDONS="/app/${{ github.event.repository.name }}[test]" plone/plone-backend:${{ inputs.plone-version }}-${{ inputs.python-version }} bin/zope-testrunner --auto-color --auto-progress --test-path /app/${{ github.event.repository.name }}/src

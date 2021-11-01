@@ -23,4 +23,4 @@ jobs:
 
       - name: tests
         run: |
-          docker run -i --rm -v $(pwd):/app/${{ github.event.repository.name }} -e ADDONS="/app/${{ github.event.repository.name }}[test]" plone/plone-backend:${{ inputs.plone-version }}-${{ inputs.python-version }} bin/zope-testrunner --auto-color --auto-progress --test-path /app/${{ github.event.repository.name }}/src
+          docker run -i --rm -v $(pwd):/app/${{ github.event.repository.name }} -e ADDONS="/app/${{ github.event.repository.name }}[test]" plone/plone-backend:${{ matrix.plone }}-${{ matrix.python }} bin/zope-testrunner --auto-color --auto-progress --test-path /app/${{ github.event.repository.name }}/src

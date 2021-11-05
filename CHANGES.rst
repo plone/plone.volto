@@ -8,7 +8,8 @@ Internal:
 
 - Use plone/setup-plone github action.
   [ericof]
-
+- Use new metadata utility for adding the ``image_field`` to the default serialization
+  [ericof]
 
 3.1.0a4 (2021-10-29)
 --------------------

@@ -111,7 +111,10 @@
       name="image_field"
       />
 
-  <utility factory=".summary.JSONSummarySerializerMetadata" name="plone.volto.summary_serializer_metadata" />
+  <utility
+      factory=".summary.JSONSummarySerializerMetadata"
+      name="plone.volto.summary_serializer_metadata"
+      />
 
   <configure zcml:condition="have plonerestapi-7">
     <subscriber

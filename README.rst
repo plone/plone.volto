@@ -12,12 +12,6 @@ plone.volto
 
 plone.volto configures Plone to work with `Volto <https://www.npmjs.com/package/@plone/volto>`_, the new default frontend for Plone 6.
 
-Compatibility
-=============
-
-plone.volto currently works for both Plone 5.2 and Plone 6 (pre-alpha and alpha).
-It support Python 3.7, 3.8 and 3.9.
-
 
 Installation
 ============
@@ -38,7 +32,10 @@ Install plone.volto by adding it to your buildout::
 Compatibility
 =============
 
-Volto requires specific versions of plone.volto and plone.restapi:
+plone.volto currently works for both Plone 5.2 and Plone 6 (pre-alpha and alpha).
+It support Python 3.7, 3.8 and 3.9.
+
+Though, Volto requires specific versions of plone.volto and plone.restapi:
 
 +---------------------------+-----------------------+-------------------------------------------------------------------------------------------------+
 |  plone.volto              |  plone.restapi        | Reason                                                                                          |

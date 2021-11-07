@@ -1,7 +1,7 @@
 Changelog
 =========
 
-3.1.0a5 (unreleased)
+3.1.0a5 (2021-11-07)
 --------------------
 
 New Feature:

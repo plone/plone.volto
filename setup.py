@@ -43,7 +43,7 @@ setup(
     ],
     keywords="Python Plone CMS",
     author="Plone Foundation",
-    author_email="releasemanager@plone.org",
+    author_email="tisto@plone.org",
     url="https://github.com/plone/plone.volto",
     license="GPL version 2",
     packages=find_packages("src", exclude=["ez_setup"]),

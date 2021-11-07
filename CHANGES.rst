@@ -4,6 +4,8 @@ Changelog
 3.1.0a5 (unreleased)
 --------------------
 
+New Feature:
+
 - Use new metadata utility for adding the ``image_field`` to the default serialization. This feature requires the JSONSummarySerializerMetadata serializer that has been added with plone.restapi 8.13.0.
   [ericof]
 
@@ -24,8 +26,12 @@ Internal:
 3.1.0a3 (2021-10-25)
 --------------------
 
+Breaking:
+
 - Explicitly require Python 3.7 or superior.
   [ericof]
+
+Internal:
 
 - Remove ``jq`` from dependencies and remove old ``blocksremoveserver.py`` script.
   [ericof]
@@ -35,7 +41,6 @@ Internal:
 
 - Remove ``requests`` from dependencies
   [ericof]
-
 
 
 3.1.0a2 (2021-10-14)

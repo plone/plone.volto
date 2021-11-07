@@ -4,6 +4,9 @@ Changelog
 3.1.0a5 (unreleased)
 --------------------
 
+- Use new metadata utility for adding the ``image_field`` to the default serialization. This feature requires the JSONSummarySerializerMetadata serializer that has been added with plone.restapi 8.13.0.
+  [ericof]
+
 Internal:
 
 - Use plone/setup-plone github action.

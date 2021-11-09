@@ -157,14 +157,9 @@ class NestedResolveUIDSerializerBase(object):
 
                                     value[column_name][index][field] = result
                                 else:
-                                    try:
-                                        value[column_name][index][field] = [
-                                            uid_to_url(linkitem) for linkitem in link
-                                        ]
-                                    except:
-                                        import pdb
-
-                                        pdb.set_trace()
+                                    value[column_name][index][field] = [
+                                        uid_to_url(linkitem) for linkitem in link
+                                    ]
 
                     # Support for applying transforms to the subblocks in volto-blocks-grid
                     # TODO: It's the upper code needed any longer?

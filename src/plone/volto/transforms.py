@@ -10,6 +10,12 @@ from zope.component import adapter
 from zope.interface import implementer
 from zope.publisher.interfaces.browser import IBrowserRequest
 from zope.component import subscribers
+from plone.restapi.serializer.utils import RESOLVEUID_RE
+from plone.restapi.interfaces import IObjectPrimaryFieldTarget
+from zope.component import getMultiAdapter
+from plone.restapi.interfaces import ISerializeToJsonSummary
+from plone.restapi.interfaces import ISerializeToJson
+from plone.outputfilters.browser.resolveuid import uuidToObject
 
 
 class NestedResolveUIDDeserializerBase(object):
@@ -21,6 +27,9 @@ class NestedResolveUIDDeserializerBase(object):
 
     order = 1
     block_type = None
+
+    columns = ["columns", "hrefList", "slides"]
+    fields = ["url", "href", "preview_image"]
 
     def __init__(self, context, request):
         self.context = context
@@ -44,11 +53,11 @@ class NestedResolveUIDDeserializerBase(object):
         return block
 
     def __call__(self, block):
-        for column_name in ["columns", "hrefList", "slides"]:
+        for column_name in self.columns:
             column_field = block.get(column_name, [])
             if block.get(column_name, False):
                 for index, item in enumerate(column_field):
-                    for field in ["url", "href", "preview_image"]:
+                    for field in self.fields:
                         link = item.get(field, "")
                         if link and isinstance(link, string_types):
                             block[column_name][index][field] = path2uid(
@@ -63,10 +72,11 @@ class NestedResolveUIDDeserializerBase(object):
                             ):
                                 result = []
                                 for itemlink in link:
-                                    item_clone = deepcopy(itemlink)
-                                    item_clone["@id"] = path2uid(
-                                        context=self.context, link=item_clone["@id"]
-                                    )
+                                    item_clone = {
+                                        "@id": path2uid(
+                                            context=self.context, link=itemlink["@id"]
+                                        )
+                                    }
                                     result.append(item_clone)
 
                                 block[column_name][index][field] = result
@@ -99,6 +109,9 @@ class NestedResolveUIDSerializerBase(object):
     order = 1
     block_type = None
 
+    columns = ["columns", "hrefList", "slides"]
+    fields = ["url", "href", "preview_image"]
+
     def __init__(self, context, request):
         self.context = context
         self.request = request
@@ -121,11 +134,11 @@ class NestedResolveUIDSerializerBase(object):
         return block
 
     def __call__(self, value):
-        for column_name in ["columns", "hrefList", "slides"]:
+        for column_name in self.columns:
             column_field = value.get(column_name, [])
             if value.get(column_name, False):
                 for index, item in enumerate(column_field):
-                    for field in ["url", "href", "preview_image"]:
+                    for field in self.fields:
                         if field in item.keys():
                             link = item.get(field, "")
                             if isinstance(link, string_types):
@@ -138,23 +151,41 @@ class NestedResolveUIDSerializerBase(object):
                                 ):
                                     result = []
                                     for itemlink in link:
-                                        item_clone = deepcopy(itemlink)
-                                        item_clone["@id"] = uid_to_url(
-                                            item_clone["@id"]
+                                        result.append(
+                                            self.resolveuid_to_obj(path=itemlink["@id"])
                                         )
-                                        result.append(item_clone)
 
                                     value[column_name][index][field] = result
                                 else:
-                                    value[column_name][index][field] = [
-                                        uid_to_url(linkitem) for linkitem in link
-                                    ]
+                                    try:
+                                        value[column_name][index][field] = [
+                                            uid_to_url(linkitem) for linkitem in link
+                                        ]
+                                    except:
+                                        import pdb
+
+                                        pdb.set_trace()
 
                     # Support for applying transforms to the subblocks in volto-blocks-grid
                     # TODO: It's the upper code needed any longer?
                     self._transform(item)
 
         return value
+
+    def resolveuid_to_obj(self, path):
+        if not path:
+            return ""
+        match = RESOLVEUID_RE.match(path)
+        if match is None:
+            return path
+
+        uid, suffix = match.groups()
+        target_object = uuidToObject(uid)
+        if target_object is None:
+            return {"@id": path}
+        if target_object.portal_type == "image":
+            return getMultiAdapter((target_object, self.request), ISerializeToJson)()
+        return getMultiAdapter((target_object, self.request), ISerializeToJsonSummary)()
 
 
 @adapter(IBlocks, IBrowserRequest)

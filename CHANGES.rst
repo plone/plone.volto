@@ -4,7 +4,8 @@ Changelog
 3.1.0a6 (unreleased)
 --------------------
 
-- Nothing changed yet.
+- Fix locales
+  [timo]
 
 
 3.1.0a5 (2021-11-07)

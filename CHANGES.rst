@@ -4,7 +4,10 @@ Changelog
 3.1.0a6 (unreleased)
 --------------------
 
-- Nothing changed yet.
+- Fix translation *.po files.
+  [cekk]
+- Add Italian.
+  [cekk]
 
 
 3.1.0a5 (2021-11-07)

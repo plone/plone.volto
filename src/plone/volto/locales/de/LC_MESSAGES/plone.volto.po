@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2021-11-17 16:44+0000\n"
+"POT-Creation-Date: 2021-11-18 08:01+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -90,7 +90,7 @@ msgstr ""
 msgid "Uninstalls the plone.volto add-on."
 msgstr ""
 
-#. Default: "Insert an image that will override the leadimage in listing blocks."
+#. Default: "Insert an image that will be used in listing and teaser blocks."
 #: ../behaviors/preview.py:15
 msgid "help_previewimage"
 msgstr ""

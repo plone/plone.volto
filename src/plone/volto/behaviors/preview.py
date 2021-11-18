@@ -14,7 +14,7 @@ class IPreview(model.Schema):
         title=_(u"label_previewimage", default=u"Preview image"),
         description=_(
             u"help_previewimage",
-            default=u"Insert an image that will override the leadimage in listing blocks.",
+            default=u"Insert an image that will be used in listing and teaser blocks.",
         ),
         required=False,
     )

@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2021-11-17 20:40+0000\n"
+"POT-Creation-Date: 2021-11-18 08:08+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -66,7 +66,7 @@ msgstr ""
 msgid "Preview Image"
 msgstr ""
 
-#: plone/volto/behaviors/preview.py:20
+#: plone/volto/behaviors/preview.py:23
 msgid "Preview image caption"
 msgstr "Legende zum Vorschaubild"
 
@@ -88,6 +88,11 @@ msgstr ""
 
 #: plone/volto/configure.zcml:46
 msgid "Uninstalls the plone.volto add-on."
+msgstr ""
+
+#. Default: "Insert an image that will be used in listing and teaser blocks."
+#: plone/volto/behaviors/preview.py:15
+msgid "help_previewimage"
 msgstr ""
 
 #. Default: "Preview image"

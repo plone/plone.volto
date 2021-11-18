@@ -4,8 +4,15 @@ Changelog
 3.1.0a6 (unreleased)
 --------------------
 
-- Fix locales
-  [timo]
+New Feature:
+
+- Add Italian translations
+  [cekk]
+
+Bug fix:
+
+- Fix translation files
+  [cekk, timo]
 
 
 3.1.0a5 (2021-11-07)

@@ -12,7 +12,10 @@ class IPreview(model.Schema):
 
     preview_image = namedfile.NamedBlobImage(
         title=_(u"label_previewimage", default=u"Preview image"),
-        description=u"",
+        description=_(
+            u"help_previewimage",
+            default=u"Insert an image that will be used in listing and teaser blocks.",
+        ),
         required=False,
     )
 

@@ -12,8 +12,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0\n"
-"Language-Code: en\n"
-"Language-Name: English\n"
+"Language-Code: it\n"
+"Language-Name: Italian\n"
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: plone.volto\n"
 
@@ -23,11 +23,11 @@ msgstr ""
 
 #: plone/volto/configure.zcml:37
 msgid "Configures the Plone backend to work with Volto, the new default frontend for Plone 6."
-msgstr ""
+msgstr "Configura il backend di Plone per lavorare con Volto."
 
 #: plone/volto/configure.zcml:55
 msgid "Creates a default page for the site"
-msgstr ""
+msgstr "Crea una pagina di default per questo sito"
 
 #: plone/volto/behaviors/configure.zcml:31
 msgid "Head title field"
@@ -64,15 +64,15 @@ msgstr ""
 
 #: plone/volto/behaviors/configure.zcml:17
 msgid "Preview Image"
-msgstr ""
+msgstr "Immagine di anteprima"
 
 #: plone/volto/behaviors/preview.py:23
 msgid "Preview image caption"
-msgstr "Preview image caption"
+msgstr "Didascalia dell'immagine di anteprima"
 
 #: plone/volto/behaviors/configure.zcml:17
 msgid "Preview image for listings"
-msgstr ""
+msgstr "Immagine di anteprima da utilizzare nei blocchi listing."
 
 #: plone/volto/configure.zcml:64
 msgid "Special requirements and setup for demo site"
@@ -93,12 +93,12 @@ msgstr ""
 #. Default: "Insert an image that will be used in listing and teaser blocks."
 #: plone/volto/behaviors/preview.py:15
 msgid "help_previewimage"
-msgstr ""
+msgstr "Immagine che verrà utilizzata nei blocchi listing e teaser."
 
 #. Default: "Preview image"
 #: plone/volto/behaviors/preview.py:14
 msgid "label_previewimage"
-msgstr "Preview image"
+msgstr "Immagine di anteprima"
 
 #: plone/volto/configure.zcml:64
 msgid "plone.volto demo special requirements"

@@ -11,6 +11,9 @@ New Feature:
 
 Bug fix:
 
+- Update German translations
+  [timo]
+
 - Fix translation files
   [cekk, timo]
 

@@ -4,7 +4,10 @@ Changelog
 3.1.0a7 (unreleased)
 --------------------
 
-- Nothing changed yet.
+Breaking:
+
+- The ``collective.folderishtypes`` package will not be installed by default
+  [ale-rt]
 
 
 3.1.0a6 (2021-11-22)

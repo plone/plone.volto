@@ -14,6 +14,7 @@ from plone.app.testing import TEST_USER_NAME
 from plone.testing import z2
 
 import plone.volto
+import plone.volto.coresandbox
 
 
 class PloneVoltoCoreLayer(PloneSandboxLayer):
@@ -53,4 +54,50 @@ PLONE_VOLTO_CORE_FUNCTIONAL_TESTING = FunctionalTesting(
 PLONE_VOLTO_CORE_ACCEPTANCE_TESTING = FunctionalTesting(
     bases=(PLONE_VOLTO_CORE_FIXTURE, REMOTE_LIBRARY_BUNDLE_FIXTURE, z2.ZSERVER_FIXTURE),
     name="PloneVoltoCoreLayer:AcceptanceTesting",
+)
+
+
+class PloneVoltoCoreSandboxLayer(PloneSandboxLayer):
+
+    defaultBases = (PLONE_APP_CONTENTTYPES_FIXTURE,)
+
+    def setUpZope(self, app, configurationContext):
+        # Load any other ZCML that is required for your tests.
+        # The z3c.autoinclude feature is disabled in the Plone fixture base
+        # layer.
+        self.loadZCML(package=plone.volto)
+        self.loadZCML(package=plone.volto.coresandbox)
+
+    def setUpPloneSite(self, portal):
+        setRoles(portal, TEST_USER_ID, ["Manager"])
+        login(portal, TEST_USER_NAME)
+        api.content.create(
+            type="Document", id="front-page", title="Welcome", container=portal
+        )
+        logout()
+        applyProfile(portal, "plone.volto:coresandbox")
+
+
+PLONE_VOLTO_CORESANDBOX_FIXTURE = PloneVoltoCoreSandboxLayer()
+
+
+PLONE_VOLTO_CORESANDBOX_INTEGRATION_TESTING = IntegrationTesting(
+    bases=(PLONE_VOLTO_CORESANDBOX_FIXTURE,),
+    name="PloneVoltoCoreSandboxLayer:IntegrationTesting",
+)
+
+
+PLONE_VOLTO_CORESANDBOX_FUNCTIONAL_TESTING = FunctionalTesting(
+    bases=(PLONE_VOLTO_CORESANDBOX_FIXTURE, z2.ZSERVER_FIXTURE),
+    name="PloneVoltoCoreSandboxLayer:FunctionalTesting",
+)
+
+
+PLONE_VOLTO_CORESANDBOX_ACCEPTANCE_TESTING = FunctionalTesting(
+    bases=(
+        PLONE_VOLTO_CORESANDBOX_FIXTURE,
+        REMOTE_LIBRARY_BUNDLE_FIXTURE,
+        z2.ZSERVER_FIXTURE,
+    ),
+    name="PloneVoltoCoreSandboxLayer:AcceptanceTesting",
 )

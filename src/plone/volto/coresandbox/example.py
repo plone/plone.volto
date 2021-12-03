@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-from plone.app.multilingual.browser.interfaces import make_relation_root_path
 from plone.app.textfield import RichText
 from plone.app.vocabularies.catalog import CatalogSource
 from plone.app.vocabularies.catalog import StaticCatalogVocabulary
@@ -27,8 +26,6 @@ from z3c.relationfield.schema import RelationChoice
 from z3c.relationfield.schema import RelationList
 from zope import schema
 from zope.interface import implementer
-
-from zope.interface import Interface
 
 
 class IExample(model.Schema):

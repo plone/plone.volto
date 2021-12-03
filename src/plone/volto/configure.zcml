@@ -63,6 +63,17 @@
       post_handler=".setuphandlers.create_demo_homepage"
       />
 
+  <!-- Fixture for coresandbox Cypress tests in Volto repo -->
+  <genericsetup:registerProfile
+      name="coresandbox"
+      title="plone.volto coresandbox Cypress tests fixtures"
+      description="Special test fixture for coresandbox use cases"
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      directory="profiles/coresandbox"
+      post_handler=".setuphandlers.post_install_coresandbox"
+      />
+
+  <!-- Fixture for multilingual Cypress tests in Volto repo -->
   <genericsetup:registerProfile
       name="multilingual"
       title="plone.volto multilingual Cypress tests fixtures"

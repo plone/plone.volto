@@ -4,7 +4,8 @@ Changelog
 3.1.0a7 (unreleased)
 --------------------
 
-- Nothing changed yet.
+- Added coresandbox fixture for Volto's cypress tests
+  [sneridagh]
 
 
 3.1.0a6 (2021-11-22)

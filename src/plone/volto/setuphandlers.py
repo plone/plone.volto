@@ -42,6 +42,10 @@ def uninstall(context):
     # Do something at the end of the uninstallation of this package.
 
 
+def post_install_coresandbox(context):
+    """Post install script for multilingual fixture"""
+
+
 def post_install_multilingual(context):
     """Post install script for multilingual fixture"""
     enable_pam(context)

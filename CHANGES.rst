@@ -4,7 +4,10 @@ Changelog
 3.1.0a7 (unreleased)
 --------------------
 
-- Nothing changed yet.
+Internal:
+
+- Test with Plone 6.0.0a2
+  [ericof]
 
 
 3.1.0a6 (2021-11-22)

@@ -2,7 +2,6 @@
 <metadata>
   <version>1012</version>
   <dependencies>
-    <dependency>profile-collective.folderishtypes.dx:default</dependency>
     <dependency>profile-plone.restapi:blocks</dependency>
   </dependencies>
 </metadata>

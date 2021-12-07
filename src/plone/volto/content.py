@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
-from collective.folderishtypes.interfaces import IFolderishDocument
-from collective.folderishtypes.interfaces import IFolderishEvent
-from collective.folderishtypes.interfaces import IFolderishNewsItem
+from plone.volto.interfaces import IFolderishDocument
+from plone.volto.interfaces import IFolderishEvent
+from plone.volto.interfaces import IFolderishNewsItem
 from plone.app.contenttypes.interfaces import IDocument
 from plone.app.contenttypes.interfaces import IEvent
 from plone.app.contenttypes.interfaces import INewsItem

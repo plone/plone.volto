@@ -3,6 +3,10 @@ from plone import api
 from plone.restapi.behaviors import IBlocks
 
 
+def migrate_content_classes(context):
+    pass
+
+
 def from12to13_migrate_listings(context):
     def migrate_listing(originBlocks):
         blocks = deepcopy(originBlocks)

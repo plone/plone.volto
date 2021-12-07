@@ -4,6 +4,11 @@ Changelog
 3.1.0a7 (unreleased)
 --------------------
 
+Breaking:
+
+- Remove c.folderishtypes dependency
+  [sneridagh]
+
 Internal:
 
 - Test with Plone 6.0.0a2

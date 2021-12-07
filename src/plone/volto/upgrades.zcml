@@ -21,4 +21,12 @@
       import_steps="catalog"
       />
 
+  <genericsetup:upgradeDepends
+      title="Add blocks behavior to Event and News Item"
+      profile="plone.volto:default"
+      source="1012"
+      destination="1013"
+      import_steps="typeinfo"
+      />
+
 </configure>

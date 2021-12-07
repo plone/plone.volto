@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<object
+    i18n:domain="plone"
+    meta_type="Dexterity FTI"
+    name="Event"
+    xmlns:i18n="http://xml.zope.org/namespaces/i18n">
+
+  <!-- Enabled behaviors -->
+  <property name="behaviors" purge="False">
+    <element value="volto.blocks" />
+    <element value="volto.preview_image" />
+  </property>
+
+</object>

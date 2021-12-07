@@ -4,6 +4,13 @@ Changelog
 3.1.0a7 (unreleased)
 --------------------
 
+New feature:
+
+- Add blocks behavior on Event and NewsItem
+  [nzambello]
+- Add preview_image to Event
+  [nzambello]
+
 Internal:
 
 - Test with Plone 6.0.0a2

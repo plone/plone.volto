@@ -11,4 +11,9 @@
       component=".vocabularies.DocumentVocabularyFactory"
       />
 
+  <utility
+      name="plone.volto.coresandbox.vocabularies.huge"
+      component=".vocabularies.HugeVocabularyFactory"
+      />
+
 </configure>

@@ -27,6 +27,10 @@ from z3c.relationfield.schema import RelationList
 from zope import schema
 from zope.interface import implementer
 
+from zope.i18nmessageid import MessageFactory
+
+_ = PloneMessageFactory = MessageFactory("plone")
+
 
 class IExample(model.Schema):
     """Dexterity-Schema with all field-types."""
@@ -63,6 +67,7 @@ class IExample(model.Schema):
             "list_field_checkbox",
             "list_field_select",
             "list_field_voc_unconstrained",
+            "list_field_voc_huge",
             "tuple_field",
             "set_field",
             "set_field_checkbox",
@@ -115,6 +120,7 @@ class IExample(model.Schema):
         "otherfields",
         label=u"Other fields",
         fields=(
+            "available_languages",
             "uri_field",
             "sourcetext_field",
             "ascii_field",
@@ -165,7 +171,7 @@ class IExample(model.Schema):
         title=u"Choice field",
         description=u"zope.schema.Choice",
         values=[u"One", u"Two", u"Three"],
-        required=True,
+        required=False,
     )
 
     directives.widget(choice_field_radio=RadioFieldWidget)
@@ -237,6 +243,20 @@ class IExample(model.Schema):
         pattern_options={
             "closeOnSelect": False,  # Select2 option to leave dropdown open for multiple selection
         },
+    )
+
+    list_field_voc_huge = schema.List(
+        title=u"List field with values from a huge vocabulary",
+        description=u"zope.schema.List",
+        value_type=schema.Choice(
+            vocabulary="plone.volto.coresandbox.vocabularies.huge",
+        ),
+        required=False,
+        missing_value=[],
+    )
+    directives.widget(
+        "list_field_voc_huge",
+        frontendOptions={"widget": "autocomplete", "widgetProps": {"prop1": "text"}},
     )
 
     tuple_field = schema.Tuple(
@@ -765,6 +785,21 @@ class IExample(model.Schema):
         value_type=schema.TextLine(
             title=u"Value",
             required=False,
+        ),
+    )
+
+    # Special (control panel) fields
+    available_languages = schema.List(
+        title=_(u"heading_available_languages", default=u"Available languages"),
+        description=_(
+            u"description_available_languages",
+            default=u"The languages in which the site should be " u"translatable.",
+        ),
+        required=True,
+        default=["en"],
+        missing_value=[],
+        value_type=schema.Choice(
+            vocabulary="plone.app.vocabularies.AvailableContentLanguages"
         ),
     )
 

@@ -149,10 +149,7 @@ class IExample(model.Schema):
     )
 
     text_field = schema.Text(
-        title=u"Text Field",
-        description=u"zope.schema.Text",
-        required=False,
-        missing_value=u"",
+        title=u"Text Field", description=u"zope.schema.Text", required=False
     )
 
     textline_field = schema.TextLine(
@@ -205,6 +202,7 @@ class IExample(model.Schema):
         ),
         required=False,
         missing_value=[],
+        default=[],
     )
 
     directives.widget(list_field_checkbox=CheckBoxFieldWidget)
@@ -216,6 +214,7 @@ class IExample(model.Schema):
         ),
         required=False,
         missing_value=[],
+        default=[],
     )
 
     directives.widget(list_field_select=SelectFieldWidget)
@@ -227,6 +226,7 @@ class IExample(model.Schema):
         ),
         required=False,
         missing_value=[],
+        default=[],
     )
 
     list_field_voc_unconstrained = schema.List(
@@ -235,6 +235,7 @@ class IExample(model.Schema):
         value_type=schema.TextLine(),
         required=False,
         missing_value=[],
+        default=[],
     )
     directives.widget(
         "list_field_voc_unconstrained",
@@ -253,6 +254,7 @@ class IExample(model.Schema):
         ),
         required=False,
         missing_value=[],
+        default=[],
     )
     directives.widget(
         "list_field_voc_huge",
@@ -267,6 +269,7 @@ class IExample(model.Schema):
         ),
         required=False,
         missing_value=(),
+        default=(),
     )
 
     set_field = schema.Set(
@@ -277,6 +280,7 @@ class IExample(model.Schema):
         ),
         required=False,
         missing_value={},
+        default=set(),
     )
 
     directives.widget(set_field_checkbox=CheckBoxFieldWidget)
@@ -288,6 +292,7 @@ class IExample(model.Schema):
         ),
         required=False,
         missing_value={},
+        default=set(),
     )
 
     # File fields

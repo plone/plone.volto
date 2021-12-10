@@ -9,6 +9,11 @@ class IPloneVoltoCoreLayer(IDefaultBrowserLayer):
     """Marker interface that defines a browser layer."""
 
 
+### bbb
+class IThemeSpecific(IPloneVoltoCoreLayer):
+    """bbb for collective.folderishtypes browser interface."""
+
+
 class IVoltoSettings(Interface):
     """Volto settings necessary to store in the backend"""
 

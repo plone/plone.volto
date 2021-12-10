@@ -34,7 +34,7 @@ def migrate_content_classes(context):
         if idx and idx % 100 == 0:
             logger.info(f"Migration: {idx + 1} / {total_brains}")
 
-    logger.info(f"Migration from collective.folderishtypes to plone.volto complete")
+    logger.info("Migration from collective.folderishtypes to plone.volto complete")
 
 
 def from12to13_migrate_listings(context):

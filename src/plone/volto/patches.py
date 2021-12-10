@@ -20,9 +20,9 @@ try:
     from collective.folderishtypes.dx import content  # noqa F401
 except ImportError:
     logger.info("Aliasing collective.folderish classes to plone.volto classes.")
-    alias_module('collective.folderishtypes.dx.content', content)
-    alias_module('collective.folderishtypes.dx.interfaces', interfaces)
-    alias_module('collective.folderishtypes.interfaces', interfaces)
+    alias_module("collective.folderishtypes.dx.content", content)
+    alias_module("collective.folderishtypes.dx.interfaces", interfaces)
+    alias_module("collective.folderishtypes.interfaces", interfaces)
 
 
 def _do_copy_to_zlog(self, now, strtype, entry_id, url, tb_text):

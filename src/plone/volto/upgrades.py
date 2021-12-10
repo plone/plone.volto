@@ -15,7 +15,9 @@ MIGRATION = {
 def migrate_content_classes(context):
     """Migrate content created with collective.folderishtypes to plone.volto."""
     interface = "collective.folderishtypes.interfaces.IFolderishType"
-    idxs = ["object_provides", ]
+    idxs = [
+        "object_provides",
+    ]
     brains = api.content.find(object_provides=interface)
     total_brains = len(brains)
     logger.info(f"Migration: {total_brains} contents to be migrated.")

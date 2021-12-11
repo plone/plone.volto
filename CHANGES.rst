@@ -1,10 +1,10 @@
 Changelog
 =========
 
-3.1.0a7 (unreleased)
+3.1.0a7 (2021-12-11)
 --------------------
 
-Feature:
+New Feature:
 
 - Added coresandbox fixture for Volto's cypress tests
   [sneridagh]

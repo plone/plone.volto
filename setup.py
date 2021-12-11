@@ -58,6 +58,7 @@ setup(
         "setuptools",
         "plone.restapi>=8.13.0",
         "collective.folderishtypes[dexterity]",
+        "plone.app.vocabularies>=4.3.0",
     ],
     extras_require={
         "test": [
@@ -65,6 +66,7 @@ setup(
             "plone.testing",
             "plone.app.contenttypes",
             "plone.app.robotframework[debug]",
+            "collective.MockMailHost",
         ]
     },
     entry_points="""

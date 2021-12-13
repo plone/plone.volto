@@ -1,7 +1,7 @@
 Changelog
 =========
 
-3.1.0a7 (unreleased)
+3.1.0a8 (unreleased)
 --------------------
 
 New feature:
@@ -10,6 +10,15 @@ New feature:
   [nzambello]
 - Add preview_image to Event
   [nzambello]
+
+
+3.1.0a7 (2021-12-11)
+--------------------
+
+New Feature:
+
+- Added coresandbox fixture for Volto's cypress tests
+  [sneridagh]
 
 Internal:
 

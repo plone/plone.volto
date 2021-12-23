@@ -68,6 +68,7 @@ class IExample(model.Schema):
             "list_field_select",
             "list_field_voc_unconstrained",
             "list_field_voc_huge",
+            "list_field_voc_huge_unconstrained",
             "tuple_field",
             "set_field",
             "set_field_checkbox",
@@ -258,6 +259,20 @@ class IExample(model.Schema):
     )
     directives.widget(
         "list_field_voc_huge",
+        frontendOptions={"widget": "autocomplete", "widgetProps": {"prop1": "text"}},
+    )
+
+    list_field_voc_huge_unconstrained = schema.List(
+        title=u"List field with values from a huge vocabulary but unconstrained",
+        description=u"zope.schema.List",
+        value_type=schema.TextLine(),
+        required=False,
+        missing_value=[],
+        default=[],
+    )
+    directives.widget(
+        "list_field_voc_huge_unconstrained",
+        vocabulary="plone.volto.coresandbox.vocabularies.huge",
         frontendOptions={"widget": "autocomplete", "widgetProps": {"prop1": "text"}},
     )
 

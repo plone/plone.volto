@@ -4,7 +4,11 @@ Changelog
 3.1.0a8 (unreleased)
 --------------------
 
-- Nothing changed yet.
+Internal:
+
+- Workaround a test fixture isolation issue with the `IVoltoSettings.frontend_domain`
+  setting.
+  [rpatterson]
 
 
 3.1.0a7 (2021-12-11)

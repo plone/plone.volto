@@ -26,6 +26,9 @@ Internal:
 
 New Feature:
 
+- Add Basque and Spanish translations
+  [erral]
+
 - Add Italian translations
   [cekk]
 

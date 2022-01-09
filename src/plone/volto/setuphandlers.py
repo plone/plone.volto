@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from datetime import datetime
 from plone import api
 from plone.app.multilingual.browser.setup import SetupMultilingualSite
 from plone.app.multilingual.setuphandlers import enable_translatable_behavior
@@ -20,6 +21,7 @@ from zope.interface import implementer
 import json
 import logging
 import transaction
+
 
 logger = logging.getLogger("plone.volto")
 
@@ -510,7 +512,7 @@ def create_root_homepage(context, default_home=None):
                             "entityRanges": [],
                             "inlineStyleRanges": [],
                             "key": "f0prj",
-                            "text": "2020 - Volto Team - Plone Foundation",
+                            "text": f"{datetime.now().year} - Volto Team - Plone Foundation",
                             "type": "unstyled",
                         }
                     ],
@@ -842,7 +844,7 @@ def create_demo_homepage(context):
                             "entityRanges": [],
                             "inlineStyleRanges": [],
                             "key": "f0prj",
-                            "text": "2021 - Plone Foundation",
+                            "text": f"{datetime.now().year} - Plone Foundation",
                             "type": "unstyled",
                         }
                     ],

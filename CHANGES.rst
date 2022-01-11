@@ -4,7 +4,8 @@ Changelog
 3.1.0a8 (unreleased)
 --------------------
 
-- Nothing changed yet.
+- Computed copyright dates for content demo pages
+  [sneridagh]
 
 
 3.1.0a7 (2021-12-11)

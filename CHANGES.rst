@@ -1,7 +1,7 @@
 Changelog
 =========
 
-3.1.0a8 (unreleased)
+3.1.0a8 (2022-01-12)
 --------------------
 
 - Computed copyright dates for content demo pages

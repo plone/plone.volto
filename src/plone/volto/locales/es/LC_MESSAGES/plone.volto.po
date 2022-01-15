@@ -1,0 +1,114 @@
+# --- PLEASE EDIT THE LINES BELOW CORRECTLY ---
+# SOME DESCRIPTIVE TITLE.
+# Mikel Larreategi <mlarreategi@codesyntax.com>, 2021.
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2021-11-18 08:27+0000\n"
+"PO-Revision-Date: 2021-11-21 16:58+0100\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Language-Code: es\n"
+"Language-Name: Spanish\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: plone.volto\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: es\n"
+"X-Generator: Poedit 2.3\n"
+
+#: plone/volto/behaviors/configure.zcml:31
+msgid "Adds Head title field"
+msgstr "Añade el campo de título de cabecera"
+
+#: plone/volto/configure.zcml:37
+msgid "Configures the Plone backend to work with Volto, the new default frontend for Plone 6."
+msgstr "Configura Plone para funcionar con Volto, el nuevo frontal de Plone 6."
+
+#: plone/volto/configure.zcml:55
+msgid "Creates a default page for the site"
+msgstr "Crea la página por defecto del sitio"
+
+#: plone/volto/behaviors/configure.zcml:31
+msgid "Head title field"
+msgstr "Campo de título de cabecera"
+
+#: plone/volto/behaviors/headtitle.py:13
+msgid "Header title"
+msgstr "Título de cabecera"
+
+#: plone/volto/behaviors/headtitle.py:15
+msgid "Header title should consist of year and number of the report"
+msgstr "El título de cabecera debería tener el año y número de informe"
+
+#: plone/volto/behaviors/configure.zcml:24 plone/volto/behaviors/navtitle.py:12
+msgid "Navigation title"
+msgstr "Título de la navegación"
+
+#: plone/volto/behaviors/configure.zcml:24
+msgid "Navigation title used in sections, menus and doormats"
+msgstr "Título de la navegación utilizado en secciones, menús y acordeones"
+
+#: plone/volto/configure.zcml:55
+msgid "Plone 6 Frontend (Default content on homepage)"
+msgstr "Frontal Plone 6 (contenido por defecto en la portada)"
+
+#: plone/volto/configure.zcml:37
+msgid "Plone 6 Frontend (plone.volto)"
+msgstr "Frontal Plone 6 (plone.volto)"
+
+#: plone/volto/configure.zcml:46
+msgid "Plone 6 Frontend (plone.volto): uninstall"
+msgstr "Frontal Plone 6 (plone.volto): desinstalar"
+
+#: plone/volto/behaviors/configure.zcml:17
+msgid "Preview Image"
+msgstr "Imagen"
+
+#: plone/volto/behaviors/preview.py:23
+msgid "Preview image caption"
+msgstr "Preview image caption"
+
+#: plone/volto/behaviors/configure.zcml:17
+msgid "Preview image for listings"
+msgstr "Imagen para listados"
+
+#: plone/volto/configure.zcml:64
+msgid "Special requirements and setup for demo site"
+msgstr "Configuración especial para instalar el sitio de demo"
+
+#: plone/volto/configure.zcml:73
+msgid "Special test fixture for multilingual use case"
+msgstr "Perfil especial para configurar los tests de un sitio multilingüe"
+
+#: plone/volto/configure.zcml:81
+msgid "Specific profile for re-adding the richtext behavior"
+msgstr "Perfil específico para añadir otra vez el comportamiento de texto"
+
+#: plone/volto/configure.zcml:46
+msgid "Uninstalls the plone.volto add-on."
+msgstr "Desinstalar plone.volto"
+
+#. Default: "Insert an image that will be used in listing and teaser blocks."
+#: plone/volto/behaviors/preview.py:15
+msgid "help_previewimage"
+msgstr "Introduzca la imagen que se utilizará en los listados y otros bloques"
+
+#. Default: "Preview image"
+#: plone/volto/behaviors/preview.py:14
+msgid "label_previewimage"
+msgstr "Imagen"
+
+#: plone/volto/configure.zcml:64
+msgid "plone.volto demo special requirements"
+msgstr "Requisitos especiales de la demo de plone.volto"
+
+#: plone/volto/configure.zcml:73
+msgid "plone.volto multilingual Cypress tests fixtures"
+msgstr "Tests de plone.volto multilingüe"
+
+#: plone/volto/configure.zcml:81
+msgid "plone.volto p51 profile"
+msgstr "Perfil plone.volto p51"

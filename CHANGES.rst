@@ -1,10 +1,17 @@
 Changelog
 =========
 
-3.1.0a8 (unreleased)
+3.1.0a9 (unreleased)
 --------------------
 
 - Nothing changed yet.
+
+
+3.1.0a8 (2022-01-12)
+--------------------
+
+- Computed copyright dates for content demo pages
+  [sneridagh]
 
 
 3.1.0a7 (2021-12-11)
@@ -25,6 +32,9 @@ Internal:
 --------------------
 
 New Feature:
+
+- Add Basque and Spanish translations
+  [erral]
 
 - Add Italian translations
   [cekk]

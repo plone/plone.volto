@@ -4,8 +4,8 @@ Changelog
 3.1.0a9 (unreleased)
 --------------------
 
-- Nothing changed yet.
-
+- Add new field in the coresandbox: not constrained by vocabulary field but the vocabulary defined in the widget.
+  [sneridagh]
 
 3.1.0a8 (2022-01-12)
 --------------------

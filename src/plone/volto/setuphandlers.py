@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from datetime import datetime
 from plone import api
 from plone.app.multilingual.browser.setup import SetupMultilingualSite
 from plone.app.multilingual.setuphandlers import enable_translatable_behavior
@@ -21,6 +22,7 @@ import json
 import logging
 import transaction
 
+
 logger = logging.getLogger("plone.volto")
 
 
@@ -40,6 +42,10 @@ def post_install(context):
 def uninstall(context):
     """Uninstall script"""
     # Do something at the end of the uninstallation of this package.
+
+
+def post_install_coresandbox(context):
+    """Post install script for multilingual fixture"""
 
 
 def post_install_multilingual(context):
@@ -506,7 +512,7 @@ def create_root_homepage(context, default_home=None):
                             "entityRanges": [],
                             "inlineStyleRanges": [],
                             "key": "f0prj",
-                            "text": "2020 - Volto Team - Plone Foundation",
+                            "text": f"{datetime.now().year} - Volto Team - Plone Foundation",
                             "type": "unstyled",
                         }
                     ],
@@ -838,7 +844,7 @@ def create_demo_homepage(context):
                             "entityRanges": [],
                             "inlineStyleRanges": [],
                             "key": "f0prj",
-                            "text": "2021 - Plone Foundation",
+                            "text": f"{datetime.now().year} - Plone Foundation",
                             "type": "unstyled",
                         }
                     ],

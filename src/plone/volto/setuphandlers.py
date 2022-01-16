@@ -22,6 +22,14 @@ import json
 import logging
 import transaction
 
+try:
+    from Products.CMFPlone.factory import PLONE60MARKER
+
+    PLONE60MARKER  # pyflakes
+except ImportError:
+    PLONE_6 = False
+else:
+    PLONE_6 = True
 
 logger = logging.getLogger("plone.volto")
 
@@ -35,8 +43,9 @@ class HiddenProfiles(object):
 
 def post_install(context):
     """Post install script"""
-    # portal = api.portal.get()
-    # create_default_homepage()
+    # For Plone 6, make sure the blocks behavior is enabled in the root
+    if PLONE_6:
+        add_behavior("Plone Site", "volto.blocks")
 
 
 def uninstall(context):
@@ -195,94 +204,11 @@ def setupPortletAt(portal, portlet_type, manager, path, name="", **kw):
     mapping[name] = assignment
 
 
-default_lrf_home = {
-    "blocks": {
-        "15068807-cfc9-444a-97db-8c736809ff52": {"@type": "title"},
-        "59d41d8a-ef05-4e21-8820-2a64f5878092": {
-            "@type": "text",
-            "text": {
-                "blocks": [
-                    {
-                        "key": "618bl",
-                        "text": "Nulla porttitor accumsan tincidunt. Sed porttitor lectus nibh. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Nulla porttitor accumsan tincidunt. Nulla porttitor accumsan tincidunt. Nulla porttitor accumsan tincidunt. Quisque velit nisi, pretium ut lacinia in, elementum id enim. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Sed porttitor lectus nibh. Pellentesque in ipsum id orci porta dapibus.",
-                        "type": "unstyled",
-                        "depth": 0,
-                        "inlineStyleRanges": [],
-                        "entityRanges": [],
-                        "data": {},
-                    }
-                ],
-                "entityMap": {},
-            },
-        },
-    },
-    "blocks_layout": {
-        "items": [
-            "15068807-cfc9-444a-97db-8c736809ff52",
-            "59d41d8a-ef05-4e21-8820-2a64f5878092",
-        ]
-    },
-}
-
-
-def create_default_homepage(context, default_home=default_lrf_home):
-    """This method allows to pass a dict with the homepage blocks and blocks_layout keys"""
-    portal = api.portal.get()
-    # Test for PAM installed
-    try:
-        is_pam_installed = get_installer(portal, context.REQUEST).isProductInstalled(
-            "plone.app.multilingual"
-        )
-    except:  # noqa
-        is_pam_installed = get_installer(portal, context.REQUEST).is_product_installed(
-            "plone.app.multilingual"
-        )
-
-    if is_pam_installed:
-        # Make sure that the LRFs have the blocks enabled
-        add_behavior("LRF", "volto.blocks")
-
-        for lang in api.portal.get_registry_record("plone.available_languages"):
-            # Do not write them if there are blocks set already
-            # Get the attr first, in case it's not there yet (error in docker image)
-            if getattr(portal[lang], "blocks", {}) == {} and (
-                getattr(portal[lang], "blocks_layout", {}).get("items") is None
-                or getattr(portal[lang], "blocks_layout", {}).get("items") == []
-            ):
-                logger.info(
-                    "Creating default homepage for {} - PAM enabled".format(lang)
-                )
-                portal[lang].blocks = default_home["blocks"]
-                portal[lang].blocks_layout = default_home["blocks_layout"]
-
-    else:
-        create_root_homepage(context)
-
-
-def create_root_homepage(context, default_home=None):
-    """It takes a default object:
-    {
-        "title": "The title",
-        "description": "The description",
-        "blocks": {...},
-        "blocks_layout": [...]
-    }
-    and sets it as default page in the Plone root object.
-    """
-
-    portal = api.portal.get()
-
-    if default_home:
-        blocks = default_home["blocks"]
-        blocks_layout = default_home["blocks_layout"]
-        portal.setTitle(default_home["title"])
-        portal.setDescription(default_home["description"])
-
-        logger.info(
-            "Creating custom default homepage in Plone site root - not PAM enabled"
-        )
-    else:
-        blocks = {
+default_home = {
+    "draftJS": {
+        "title": "Welcome to Volto!",
+        "description": "The React powered content management system",
+        "blocks": {
             "0358abe2-b4f1-463d-a279-a63ea80daf19": {"@type": "description"},
             "07c273fc-8bfc-4e7d-a327-d513e5a945bb": {"@type": "title"},
             "2dfe8e4c-5bf6-43f1-93e1-6c320ede7226": {
@@ -546,9 +472,8 @@ def create_root_homepage(context, default_home=None):
                     },
                 },
             },
-        }
-
-        blocks_layout = {
+        },
+        "blocks_layout": {
             "items": [
                 "07c273fc-8bfc-4e7d-a327-d513e5a945bb",
                 "0358abe2-b4f1-463d-a279-a63ea80daf19",
@@ -565,21 +490,159 @@ def create_root_homepage(context, default_home=None):
                 "874049e7-629e-489a-b46c-1adf35ad40ee",
                 "e0ca2fbc-7800-4b9b-afe5-8e42af9f5dd6",
             ]
-        }
+        },
+    },
+    "slate": {},
+}
 
-        portal.setTitle("Welcome to Volto!")
-        portal.setDescription("The React powered content management system")
+default_lrf_home = {}
+# default_lrf_home = {
+#     "draftJS": {
+#         "blocks": {
+#             "15068807-cfc9-444a-97db-8c736809ff52": {"@type": "title"},
+#             "59d41d8a-ef05-4e21-8820-2a64f5878092": {
+#                 "@type": "text",
+#                 "text": {
+#                     "blocks": [
+#                         {
+#                             "key": "618bl",
+#                             "text": "Nulla porttitor accumsan tincidunt. Sed porttitor lectus nibh. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Nulla porttitor accumsan tincidunt. Nulla porttitor accumsan tincidunt. Nulla porttitor accumsan tincidunt. Quisque velit nisi, pretium ut lacinia in, elementum id enim. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Sed porttitor lectus nibh. Pellentesque in ipsum id orci porta dapibus.",
+#                             "type": "unstyled",
+#                             "depth": 0,
+#                             "inlineStyleRanges": [],
+#                             "entityRanges": [],
+#                             "data": {},
+#                         }
+#                     ],
+#                     "entityMap": {},
+#                 },
+#             },
+#         },
+#         "blocks_layout": {
+#             "items": [
+#                 "15068807-cfc9-444a-97db-8c736809ff52",
+#                 "59d41d8a-ef05-4e21-8820-2a64f5878092",
+#             ]
+#         },
+#     },
+#     "slate": {
+#         "blocks": {
+#             "15068807-cfc9-444a-97db-8c736809ff52": {"@type": "title"},
+#             "59d41d8a-ef05-4e21-8820-2a64f5878092": {
+#                 {
+#                     "@type": "slate",
+#                     "value": [
+#                         {
+#                             "type": "p",
+#                             "children": [
+#                                 {
+#                                     "text": "Nulla porttitor accumsan tincidunt. Sed porttitor lectus nibh. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Nulla porttitor accumsan tincidunt. Nulla porttitor accumsan tincidunt. Nulla porttitor accumsan tincidunt. Quisque velit nisi, pretium ut lacinia in, elementum id enim. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Sed porttitor lectus nibh. Pellentesque in ipsum id orci porta dapibus."
+#                                 }
+#                             ],
+#                         }
+#                     ],
+#                     "plaintext": "Nulla porttitor accumsan tincidunt. Sed porttitor lectus nibh. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Nulla porttitor accumsan tincidunt. Nulla porttitor accumsan tincidunt. Nulla porttitor accumsan tincidunt. Quisque velit nisi, pretium ut lacinia in, elementum id enim. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Sed porttitor lectus nibh. Pellentesque in ipsum id orci porta dapibus.",
+#                 }
+#             },
+#         },
+#         "blocks_layout": {
+#             "items": [
+#                 "15068807-cfc9-444a-97db-8c736809ff52",
+#                 "59d41d8a-ef05-4e21-8820-2a64f5878092",
+#             ]
+#         },
+#     },
+# }
 
-        logger.info("Creating default homepage in Plone site root - not PAM enabled")
 
-    # Common part
-    if not getattr(portal, "blocks", False):
-        portal.manage_addProperty("blocks", json.dumps(blocks), "string")
+def create_default_homepage_draftjs(context):
+    create_default_homepage(context, block_type="draftJS")
 
-    if not getattr(portal, "blocks_layout", False):
-        portal.manage_addProperty(
-            "blocks_layout", json.dumps(blocks_layout), "string"
-        )  # noqa
+
+def create_default_homepage(
+    context, default_home=default_lrf_home, block_type="draftJS"
+):
+    """This method allows to pass a dict with the homepage blocks and blocks_layout keys"""
+    portal = api.portal.get()
+    # Test for PAM installed
+    try:
+        is_pam_installed = get_installer(portal, context.REQUEST).isProductInstalled(
+            "plone.app.multilingual"
+        )
+    except:  # noqa
+        is_pam_installed = get_installer(portal, context.REQUEST).is_product_installed(
+            "plone.app.multilingual"
+        )
+
+    if is_pam_installed:
+        # Make sure that the LRFs have the blocks enabled
+        add_behavior("LRF", "volto.blocks")
+
+        for lang in api.portal.get_registry_record("plone.available_languages"):
+            # Do not write them if there are blocks set already
+            # Get the attr first, in case it's not there yet (error in docker image)
+            if getattr(portal[lang], "blocks", {}) == {} and (
+                getattr(portal[lang], "blocks_layout", {}).get("items") is None
+                or getattr(portal[lang], "blocks_layout", {}).get("items") == []
+            ):
+                logger.info(
+                    "Creating default homepage for {} - PAM enabled".format(lang)
+                )
+                portal[lang].blocks = (
+                    default_home[block_type]["blocks"]
+                    if default_home.get(block_type)
+                    else default_home["blocks"]
+                )
+                portal[lang].blocks_layout = (
+                    default_home[block_type]["blocks_layout"]
+                    if default_home.get(block_type)
+                    else default_home["blocks_layout"]
+                )
+
+    else:
+        create_root_homepage(context, block_type)
+
+
+def create_root_homepage(context, block_type, default_home=default_home):
+    """It takes a default object:
+    {
+        "title": "The title",
+        "description": "The description",
+        "blocks": {...},
+        "blocks_layout": [...]
+    }
+    and sets it as default page in the Plone root object.
+
+    Takes into account block_type.
+    """
+    portal = api.portal.get()
+
+    if block_type and block_type in default_home:
+        default_home = default_home[block_type]
+
+    logger.info(
+        f"Creating default homepage in Plone {'6' if PLONE_6 else ''} site root with {block_type} blocks - not PAM enabled"
+    )
+
+    if PLONE_6:
+        portal.blocks = default_home["blocks"]
+        portal.blocks_layout = default_home["blocks_layout"]
+        portal.title = default_home["title"]
+        portal.description = default_home["description"]
+    else:
+        blocks = default_home["blocks"]
+        blocks_layout = default_home["blocks_layout"]
+        portal.setTitle(default_home["title"])
+        portal.setDescription(default_home["description"])
+
+        # Use the hack for setting the home page in Plone Site object
+        if not getattr(portal, "blocks", False):
+            portal.manage_addProperty("blocks", json.dumps(blocks), "string")
+
+        if not getattr(portal, "blocks_layout", False):
+            portal.manage_addProperty(
+                "blocks_layout", json.dumps(blocks_layout), "string"
+            )  # noqa
 
 
 def create_demo_homepage(context):

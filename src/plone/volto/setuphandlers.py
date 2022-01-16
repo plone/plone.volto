@@ -687,64 +687,62 @@ default_home = {
     },
 }
 
-default_lrf_home = {}
-# default_lrf_home = {
-#     "draftJS": {
-#         "blocks": {
-#             "15068807-cfc9-444a-97db-8c736809ff52": {"@type": "title"},
-#             "59d41d8a-ef05-4e21-8820-2a64f5878092": {
-#                 "@type": "text",
-#                 "text": {
-#                     "blocks": [
-#                         {
-#                             "key": "618bl",
-#                             "text": "Nulla porttitor accumsan tincidunt. Sed porttitor lectus nibh. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Nulla porttitor accumsan tincidunt. Nulla porttitor accumsan tincidunt. Nulla porttitor accumsan tincidunt. Quisque velit nisi, pretium ut lacinia in, elementum id enim. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Sed porttitor lectus nibh. Pellentesque in ipsum id orci porta dapibus.",
-#                             "type": "unstyled",
-#                             "depth": 0,
-#                             "inlineStyleRanges": [],
-#                             "entityRanges": [],
-#                             "data": {},
-#                         }
-#                     ],
-#                     "entityMap": {},
-#                 },
-#             },
-#         },
-#         "blocks_layout": {
-#             "items": [
-#                 "15068807-cfc9-444a-97db-8c736809ff52",
-#                 "59d41d8a-ef05-4e21-8820-2a64f5878092",
-#             ]
-#         },
-#     },
-#     "slate": {
-#         "blocks": {
-#             "15068807-cfc9-444a-97db-8c736809ff52": {"@type": "title"},
-#             "59d41d8a-ef05-4e21-8820-2a64f5878092": {
-#                 {
-#                     "@type": "slate",
-#                     "value": [
-#                         {
-#                             "type": "p",
-#                             "children": [
-#                                 {
-#                                     "text": "Nulla porttitor accumsan tincidunt. Sed porttitor lectus nibh. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Nulla porttitor accumsan tincidunt. Nulla porttitor accumsan tincidunt. Nulla porttitor accumsan tincidunt. Quisque velit nisi, pretium ut lacinia in, elementum id enim. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Sed porttitor lectus nibh. Pellentesque in ipsum id orci porta dapibus."
-#                                 }
-#                             ],
-#                         }
-#                     ],
-#                     "plaintext": "Nulla porttitor accumsan tincidunt. Sed porttitor lectus nibh. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Nulla porttitor accumsan tincidunt. Nulla porttitor accumsan tincidunt. Nulla porttitor accumsan tincidunt. Quisque velit nisi, pretium ut lacinia in, elementum id enim. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Sed porttitor lectus nibh. Pellentesque in ipsum id orci porta dapibus.",
-#                 }
-#             },
-#         },
-#         "blocks_layout": {
-#             "items": [
-#                 "15068807-cfc9-444a-97db-8c736809ff52",
-#                 "59d41d8a-ef05-4e21-8820-2a64f5878092",
-#             ]
-#         },
-#     },
-# }
+
+default_lrf_home = {
+    "draftJS": {
+        "blocks": {
+            "15068807-cfc9-444a-97db-8c736809ff52": {"@type": "title"},
+            "59d41d8a-ef05-4e21-8820-2a64f5878092": {
+                "@type": "text",
+                "text": {
+                    "blocks": [
+                        {
+                            "key": "618bl",
+                            "text": "Nulla porttitor accumsan tincidunt. Sed porttitor lectus nibh. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Nulla porttitor accumsan tincidunt. Nulla porttitor accumsan tincidunt. Nulla porttitor accumsan tincidunt. Quisque velit nisi, pretium ut lacinia in, elementum id enim. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Sed porttitor lectus nibh. Pellentesque in ipsum id orci porta dapibus.",
+                            "type": "unstyled",
+                            "depth": 0,
+                            "inlineStyleRanges": [],
+                            "entityRanges": [],
+                            "data": {},
+                        }
+                    ],
+                    "entityMap": {},
+                },
+            },
+        },
+        "blocks_layout": {
+            "items": [
+                "15068807-cfc9-444a-97db-8c736809ff52",
+                "59d41d8a-ef05-4e21-8820-2a64f5878092",
+            ]
+        },
+    },
+    "slate": {
+        "blocks": {
+            "15068807-cfc9-444a-97db-8c736809ff52": {"@type": "title"},
+            "59d41d8a-ef05-4e21-8820-2a64f5878092": {
+                "@type": "slate",
+                "value": [
+                    {
+                        "type": "p",
+                        "children": [
+                            {
+                                "text": "Nulla porttitor accumsan tincidunt. Sed porttitor lectus nibh. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Nulla porttitor accumsan tincidunt. Nulla porttitor accumsan tincidunt. Nulla porttitor accumsan tincidunt. Quisque velit nisi, pretium ut lacinia in, elementum id enim. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Sed porttitor lectus nibh. Pellentesque in ipsum id orci porta dapibus."
+                            }
+                        ],
+                    }
+                ],
+                "plaintext": "Nulla porttitor accumsan tincidunt. Sed porttitor lectus nibh. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Nulla porttitor accumsan tincidunt. Nulla porttitor accumsan tincidunt. Nulla porttitor accumsan tincidunt. Quisque velit nisi, pretium ut lacinia in, elementum id enim. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Sed porttitor lectus nibh. Pellentesque in ipsum id orci porta dapibus.",
+            },
+        },
+        "blocks_layout": {
+            "items": [
+                "15068807-cfc9-444a-97db-8c736809ff52",
+                "59d41d8a-ef05-4e21-8820-2a64f5878092",
+            ]
+        },
+    },
+}
 
 
 def create_default_homepage_draftjs(context):
@@ -768,6 +766,9 @@ def create_default_homepage(context, default_home=default_lrf_home, block_type="
         # Make sure that the LRFs have the blocks enabled
         add_behavior("LRF", "volto.blocks")
 
+        if block_type and block_type in default_home:
+            default_home = default_home[block_type]
+
         for lang in api.portal.get_registry_record("plone.available_languages"):
             # Do not write them if there are blocks set already
             # Get the attr first, in case it's not there yet (error in docker image)
@@ -778,16 +779,8 @@ def create_default_homepage(context, default_home=default_lrf_home, block_type="
                 logger.info(
                     "Creating default homepage for {} - PAM enabled".format(lang)
                 )
-                portal[lang].blocks = (
-                    default_home[block_type]["blocks"]
-                    if default_home.get(block_type)
-                    else default_home["blocks"]
-                )
-                portal[lang].blocks_layout = (
-                    default_home[block_type]["blocks_layout"]
-                    if default_home.get(block_type)
-                    else default_home["blocks_layout"]
-                )
+                portal[lang].blocks = default_home["blocks"]
+                portal[lang].blocks_layout = default_home["blocks_layout"]
 
     else:
         create_root_homepage(context, block_type)

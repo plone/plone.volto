@@ -20,7 +20,6 @@
   <include file="patches.zcml" />
   <include file="upgrades.zcml" />
 
-
   <browser:page
       name="blocksuuidfixer"
       for="Products.CMFPlone.interfaces.IPloneSiteRoot"

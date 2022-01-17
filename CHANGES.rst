@@ -1,12 +1,24 @@
 Changelog
 =========
 
-3.1.0a9 (unreleased)
+3.1.0a10 (unreleased)
+---------------------
+
+- Use by default Slate blocks for the default pages
+  [sneridagh]
+
+
+3.1.0a9 (2022-01-15)
 --------------------
 
 Breaking:
 
 - Remove c.folderishtypes dependency
+
+New Feature:
+
+- Add new field in the coresandbox: not constrained by vocabulary field but the vocabulary defined in the widget.
+  [sneridagh]
 
 
 3.1.0a8 (2022-01-12)

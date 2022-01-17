@@ -4,7 +4,8 @@ Changelog
 3.1.0a10 (unreleased)
 ---------------------
 
-- Nothing changed yet.
+- Use by default Slate blocks for the default pages
+  [sneridagh]
 
 
 3.1.0a9 (2022-01-15)

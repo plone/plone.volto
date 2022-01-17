@@ -1,6 +1,8 @@
 from copy import deepcopy
 from plone import api
 from plone.restapi.behaviors import IBlocks
+from plone.volto.setuphandlers import NO_RICHTEXT_BEHAVIOR_CONTENT_TYPES
+from plone.volto.setuphandlers import remove_behavior
 
 
 def from12to13_migrate_listings(context):
@@ -62,3 +64,8 @@ def from12to13_migrate_listings(context):
     for brain in pc.unrestrictedSearchResults(object_provides=IBlocks.__identifier__):
         obj = brain.getObject()
         obj.blocks = migrate_listing(obj.blocks)
+
+
+def remove_plone_richtext_behavior(context):
+    for type_ in NO_RICHTEXT_BEHAVIOR_CONTENT_TYPES:
+        remove_behavior(type_, "plone.richtext")

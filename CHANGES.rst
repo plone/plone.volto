@@ -7,6 +7,17 @@ Changelog
 - Use by default Slate blocks for the default pages
   [sneridagh]
 
+- Code cleanup, remove some outdated and unused helpers in ``setuptools.py``
+  [sneridagh]
+
+- Add ``volto.blocks`` behavior to Plone Site GS types info.
+  [sneridagh]
+
+- Remove ``Collection`` from types in GS types info.
+  [sneridagh]
+
+- Remove ``plone.richtext`` behavior from Plone Site, Document, News Item, Events
+  [sneridagh]
 
 3.1.0a9 (2022-01-15)
 --------------------

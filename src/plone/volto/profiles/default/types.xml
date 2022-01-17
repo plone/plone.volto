@@ -3,4 +3,5 @@
   <object name="Plone Site" />
   <object meta_type="Dexterity FTI" name="LRF" />
   <object meta_type="Dexterity FTI" name="Document" />
+  <object meta_type="Dexterity FTI" name="Collection" />
 </object>

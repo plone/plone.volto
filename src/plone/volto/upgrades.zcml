@@ -21,4 +21,18 @@
       import_steps="catalog"
       />
 
+  <genericsetup:upgradeSteps
+      profile="plone.volto:default"
+      source="1012"
+      destination="1013"
+      >
+    <genericsetup:upgradeDepends
+        title="Update types info for Plone Site"
+        import_steps="typeinfo"
+        />
+    <genericsetup:upgradeStep
+        title="remove plone.richtext from Plone Site, Document, News Item, Event"
+        handler=".upgrades.remove_plone_richtext_behavior"
+        />
+  </genericsetup:upgradeSteps>
 </configure>

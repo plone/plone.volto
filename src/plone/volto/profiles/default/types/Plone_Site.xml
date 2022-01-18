@@ -1,9 +1,0 @@
-<?xml version="1.0"?>
-<object name="Plone Site"
-   i18n:domain="plone" xmlns:i18n="http://xml.zope.org/namespaces/i18n">
-
-  <property name="behaviors" purge="false">
-    <element value="volto.blocks" />
-  </property>
-
-</object>

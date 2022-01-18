@@ -40,6 +40,20 @@ class TestSetup(unittest.TestCase):
 
         self.assertIn(IPloneVoltoCoreLayer, utils.registered_layers())
 
+    def test_plone_site_has_blocks_behavior(self):
+        pt = api.portal.get_tool("portal_types")
+        fti = pt.getTypeInfo("Plone Site")
+
+        self.assertTrue("volto.blocks" in fti.behaviors)
+
+    def test_plone_site_has_edit_action_setup(self):
+        pt = api.portal.get_tool("portal_types")
+        fti = pt.getTypeInfo("Plone Site")
+
+        action_obj = fti.getActionObject("object/edit")
+        self.assertIsNotNone(action_obj)
+        self.assertTrue("Modify portal content" in action_obj.permissions)
+
 
 class TestUninstall(unittest.TestCase):
 

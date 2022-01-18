@@ -46,7 +46,10 @@ class HiddenProfiles(object):
 def post_install(context):
     """Post install script"""
     # For Plone 6, make sure the blocks behavior is enabled in the root
-    add_behavior("Plone Site", "volto.blocks")
+    if PLONE_6:
+        add_behavior("Plone Site", "volto.blocks")
+    else:
+        set_edit_action_in_plone_site_for_plone5(context)
 
     # Remove plone.richtext from content types with blocks enabled
     for type_ in NO_RICHTEXT_BEHAVIOR_CONTENT_TYPES:
@@ -169,6 +172,47 @@ def remove_behavior(portal_type, behavior):
             if currentbehavior != behavior
         ]
         fti.behaviors = tuple(new)
+
+
+def set_edit_action_in_plone_site_for_plone5(context):
+    pt = api.portal.get_tool("portal_types")
+    fti = pt.getTypeInfo("Plone Site")
+
+    # Plone site Edit action properties
+    action_id = "edit"
+    category = "object"
+    condition = ""
+    title = "Edit"
+    action = "string:${object_url}/edit"
+    visible = "True"
+    permissions = ["Modify portal content"]
+    icon_expr = ""
+    link_target = ""
+
+    action_obj = fti.getActionObject(category + "/" + action_id)
+
+    if action_obj is None:
+        fti.addAction(
+            action_id,
+            title,
+            action,
+            condition,
+            tuple(permissions),
+            category,
+            visible,
+            icon_expr=icon_expr,
+            link_target=link_target,
+        )
+    else:
+        action_obj.edit(
+            title=title,
+            action=action,
+            icon_expr=icon_expr,
+            condition=condition,
+            permissions=tuple(permissions),
+            visible=visible,
+            link_target=link_target,
+        )
 
 
 def create_default_homepage_draftjs(context):

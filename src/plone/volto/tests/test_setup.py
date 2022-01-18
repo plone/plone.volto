@@ -12,6 +12,15 @@ else:
 
 import unittest
 
+try:
+    from Products.CMFPlone.factory import PLONE60MARKER
+
+    PLONE60MARKER  # pyflakes
+except ImportError:
+    PLONE_6 = False
+else:
+    PLONE_6 = True
+
 
 class TestSetup(unittest.TestCase):
     """Test that plone.volto is properly installed."""
@@ -40,6 +49,10 @@ class TestSetup(unittest.TestCase):
 
         self.assertIn(IPloneVoltoCoreLayer, utils.registered_layers())
 
+    @unittest.skipIf(
+        not PLONE_6,
+        "This test is only intended to run for Plone 6",
+    )
     def test_plone_site_has_blocks_behavior(self):
         pt = api.portal.get_tool("portal_types")
         fti = pt.getTypeInfo("Plone Site")

@@ -1,8 +1,42 @@
 from copy import deepcopy
 from plone import api
 from plone.restapi.behaviors import IBlocks
+from plone.volto import content
+from plone.volto import logger
 from plone.volto.setuphandlers import NO_RICHTEXT_BEHAVIOR_CONTENT_TYPES
 from plone.volto.setuphandlers import remove_behavior
+
+
+MIGRATION = {
+    "Document": content.FolderishDocument,
+    "Event": content.FolderishEvent,
+    "News Item": content.FolderishNewsItem,
+}
+
+
+def migrate_content_classes(context):
+    """Migrate content created with collective.folderishtypes to plone.volto."""
+    interface = "collective.folderishtypes.interfaces.IFolderishType"
+    idxs = [
+        "object_provides",
+    ]
+    brains = api.content.find(object_provides=interface)
+    total_brains = len(brains)
+    logger.info(f"Migration: {total_brains} contents to be migrated.")
+    for idx, brain in enumerate(brains):
+        content = brain.getObject()
+        content_id = content.getId()
+        content.__class__ = MIGRATION[content.portal_type]
+        parent = content.aq_parent
+        parent._delOb(content_id)
+        parent._setOb(content_id, content)
+        content = parent[content_id]
+        content.reindexObject(idxs=idxs)
+
+        if idx and idx % 100 == 0:
+            logger.info(f"Migration: {idx + 1} / {total_brains}")
+
+    logger.info("Migration from collective.folderishtypes to plone.volto complete")
 
 
 def from12to13_migrate_listings(context):

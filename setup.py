@@ -57,7 +57,6 @@ setup(
         "Products.GenericSetup",
         "setuptools",
         "plone.restapi>=8.13.0",
-        "collective.folderishtypes[dexterity]",
         "plone.app.vocabularies>=4.3.0",
     ],
     extras_require={

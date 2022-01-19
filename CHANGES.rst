@@ -11,6 +11,12 @@ Changelog
 3.1.0a9 (2022-01-15)
 --------------------
 
+Breaking:
+
+- Remove c.folderishtypes dependency
+
+New Feature:
+
 - Add new field in the coresandbox: not constrained by vocabulary field but the vocabulary defined in the widget.
   [sneridagh]
 

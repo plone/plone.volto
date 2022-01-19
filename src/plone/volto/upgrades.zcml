@@ -21,4 +21,20 @@
       import_steps="catalog"
       />
 
+  <genericsetup:upgradeDepends
+      title="Move from c.folderishtypes to local"
+      profile="plone.volto:default"
+      source="1012"
+      destination="1013"
+      import_steps="typeinfo"
+      />
+
+  <genericsetup:upgradeStep
+      title="Migrate existing content classes from old c.folderishtypes to local"
+      profile="plone.volto:default"
+      source="1013"
+      destination="1014"
+      handler=".upgrades.migrate_content_classes"
+      />
+
 </configure>

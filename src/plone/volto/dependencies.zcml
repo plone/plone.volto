@@ -18,6 +18,5 @@
       />
   <include package="plone.restapi" />
   <include package="plone.api" />
-  <include package="collective.folderishtypes" />
 
 </configure>

@@ -19,6 +19,12 @@ Changelog
 - Remove ``plone.richtext`` behavior from Plone Site, Document, News Item, Events
   [sneridagh]
 
+- Add blocks behavior on Event and NewsItem
+  [nzambello]
+
+- Add preview_image to Event
+  [nzambello]
+
 3.1.0a9 (2022-01-15)
 --------------------
 

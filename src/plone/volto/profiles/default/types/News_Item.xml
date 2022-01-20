@@ -5,5 +5,6 @@
   <property name="klass">plone.volto.content.FolderishNewsItem</property>
   <property name="behaviors" purge="false">
     <element value="plone.constraintypes"/>
+    <element value="volto.blocks" />
   </property>
 </object>

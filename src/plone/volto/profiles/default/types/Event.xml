@@ -5,5 +5,7 @@
   <property name="klass">plone.volto.content.FolderishEvent</property>
   <property name="behaviors" purge="false">
     <element value="plone.constraintypes"/>
+    <element value="volto.blocks" />
+    <element value="volto.preview_image" />
   </property>
 </object>

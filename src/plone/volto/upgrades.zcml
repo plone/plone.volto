@@ -51,4 +51,12 @@
         handler=".upgrades.remove_plone_richtext_behavior"
         />
   </genericsetup:upgradeSteps>
+
+  <genericsetup:upgradeDepends
+      title="Add blocks behavior to Event and News Item"
+      profile="plone.volto:default"
+      source="1015"
+      destination="1016"
+      import_steps="typeinfo"
+      />
 </configure>

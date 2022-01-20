@@ -37,4 +37,18 @@
       handler=".upgrades.migrate_content_classes"
       />
 
+  <genericsetup:upgradeSteps
+      profile="plone.volto:default"
+      source="1014"
+      destination="1015"
+      >
+    <genericsetup:upgradeDepends
+        title="Update types info for Plone Site"
+        import_steps="typeinfo"
+        />
+    <genericsetup:upgradeStep
+        title="remove plone.richtext from Plone Site, Document, News Item, Event"
+        handler=".upgrades.remove_plone_richtext_behavior"
+        />
+  </genericsetup:upgradeSteps>
 </configure>

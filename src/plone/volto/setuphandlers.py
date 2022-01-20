@@ -2,22 +2,14 @@
 from plone import api
 from plone.app.multilingual.browser.setup import SetupMultilingualSite
 from plone.app.multilingual.setuphandlers import enable_translatable_behavior
-from plone.app.portlets.utils import assignment_mapping_from_key
 from plone.dexterity.interfaces import IDexterityFTI
-from plone.portlets.constants import CONTEXT_CATEGORY
-from plone.portlets.interfaces import IPortletAssignmentMapping
-from plone.portlets.interfaces import IPortletManager
 from plone.volto.default_homepage.default import default_home
 from plone.volto.default_homepage.demo import demo_home_page
 from plone.volto.default_homepage.lrf import default_lrf_home
 from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone.interfaces import INonInstallable
 from Products.CMFPlone.utils import get_installer
-from zope.component import getMultiAdapter
-from zope.component import getUtility
 from zope.component import queryUtility
-from zope.component.interfaces import IFactory
-from zope.container.interfaces import INameChooser
 from zope.interface import implementer
 
 import json
@@ -36,6 +28,13 @@ else:
 
 logger = logging.getLogger("plone.volto")
 
+NO_RICHTEXT_BEHAVIOR_CONTENT_TYPES = [
+    "Plone Site",
+    "Document",
+    "News Item",
+    "Event",
+]
+
 
 @implementer(INonInstallable)
 class HiddenProfiles(object):
@@ -49,6 +48,12 @@ def post_install(context):
     # For Plone 6, make sure the blocks behavior is enabled in the root
     if PLONE_6:
         add_behavior("Plone Site", "volto.blocks")
+    else:
+        set_edit_action_in_plone_site_for_plone5(context)
+
+    # Remove plone.richtext from content types with blocks enabled
+    for type_ in NO_RICHTEXT_BEHAVIOR_CONTENT_TYPES:
+        remove_behavior(type_, "plone.richtext")
 
 
 def uninstall(context):
@@ -147,64 +152,67 @@ def add_catalog_indexes(context, wanted=None):
 
 def add_behavior(portal_type, behavior):
     fti = queryUtility(IDexterityFTI, name=portal_type)
-    new = [
-        currentbehavior
-        for currentbehavior in fti.behaviors
-        if currentbehavior != behavior
-    ]
-    new.append(behavior)
-    fti.behaviors = tuple(new)
+    if fti is not None:
+        # This prevents to add the behavior twice
+        new = [
+            currentbehavior
+            for currentbehavior in fti.behaviors
+            if currentbehavior != behavior
+        ]
+        new.append(behavior)
+        fti.behaviors = tuple(new)
 
 
-def setupNavigationPortlet(
-    context,
-    name="",
-    root=None,
-    includeTop=False,
-    currentFolderOnly=False,
-    bottomLevel=0,
-    topLevel=0,
-):
-    """
-    setupNavigationPortlet(portal['vereinigungen']['fachliche-vereinigungen']['sektion-materie-und-kosmos']['gravitation-und-relativitaetstheorie']) # noqa
-    """
-    from plone.app.portlets.portlets.navigation import (
-        Assignment as NavAssignment,
-    )  # noqa
-
-    target_manager = queryUtility(
-        IPortletManager, name="plone.leftcolumn", context=context
-    )
-    target_manager_assignments = getMultiAdapter(
-        (context, target_manager), IPortletAssignmentMapping
-    )
-
-    navtree = NavAssignment(
-        includeTop=includeTop,
-        currentFolderOnly=currentFolderOnly,
-        bottomLevel=bottomLevel,
-        topLevel=topLevel,
-    )
-
-    if "navigation" not in target_manager_assignments.keys():
-        target_manager_assignments["navigation"] = navtree
+def remove_behavior(portal_type, behavior):
+    fti = queryUtility(IDexterityFTI, name=portal_type)
+    if fti is not None:
+        new = [
+            currentbehavior
+            for currentbehavior in fti.behaviors
+            if currentbehavior != behavior
+        ]
+        fti.behaviors = tuple(new)
 
 
-def setupPortletAt(portal, portlet_type, manager, path, name="", **kw):
-    """
-    setupPortletAt(portal, 'portlets.Events', 'plone.rightcolumn', '/vereinigungen/fachliche-vereinigungen/sektion-kondensierte-materie/halbleiterphysik') # noqa
-    """
-    portlet_factory = getUtility(IFactory, name=portlet_type)
-    assignment = portlet_factory(**kw)
-    mapping = assignment_mapping_from_key(
-        portal, manager, CONTEXT_CATEGORY, path, create=True
-    )
+def set_edit_action_in_plone_site_for_plone5(context):
+    pt = api.portal.get_tool("portal_types")
+    fti = pt.getTypeInfo("Plone Site")
 
-    if not name:
-        chooser = INameChooser(mapping)
-        name = chooser.chooseName(None, assignment)
+    # Plone site Edit action properties
+    action_id = "edit"
+    category = "object"
+    condition = ""
+    title = "Edit"
+    action = "string:${object_url}/edit"
+    visible = "True"
+    permissions = ["Modify portal content"]
+    icon_expr = ""
+    link_target = ""
 
-    mapping[name] = assignment
+    action_obj = fti.getActionObject(category + "/" + action_id)
+
+    if action_obj is None:
+        fti.addAction(
+            action_id,
+            title,
+            action,
+            condition,
+            tuple(permissions),
+            category,
+            visible,
+            icon_expr=icon_expr,
+            link_target=link_target,
+        )
+    else:
+        action_obj.edit(
+            title=title,
+            action=action,
+            icon_expr=icon_expr,
+            condition=condition,
+            permissions=tuple(permissions),
+            visible=visible,
+            link_target=link_target,
+        )
 
 
 def create_default_homepage_draftjs(context):

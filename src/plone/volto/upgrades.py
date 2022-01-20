@@ -3,6 +3,8 @@ from plone import api
 from plone.restapi.behaviors import IBlocks
 from plone.volto import content
 from plone.volto import logger
+from plone.volto.setuphandlers import NO_RICHTEXT_BEHAVIOR_CONTENT_TYPES
+from plone.volto.setuphandlers import remove_behavior
 
 
 MIGRATION = {
@@ -96,3 +98,8 @@ def from12to13_migrate_listings(context):
     for brain in pc.unrestrictedSearchResults(object_provides=IBlocks.__identifier__):
         obj = brain.getObject()
         obj.blocks = migrate_listing(obj.blocks)
+
+
+def remove_plone_richtext_behavior(context):
+    for type_ in NO_RICHTEXT_BEHAVIOR_CONTENT_TYPES:
+        remove_behavior(type_, "plone.richtext")

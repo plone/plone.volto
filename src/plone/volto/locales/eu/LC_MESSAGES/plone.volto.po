@@ -1,0 +1,114 @@
+# --- PLEASE EDIT THE LINES BELOW CORRECTLY ---
+# SOME DESCRIPTIVE TITLE.
+# Mikel Larreategi <mlarreategi@codesyntax.com>, 2021
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2021-11-18 08:27+0000\n"
+"PO-Revision-Date: 2021-11-21 16:50+0100\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Language-Code: eu\n"
+"Language-Name: Basque\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: plone.volto\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: eu\n"
+"X-Generator: Poedit 2.3\n"
+
+#: plone/volto/behaviors/configure.zcml:31
+msgid "Adds Head title field"
+msgstr "Goiburuko izenburua gehitu"
+
+#: plone/volto/configure.zcml:37
+msgid "Configures the Plone backend to work with Volto, the new default frontend for Plone 6."
+msgstr "Plone Voltorekin funtzionatzeko konfiguratzen du, Plone 6rako Frontend berria."
+
+#: plone/volto/configure.zcml:55
+msgid "Creates a default page for the site"
+msgstr "Atariaren defektuzko orri berria sortzen du"
+
+#: plone/volto/behaviors/configure.zcml:31
+msgid "Head title field"
+msgstr "Goiburuko izenburuaren eremua"
+
+#: plone/volto/behaviors/headtitle.py:13
+msgid "Header title"
+msgstr "Goiburuko izenburua"
+
+#: plone/volto/behaviors/headtitle.py:15
+msgid "Header title should consist of year and number of the report"
+msgstr "Goiburukoan erabiliko den izenburua"
+
+#: plone/volto/behaviors/configure.zcml:24 plone/volto/behaviors/navtitle.py:12
+msgid "Navigation title"
+msgstr "Nabigazioaren izenburua"
+
+#: plone/volto/behaviors/configure.zcml:24
+msgid "Navigation title used in sections, menus and doormats"
+msgstr "Atal, menu eta akordeoietan erabiliko den nabigazioaren izenburua"
+
+#: plone/volto/configure.zcml:55
+msgid "Plone 6 Frontend (Default content on homepage)"
+msgstr "Plone 6 Frontenda (hasiera orria defektuzko edukiarekin)"
+
+#: plone/volto/configure.zcml:37
+msgid "Plone 6 Frontend (plone.volto)"
+msgstr "Plone 6 Frontenda (plone.volto)"
+
+#: plone/volto/configure.zcml:46
+msgid "Plone 6 Frontend (plone.volto): uninstall"
+msgstr "Plone 6 Frontenda (plone.volto): kendu"
+
+#: plone/volto/behaviors/configure.zcml:17
+msgid "Preview Image"
+msgstr "Irudia"
+
+#: plone/volto/behaviors/preview.py:23
+msgid "Preview image caption"
+msgstr "Irudi-oina"
+
+#: plone/volto/behaviors/configure.zcml:17
+msgid "Preview image for listings"
+msgstr "Zerrendetan erabiliko den irudia"
+
+#: plone/volto/configure.zcml:64
+msgid "Special requirements and setup for demo site"
+msgstr "Demo webgunea konfiguratzeko profil berezia"
+
+#: plone/volto/configure.zcml:73
+msgid "Special test fixture for multilingual use case"
+msgstr "Webgune eleanitzetan erabiltzeko profila"
+
+#: plone/volto/configure.zcml:81
+msgid "Specific profile for re-adding the richtext behavior"
+msgstr "Testu aberatseko portaera gehitzeko profila"
+
+#: plone/volto/configure.zcml:46
+msgid "Uninstalls the plone.volto add-on."
+msgstr "plone.volto kendu"
+
+#. Default: "Insert an image that will be used in listing and teaser blocks."
+#: plone/volto/behaviors/preview.py:15
+msgid "help_previewimage"
+msgstr "Kargatu zerrendetan eta destakatuen blokeetan defektuz erabiliko den irudia"
+
+#. Default: "Preview image"
+#: plone/volto/behaviors/preview.py:14
+msgid "label_previewimage"
+msgstr "Irudia"
+
+#: plone/volto/configure.zcml:64
+msgid "plone.volto demo special requirements"
+msgstr "plone.volto demoren konfigurazio berezia"
+
+#: plone/volto/configure.zcml:73
+msgid "plone.volto multilingual Cypress tests fixtures"
+msgstr "plone.volto eleanitzaren Cypress testen konfigurazioa"
+
+#: plone/volto/configure.zcml:81
+msgid "plone.volto p51 profile"
+msgstr "plone.volto p51 profila"

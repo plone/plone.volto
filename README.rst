@@ -20,7 +20,7 @@ Install plone.volto by adding it to your buildout::
 
     [buildout]
     ...
-    
+
     [instance]
     ...
 
@@ -95,7 +95,7 @@ plone.volto enables the new Volto Blocks editor on ``Document``, ``Language Root
 Multilingual Support
 --------------------
 
-plone.volto supports multilingual websites. 
+plone.volto supports multilingual websites.
 Install PAM before installing this package and demo homepages will be created in each enabled language.
 Currently only support for EN/DE.
 
@@ -103,7 +103,7 @@ Currently only support for EN/DE.
 Volto Blocks for Plone Site Root
 --------------------------------
 
-plone.volto contains a hack to make the Plone site Volto blocks-enabled with some demo content. 
+plone.volto contains a hack to make the Plone site Volto blocks-enabled with some demo content.
 You can take only the hack to enable the blocks on your site.
 
 You can see it in action in the Volto demo: https://6.demo.plone.org
@@ -120,6 +120,10 @@ e.g. in your GS ``metadata.xml`` along with your other dependencies::
     <dependency>plone.volto:default-homepage</dependency>
   </dependencies>
   </metadata>
+
+**NOTE**: From ``plone.volto`` above version 4.0.0, the default block for creating the
+default content in the root (or corresponding Language Root Folders) is "slate". If you
+want still to create draftJS blocks, you need to use the ``default-homepage-drafjs`` profile.
 
 
 Document Content Type

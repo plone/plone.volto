@@ -1,0 +1,86 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    xmlns:i18n="http://namespaces.zope.org/i18n"
+    i18n_domain="plone.volto"
+    >
+
+  <genericsetup:registerProfile
+      name="default"
+      title="Plone 6 Frontend (plone.volto)"
+      description="Configures the Plone backend to work with Volto, the new default frontend for Plone 6."
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      directory="profiles/default"
+      post_handler=".setuphandlers.post_install"
+      />
+
+  <genericsetup:registerProfile
+      name="uninstall"
+      title="Plone 6 Frontend (plone.volto): uninstall"
+      description="Uninstalls the plone.volto add-on."
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      directory="profiles/uninstall"
+      post_handler=".setuphandlers.uninstall"
+      />
+
+  <genericsetup:registerProfile
+      name="default-homepage"
+      title="Plone 6 Frontend (Default content on homepage)"
+      description="Creates a default page for the site"
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      directory="profiles/homepage"
+      post_handler=".setuphandlers.create_default_homepage"
+      />
+
+  <genericsetup:registerProfile
+      name="default-homepage-drafjs"
+      title="Plone 6 Frontend (Default content on homepage with draftJS blocks)"
+      description="Creates a default page for the site using (legacy) draftJS blocks"
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      directory="profiles/homepage"
+      post_handler=".setuphandlers.create_default_homepage_draftjs"
+      />
+
+  <genericsetup:registerProfile
+      name="demo"
+      title="plone.volto demo special requirements"
+      description="Special requirements and setup for demo site"
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      directory="profiles/demo"
+      post_handler=".setuphandlers.create_demo_homepage"
+      />
+
+  <!-- Fixture for coresandbox Cypress tests in Volto repo -->
+  <genericsetup:registerProfile
+      name="coresandbox"
+      title="plone.volto coresandbox Cypress tests fixtures"
+      description="Special test fixture for coresandbox use cases"
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      directory="profiles/coresandbox"
+      post_handler=".setuphandlers.post_install_coresandbox"
+      />
+
+  <!-- Fixture for multilingual Cypress tests in Volto repo -->
+  <genericsetup:registerProfile
+      name="multilingual"
+      title="plone.volto multilingual Cypress tests fixtures"
+      description="Special test fixture for multilingual use case"
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      directory="profiles/multilingual"
+      post_handler=".setuphandlers.post_install_multilingual"
+      />
+
+  <genericsetup:registerProfile
+      name="richtext"
+      title="plone.volto p51 profile"
+      description="Specific profile for re-adding the richtext behavior"
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      directory="profiles/richtext"
+      />
+
+  <utility
+      factory=".setuphandlers.HiddenProfiles"
+      name="plone.volto-hiddenprofiles"
+      />
+
+</configure>

@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<object name="Event" meta_type="Dexterity FTI" i18n:domain="plone"
+    xmlns:i18n="http://xml.zope.org/namespaces/i18n">
+  <property name="filter_content_types">False</property>
+  <property name="klass">plone.volto.content.FolderishEvent</property>
+  <property name="behaviors" purge="false">
+    <element value="plone.constraintypes"/>
+    <element value="volto.blocks" />
+    <element value="volto.preview_image" />
+  </property>
+</object>

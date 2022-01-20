@@ -8,7 +8,7 @@ from zope.schema.vocabulary import SimpleVocabulary
 from plone.app.layout.navigation.root import getNavigationRootObject
 from plone.app.vocabularies.terms import safe_encode
 from plone.registry.interfaces import IRegistry
-from zope.site.hooks import getSite
+from zope.component.hooks import getSite
 
 from BTrees.IIBTree import intersection
 from Products.CMFCore.utils import getToolByName

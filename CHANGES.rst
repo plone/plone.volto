@@ -1,15 +1,48 @@
 Changelog
 =========
 
-3.1.0a8 (unreleased)
---------------------
+3.1.0a10 (unreleased)
+---------------------
 
-New feature:
+- Use by default Slate blocks for the default pages
+  [sneridagh]
+
+- Code cleanup, remove some outdated and unused helpers in ``setuptools.py``
+  [sneridagh]
+
+- Add ``volto.blocks`` behavior to Plone Site GS types info.
+  [sneridagh]
+
+- Remove ``Collection`` from types in GS types info.
+  [sneridagh]
+
+- Remove ``plone.richtext`` behavior from Plone Site, Document, News Item, Events
+  [sneridagh]
 
 - Add blocks behavior on Event and NewsItem
   [nzambello]
+
 - Add preview_image to Event
   [nzambello]
+
+3.1.0a9 (2022-01-15)
+--------------------
+
+Breaking:
+
+- Remove c.folderishtypes dependency
+
+New Feature:
+
+- Add new field in the coresandbox: not constrained by vocabulary field but the vocabulary defined in the widget.
+  [sneridagh]
+
+
+3.1.0a8 (2022-01-12)
+--------------------
+
+- Computed copyright dates for content demo pages
+  [sneridagh]
 
 
 3.1.0a7 (2021-12-11)
@@ -30,6 +63,9 @@ Internal:
 --------------------
 
 New Feature:
+
+- Add Basque and Spanish translations
+  [erral]
 
 - Add Italian translations
   [cekk]

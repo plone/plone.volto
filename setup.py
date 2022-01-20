@@ -24,7 +24,7 @@ long_description = "\n\n".join(
 
 setup(
     name="plone.volto",
-    version="3.1.0a8.dev0",
+    version="3.1.0a10.dev0",
     description="Volto integration add-on for Plone",
     long_description=long_description,
     # Get more from https://pypi.org/classifiers/
@@ -57,7 +57,6 @@ setup(
         "Products.GenericSetup",
         "setuptools",
         "plone.restapi>=8.13.0",
-        "collective.folderishtypes[dexterity]",
         "plone.app.vocabularies>=4.3.0",
     ],
     extras_require={

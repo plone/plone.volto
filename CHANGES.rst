@@ -25,6 +25,10 @@ Changelog
 - Add preview_image to Event
   [nzambello]
 
+- Workaround a test fixture isolation issue with the `IVoltoSettings.frontend_domain`
+  setting.
+  [rpatterson]
+  
 3.1.0a9 (2022-01-15)
 --------------------
 
@@ -43,7 +47,6 @@ New Feature:
 
 - Computed copyright dates for content demo pages
   [sneridagh]
-
 
 3.1.0a7 (2021-12-11)
 --------------------

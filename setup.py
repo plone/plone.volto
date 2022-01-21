@@ -58,6 +58,7 @@ setup(
         "setuptools",
         "plone.restapi>=8.13.0",
         "plone.app.vocabularies>=4.3.0",
+        "collective.monkeypatcher",
     ],
     extras_require={
         "test": [

@@ -52,7 +52,9 @@ def construct_url(self, randomstring):
 
         registry = getUtility(IRegistry)
         settings = registry.forInterface(IVoltoSettings, prefix="volto", check=False)
-        frontend_domain = getattr(settings, "frontend_domain", frontend_domain)
+        settings_frontend_domain = getattr(settings, "frontend_domain", None)
+        if settings_frontend_domain:
+            frontend_domain = settings_frontend_domain
         if frontend_domain.endswith("/"):
             frontend_domain = frontend_domain[:-1]
     return "%s/passwordreset/%s" % (frontend_domain, randomstring)

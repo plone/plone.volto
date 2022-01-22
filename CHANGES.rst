@@ -4,10 +4,9 @@ Changelog
 3.1.0a10 (unreleased)
 ---------------------
 
-- Use by default Slate blocks for the default pages
-  [sneridagh]
+Breaking:
 
-- Code cleanup, remove some outdated and unused helpers in ``setuptools.py``
+- Use Slate blocks for the default pages
   [sneridagh]
 
 - Add ``volto.blocks`` behavior to Plone Site GS types info.
@@ -25,10 +24,16 @@ Changelog
 - Add preview_image to Event
   [nzambello]
 
+Internal:
+
+- Code cleanup, remove some outdated and unused helpers in ``setuptools.py``
+  [sneridagh]
+
 - Workaround a test fixture isolation issue with the `IVoltoSettings.frontend_domain`
   setting.
   [rpatterson]
-  
+
+
 3.1.0a9 (2022-01-15)
 --------------------
 

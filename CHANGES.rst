@@ -1,7 +1,7 @@
 Changelog
 =========
 
-4.0.0a2 (unreleased)
+4.0.0a2 (2022-01-25)
 --------------------
 
 - Bring back the draftJS as default, until Slate is integrated in full in Volto

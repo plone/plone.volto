@@ -219,6 +219,10 @@ def create_default_homepage_draftjs(context):
     create_default_homepage(context, block_type="draftJS")
 
 
+def create_default_homepage_slate(context):
+    create_default_homepage(context, block_type="slate")
+
+
 def create_default_homepage(context, default_home=default_lrf_home, block_type=None):
     """This method allows to pass a dict with the homepage blocks and blocks_layout keys"""
     portal = api.portal.get()

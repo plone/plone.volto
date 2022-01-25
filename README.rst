@@ -121,10 +121,10 @@ e.g. in your GS ``metadata.xml`` along with your other dependencies::
   </dependencies>
   </metadata>
 
-**NOTE**: From ``plone.volto`` above version 4.0.0, the default block for creating the
-default content in the root (or corresponding Language Root Folders) is "slate". If you
-want still to create draftJS blocks, you need to use the ``default-homepage-drafjs`` profile.
-
+**NOTE**: The default block for creating the default content in the root (or
+corresponding Language Root Folders) is "draftJS" text block. ``plone.volto`` provides a
+profile if you want to create Slate blocks: you need to use the ``default-homepage-slate``
+profile.
 
 Document Content Type
 ---------------------

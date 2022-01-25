@@ -29,7 +29,7 @@
       description="Creates a default page for the site"
       provides="Products.GenericSetup.interfaces.EXTENSION"
       directory="profiles/homepage"
-      post_handler=".setuphandlers.create_default_homepage"
+      post_handler=".setuphandlers.create_default_homepage_draftjs"
       />
 
   <genericsetup:registerProfile
@@ -39,6 +39,15 @@
       provides="Products.GenericSetup.interfaces.EXTENSION"
       directory="profiles/homepage"
       post_handler=".setuphandlers.create_default_homepage_draftjs"
+      />
+
+  <genericsetup:registerProfile
+      name="default-homepage-slate"
+      title="Plone 6 Frontend (Default content on homepage with slate blocks)"
+      description="Creates a default page for the site using slate blocks"
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      directory="profiles/homepage"
+      post_handler=".setuphandlers.create_default_homepage_slate"
       />
 
   <genericsetup:registerProfile

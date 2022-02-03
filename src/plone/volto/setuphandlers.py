@@ -68,7 +68,7 @@ def post_install_coresandbox(context):
 def post_install_multilingual(context):
     """Post install script for multilingual fixture"""
     enable_pam(context)
-    create_default_homepage(context, block_type="slate")
+    create_default_homepage(context, block_type="draftJS")
 
 
 def enable_pam(portal):

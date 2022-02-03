@@ -62,7 +62,7 @@ class CatalogNavigationTabs(BrowserView):
 
         if actions is None:
             context_state = getMultiAdapter(
-                (context, self.request), name=u"plone_context_state"
+                (context, self.request), name="plone_context_state"
             )
             actions = context_state.actions(category)
 

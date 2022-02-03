@@ -28,7 +28,7 @@ class TestBlocksUpgrades(unittest.TestCase):
         behavior_list.append("volto.blocks")
         fti.behaviors = tuple(behavior_list)
 
-        self.portal.invokeFactory("Document", id=u"doc1")
+        self.portal.invokeFactory("Document", id="doc1")
         self.image = self.portal[
             self.portal.invokeFactory("Image", id="image-1", title="Target image")
         ]

@@ -1,7 +1,7 @@
 Changelog
 =========
 
-4.0.0a3 (unreleased)
+4.0.0a3 (2022-02-04)
 --------------------
 
 - Fix Multilingual profile, revert to use draftJS (until slate is integrated into Volto)

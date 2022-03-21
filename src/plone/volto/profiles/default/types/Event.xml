@@ -6,6 +6,6 @@
   <property name="behaviors" purge="false">
     <element value="plone.constraintypes"/>
     <element value="volto.blocks" />
-    <element value="volto.preview_image" />
+    <element value="volto.preview" />
   </property>
 </object>

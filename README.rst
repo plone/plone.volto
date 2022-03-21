@@ -187,7 +187,7 @@ The "volto.preview_image behavior can be enabled in the generic setup XML defini
      <!-- Enabled behaviors -->
      <property name="behaviors" purge="false">
        ...
-       <element value="volto.preview_image" />
+       <element value="volto.preview" />
      </property>
      ...
    </object>

@@ -4,7 +4,7 @@ Changelog
 4.0.0a4 (unreleased)
 --------------------
 
-- Nothing changed yet.
+- Combine nav_title and preview_image behavior into one [steffenri]
 
 
 4.0.0a3 (2022-02-04)

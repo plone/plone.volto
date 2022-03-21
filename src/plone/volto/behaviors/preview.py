@@ -5,10 +5,18 @@ from plone.namedfile import field as namedfile
 from plone.supermodel import model
 from zope.interface import provider
 from zope.schema import TextLine
+from plone.supermodel.directives import primary
 
 
 @provider(IFormFieldProvider)
 class IPreview(model.Schema):
+
+    model.fieldset(
+        "preview_fields",
+        label=_(u"Preview Fields"),
+        fields=["nav_title", "preview_image", "preview_caption"],
+    )
+    primary("nav_title")
 
     preview_image = namedfile.NamedBlobImage(
         title=_("label_previewimage", default="Preview image"),
@@ -22,3 +30,4 @@ class IPreview(model.Schema):
     preview_caption = TextLine(
         title=_("Preview image caption"), description="", required=False
     )
+    nav_title = TextLine(title=_("Navigation title"), required=False)

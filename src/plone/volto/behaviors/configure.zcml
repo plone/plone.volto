@@ -10,17 +10,10 @@
       />
 
   <plone:behavior
-      name="volto.preview_image"
-      title="Preview Image"
-      description="Preview image for listings"
+      name="volto.preview"
+      title="Preview Fields"
+      description="Preview image, caption and navigation title"
       provides=".preview.IPreview"
-      />
-
-  <plone:behavior
-      name="volto.navtitle"
-      title="Navigation title"
-      description="Navigation title used in sections, menus and doormats"
-      provides=".navtitle.INavTitle"
       />
 
   <plone:behavior

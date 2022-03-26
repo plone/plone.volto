@@ -27,10 +27,10 @@
       />
 
   <browser:page
-      name="migrate_to_slate"
+      name="migrate_richtext"
       for="zope.interface.Interface"
-      class=".migrate_richtext.TransformRichTextToSlate"
-      template="migrate_to_slate.pt"
+      class=".migrate_richtext.MigrateRichTextToSlate"
+      template="migrate_richtext.pt"
       permission="cmf.ManagePortal"
       />
 

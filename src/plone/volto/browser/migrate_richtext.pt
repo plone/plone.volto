@@ -12,7 +12,7 @@
 
       <p class="documentDescription">Migrate text from RichText-fields to text in the Volto Editor</p>
 
-        <form id="migrate_to_slate" action="@@migrate_to_slate" tal:attributes="action request/URL" method="post" enctype="multipart/form-data">
+        <form id="migrate_richtext" action="@@migrate_richtext" tal:attributes="action request/URL" method="post" enctype="multipart/form-data">
 
             <div class="field mb-3">
               <label for="portal_types" class="form-label">

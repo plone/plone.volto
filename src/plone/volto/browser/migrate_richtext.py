@@ -12,9 +12,8 @@ import transaction
 logger = getLogger(__name__)
 
 
-class TransformRichTextToSlate(BrowserView):
-
-    service = "http://localhost:5000/html"
+class MigrateRichTextToSlate(BrowserView):
+    """Form to trigger migrating html from Richxtext fields to slate."""
 
     def __call__(self):
         request = self.request
@@ -26,12 +25,15 @@ class TransformRichTextToSlate(BrowserView):
         if not self.request.form.get("form.submitted", False):
             return self.index()
 
-        results = migrate_to_slate(
+        results = migrate_richtext_to_slate(
             portal_types=self.portal_types,
             service_url=self.service_url,
             purge_richtext=self.purge_richtext,
         )
-        api.portal.show_message(u"Migrated {} items from richtext to slate".format(results), request=self.request)
+        api.portal.show_message(
+            u"Migrated {} items from richtext to slate".format(results),
+            request=self.request,
+        )
         return self.index()
 
     def types_with_blocks(self):
@@ -57,7 +59,9 @@ class TransformRichTextToSlate(BrowserView):
         return sorted(results, key=itemgetter("title"))
 
 
-def migrate_to_slate(portal_types, service_url="http://localhost:5000/html", purge_richtext=False):
+def migrate_richtext_to_slate(
+    portal_types, service_url="http://localhost:5000/html", purge_richtext=False
+):
 
     if isinstance(portal_types, str):
         portal_types = [portal_types]

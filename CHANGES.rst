@@ -4,7 +4,8 @@ Changelog
 4.0.0a4 (unreleased)
 --------------------
 
-- Nothing changed yet.
+- Add form @@migrate_to_slate to migrate html-richtext to slate blocks
+  [pbauer]
 
 
 4.0.0a3 (2022-02-04)

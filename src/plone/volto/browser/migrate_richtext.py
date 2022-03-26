@@ -31,7 +31,7 @@ class MigrateRichTextToSlate(BrowserView):
             purge_richtext=self.purge_richtext,
         )
         api.portal.show_message(
-            u"Migrated {} items from richtext to slate".format(results),
+            "Migrated {} items from richtext to slate".format(results),
             request=self.request,
         )
         return self.index()

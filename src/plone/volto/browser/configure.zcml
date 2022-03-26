@@ -26,4 +26,12 @@
       zcml:condition="have plone-5"
       />
 
+  <browser:page
+      name="migrate_to_slate"
+      for="zope.interface.Interface"
+      class=".migrate_richtext.TransformRichTextToSlate"
+      template="migrate_to_slate.pt"
+      permission="cmf.ManagePortal"
+      />
+
 </configure>

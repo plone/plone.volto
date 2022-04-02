@@ -4,7 +4,8 @@ Changelog
 4.0.0a4 (unreleased)
 --------------------
 
-- Nothing changed yet.
+- Add string interpolators for volto portal url and volto absolute url. Fixes #44
+  [erral]
 
 
 4.0.0a3 (2022-02-04)

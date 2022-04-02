@@ -15,6 +15,7 @@
 
   <include package=".behaviors" />
   <include package=".browser" />
+  <include package=".interpolators" />
 
   <include file="profiles.zcml" />
   <include file="patches.zcml" />

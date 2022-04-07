@@ -18,18 +18,18 @@ class IPreviewLink(model.Schema):
             "help_previewimage",
             default="Insert an image that will be used in listing and teaser blocks.",
         ),
-        vocabulary='plone.app.vocabularies.Catalog',
+        vocabulary="plone.app.vocabularies.Catalog",
         required=False,
     )
 
     directives.widget(
-        'preview_image_link',
+        "preview_image_link",
         RelatedItemsFieldWidget,
         pattern_options={
-            'selectableTypes': ['Image'],
+            "selectableTypes": ["Image"],
         },
         frontendOptions={
-          "widgetProps": {"return": "single"},
+            "widgetProps": {"return": "single"},
         },
     )
 

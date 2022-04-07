@@ -4,7 +4,8 @@ Changelog
 4.0.0a4 (unreleased)
 --------------------
 
-- Nothing changed yet.
+- Added preview image link behavior
+  [robgietema]
 
 
 4.0.0a3 (2022-02-04)

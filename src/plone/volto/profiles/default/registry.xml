@@ -12,7 +12,7 @@
   <records interface="plone.volto.interfaces.IVoltoSettings" prefix="volto">
   </records>
 
-  <record 
+  <record
     name="plone.types_use_view_action_in_listings"
     interface="Products.CMFPlone.interfaces.controlpanel.ITypesSchema"
     field="types_use_view_action_in_listings"
@@ -21,9 +21,9 @@
   </record>
 
   <!-- Allowed sizes -->
-  <record 
-    name="plone.allowed_sizes" 
-    interface="Products.CMFPlone.interfaces.controlpanel.IImagingSchema" 
+  <record
+    name="plone.allowed_sizes"
+    interface="Products.CMFPlone.interfaces.controlpanel.IImagingSchema"
     field="allowed_sizes"
     purge="True"> <!-- Purge the existing ones! -->
       <value>
@@ -36,7 +36,7 @@
         <element>large 800:65536</element>
         <element>larger 1000:65536</element>
         <element>great 1200:65536</element>
-        <element>huge 1600:65536</element>      
+        <element>huge 1600:65536</element>
       </value>
   </record>
 

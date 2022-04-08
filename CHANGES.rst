@@ -4,7 +4,8 @@ Changelog
 4.0.0a4 (unreleased)
 --------------------
 
-- Nothing changed yet.
+- Fix deprecated import of isDefaultPage
+  [pbauer]
 
 
 4.0.0a3 (2022-02-04)

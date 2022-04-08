@@ -25,11 +25,9 @@ class IPreviewLink(model.Schema):
     directives.widget(
         "preview_image_link",
         RelatedItemsFieldWidget,
-        pattern_options={
-            "selectableTypes": ["Image"],
-        },
         frontendOptions={
-            "widgetProps": {"return": "single"},
+            "widget": "object_browser",
+            "widgetProps": {"mode": "image", "return": "single"},
         },
     )
 

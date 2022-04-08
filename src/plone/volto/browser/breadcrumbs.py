@@ -5,6 +5,7 @@ from plone.app.layout.navigation.root import getNavigationRoot
 from Products.CMFPlone import utils
 from Products.CMFPlone.browser.interfaces import INavigationBreadcrumbs
 from Products.CMFPlone.browser.navigation import get_view_url
+from Products.CMFPlone.defaultpage import check_default_page_via_view
 from Products.CMFPlone.interfaces import IHideFromBreadcrumbs
 from Products.Five import BrowserView
 from zope.component import getMultiAdapter
@@ -46,9 +47,9 @@ class PhysicalNavigationBreadcrumbs(BrowserView):
 
         # don't show default pages in breadcrumbs or pages above the navigation
         # root
-        if not utils.isDefaultPage(context, request) and not rootPath.startswith(
-            itemPath
-        ):
+        if not check_default_page_via_view(
+            context, request
+        ) and not rootPath.startswith(itemPath):
             base += (
                 {
                     "absolute_url": item_url,

@@ -1,10 +1,17 @@
 Changelog
 =========
 
-4.0.0a4 (unreleased)
+.. You should *NOT* be adding new change log entries to this file.
+   You should create a file in the news directory instead.
+   For helpful instructions, please see:
+   https://github.com/plone/plone.releaser/blob/master/ADD-A-NEWS-ITEM.rst
+
+.. towncrier release notes start
+
+4.0.0a4 (2022-04-08)
 --------------------
 
-- Add form @@migrate_to_slate to migrate html-richtext to slate blocks
+- Fix deprecated import of isDefaultPage
   [pbauer]
 
 

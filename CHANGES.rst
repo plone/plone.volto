@@ -1,7 +1,7 @@
 Changelog
 =========
 
-4.0.0a4 (unreleased)
+4.0.0a4 (2022-04-08)
 --------------------
 
 - Fix deprecated import of isDefaultPage

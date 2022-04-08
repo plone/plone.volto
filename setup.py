@@ -24,7 +24,7 @@ long_description = "\n\n".join(
 
 setup(
     name="plone.volto",
-    version="4.0.0a4.dev0",
+    version="4.0.0a4",
     description="Volto integration add-on for Plone",
     long_description=long_description,
     # Get more from https://pypi.org/classifiers/

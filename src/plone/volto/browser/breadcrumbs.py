@@ -47,9 +47,9 @@ class PhysicalNavigationBreadcrumbs(BrowserView):
 
         # don't show default pages in breadcrumbs or pages above the navigation
         # root
-        if not check_default_page_via_view(context, request) and not rootPath.startswith(
-            itemPath
-        ):
+        if not check_default_page_via_view(
+            context, request
+        ) and not rootPath.startswith(itemPath):
             base += (
                 {
                     "absolute_url": item_url,

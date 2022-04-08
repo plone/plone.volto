@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from importlib import import_module
 from plone import api
 from plone.app.multilingual.browser.setup import SetupMultilingualSite
 from plone.app.multilingual.setuphandlers import enable_translatable_behavior
@@ -17,14 +18,7 @@ import logging
 import transaction
 
 
-try:
-    from Products.CMFPlone.factory import PLONE60MARKER
-
-    PLONE60MARKER  # pyflakes
-except ImportError:
-    PLONE_6 = False
-else:
-    PLONE_6 = True
+PLONE_6 = getattr(import_module("Products.CMFPlone.factory"), "PLONE60MARKER", False)
 
 logger = logging.getLogger("plone.volto")
 

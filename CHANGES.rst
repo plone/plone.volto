@@ -4,7 +4,8 @@ Changelog
 4.0.0a5 (unreleased)
 --------------------
 
-- Nothing changed yet.
+- Add better implementation of the PLONE6 check (cosmetic)
+  [sneridagh]
 
 
 4.0.0a4 (2022-04-08)

@@ -18,7 +18,7 @@ YELLOW=`tput setaf 3`
 PLONE5=5.2.7
 PLONE6=6.0.0a4
 
-PACKAGE_NAME=kitconcept.contentcreator
+PACKAGE_NAME=plone.volto
 PACKAGE_PATH=src/
 CHECK_PATH=setup.py $(PACKAGE_PATH)
 

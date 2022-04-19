@@ -1,3 +1,4 @@
+
 name: Black
 on: [push]
 jobs:
@@ -25,7 +26,6 @@ jobs:
           key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
           restore-keys: |
             ${{ runner.os }}-pip-
-
       # install black
       - name: install black
         run: pip install black

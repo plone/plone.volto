@@ -25,11 +25,10 @@ jobs:
           key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
           restore-keys: |
             ${{ runner.os }}-pip-
-
       # install flake8
       - name: install flake8
-        run: pip install flake8
+        run: pip install flakeheaven
 
       # run black
       - name: run flake8
-        run: flake8 src/ setup.py
+        run: flakeheaven lint src/ setup.py

@@ -1,9 +1,12 @@
-# keep in sync with: https://github.com/kitconcept/buildout/edit/master/Makefile
-# update by running 'make update'
-SHELL := /bin/bash
-CURRENT_DIR:=$(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
-
-version = 3
+### Defensive settings for make:
+#     https://tech.davis-hansson.com/p/make/
+SHELL:=bash
+.ONESHELL:
+.SHELLFLAGS:=-xeu -o pipefail -O inherit_errexit -c
+.SILENT:
+.DELETE_ON_ERROR:
+MAKEFLAGS+=--warn-undefined-variables
+MAKEFLAGS+=--no-builtin-rules
 
 # We like colors
 # From: https://coderwall.com/p/izxssa/colored-makefile-for-golang-projects
@@ -12,7 +15,12 @@ GREEN=`tput setaf 2`
 RESET=`tput sgr0`
 YELLOW=`tput setaf 3`
 
-all: .installed.cfg
+PLONE5=5.2.7
+PLONE6=6.0.0a4
+
+PACKAGE_NAME=plone.volto
+PACKAGE_PATH=src/
+CHECK_PATH=setup.py $(PACKAGE_PATH)
 
 # Add the following 'help' target to your Makefile
 # And add help text after each target name starting with '\#\#'
@@ -20,72 +28,73 @@ all: .installed.cfg
 help: ## This help message
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
 
-.PHONY: Update Makefile and Buildout
-update: ## Update Make and Buildout
-	wget -O Makefile https://raw.githubusercontent.com/kitconcept/buildout/master/Makefile
-	wget -O requirements.txt https://raw.githubusercontent.com/kitconcept/buildout/master/requirements.txt
-	wget -O plone-4.3.x.cfg https://raw.githubusercontent.com/kitconcept/buildout/master/plone-4.3.x.cfg
-	wget -O plone-5.1.x.cfg https://raw.githubusercontent.com/kitconcept/buildout/master/plone-5.1.x.cfg
-	wget -O plone-5.2.x.cfg https://raw.githubusercontent.com/kitconcept/buildout/master/plone-5.2.x.cfg
-	wget -O travis.cfg https://raw.githubusercontent.com/kitconcept/buildout/master/travis.cfg
-	wget -O versions.cfg https://raw.githubusercontent.com/kitconcept/buildout/master/versions.cfg
+bin/pip:
+	@echo "$(GREEN)==> Setup Virtual Env$(RESET)"
+	python3 -m venv .
+	bin/pip install -U pip wheel
 
-.installed.cfg: bin/buildout *.cfg
-	bin/buildout
+bin/black:
+	bin/pip install black
 
-bin/buildout: bin/pip
-	bin/pip install --upgrade pip
-	bin/pip install -r requirements.txt
-	@touch -c $@
+bin/isort:
+	bin/pip install isort
 
-bin/python bin/pip:
-	python$(version) -m venv . || virtualenv --clear --python=python$(version) .
+bin/flakeheaven:
+	bin/pip install flakeheaven
+
+.PHONY: build-plone-5.2
+build-plone-5.2: bin/pip ## Build Plone 5.2
+	@echo "$(GREEN)==> Build with Plone 5.2$(RESET)"
+	bin/pip install Plone plone.app.testing -c https://dist.plone.org/release/$(PLONE5)/constraints.txt
+	bin/pip install -e ".[test]"
+	bin/mkwsgiinstance -d . -u admin:admin
+
+.PHONY: build-plone-6.0
+build-plone-6.0: bin/pip ## Build Plone 6.0
+	@echo "$(GREEN)==> Build with Plone 6.0$(RESET)"
+	bin/pip install Plone plone.app.testing -c https://dist.plone.org/release/$(PLONE6)/constraints.txt
+	bin/pip install -e ".[test]"
+	bin/mkwsgiinstance -d . -u admin:admin
+
+.PHONY: build
+build: build-plone-6.0 ## Build Plone 6.0
+
+.PHONY: clean
+clean: ## Remove old virtualenv and creates a new one
+	@echo "$(RED)==> Cleaning environment and build$(RESET)"
+	rm -rf bin lib lib64 include share etc var inituser pyvenv.cfg .installed.cfg
+
+.PHONY: black
+black: bin/black ## Format codebase
+	./bin/black $(CHECK_PATH)
+
+.PHONY: isort
+isort: bin/isort ## Format imports in the codebase
+	./bin/isort $(CHECK_PATH)
+
+.PHONY: format
+format: black isort ## Format the codebase according to our standards
+
+.PHONY: lint
+lint: lint-isort lint-black lint-flake8 ## check style with flake8
+
+.PHONY: lint-flake8
+lint-flake8: bin/flakeheaven ## validate black formating
+	./bin/flakeheaven lint $(CHECK_PATH)
 
 
-.PHONY: Build Plone 5.2
-build: .installed.cfg  ## Build Plone 5.2
-	bin/pip install --upgrade pip
-	bin/pip install -r requirements.txt
-	bin/buildout
+.PHONY: lint-black
+lint-black: bin/black ## validate black formating
+	./bin/black --check --diff $(CHECK_PATH)
 
-.PHONY: Build Plone 6.0
-build-plone-6.0:  bin/pip ## Build Plone 6.0
-	bin/pip install --upgrade pip
-	bin/pip install -r https://dist.plone.org/release/6.0.0a2/requirements.txt
-	bin/buildout -c plone-6.0.x.cfg
+.PHONY: lint-isort
+lint-isort: bin/isort ## validate using isort
+	./bin/isort --check-only $(CHECK_PATH)
 
-.PHONY: Test
-test:  ## Test
-	bin/test
+.PHONY: test
+test: ## run tests
+	PYTHONWARNINGS=ignore ./bin/zope-testrunner --auto-color --auto-progress --test-path $(PACKAGE_PATH)
 
-.PHONY: Test Performance
-test-performance:
-	jmeter -n -t performance.jmx -l jmeter.jtl
-
-.PHONY: Code Analysis
-code-analysis:  ## Code Analysis
-	bin/code-analysis
-	if [ -f "bin/black" ]; then bin/black src/ --check ; fi
-
-.PHONY: Black
-black:  ## Black
-	bin/code-analysis
-	if [ -f "bin/black" ]; then bin/black src/ ; fi
-
-.PHONY: Build Docs
-docs:  ## Build Docs
-	bin/sphinxbuilder
-
-.PHONY: Test Release
-test-release:  ## Run Pyroma and Check Manifest
-	bin/pyroma -n 10 -d .
-
-.PHONY: Release
-release:  ## Release
-	bin/fullrelease
-
-.PHONY: Clean
-clean:  ## Clean
-	git clean -Xdf
-
-.PHONY: all clean
+.PHONY: start
+start: ## Start a Plone instance on localhost:8080
+	PYTHONWARNINGS=ignore ./bin/runwsgi etc/zope.ini

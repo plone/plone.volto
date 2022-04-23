@@ -63,10 +63,6 @@
                 </button>
             </div>
 
-            <div metal:use-macro="context/@@exportimport_links/links">
-              Links to all exports and imports
-            </div>
-
         </form>
 
     </tal:main-macro>

@@ -46,7 +46,6 @@
                     type="checkbox"
                     name="purge_richtext:boolean"
                     id="purge_richtext"
-                    value=""
                     tal:attributes="checked python:view.purge_richtext"
                     />
               <label class="form-check-label" for="purge_richtext">

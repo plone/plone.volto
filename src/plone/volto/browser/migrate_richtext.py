@@ -60,10 +60,11 @@ class MigrateRichTextToSlate(BrowserView):
 
 
 def migrate_richtext_to_slate(
-    portal_types, service_url="http://localhost:5000/html", purge_richtext=False
+    portal_types=None, service_url="http://localhost:5000/html", purge_richtext=False
 ):
-
-    if isinstance(portal_types, str):
+    if portal_types is None:
+        portal_types = types_with_blocks()
+    elif isinstance(portal_types, str):
         portal_types = [portal_types]
     fieldname = "text"
     headers = {
@@ -126,4 +127,15 @@ def migrate_richtext_to_slate(
                 transaction.commit()
         msg = f"Migrated {index} {portal_type} to slate"
         logger.info(msg)
+    return results
+
+
+def types_with_blocks():
+    """A list of content types with volto.blocks behavior"""
+    portal_types = api.portal.get_tool("portal_types")
+    results = []
+    for fti in portal_types.listTypeInfo():
+        behaviors = getattr(fti, "behaviors", [])
+        if "volto.blocks" in behaviors:
+            results.append(fti.id)
     return results

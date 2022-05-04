@@ -1,0 +1,114 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      i18n:domain="plone"
+      metal:use-macro="context/main_template/macros/master">
+
+<div metal:fill-slot="main">
+<tal:main-macro metal:define-macro="main">
+
+    <h1 class="documentFirstHeading" i18n:translate="">Migrate to Volto</h1>
+
+    <p class="lead" i18n:translate="">Her you can prepare this site for Volto.</p>
+
+    <h3 i18n:translate="">What is Volto?</h3>
+    <p i18n:translate="">Describe Volto and the installation of it...</p>
+
+    <h3 i18n:translate="">What does this form do?</h3>
+    <p i18n:translate="">Describe the various changes done by this form</p>
+    <ul>
+        <li>Install plone.volto and configure stuff</li>
+        <li>Change existing content to folderish</li>
+        <li>Migrate Richtext to Volto blocks</li>
+    </ul>
+
+    <h3 i18n:translate="">Requirements</h3>
+
+    <strong i18n:translate="">blocks-conversion-tool</strong>
+    <p i18n:translate="">The easiest way to have that running on your machine is: <code>docker run -it -p 5000:5000 plone/blocks-conversion-tool:latest</code></p>
+    <p i18n:translate="">More for options read <a href="https://github.com/plone/blocks-conversion-tool">https://github.com/plone/blocks-conversion-tool</a>.</p>
+
+    <strong i18n:translate="">blocks-conversion-tool</strong>
+    <p i18n:translate="">Panna skinny shop foam percolator shop beans mazagran trifecta. Rich shot brewed dripper as extra go café roast est french variety. Whipped percolator qui grinder black wings white iced sweet rich qui aromatic dark go grinder. French panna java french macchiato caramelization percolator mug at. Au a shop cultivar plunger shop trade that shop in mocha viennese frappuccino variety.</p>
+
+
+    <form id="migrate_to_volto" action="@@migrate_to_volto" tal:attributes="action request/URL" method="post" enctype="multipart/form-data">
+
+        <h3 i18n:translate="">Advanced settings</h3>
+        <p i18n:translate="">
+        We recommend to use the default settings ...
+        White luwak single bar acerbic froth foam pumpkin lungo spice coffee ut bar sweet acerbic.
+        </p>
+
+        <div class="form-check mb-3">
+            <input
+                class="form-check-input"
+                type="checkbox"
+                name="migrate_folders:boolean"
+                id="migrate_folders"
+                tal:attributes="checked python:view.migrate_folders"
+                />
+            <label class="form-check-label" for="migrate_folders">
+            Migrate Folders to Folderish Pages
+            </label>
+            <div class="form-text" i18n:translate="">
+            Extra extraction caramelization cultivar crema ristretto dark foam caffeine rich saucer french lait plunger.
+            </div>
+        </div>
+
+        <div class="form-check mb-3">
+            <input
+                class="form-check-input"
+                type="checkbox"
+                name="migrate_default_pages:boolean"
+                id="migrate_default_pages"
+                tal:attributes="checked python:view.migrate_default_pages"
+                />
+            <label class="form-check-label" for="migrate_default_pages">
+            Migrate content of default Pages into the Folderish Pages if possible
+            </label>
+            <div class="form-text" i18n:translate="">
+            And whipped arabica bar foam to robust cortado robust espresso steamed grounds caffeine ristretto.
+            </div>
+        </div>
+
+        <div class="form-check mb-3">
+            <input
+                class="form-check-input"
+                type="checkbox"
+                name="purge_richtext:boolean"
+                id="purge_richtext"
+                tal:attributes="checked python:view.purge_richtext"
+                />
+            <label class="form-check-label" for="purge_richtext">
+            Purge old Richtext-fields after migrating to Volto blocks
+            </label>
+            <div class="form-text" i18n:translate="">
+            Blue sugar mazagran lait froth viennese acerbic lungo mazagran cappuccino ristretto spice.
+            </div>
+
+        </div>
+
+        <div class="field mb-3">
+            <label for="service_url" class="form-label">
+            URL of blocks-conversion-tool. The migration requires a service to run. See https://github.com/plone/blocks-conversion-tool for details.
+            </label>
+            <input class="form-control" type="text" name="service_url" id="service_url" value=""
+                    tal:attributes="value python:view.service_url">
+        </div>
+
+        <div class="formControls" class="form-group">
+            <input type="hidden" name="form.submitted" value="1"/>
+
+            <button class="btn btn-primary submit-widget button-field context"
+                    type="submit" name="submit" value="export">Migrate to Volto
+            </button>
+        </div>
+
+    </form>
+
+</tal:main-macro>
+</div>
+
+</html>

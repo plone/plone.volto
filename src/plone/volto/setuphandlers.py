@@ -40,7 +40,15 @@ NO_RICHTEXT_BEHAVIOR_CONTENT_TYPES = [
 class HiddenProfiles(object):
     def getNonInstallableProfiles(self):
         """Hide uninstall profile from site-creation and quickinstaller"""
-        return ["plone.volto:uninstall"]
+        return [
+            "plone.volto:uninstall",
+        ]
+
+    def getNonInstallableProducts(self):
+        """Hide uninstall profile from site-creation and quickinstaller"""
+        return [
+            "plone.volto",
+        ]
 
 
 def post_install(context):

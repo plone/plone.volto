@@ -34,4 +34,12 @@
       permission="cmf.ManagePortal"
       />
 
+  <browser:page
+      name="migrate_to_volto"
+      for="zope.interface.Interface"
+      class=".migrate_to_volto.MigrateToVolto"
+      template="migrate_to_volto.pt"
+      permission="cmf.ManagePortal"
+      />
+
 </configure>

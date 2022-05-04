@@ -29,7 +29,7 @@
   <browser:page
       name="migrate_richtext"
       for="zope.interface.Interface"
-      class=".migrate_richtext.MigrateRichTextToSlate"
+      class=".migrate_richtext.MigrateRichTextToVoltoBlocks"
       template="migrate_richtext.pt"
       permission="cmf.ManagePortal"
       />

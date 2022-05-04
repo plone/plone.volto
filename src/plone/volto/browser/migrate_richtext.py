@@ -12,7 +12,7 @@ import transaction
 logger = getLogger(__name__)
 
 
-class MigrateRichTextToSlate(BrowserView):
+class MigrateRichTextToVoltoBlocks(BrowserView):
     """Form to trigger migrating html from Richxtext fields to slate."""
 
     def __call__(self):
@@ -21,17 +21,19 @@ class MigrateRichTextToSlate(BrowserView):
         self.purge_richtext = request.get("purge_richtext", False)
         self.portal_types = request.get("portal_types", [])
         self.portal_types_info = self.types_with_blocks()
+        self.convert_to_slate = request.get("convert_to_slate", True)
 
         if not self.request.form.get("form.submitted", False):
             return self.index()
 
-        results = migrate_richtext_to_slate(
+        results = migrate_richtext_to_blocks(
             portal_types=self.portal_types,
             service_url=self.service_url,
             purge_richtext=self.purge_richtext,
+            convert_to_slate=self.convert_to_slate,
         )
         api.portal.show_message(
-            "Migrated {} items from richtext to slate".format(results),
+            "Migrated {} items from richtext to blocks".format(results),
             request=self.request,
         )
         return self.index()
@@ -59,14 +61,17 @@ class MigrateRichTextToSlate(BrowserView):
         return sorted(results, key=itemgetter("title"))
 
 
-def migrate_richtext_to_slate(
-    portal_types=None, service_url="http://localhost:5000/html", purge_richtext=False
+def migrate_richtext_to_blocks(
+    portal_types=None,
+    service_url="http://localhost:5000/html",
+    fieldname="text",
+    purge_richtext=False,
+    convert_to_slate=True,
 ):
     if portal_types is None:
         portal_types = types_with_blocks()
     elif isinstance(portal_types, str):
         portal_types = [portal_types]
-    fieldname = "text"
     headers = {
         "Accept": "application/json",
         "Content-Type": "application/json",
@@ -86,7 +91,18 @@ def migrate_richtext_to_slate(
                 continue
 
             # use https://github.com/plone/blocks-conversion-tool
-            r = requests.post(service_url, headers=headers, json={"html": text})
+            if convert_to_slate:  # this is the default
+                r = requests.post(
+                    service_url,
+                    headers=headers,
+                    json={"html": text},
+                )
+            else:
+                r = requests.post(
+                    service_url,
+                    headers=headers,
+                    json={"html": text, "converter": "draftjs"},
+                )
             r.raise_for_status()
             slate_data = r.json()
             slate_data = slate_data["data"]
@@ -120,12 +136,12 @@ def migrate_richtext_to_slate(
 
             obj.reindexObject(idxs=["SearchableText"])
             results += 1
-            logger.debug(f"Migrated richtext to slate for: {obj.absolute_url()}")
+            logger.debug(f"Migrated richtext to blocks for: {obj.absolute_url()}")
 
             if not index % 1000:
                 logger.info(f"Commiting after {index} items...")
                 transaction.commit()
-        msg = f"Migrated {index} {portal_type} to slate"
+        msg = f"Migrated {index} {portal_type} to blocks"
         logger.info(msg)
     return results
 

@@ -71,7 +71,8 @@ class MigrateToVolto(BrowserView):
             # TODO: Set various attributes and behaviors
             obj = parent[brain.id]
             obj.portal_type = "Document"
-            # TODO: Make sure the behavior-interfaces are applied
+            # Invalidate cache to find the behaviors
+            del obj._v__providedBy__
             if self.migrate_default_pages:
                 self.do_migrate_default_pages(obj)
 
@@ -100,26 +101,26 @@ class MigrateToVolto(BrowserView):
                 blocks, uuids = get_blocks_from_richtext(text)
 
             obj.blocks = blocks
-            obj.blocks_layout = {"items": uuids}
+            obj.blocks_layout["items"] = uuids
 
             if default_page_type == "Collection":
                 listing_block_uuid, listing_block = generate_listing_block_from_query(default_page_obj)
                 # TODO: Set layout of collection to listing block (mapping needed?)
                 obj.blocks[listing_block_uuid] = listing_block
-                obj.blocks_layout.append(listing_block_uuid)
+                obj.blocks_layout["items"].append(listing_block_uuid)
 
             # set title for default page
             obj.title = default_page_obj.title
             uuid = str(uuid4())
             obj.blocks[uuid] = {"@type": "title"}
-            obj.blocks_layout.insert(0, uuid)
+            obj.blocks_layout["items"].insert(0, uuid)
 
             # set description of default page
             obj.description = default_page_obj.description
             if obj.description:
                 uuid = str(uuid4())
                 obj.blocks[uuid] = {"@type": "description"}
-                obj.blocks_layout.insert(1, uuid)
+                obj.blocks_layout["items"].insert(1, uuid)
 
             # TODO: Move to obj: Subjects, Creator, Dates, Constributor, Rights
             # TODO: Add redirect from dropped default-page to container
@@ -135,7 +136,7 @@ class MigrateToVolto(BrowserView):
             # and show a default listing block
             uuid, block = generate_listing_block(obj)
             obj.blocks[uuid] = block
-            obj.blocks_layout.append(uuid)
+            obj.blocks_layout["items"].append(uuid)
 
     def get_blocks_from_richtext(self, text):
         payload = {"html": text}

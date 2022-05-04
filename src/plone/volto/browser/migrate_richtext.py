@@ -91,18 +91,11 @@ def migrate_richtext_to_blocks(
                 continue
 
             # use https://github.com/plone/blocks-conversion-tool
-            if convert_to_slate:  # this is the default
-                r = requests.post(
-                    service_url,
-                    headers=headers,
-                    json={"html": text},
-                )
-            else:
-                r = requests.post(
-                    service_url,
-                    headers=headers,
-                    json={"html": text, "converter": "draftjs"},
-                )
+            payload = {"html": text}
+            if not convert_to_slate:
+                payload["converter"] = "draftjs"
+
+            r = requests.post(service_url, headers=headers, json=payload)
             r.raise_for_status()
             slate_data = r.json()
             slate_data = slate_data["data"]

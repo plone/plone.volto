@@ -1,2 +1,2 @@
-- Add form @@migrate_to_slate to migrate html-richtext to slate blocks
+- Add form @@migrate_richtext to migrate html-richtext to slate blocks or draftjs blocks
   [pbauer]

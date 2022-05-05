@@ -39,9 +39,10 @@
       name="volto-settings"
       />
 
-  <adapter zcml:condition="not-have plone-60"
+  <adapter
       factory=".scaling.VoltoImageScalingFactory"
       for="plone.app.contenttypes.interfaces.IImage"
+      zcml:condition="not-have plone-60"
       />
 
   <adapter

@@ -22,8 +22,10 @@ class MigrateToVolto(BrowserView):
         request = self.request
         self.service_url = request.get("service_url", "http://localhost:5000/html")
         self.migrate_folders = request.get("migrate_folders", True)
+        self.migrate_collections = request.get("migrate_collections", True)
         self.migrate_default_pages = request.get("migrate_default_pages", True)
         self.purge_richtext = request.get("purge_richtext", True)
+        self.convert_to_slate = request.get("convert_to_slate", False)
 
         if not self.request.form.get("form.submitted", False):
             return self.index()
@@ -40,14 +42,17 @@ class MigrateToVolto(BrowserView):
         if self.migrate_folders:
             self.do_migrate_folders()
 
+        if self.migrate_collections:
+            self.do_migrate_collections()
+
         self.request.response.redirect(self.context.absolute_url())
 
     def install_plone_volto(self):
         installer = get_installer(self.context, self.request)
         installer.install_product("plone.volto")
-        transaction.commit()
 
     def migrate_to_folderish(self):
+        """Migrate default itemish content to folderish"""
         folderish_types = [
             "Document",
             "Event",
@@ -60,26 +65,26 @@ class MigrateToVolto(BrowserView):
                 migrate_base_class_to_new_class(obj, migrate_to_folderish=True)
 
     def do_migrate_folders(self):
+        """Migrate Folders to FolderisDocument."""
         catalog = getToolByName(self.context, "portal_catalog")
         for brain in catalog(portal_type="Folder", sort_on="path"):
             obj = brain.getObject()
+            obj = make_document(obj, self.service_url)
             parent = obj.__parent__
-            migrate_base_class_to_new_class(
-                obj,
-                old_class_name="plone.app.contenttypes.content.Folder",
-                # TODO: Change klass to plone.app.contenttypes.content.FolderishDocument?
-                new_class_name="plone.volto.content.FolderishDocument",
-            )
-            # TODO: Set various attributes and behaviors
-            obj = parent[brain.id]
-            obj.portal_type = "Document"
-            # Invalidate cache to find the behaviors
-            del obj._v__providedBy__
             if self.migrate_default_pages:
                 self.do_migrate_default_page(obj)
-            obj._p_changed = True
+
+    def do_migrate_collections(self):
+        """Migrate Collections to FolderisDocument with Listing Blocks
+        Collections that are default pages are already removed when this runs.
+        """
+        catalog = getToolByName(self.context, "portal_catalog")
+        for brain in catalog(portal_type="Collection", sort_on="path"):
+            obj = brain.getObject()
+            obj = make_document(obj, self.service_url)
 
     def do_migrate_default_page(self, obj):
+        """This assumes the obj is already a FolderishDocument"""
         default_page = None
         blocks = {}
         blocks_layout = {"items": []}
@@ -109,12 +114,9 @@ class MigrateToVolto(BrowserView):
                     blocks_layout["items"] += uuids
 
             if default_page_type == "Collection":
-                listing_block_uuid, listing_block = generate_listing_block_from_query(
-                    default_page_obj
-                )
-                # TODO: Set layout of collection to listing block (mapping needed?)
-                blocks[listing_block_uuid] = listing_block
-                blocks_layout["items"].append(listing_block_uuid)
+                uuid, block = generate_listing_block_from_collection(default_page_obj)
+                blocks[uuid] = block
+                blocks_layout["items"].append(uuid)
 
             # set title for default page
             obj.title = default_page_obj.title
@@ -154,6 +156,9 @@ class MigrateToVolto(BrowserView):
             "Content-Type": "application/json",
         }
         payload = {"html": text}
+        if not self.convert_to_slate:
+            # TODO: remove this when slate is merged
+            payload["converter"] = "draftjs"
         r = requests.post(self.service_url, headers=headers, json=payload)
         r.raise_for_status()
         slate_data = r.json()
@@ -168,9 +173,13 @@ class MigrateToVolto(BrowserView):
         return blocks, uuids
 
     def convert_richtext(self):
+        """Get richtext for all content that has it and set as blocks.
+        TODO: This will override any blocks that alreaduy exist. Handle that?
+        """
         migrate_richtext_to_blocks(
             service_url=self.service_url,
             purge_richtext=self.purge_richtext,
+            convert_to_slate=False,
         )
 
     def installed_addons(self):
@@ -183,34 +192,80 @@ class MigrateToVolto(BrowserView):
 
 
 def generate_listing_block(obj):
+    # List content of this container
     uuid = str(uuid4())
-    query = [
-        {
-            "i": "path",
-            "o": "plone.app.querystring.operation.string.path",
-            "v": f"{obj.UID()}::1",
-        }
-    ]
     block = {
         "@type": "listing",
-        "query": query,
-        "sort_on": "getObjPositionInParent",
-        "sort_order": False,
-        "b_size": "30",
+        "query": [],
+        "variation": "default",
         "block": uuid,
     }
     return uuid, block
 
 
-def generate_listing_block_from_query(obj):
+def generate_listing_block_from_collection(obj):
+    """Transform collection query and setting to listing block."""
     collection = ICollection(obj)
     uuid = str(uuid4())
+    qs = {"query": collection.query}
+    if collection.item_count:
+        qs["b_size"] = collection.item_count
+    if collection.limit:
+        qs["limit"] = collection.limit
+    if collection.sort_on:
+        qs["sort_on"] = collection.sort_on
+    qs["sort_order_boolean"] = True if collection.sort_reversed else False
+
+    # Set layout of collection to listing block
+    # TODO: What about event_listing, tabular_view and full_view?
+    variation_mapping = {
+        "listing_view": "default",
+        "summary_view": "summary",
+        "album_view": "imageGallery",
+    }
+    variation = variation_mapping.get(obj.getLayout, "default")
     block = {
         "@type": "listing",
-        "query": collection.query,
-        "sort_on": getattr(collection, "sort_on", "getObjPositionInParent"),
-        "sort_order": getattr(collection, "sort_reversed", False),
-        "b_size": getattr(collection, "item_count", "30"),
+        "query": [],
+        "querystring": qs,
+        "variation": variation,
         "block": uuid,
     }
     return uuid, block
+
+
+def make_document(obj, service_url="http://localhost:5000/html"):
+    """Convert any item to a FolderishDocument"""
+    blocks = {}
+    blocks_layout = {"items": []}
+
+    # set title
+    obj.title = obj.title
+    uuid = str(uuid4())
+    blocks[uuid] = {"@type": "title"}
+    blocks_layout["items"].insert(0, uuid)
+
+    # set description
+    if obj.description:
+        uuid = str(uuid4())
+        blocks[uuid] = {"@type": "description"}
+        blocks_layout["items"].insert(1, uuid)
+
+    if obj.portal_type == "Collection":
+        uuid, block = generate_listing_block_from_collection(obj)
+        blocks[uuid] = block
+        blocks_layout["items"].append(uuid)
+
+    migrate_base_class_to_new_class(
+        obj,
+        new_class_name="plone.volto.content.FolderishDocument",
+    )
+    obj.portal_type = "Document"
+    # Invalidate cache to find the behaviors
+    del obj._v__providedBy__
+
+    obj.blocks = blocks
+    obj.blocks_layout = blocks_layout
+    obj._p_changed = True
+    obj.reindexObject(idxs=["SearchableText"])
+    return obj

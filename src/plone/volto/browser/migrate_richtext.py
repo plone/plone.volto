@@ -21,7 +21,7 @@ class MigrateRichTextToVoltoBlocks(BrowserView):
         self.purge_richtext = request.get("purge_richtext", False)
         self.portal_types = request.get("portal_types", [])
         self.portal_types_info = self.types_with_blocks()
-        self.convert_to_slate = request.get("convert_to_slate", True)
+        self.slate = request.get("slate", True)
 
         if not self.request.form.get("form.submitted", False):
             return self.index()
@@ -30,7 +30,7 @@ class MigrateRichTextToVoltoBlocks(BrowserView):
             portal_types=self.portal_types,
             service_url=self.service_url,
             purge_richtext=self.purge_richtext,
-            convert_to_slate=self.convert_to_slate,
+            slate=self.slate,
         )
         api.portal.show_message(
             "Migrated {} items from richtext to blocks".format(results),
@@ -66,7 +66,7 @@ def migrate_richtext_to_blocks(
     service_url="http://localhost:5000/html",
     fieldname="text",
     purge_richtext=False,
-    convert_to_slate=True,
+    slate=True,
 ):
     if portal_types is None:
         portal_types = types_with_blocks()
@@ -90,40 +90,32 @@ def migrate_richtext_to_blocks(
             if not text or not text.strip():
                 continue
 
-            # use https://github.com/plone/blocks-conversion-tool
-            payload = {"html": text}
-            if not convert_to_slate:
-                payload["converter"] = "draftjs"
-
-            r = requests.post(service_url, headers=headers, json=payload)
-            r.raise_for_status()
-            slate_data = r.json()
-            slate_data = slate_data["data"]
-
             blocks = {}
-            uuids = []
+            blocks_layout = {"items": []}
 
-            # add title
+            # add title block
             uuid = str(uuid4())
             blocks[uuid] = {"@type": "title"}
-            uuids.append(uuid)
+            blocks_layout["items"].append(uuid)
 
-            # add description
+            # add description block
             if obj.description:
                 uuid = str(uuid4())
                 blocks[uuid] = {"@type": "description"}
-                uuids.append(uuid)
+                blocks_layout["items"].append(uuid)
 
-            # TODO: add leadimage block if beahavio is enabled and image exists
+            # TODO: add leadimage block if beahavior is enabled and image exists
 
-            # add slate blocks
-            for block in slate_data:
-                uuid = str(uuid4())
-                uuids.append(uuid)
-                blocks[uuid] = block
+            text_blocks, text_uuids = get_blocks_from_richtext(
+                text,
+                service_url=service_url,
+                slate=slate,
+            )
+            blocks.update(text_blocks)
+            blocks_layout["items"] += text_uuids
 
             obj.blocks = blocks
-            obj.blocks_layout = {"items": uuids}
+            obj.blocks_layout = blocks_layout
             obj._p_changed = True
 
             if purge_richtext:
@@ -139,6 +131,32 @@ def migrate_richtext_to_blocks(
         msg = f"Migrated {index} {portal_type} to blocks"
         logger.info(msg)
     return results
+
+
+def get_blocks_from_richtext(
+    text,
+    service_url="http://localhost:5000/html",
+    slate=True,
+):
+    headers = {
+        "Accept": "application/json",
+        "Content-Type": "application/json",
+    }
+    payload = {"html": text}
+    if not slate:
+        payload["converter"] = "draftjs"
+    r = requests.post(service_url, headers=headers, json=payload)
+    r.raise_for_status()
+    slate_data = r.json()
+    slate_data = slate_data["data"]
+    blocks = {}
+    uuids = []
+    # generate slate blocks
+    for block in slate_data:
+        uuid = str(uuid4())
+        uuids.append(uuid)
+        blocks[uuid] = block
+    return blocks, uuids
 
 
 def types_with_blocks():

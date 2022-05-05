@@ -4,9 +4,12 @@ from plone.app.contenttypes.behaviors.collection import ICollection
 from plone.app.contenttypes.utils import migrate_base_class_to_new_class
 from plone.app.textfield.value import RichTextValue
 from plone.base.utils import get_installer
+from plone.dexterity.interfaces import IDexterityFTI
+from plone.volto.browser.migrate_richtext import get_blocks_from_richtext
 from plone.volto.browser.migrate_richtext import migrate_richtext_to_blocks
 from Products.CMFCore.utils import getToolByName
 from Products.Five import BrowserView
+from zope.component import getUtility
 from uuid import uuid4
 
 import requests
@@ -24,7 +27,8 @@ class MigrateToVolto(BrowserView):
         self.migrate_folders = request.get("migrate_folders", True)
         self.migrate_default_pages = request.get("migrate_default_pages", True)
         self.purge_richtext = request.get("purge_richtext", True)
-        self.convert_to_slate = request.get("convert_to_slate", False)
+        # We still use draftjs at the moment
+        self.slate = request.get("slate", False)
 
         if not self.request.form.get("form.submitted", False):
             return self.index()
@@ -70,7 +74,7 @@ class MigrateToVolto(BrowserView):
         catalog = getToolByName(self.context, "portal_catalog")
         for brain in catalog(portal_type="Folder", sort_on="path"):
             obj = brain.getObject()
-            obj = make_document(obj, self.service_url)
+            obj = make_document(obj, slate=self.slate)
             parent = obj.__parent__
             if self.migrate_default_pages:
                 self.do_migrate_default_page(obj)
@@ -82,7 +86,8 @@ class MigrateToVolto(BrowserView):
         catalog = getToolByName(self.context, "portal_catalog")
         for brain in catalog(portal_type="Collection", sort_on="path"):
             obj = brain.getObject()
-            obj = make_document(obj, self.service_url)
+            # TODO: Migrate richtext (not done by convert_richtext because plone.blocks is not enabled!)
+            obj = make_document(obj, slate=self.slate)
 
     def do_migrate_default_page(self, obj):
         """This assumes the obj is already a FolderishDocument"""
@@ -109,7 +114,7 @@ class MigrateToVolto(BrowserView):
                 text = text.raw
             if text and text.strip():
                 # We have Richtext. Get the block-data for it
-                text_blocks, uuids = self.get_blocks_from_richtext(text)
+                text_blocks, uuids = get_blocks_from_richtext(text, slate=self.slate)
                 if uuids:
                     blocks.update(text_blocks)
                     blocks_layout["items"] += uuids
@@ -151,34 +156,13 @@ class MigrateToVolto(BrowserView):
         obj._p_changed = True
         obj.reindexObject(idxs=["SearchableText"])
 
-    def get_blocks_from_richtext(self, text):
-        headers = {
-            "Accept": "application/json",
-            "Content-Type": "application/json",
-        }
-        payload = {"html": text}
-        if not self.convert_to_slate:
-            payload["converter"] = "draftjs"
-        r = requests.post(self.service_url, headers=headers, json=payload)
-        r.raise_for_status()
-        slate_data = r.json()
-        slate_data = slate_data["data"]
-        blocks = {}
-        uuids = []
-        # generate slate blocks
-        for block in slate_data:
-            uuid = str(uuid4())
-            uuids.append(uuid)
-            blocks[uuid] = block
-        return blocks, uuids
-
     def convert_richtext(self):
         """Get richtext for all content that has it and set as blocks.
         """
         migrate_richtext_to_blocks(
             service_url=self.service_url,
             purge_richtext=self.purge_richtext,
-            convert_to_slate=self.convert_to_slate,
+            slate=self.slate,
         )
 
     def installed_addons(self):
@@ -232,7 +216,7 @@ def generate_listing_block_from_collection(obj):
     return uuid, block
 
 
-def make_document(obj):
+def make_document(obj, slate=True):
     """Convert any item to a FolderishDocument"""
     blocks = {}
     blocks_layout = {"items": []}
@@ -249,6 +233,20 @@ def make_document(obj):
         blocks[uuid] = {"@type": "description"}
         blocks_layout["items"].insert(1, uuid)
 
+    fti = getUtility(IDexterityFTI, name=obj.portal_type)
+    # When volto.blocks is there was alrady done by migrate_richtext
+    # This happens with Collections
+    if "volto.blocks" not in fti.behaviors:
+        text = getattr(obj.aq_base, "text", None)
+        if isinstance(text, RichTextValue):
+            text = text.raw
+        if text and text.strip():
+            # We have Richtext. Get the block-data for it
+            text_blocks, uuids = get_blocks_from_richtext(text, slate=slate)
+            if uuids:
+                blocks.update(text_blocks)
+                blocks_layout["items"] += uuids
+
     if obj.portal_type == "Collection":
         uuid, block = generate_listing_block_from_collection(obj)
         blocks[uuid] = block
@@ -258,7 +256,7 @@ def make_document(obj):
         obj,
         new_class_name="plone.volto.content.FolderishDocument",
     )
-    # drop any custom layout!
+    # Drop any custom layout because Documents display blocks!
     if getattr(obj.aq_base, "layout", None) is not None:
         del obj.layout
 

@@ -9,14 +9,14 @@ from Products.CMFCore.utils import getToolByName
 from Products.Five import BrowserView
 from uuid import uuid4
 
+import requests
 import transaction
 
 logger = getLogger(__name__)
 
 
 class MigrateToVolto(BrowserView):
-    """Basically a configurable upgrade-step to prepare a existing site for Volto.
-    """
+    """Basically a configurable upgrade-step to prepare a existing site for Volto."""
 
     def __call__(self):
         request = self.request
@@ -31,8 +31,8 @@ class MigrateToVolto(BrowserView):
         # 1. Install plone volto to enable plone.blocks behavior and change klass on fti
         self.install_plone_volto()
 
-        # # 2. Migrate to Slate
-        # self.convert_richtext()
+        # 2. Migrate to Slate
+        self.convert_richtext()
 
         # 3. Migrate existing content where fti.klass != obj.__class__
         self.migrate_to_folderish()
@@ -83,12 +83,12 @@ class MigrateToVolto(BrowserView):
         default_page = None
         blocks = {}
         blocks_layout = {"items": []}
-        if 'index_html' in obj:
+        if "index_html" in obj:
             # 1. Check for a index_html item in it
-            default_page = 'index_html'
+            default_page = "index_html"
         else:
             # 2. Check attribute 'default_page'
-            default_page = getattr(aq_base(obj), 'default_page', [])
+            default_page = getattr(aq_base(obj), "default_page", [])
 
         if not default_page or default_page not in obj:
             return
@@ -103,13 +103,15 @@ class MigrateToVolto(BrowserView):
                 text = text.raw
             if text and text.strip():
                 # We have Richtext. Get the block-data for it
-                text_blocks, uuids = get_blocks_from_richtext(text)
+                text_blocks, uuids = self.get_blocks_from_richtext(text)
                 if uuids:
                     blocks.update(text_blocks)
                     blocks_layout["items"] += uuids
 
             if default_page_type == "Collection":
-                listing_block_uuid, listing_block = generate_listing_block_from_query(default_page_obj)
+                listing_block_uuid, listing_block = generate_listing_block_from_query(
+                    default_page_obj
+                )
                 # TODO: Set layout of collection to listing block (mapping needed?)
                 blocks[listing_block_uuid] = listing_block
                 blocks_layout["items"].append(listing_block_uuid)
@@ -147,6 +149,10 @@ class MigrateToVolto(BrowserView):
         obj.reindexObject(idxs=["SearchableText"])
 
     def get_blocks_from_richtext(self, text):
+        headers = {
+            "Accept": "application/json",
+            "Content-Type": "application/json",
+        }
         payload = {"html": text}
         r = requests.post(self.service_url, headers=headers, json=payload)
         r.raise_for_status()

@@ -22,7 +22,6 @@ class MigrateToVolto(BrowserView):
         request = self.request
         self.service_url = request.get("service_url", "http://localhost:5000/html")
         self.migrate_folders = request.get("migrate_folders", True)
-        self.migrate_collections = request.get("migrate_collections", True)
         self.migrate_default_pages = request.get("migrate_default_pages", True)
         self.purge_richtext = request.get("purge_richtext", True)
         self.convert_to_slate = request.get("convert_to_slate", False)
@@ -42,9 +41,11 @@ class MigrateToVolto(BrowserView):
         if self.migrate_folders:
             self.do_migrate_folders()
 
-        if self.migrate_collections:
-            self.do_migrate_collections()
+        self.migrate_collections()
 
+        # TODO: enable preview-image-block for all types with the leadimage-behavior and and image
+
+        # TODO; Log and display results
         self.request.response.redirect(self.context.absolute_url())
 
     def install_plone_volto(self):
@@ -74,7 +75,7 @@ class MigrateToVolto(BrowserView):
             if self.migrate_default_pages:
                 self.do_migrate_default_page(obj)
 
-    def do_migrate_collections(self):
+    def migrate_collections(self):
         """Migrate Collections to FolderisDocument with Listing Blocks
         Collections that are default pages are already removed when this runs.
         """
@@ -157,7 +158,6 @@ class MigrateToVolto(BrowserView):
         }
         payload = {"html": text}
         if not self.convert_to_slate:
-            # TODO: remove this when slate is merged
             payload["converter"] = "draftjs"
         r = requests.post(self.service_url, headers=headers, json=payload)
         r.raise_for_status()
@@ -174,12 +174,11 @@ class MigrateToVolto(BrowserView):
 
     def convert_richtext(self):
         """Get richtext for all content that has it and set as blocks.
-        TODO: This will override any blocks that alreaduy exist. Handle that?
         """
         migrate_richtext_to_blocks(
             service_url=self.service_url,
             purge_richtext=self.purge_richtext,
-            convert_to_slate=False,
+            convert_to_slate=self.convert_to_slate,
         )
 
     def installed_addons(self):
@@ -226,7 +225,6 @@ def generate_listing_block_from_collection(obj):
     variation = variation_mapping.get(obj.getLayout, "default")
     block = {
         "@type": "listing",
-        "query": [],
         "querystring": qs,
         "variation": variation,
         "block": uuid,
@@ -234,7 +232,7 @@ def generate_listing_block_from_collection(obj):
     return uuid, block
 
 
-def make_document(obj, service_url="http://localhost:5000/html"):
+def make_document(obj):
     """Convert any item to a FolderishDocument"""
     blocks = {}
     blocks_layout = {"items": []}
@@ -260,7 +258,7 @@ def make_document(obj, service_url="http://localhost:5000/html"):
         obj,
         new_class_name="plone.volto.content.FolderishDocument",
     )
-    # drop custom layout
+    # drop any custom layout!
     if getattr(obj.aq_base, "layout", None) is not None:
         del obj.layout
 
@@ -268,8 +266,16 @@ def make_document(obj, service_url="http://localhost:5000/html"):
     # Invalidate cache to find the behaviors
     del obj._v__providedBy__
 
-    obj.blocks = blocks
-    obj.blocks_layout = blocks_layout
+    if not obj.blocks:
+        obj.blocks = blocks
+    else:
+        obj.blocks.update(blocks)
+
+    if not obj.blocks_layout["items"]:
+        obj.blocks_layout = blocks_layout
+    else:
+        obj.blocks_layout["items"] += blocks_layout
+
     obj._p_changed = True
     obj.reindexObject(idxs=["SearchableText"])
     return obj

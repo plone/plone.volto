@@ -260,6 +260,10 @@ def make_document(obj, service_url="http://localhost:5000/html"):
         obj,
         new_class_name="plone.volto.content.FolderishDocument",
     )
+    # drop custom layout
+    if getattr(obj.aq_base, "layout", None) is not None:
+        del obj.layout
+
     obj.portal_type = "Document"
     # Invalidate cache to find the behaviors
     del obj._v__providedBy__

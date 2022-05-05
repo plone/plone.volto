@@ -2,6 +2,7 @@ from Acquisition import aq_base
 from logging import getLogger
 from plone.app.contenttypes.behaviors.collection import ICollection
 from plone.app.contenttypes.utils import migrate_base_class_to_new_class
+from plone.app.textfield.value import RichTextValue
 from plone.base.utils import get_installer
 from plone.volto.browser.migrate_richtext import migrate_richtext_to_blocks
 from Products.CMFCore.utils import getToolByName
@@ -30,11 +31,16 @@ class MigrateToVolto(BrowserView):
         # 1. Install plone volto to enable plone.blocks behavior and change klass on fti
         self.install_plone_volto()
 
-        # 2. Migrate existing content where fti.klass != obj.__class__
+        # # 2. Migrate to Slate
+        # self.convert_richtext()
+
+        # 3. Migrate existing content where fti.klass != obj.__class__
         self.migrate_to_folderish()
 
-        # 3. Migrate to Slate
-        self.convert_richtext()
+        if self.migrate_folders:
+            self.do_migrate_folders()
+
+        self.request.response.redirect(self.context.absolute_url())
 
     def install_plone_volto(self):
         installer = get_installer(self.context, self.request)
@@ -53,10 +59,6 @@ class MigrateToVolto(BrowserView):
                 obj = brain.getObject()
                 migrate_base_class_to_new_class(obj, migrate_to_folderish=True)
 
-        transaction.commit()
-        if self.migrate_folders:
-            self.do_migrate_folders()
-
     def do_migrate_folders(self):
         catalog = getToolByName(self.context, "portal_catalog")
         for brain in catalog(portal_type="Folder", sort_on="path"):
@@ -74,10 +76,13 @@ class MigrateToVolto(BrowserView):
             # Invalidate cache to find the behaviors
             del obj._v__providedBy__
             if self.migrate_default_pages:
-                self.do_migrate_default_pages(obj)
+                self.do_migrate_default_page(obj)
+            obj._p_changed = True
 
-    def do_migrate_default_pages(self, obj):
+    def do_migrate_default_page(self, obj):
         default_page = None
+        blocks = {}
+        blocks_layout = {"items": []}
         if 'index_html' in obj:
             # 1. Check for a index_html item in it
             default_page = 'index_html'
@@ -91,36 +96,36 @@ class MigrateToVolto(BrowserView):
         default_page_obj = obj.get(default_page)
         default_page_type = default_page_obj.portal_type
 
-        if default_page_obj in ["Collection", "Document"]:
+        if default_page_type in ["Collection", "Document"]:
             # Handle Richtext
             text = getattr(default_page_obj.aq_base, "text", None)
             if isinstance(text, RichTextValue):
                 text = text.raw
-            if text.strip():
+            if text and text.strip():
                 # We have Richtext. Get the block-data for it
-                blocks, uuids = get_blocks_from_richtext(text)
-
-            obj.blocks = blocks
-            obj.blocks_layout["items"] = uuids
+                text_blocks, uuids = get_blocks_from_richtext(text)
+                if uuids:
+                    blocks.update(text_blocks)
+                    blocks_layout["items"] += uuids
 
             if default_page_type == "Collection":
                 listing_block_uuid, listing_block = generate_listing_block_from_query(default_page_obj)
                 # TODO: Set layout of collection to listing block (mapping needed?)
-                obj.blocks[listing_block_uuid] = listing_block
-                obj.blocks_layout["items"].append(listing_block_uuid)
+                blocks[listing_block_uuid] = listing_block
+                blocks_layout["items"].append(listing_block_uuid)
 
             # set title for default page
             obj.title = default_page_obj.title
             uuid = str(uuid4())
-            obj.blocks[uuid] = {"@type": "title"}
-            obj.blocks_layout["items"].insert(0, uuid)
+            blocks[uuid] = {"@type": "title"}
+            blocks_layout["items"].insert(0, uuid)
 
             # set description of default page
             obj.description = default_page_obj.description
             if obj.description:
                 uuid = str(uuid4())
-                obj.blocks[uuid] = {"@type": "description"}
-                obj.blocks_layout["items"].insert(1, uuid)
+                blocks[uuid] = {"@type": "description"}
+                blocks_layout["items"].insert(1, uuid)
 
             # TODO: Move to obj: Subjects, Creator, Dates, Constributor, Rights
             # TODO: Add redirect from dropped default-page to container
@@ -128,15 +133,18 @@ class MigrateToVolto(BrowserView):
 
             # Delete the default page
             obj.manage_delObjects(default_page)
-            obj._p_changed = True
-            obj.reindexObject(idxs=["SearchableText"])
 
         else:
             # We keep the default page in the new FolderishDocument
             # and show a default listing block
             uuid, block = generate_listing_block(obj)
-            obj.blocks[uuid] = block
-            obj.blocks_layout["items"].append(uuid)
+            blocks[uuid] = block
+            blocks_layout["items"].append(uuid)
+
+        obj.blocks = blocks
+        obj.blocks_layout = blocks_layout
+        obj._p_changed = True
+        obj.reindexObject(idxs=["SearchableText"])
 
     def get_blocks_from_richtext(self, text):
         payload = {"html": text}

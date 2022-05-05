@@ -87,7 +87,7 @@ def migrate_richtext_to_blocks(
                 continue
             if isinstance(text, RichTextValue):
                 text = text.raw
-            if not text.strip():
+            if not text or not text.strip():
                 continue
 
             # use https://github.com/plone/blocks-conversion-tool
@@ -113,6 +113,8 @@ def migrate_richtext_to_blocks(
                 uuid = str(uuid4())
                 blocks[uuid] = {"@type": "description"}
                 uuids.append(uuid)
+
+            # TODO: add leadimage block if beahavio is enabled and image exists
 
             # add slate blocks
             for block in slate_data:

@@ -1,16 +1,18 @@
 from Acquisition import aq_base
 from plone import api
 from plone.app.testing import setRoles
-from plone.app.testing import TEST_USER_ID
 from plone.app.testing import SITE_OWNER_NAME, SITE_OWNER_PASSWORD
+from plone.app.testing import TEST_USER_ID
+from plone.app.textfield.value import RichTextValue
 from plone.base.utils import get_installer
 from plone.volto.content import FolderishDocument
-from plone.volto.content import FolderishNewsItem
 from plone.volto.content import FolderishEvent
+from plone.volto.content import FolderishNewsItem
 from plone.volto.testing import PLONE_VOLTO_MIGRATION_FUNCTIONAL_TESTING
 
+import json
+import responses
 import unittest
-import transaction
 
 
 class TestMigrateToVolto(unittest.TestCase):
@@ -31,7 +33,6 @@ class TestMigrateToVolto(unittest.TestCase):
 
     def test_plonevolto_is_installed(self):
         installer = get_installer(self.portal, self.request)
-        # self.assertTrue(installer.is_product_installable("plone.volto"))
         self.assertFalse(installer.is_product_installed("plone.volto"))
 
         view = self.portal.restrictedTraverse("@@migrate_to_volto")
@@ -78,6 +79,17 @@ class TestMigrateToVolto(unittest.TestCase):
         self.assertEqual(event.portal_type, "Event")
         self.assertTrue(aq_base(event).isPrincipiaFolderish)
         self.assertEqual(event.__class__, FolderishEvent)
+
+        # Doc renders
+        html = doc.__call__()
+        # We can add content
+        news_in_doc = api.content.create(
+            container=doc,
+            type="News Item",
+            id="news-in-doc",
+            title="News in Doc",
+        )
+        self.assertEqual(news_in_doc.__class__, FolderishNewsItem)
 
     def test_folders_are_migrated(self):
         folder = api.content.create(
@@ -203,3 +215,34 @@ class TestMigrateToVolto(unittest.TestCase):
         self.assertEqual(folder["news"].portal_type, "News Item")
         self.assertEqual(folder["news"].title, "News Item")
         self.assertEqual(folder["news"].description, "This is a default news item")
+
+    @responses.activate
+    def test_richtext_is_migrated(self):
+        # Mock response of blocks-conversion-tool for slate
+        html = "<p>I am <a href='https://www.plone.org'>html</a> text</p>"
+        result = json.loads("""{"data":[{"@type":"slate","value":[{"type":"p","children":[{"text":"I am "},{"type":"link","data":{"url":"https://www.plone.org","title":null,"target":null},"children":[{"text":"html"}]},{"text":" text"}]}],"plaintext":"I am html text"}]}""")
+        responses.add(
+            responses.POST,
+            url="http://localhost:5000/html",
+            json=result,
+            )
+
+        doc = api.content.create(
+            container=self.portal,
+            type="Document",
+            id="doc",
+            title="Document",
+            text=RichTextValue(html, "text/plain", "text/html"),
+        )
+        self.assertTrue(isinstance(doc.text, RichTextValue))
+
+        view = self.portal.restrictedTraverse("@@migrate_to_volto")
+        self.request.form["form.submitted"] = True
+        self.request.form["slate"] = True
+        view()
+
+        doc = self.portal["doc"]
+        self.assertIsNone(doc.text)
+        uuid = doc.blocks_layout["items"][1]
+        block = doc.blocks[uuid]
+        self.assertEqual(block["plaintext"], "I am html text")

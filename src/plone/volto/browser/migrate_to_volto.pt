@@ -10,35 +10,44 @@
 
     <h1 class="documentFirstHeading" i18n:translate="">Migrate to Volto</h1>
 
-    <p class="lead" i18n:translate="">Her you can prepare this site for Volto.</p>
+    <p class="lead" i18n:translate="">Here you can prepare this site for Volto.</p>
 
     <h3 i18n:translate="">What is Volto?</h3>
-    <p i18n:translate="">Describe Volto and the installation of it...</p>
+    <p i18n:translate="">Volto is a React-based frontend for Plone. It is the default UI for Plone 6.</p>
 
-    <h3 i18n:translate="">What does this form do?</h3>
-    <p i18n:translate="">Describe the various changes done by this form</p>
-    <ul>
-        <li>Install plone.volto and configure stuff</li>
-        <li>Change existing content to folderish</li>
-        <li>Migrate Richtext to Volto blocks</li>
-    </ul>
-
-    <h3 i18n:translate="">Requirements</h3>
-
-    <strong i18n:translate="">blocks-conversion-tool</strong>
-    <p i18n:translate="">The easiest way to have that running on your machine is: <code>docker run -it -p 5000:5000 plone/blocks-conversion-tool:latest</code></p>
-    <p i18n:translate="">More for options read <a href="https://github.com/plone/blocks-conversion-tool">https://github.com/plone/blocks-conversion-tool</a>.</p>
-
-    <strong i18n:translate="">blocks-conversion-tool</strong>
-    <p i18n:translate="">Panna skinny shop foam percolator shop beans mazagran trifecta. Rich shot brewed dripper as extra go café roast est french variety. Whipped percolator qui grinder black wings white iced sweet rich qui aromatic dark go grinder. French panna java french macchiato caramelization percolator mug at. Au a shop cultivar plunger shop trade that shop in mocha viennese frappuccino variety.</p>
-
+    <h3 i18n:translate="">What will happen?</h3>
+    <p i18n:translate="">When you click on "Migrate to Volto" the following things will happen:</p>
+    <ol>
+        <li i18n:translate="">Install the package <code>plone.volto</code> and <code>plone.restapi</code>.</li>
+        <li i18n:translate="">The html of Richtext-Fields (previously edited using TinyMCE) is converted into Volto blocks so you can edit it in Volto.</li>
+        <li i18n:translate="">Pages, News Items and Events are made folderish. That means they can contain other content like Images or Pages.</li>
+        <li i18n:translate="">Default Pages of Folders are merged with the Folderish Pages that replace the Folder whereever that is possible.
+            This works well with Pages and Collections where the text and/or query are added to the folderish page that repalces the Folder.</li>
+        <li i18n:translate="">Collections are migrated to Pages with Listing Blocks configured like the Collection.</li>
+        <li i18n:translate="">A migrated site will still work in Plone Classic but behave different. Editors can only work with the Data using Volto.</li>
+    </ol>
 
     <form id="migrate_to_volto" action="@@migrate_to_volto" tal:attributes="action request/URL" method="post" enctype="multipart/form-data">
 
+        <div class="formControls form-group">
+            <input type="hidden" name="form.submitted" value="1"/>
+            <button class="btn btn-primary submit-widget button-field context"
+                    type="submit" name="submit" value="export">Migrate to Volto
+            </button>
+        </div>
+
+        <h3 i18n:translate="" class="mt-5">Requirements</h3>
+        <ul>
+            <li i18n:translate="">
+            To migrate Richtext to Volto Blocks you need to have <code>blocks-conversion-tool</code> running on a accessible url.
+            The easiest way to have that running on your machine is: <code>docker run -it -p 5000:5000 plone/blocks-conversion-tool:latest</code>.
+            More for options read <a href="https://github.com/plone/blocks-conversion-tool">https://github.com/plone/blocks-conversion-tool</a>.
+            </li>
+        </ul>
+
         <h3 i18n:translate="">Advanced settings</h3>
         <p i18n:translate="">
-        We recommend to use the default settings ...
-        White luwak single bar acerbic froth foam pumpkin lungo spice coffee ut bar sweet acerbic.
+        It is recommendet to use the default settings but here you can disable some of the migration-steps.
         </p>
 
         <div class="form-check mb-3">
@@ -52,12 +61,9 @@
             <label class="form-check-label" for="migrate_folders">
             Migrate Folders to Folderish Pages
             </label>
-            <div class="form-text" i18n:translate="">
-            Extra extraction caramelization cultivar crema ristretto dark foam caffeine rich saucer french lait plunger.
-            </div>
         </div>
 
-        <div class="form-check mb-3">
+        <div class="form-check mb-3 ms-4">
             <input
                 class="form-check-input"
                 type="checkbox"
@@ -66,10 +72,12 @@
                 tal:attributes="checked python:view.migrate_default_pages"
                 />
             <label class="form-check-label" for="migrate_default_pages">
-            Migrate content of default Pages into the Folderish Pages if possible
+            Migrate default Pages into the Folderish Pages if possible
             </label>
             <div class="form-text" i18n:translate="">
-            And whipped arabica bar foam to robust cortado robust espresso steamed grounds caffeine ristretto.
+            Collections and Pages that are the default-page of a Folder will be applied on the migrated Folderish Page.
+            For Collections that means adding a listing block with the same query.
+            This only happens if you also you migrate Folders to Folderish Pages.
             </div>
         </div>
 
@@ -85,25 +93,21 @@
             Purge old Richtext-fields after migrating to Volto blocks
             </label>
             <div class="form-text" i18n:translate="">
-            Blue sugar mazagran lait froth viennese acerbic lungo mazagran cappuccino ristretto spice.
+            The RichtextValue objects will be removed from the migrated objects. The old fields (from the behavior plone.volto) are no longer available.
             </div>
 
         </div>
 
         <div class="field mb-3">
             <label for="service_url" class="form-label">
-            URL of blocks-conversion-tool. The migration requires a service to run. See https://github.com/plone/blocks-conversion-tool for details.
+            URL of blocks-conversion-tool.
             </label>
             <input class="form-control" type="text" name="service_url" id="service_url" value=""
                     tal:attributes="value python:view.service_url">
-        </div>
+            <div class="form-text" i18n:translate="">
+            The migration requires a service to run. See https://github.com/plone/blocks-conversion-tool for details.
+            </div>
 
-        <div class="formControls" class="form-group">
-            <input type="hidden" name="form.submitted" value="1"/>
-
-            <button class="btn btn-primary submit-widget button-field context"
-                    type="submit" name="submit" value="export">Migrate to Volto
-            </button>
         </div>
 
     </form>

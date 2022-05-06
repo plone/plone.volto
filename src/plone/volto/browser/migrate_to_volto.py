@@ -1,5 +1,6 @@
 from Acquisition import aq_base
 from logging import getLogger
+from plone import api
 from plone.app.contenttypes.behaviors.collection import ICollection
 from plone.app.contenttypes.behaviors.leadimage import ILeadImage
 from plone.app.contenttypes.utils import migrate_base_class_to_new_class
@@ -50,7 +51,7 @@ class MigrateToVolto(BrowserView):
 
         self.enable_leadimage_block()
 
-        # TODO; Log and display results
+        api.portal.show_message("Finished migration to Volto!", self.request)
         self.request.response.redirect(self.context.absolute_url())
 
     def install_plone_volto(self):
@@ -165,8 +166,7 @@ class MigrateToVolto(BrowserView):
         return True
 
     def convert_richtext(self):
-        """Get richtext for all content that has it and set as blocks.
-        """
+        """Get richtext for all content that has it and set as blocks."""
         migrate_richtext_to_blocks(
             service_url=self.service_url,
             purge_richtext=self.purge_richtext,

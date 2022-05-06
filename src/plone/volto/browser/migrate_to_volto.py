@@ -1,6 +1,7 @@
 from Acquisition import aq_base
 from logging import getLogger
 from plone.app.contenttypes.behaviors.collection import ICollection
+from plone.app.contenttypes.behaviors.leadimage import ILeadImage
 from plone.app.contenttypes.utils import migrate_base_class_to_new_class
 from plone.app.textfield.value import RichTextValue
 from plone.base.utils import get_installer
@@ -47,7 +48,7 @@ class MigrateToVolto(BrowserView):
 
         self.migrate_collections()
 
-        # TODO: enable preview-image-block for all types with the leadimage-behavior and and image
+        self.enable_leadimage_block()
 
         # TODO; Log and display results
         self.request.response.redirect(self.context.absolute_url())
@@ -76,8 +77,14 @@ class MigrateToVolto(BrowserView):
             obj = brain.getObject()
             obj = make_document(obj, slate=self.slate)
             parent = obj.__parent__
+            migrated_default_page = False
             if self.migrate_default_pages:
-                self.do_migrate_default_page(obj)
+                migrated_default_page = self.do_migrate_default_page(obj)
+            if not migrated_default_page:
+                uuid, block = generate_listing_block(obj)
+                obj.blocks[uuid] = block
+                obj.blocks_layout["items"].append(uuid)
+                obj._p_changed = True
 
     def migrate_collections(self):
         """Migrate Collections to FolderisDocument with Listing Blocks
@@ -155,6 +162,7 @@ class MigrateToVolto(BrowserView):
         obj.blocks_layout = blocks_layout
         obj._p_changed = True
         obj.reindexObject(idxs=["SearchableText"])
+        return True
 
     def convert_richtext(self):
         """Get richtext for all content that has it and set as blocks.
@@ -172,6 +180,16 @@ class MigrateToVolto(BrowserView):
             if installer.is_profile_installed(profile_id):
                 results.append(profile_id)
         return results
+
+    def enable_leadimage_block(self):
+        catalog = getToolByName(self.context, "portal_catalog")
+        for brain in catalog(object_provides=ILeadImage.__identifier__):
+            obj = brain.getObject()
+            if ILeadImage(obj).image:
+                uuid = str(uuid4())
+                obj.blocks_layout["items"].insert(1, uuid)
+                obj.blocks[uuid] = {"@type": "leadimage"}
+                obj._p_changed = True
 
 
 def generate_listing_block(obj):

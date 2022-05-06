@@ -13,8 +13,6 @@ Changelog
 
 - Fix deprecated import of isDefaultPage
   [pbauer]
-- Conditional custom IImageScaleFactory adapter for Plone < 6 (svg are now handled in plone.namedfile: https://github.com/plone/plone.namedfile/commit/b4f80204759703aa812d1db35589cd92e89ea108).
-  [cekk]
 
 4.0.0a3 (2022-02-04)
 --------------------

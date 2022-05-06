@@ -11,6 +11,7 @@ bin/
 buildout-cache/
 develop-eggs/
 eggs/
+etc/
 htmlcov/
 include/
 lib/
@@ -36,3 +37,4 @@ report.html
 !.travis.yml
 pyvenv.cfg
 extras
+inituser

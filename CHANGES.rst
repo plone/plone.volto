@@ -1,12 +1,12 @@
 Changelog
 =========
 
-4.0.0a5 (unreleased)
---------------------
+.. You should *NOT* be adding new change log entries to this file.
+   You should create a file in the news directory instead.
+   For helpful instructions, please see:
+   https://github.com/plone/plone.releaser/blob/master/ADD-A-NEWS-ITEM.rst
 
-- Add better implementation of the PLONE6 check (cosmetic)
-  [sneridagh]
-
+.. towncrier release notes start
 
 4.0.0a4 (2022-04-08)
 --------------------

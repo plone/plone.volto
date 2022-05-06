@@ -220,12 +220,14 @@ class TestMigrateToVolto(unittest.TestCase):
     def test_richtext_is_migrated(self):
         # Mock response of blocks-conversion-tool for slate
         html = "<p>I am <a href='https://www.plone.org'>html</a> text</p>"
-        result = json.loads("""{"data":[{"@type":"slate","value":[{"type":"p","children":[{"text":"I am "},{"type":"link","data":{"url":"https://www.plone.org","title":null,"target":null},"children":[{"text":"html"}]},{"text":" text"}]}],"plaintext":"I am html text"}]}""")
+        result = json.loads(
+            """{"data":[{"@type":"slate","value":[{"type":"p","children":[{"text":"I am "},{"type":"link","data":{"url":"https://www.plone.org","title":null,"target":null},"children":[{"text":"html"}]},{"text":" text"}]}],"plaintext":"I am html text"}]}"""
+        )
         responses.add(
             responses.POST,
             url="http://localhost:5000/html",
             json=result,
-            )
+        )
 
         doc = api.content.create(
             container=self.portal,

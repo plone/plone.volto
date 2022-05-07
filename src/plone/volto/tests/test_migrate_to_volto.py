@@ -110,12 +110,23 @@ class TestMigrateToVolto(unittest.TestCase):
         self.assertEqual(doc.__class__, FolderishDocument)
 
     def test_collections_are_migrated(self):
-        folder = api.content.create(
+        collection = api.content.create(
             container=self.portal,
             type="Collection",
             id="collection",
             title="Collection",
         )
+        collection.query = [
+            {
+                "i": "portal_type",
+                "o": "plone.app.querystring.operation.selection.any",
+                "v": ["Document"],
+            }
+        ]
+        collection.sort_on = "effective"
+        collection.sort_reversed = False
+        collection.limit = 100
+        collection.item_count = 10
         self.assertEqual(self.portal["collection"].portal_type, "Collection")
 
         view = self.portal.restrictedTraverse("@@migrate_to_volto")
@@ -127,6 +138,25 @@ class TestMigrateToVolto(unittest.TestCase):
         aq_base(collection).isPrincipiaFolderish
         self.assertTrue(aq_base(collection).isPrincipiaFolderish)
         self.assertEqual(collection.__class__, FolderishDocument)
+
+        listing = collection.blocks[collection.blocks_layout["items"][1]]
+        self.assertEqual(listing["@type"], "listing")
+        self.assertEqual(
+            listing["querystring"],
+            {
+                "b_size": 10,
+                "limit": 100,
+                "query": [
+                    {
+                        "i": "portal_type",
+                        "o": "plone.app.querystring.operation.selection.any",
+                        "v": ["Document"],
+                    }
+                ],
+                "sort_on": "effective",
+                "sort_order_boolean": False,
+            },
+        )
 
     def test_default_pages_are_migrated(self):
         folder = api.content.create(

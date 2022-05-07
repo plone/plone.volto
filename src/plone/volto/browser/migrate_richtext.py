@@ -72,10 +72,6 @@ def migrate_richtext_to_blocks(
         portal_types = types_with_blocks()
     elif isinstance(portal_types, str):
         portal_types = [portal_types]
-    headers = {
-        "Accept": "application/json",
-        "Content-Type": "application/json",
-    }
     results = 0
     for portal_type in portal_types:
         for index, brain in enumerate(

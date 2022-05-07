@@ -146,7 +146,13 @@ class MigrateToVolto(BrowserView):
                 blocks_layout["items"].insert(1, uuid)
 
             marker = object()
-            for fieldname in ["subject", "rights", "creators", "contributors", "allow_discussion"]:
+            for fieldname in [
+                "subject",
+                "rights",
+                "creators",
+                "contributors",
+                "allow_discussion",
+            ]:
                 value = getattr(default_page_obj.aq_base, fieldname, marker)
                 if value is not marker:
                     setattr(obj.aq_base, fieldname, value)
@@ -154,7 +160,9 @@ class MigrateToVolto(BrowserView):
             relations = api.relation.get(target=default_page_obj, as_dict=True)
             for key, rels in relations.items():
                 for rel in rels:
-                    api.relation.create(source=rel.from_object, target=obj, relationship=key)
+                    api.relation.create(
+                        source=rel.from_object, target=obj, relationship=key
+                    )
 
             old_path = "/".join(default_page_obj.getPhysicalPath())
             new_path = "/".join(obj.getPhysicalPath())

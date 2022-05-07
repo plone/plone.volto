@@ -4,6 +4,7 @@ from plone import api
 from plone.app.contenttypes.behaviors.collection import ICollection
 from plone.app.contenttypes.behaviors.leadimage import ILeadImage
 from plone.app.contenttypes.utils import migrate_base_class_to_new_class
+from plone.app.redirector.interfaces import IRedirectionStorage
 from plone.app.textfield.value import RichTextValue
 from plone.base.utils import get_installer
 from plone.dexterity.interfaces import IDexterityFTI
@@ -94,7 +95,6 @@ class MigrateToVolto(BrowserView):
         catalog = getToolByName(self.context, "portal_catalog")
         for brain in catalog(portal_type="Collection", sort_on="path"):
             obj = brain.getObject()
-            # TODO: Migrate richtext (not done by convert_richtext because plone.blocks is not enabled!)
             obj = make_document(obj, slate=self.slate)
 
     def do_migrate_default_page(self, obj):
@@ -145,12 +145,26 @@ class MigrateToVolto(BrowserView):
                 blocks[uuid] = {"@type": "description"}
                 blocks_layout["items"].insert(1, uuid)
 
-            # TODO: Move to obj: Subjects, Creator, Dates, Constributor, Rights
-            # TODO: Add redirect from dropped default-page to container
-            # TODO: Recreate relations that pointed to the dropped default page
+            marker = object()
+            for fieldname in ["subject", "rights", "creators", "contributors", "allow_discussion"]:
+                value = getattr(default_page_obj.aq_base, fieldname, marker)
+                if value is not marker:
+                    setattr(obj.aq_base, fieldname, value)
+
+            relations = api.relation.get(target=default_page_obj, as_dict=True)
+            for key, rels in relations.items():
+                for rel in rels:
+                    api.relation.create(source=rel.from_object, target=obj, relationship=key)
+
+            old_path = "/".join(default_page_obj.getPhysicalPath())
+            new_path = "/".join(obj.getPhysicalPath())
 
             # Delete the default page
             obj.manage_delObjects(default_page)
+
+            # Add redirect from dropped default-page to container
+            storage = getUtility(IRedirectionStorage)
+            storage.add(old_path, new_path)
 
         else:
             # We keep the default page in the new FolderishDocument

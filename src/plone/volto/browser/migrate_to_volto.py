@@ -4,6 +4,7 @@ from plone import api
 from plone.app.contenttypes.behaviors.collection import ICollection
 from plone.app.contenttypes.behaviors.leadimage import ILeadImage
 from plone.app.contenttypes.utils import migrate_base_class_to_new_class
+from plone.app.linkintegrity.utils import referencedRelationship
 from plone.app.redirector.interfaces import IRedirectionStorage
 from plone.app.textfield.value import RichTextValue
 from plone.base.utils import get_installer
@@ -146,6 +147,8 @@ class MigrateToVolto(BrowserView):
             relations = api.relation.get(target=default_page_obj, as_dict=True)
             for key, rels in relations.items():
                 for rel in rels:
+                    if key == referencedRelationship or not rel.from_object:
+                        continue
                     api.relation.create(
                         source=rel.from_object, target=obj, relationship=key
                     )
@@ -193,7 +196,7 @@ class MigrateToVolto(BrowserView):
         catalog = getToolByName(self.context, "portal_catalog")
         for brain in catalog(object_provides=ILeadImage.__identifier__):
             obj = brain.getObject()
-            if ILeadImage(obj).image:
+            if getattr(obj.aq_base, "image", None) is not None:
                 uuid = str(uuid4())
                 obj.blocks_layout["items"].insert(1, uuid)
                 obj.blocks[uuid] = {"@type": "leadimage"}

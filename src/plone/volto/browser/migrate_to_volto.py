@@ -12,9 +12,11 @@ from plone.dexterity.interfaces import IDexterityFTI
 from plone.volto.browser.migrate_richtext import get_blocks_from_richtext
 from plone.volto.browser.migrate_richtext import migrate_richtext_to_blocks
 from Products.CMFCore.utils import getToolByName
+from Products.CMFPlone.relationhelper import restore_relations
 from Products.Five import BrowserView
-from zope.component import getUtility
 from uuid import uuid4
+from zope.component import getUtility
+from zope.lifecycleevent import modified
 
 import requests
 import transaction
@@ -71,7 +73,11 @@ class MigrateToVolto(BrowserView):
         for portal_type in folderish_types:
             for brain in catalog(portal_type=portal_type, sort_on="path"):
                 obj = brain.getObject()
+                relations = export_relations(obj)
                 migrate_base_class_to_new_class(obj, migrate_to_folderish=True)
+                modified(obj)
+                if relations:
+                    restore_relations(all_relations=relations)
 
     def do_migrate_folders(self):
         """Migrate Folders to FolderisDocument."""
@@ -144,15 +150,8 @@ class MigrateToVolto(BrowserView):
                 if value is not marker:
                     setattr(obj.aq_base, fieldname, value)
 
-            relations = api.relation.get(target=default_page_obj, as_dict=True)
-            for key, rels in relations.items():
-                for rel in rels:
-                    if key == referencedRelationship or not rel.from_object:
-                        continue
-                    api.relation.create(
-                        source=rel.from_object, target=obj, relationship=key
-                    )
-
+            relations = export_relations(default_page_obj)
+            default_page_uid = default_page_obj.UID()
             old_path = "/".join(default_page_obj.getPhysicalPath())
             new_path = "/".join(obj.getPhysicalPath())
 
@@ -162,6 +161,19 @@ class MigrateToVolto(BrowserView):
             # Add redirect from dropped default-page to container
             storage = getUtility(IRedirectionStorage)
             storage.add(old_path, new_path)
+
+            # rewrite relations to point to parent
+            fixed_relations = []
+            obj_uid = obj.UID()
+            for rel in relations:
+                if default_page_uid == rel["from_uuid"]:
+                    rel["from_uuid"] = obj_uid
+                    fixed_relations.append(rel)
+                if default_page_uid == rel["to_uuid"]:
+                    rel["to_uuid"] = obj_uid
+                    fixed_relations.append(rel)
+            if fixed_relations:
+                restore_relations(all_relations=fixed_relations)
 
         else:
             # We keep the default page in the new FolderishDocument
@@ -281,6 +293,7 @@ def make_document(obj, slate=True):
         blocks[uuid] = block
         blocks_layout["items"].append(uuid)
 
+    relations = export_relations(obj)
     migrate_base_class_to_new_class(
         obj,
         new_class_name="plone.volto.content.FolderishDocument",
@@ -303,6 +316,31 @@ def make_document(obj, slate=True):
     else:
         obj.blocks_layout["items"] += blocks_layout
 
-    obj._p_changed = True
-    obj.reindexObject(idxs=["SearchableText"])
+    modified(obj)
+    if relations:
+        restore_relations(all_relations=relations)
     return obj
+
+
+def export_relations(obj):
+    results = []
+    for rel in api.relation.get(target=obj, unrestricted=True):
+        if rel.from_attribute == referencedRelationship:
+            # drop linkintegrity
+            continue
+        results.append({
+            "from_uuid": rel.from_object.UID(),
+            "to_uuid": rel.to_object.UID(),
+            "from_attribute": rel.from_attribute,
+        })
+
+    for rel in api.relation.get(source=obj, unrestricted=True):
+        if rel.from_attribute == referencedRelationship:
+            # drop linkintegrity
+            continue
+        results.append({
+            "from_uuid": rel.from_object.UID(),
+            "to_uuid": rel.to_object.UID(),
+            "from_attribute": rel.from_attribute,
+        })
+    return results

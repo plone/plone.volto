@@ -100,8 +100,6 @@ class MigrateToVolto(BrowserView):
     def do_migrate_default_page(self, obj):
         """This assumes the obj is already a FolderishDocument"""
         default_page = None
-        blocks = {}
-        blocks_layout = {"items": []}
         if "index_html" in obj:
             # 1. Check for a index_html item in it
             default_page = "index_html"
@@ -114,36 +112,24 @@ class MigrateToVolto(BrowserView):
 
         default_page_obj = obj.get(default_page)
         default_page_type = default_page_obj.portal_type
+        blocks = {}
+        blocks_layout = {"items": []}
 
         if default_page_type in ["Collection", "Document"]:
-            # Handle Richtext
-            text = getattr(default_page_obj.aq_base, "text", None)
-            if isinstance(text, RichTextValue):
-                text = text.raw
-            if text and text.strip():
-                # We have Richtext. Get the block-data for it
-                text_blocks, uuids = get_blocks_from_richtext(text, slate=self.slate)
-                if uuids:
-                    blocks.update(text_blocks)
-                    blocks_layout["items"] += uuids
+            # richtext was already migrated in the first step
+            # we reuse all blocks (except for title and description?)
+            blocks = default_page_obj.blocks or blocks
+            blocks_layout = default_page_obj.blocks_layout or blocks_layout
 
             if default_page_type == "Collection":
                 uuid, block = generate_listing_block_from_collection(default_page_obj)
                 blocks[uuid] = block
                 blocks_layout["items"].append(uuid)
 
-            # set title for default page
+            # set title and description of the default page
+            # the blocks for that are already there
             obj.title = default_page_obj.title
-            uuid = str(uuid4())
-            blocks[uuid] = {"@type": "title"}
-            blocks_layout["items"].insert(0, uuid)
-
-            # set description of default page
             obj.description = default_page_obj.description
-            if obj.description:
-                uuid = str(uuid4())
-                blocks[uuid] = {"@type": "description"}
-                blocks_layout["items"].insert(1, uuid)
 
             marker = object()
             for fieldname in [
@@ -176,7 +162,7 @@ class MigrateToVolto(BrowserView):
 
         else:
             # We keep the default page in the new FolderishDocument
-            # and show a default listing block
+            # and only show a default listing block
             uuid, block = generate_listing_block(obj)
             blocks[uuid] = block
             blocks_layout["items"].append(uuid)

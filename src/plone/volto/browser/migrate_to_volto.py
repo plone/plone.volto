@@ -3,20 +3,25 @@ from logging import getLogger
 from plone import api
 from plone.app.contenttypes.behaviors.collection import ICollection
 from plone.app.contenttypes.behaviors.leadimage import ILeadImage
-from plone.app.contenttypes.utils import migrate_base_class_to_new_class
 from plone.app.linkintegrity.utils import referencedRelationship
 from plone.app.redirector.interfaces import IRedirectionStorage
 from plone.app.textfield.value import RichTextValue
-from plone.base.utils import get_installer
 from plone.dexterity.interfaces import IDexterityFTI
 from plone.volto.browser.migrate_richtext import get_blocks_from_richtext
 from plone.volto.browser.migrate_richtext import migrate_richtext_to_blocks
 from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone.relationhelper import restore_relations
+from Products.CMFPlone.utils import get_installer
 from Products.Five import BrowserView
 from uuid import uuid4
 from zope.component import getUtility
 from zope.lifecycleevent import modified
+
+try:
+    from plone.app.contenttypes.utils import migrate_base_class_to_new_class
+except ImportError:
+    # BBB: Plone 5
+    from plone.app.contenttypes.migration.dxmigration import migrate_base_class_to_new_class
 
 import requests
 import transaction

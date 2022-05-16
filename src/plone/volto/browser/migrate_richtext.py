@@ -1,6 +1,7 @@
 from logging import getLogger
 from operator import itemgetter
 from plone import api
+from plone.app.contenttypes.behaviors.leadimage import ILeadImage
 from plone.app.textfield.value import RichTextValue
 from Products.Five import BrowserView
 from uuid import uuid4
@@ -100,7 +101,10 @@ def migrate_richtext_to_blocks(
                 blocks[uuid] = {"@type": "description"}
                 blocks_layout["items"].append(uuid)
 
-            # TODO: add leadimage block if beahavior is enabled and image exists
+            if ILeadImage(obj, None) and ILeadImage(obj).image:
+                uuid = str(uuid4())
+                obj.blocks_layout["items"].append(uuid)
+                obj.blocks[uuid] = {"@type": "leadimage"}
 
             text_blocks, text_uuids = get_blocks_from_richtext(
                 text,

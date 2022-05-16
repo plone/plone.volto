@@ -53,8 +53,6 @@ class MigrateToVolto(BrowserView):
 
         self.migrate_collections()
 
-        self.enable_leadimage_block()
-
         api.portal.show_message("Finished migration to Volto!", self.request)
         self.request.response.redirect(self.context.absolute_url())
 
@@ -204,16 +202,6 @@ class MigrateToVolto(BrowserView):
                 results.append(profile_id)
         return results
 
-    def enable_leadimage_block(self):
-        catalog = getToolByName(self.context, "portal_catalog")
-        for brain in catalog(object_provides=ILeadImage.__identifier__):
-            obj = brain.getObject()
-            if getattr(obj.aq_base, "image", None) is not None:
-                uuid = str(uuid4())
-                obj.blocks_layout["items"].insert(1, uuid)
-                obj.blocks[uuid] = {"@type": "leadimage"}
-                obj._p_changed = True
-
 
 def generate_listing_block(obj):
     # List content of this container
@@ -328,19 +316,23 @@ def export_relations(obj):
         if rel.from_attribute == referencedRelationship:
             # drop linkintegrity
             continue
-        results.append({
-            "from_uuid": rel.from_object.UID(),
-            "to_uuid": rel.to_object.UID(),
-            "from_attribute": rel.from_attribute,
-        })
+        results.append(
+            {
+                "from_uuid": rel.from_object.UID(),
+                "to_uuid": rel.to_object.UID(),
+                "from_attribute": rel.from_attribute,
+            }
+        )
 
     for rel in api.relation.get(source=obj, unrestricted=True):
         if rel.from_attribute == referencedRelationship:
             # drop linkintegrity
             continue
-        results.append({
-            "from_uuid": rel.from_object.UID(),
-            "to_uuid": rel.to_object.UID(),
-            "from_attribute": rel.from_attribute,
-        })
+        results.append(
+            {
+                "from_uuid": rel.from_object.UID(),
+                "to_uuid": rel.to_object.UID(),
+                "from_attribute": rel.from_attribute,
+            }
+        )
     return results

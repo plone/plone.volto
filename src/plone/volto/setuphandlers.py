@@ -44,12 +44,6 @@ class HiddenProfiles(object):
             "plone.volto:uninstall",
         ]
 
-    def getNonInstallableProducts(self):
-        """Hide uninstall profile from site-creation and quickinstaller"""
-        return [
-            "plone.volto",
-        ]
-
 
 def post_install(context):
     """Post install script"""

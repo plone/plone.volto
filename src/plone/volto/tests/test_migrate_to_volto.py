@@ -4,17 +4,30 @@ from plone.app.testing import setRoles
 from plone.app.testing import SITE_OWNER_NAME, SITE_OWNER_PASSWORD
 from plone.app.testing import TEST_USER_ID
 from plone.app.textfield.value import RichTextValue
-from plone.base.utils import get_installer
 from plone.volto.content import FolderishDocument
 from plone.volto.content import FolderishEvent
 from plone.volto.content import FolderishNewsItem
 from plone.volto.testing import PLONE_VOLTO_MIGRATION_FUNCTIONAL_TESTING
+from Products.CMFPlone.utils import get_installer
 
 import json
 import responses
 import unittest
 
+try:
+    from Products.CMFPlone.factory import PLONE60MARKER
 
+    PLONE60MARKER  # pyflakes
+except ImportError:
+    PLONE_6 = False
+else:
+    PLONE_6 = True
+
+
+@unittest.skipIf(
+    not PLONE_6,
+    "This test is only intended to run for Plone 6",
+)
 class TestMigrateToVolto(unittest.TestCase):
 
     layer = PLONE_VOLTO_MIGRATION_FUNCTIONAL_TESTING

@@ -21,7 +21,9 @@ try:
     from plone.app.contenttypes.utils import migrate_base_class_to_new_class
 except ImportError:
     # BBB: Plone 5
-    from plone.app.contenttypes.migration.dxmigration import migrate_base_class_to_new_class
+    from plone.app.contenttypes.migration.dxmigration import (
+        migrate_base_class_to_new_class,
+    )
 
 import requests
 import transaction

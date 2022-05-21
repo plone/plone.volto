@@ -42,7 +42,7 @@ def construct_url(self, randomstring):
     # domain as seen by Plone backend
     frontend_domain = self.portal_state().navigation_root_url()
     endpoint = "passwordreset"
-    
+
     if IAPIRequest.providedBy(self.request):
         # the reset was requested through restapi, the frontend might have
         # a different domain. Use volto.frontend_domain in the registry
@@ -56,12 +56,10 @@ def construct_url(self, randomstring):
         settings = registry.forInterface(IVoltoSettings, prefix="volto", check=False)
         settings_frontend_domain = getattr(settings, "frontend_domain", None)
         if settings_frontend_domain:
-            endpoint = "password-reset" # volto has a different endpoint
+            endpoint = "password-reset"  # volto has a different endpoint
             frontend_domain = settings_frontend_domain
         if frontend_domain.endswith("/"):
             frontend_domain = frontend_domain[:-1]
-    return "{frontend_domain}/{endpoint}/{randomstring}" % (
-        frontend_domain=frontend_domain,
-        endpoint=endpoint,
-        randomstring=randomstring
+    return "{frontend_domain}/{endpoint}/{randomstring}".format(
+        frontend_domain=frontend_domain, endpoint=endpoint, randomstring=randomstring
     )

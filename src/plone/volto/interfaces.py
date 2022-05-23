@@ -20,6 +20,7 @@ class IVoltoSettings(Interface):
         title="Frontend domain",
         description="Used for rewriting URL's sent in the password reset e-mail by Plone.",
         default="http://localhost:3000",
+        required=False,
     )
 
 

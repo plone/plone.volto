@@ -32,8 +32,20 @@
   <object name="contact" meta_type="CMF Action" i18n:domain="plone">
    <property name="title" i18n:translate="">Contact</property>
    <property name="description" i18n:translate=""></property>
-   <property name="url_expr">string:${globals_view/navigationRootUrl}/contact-info</property>
+   <property name="url_expr">string:${globals_view/navigationRootUrl}/contact-form</property>
    <property name="icon_expr">string:plone-contact-info</property>
+   <property name="available_expr"></property>
+   <property name="permissions">
+    <element value="View"/>
+   </property>
+   <property name="visible">True</property>
+   <property name="modal" type="text">{}</property>
+  </object>
+  <object name="login" meta_type="CMF Action" i18n:domain="plone">
+   <property name="title" i18n:translate="">Login</property>
+   <property name="description" i18n:translate=""></property>
+   <property name="url_expr">string:${globals_view/navigationRootUrl}/login</property>
+   <property name="icon_expr">string:plone-login</property>
    <property name="available_expr"></property>
    <property name="permissions">
     <element value="View"/>

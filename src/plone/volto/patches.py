@@ -57,4 +57,4 @@ def construct_url(self, randomstring):
             frontend_domain = settings_frontend_domain
         if frontend_domain.endswith("/"):
             frontend_domain = frontend_domain[:-1]
-    return "%s/passwordreset/%s" % (frontend_domain, randomstring)
+    return "%s/password-reset/%s" % (frontend_domain, randomstring)

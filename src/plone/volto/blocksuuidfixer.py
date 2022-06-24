@@ -1,8 +1,8 @@
-from Products.Five.browser import BrowserView
 from plone import api
-from plone.restapi.behaviors import IBlocks
-from zope.interface import alsoProvides
 from plone.protect.interfaces import IDisableCSRFProtection
+from plone.restapi.behaviors import IBlocks
+from Products.Five.browser import BrowserView
+from zope.interface import alsoProvides
 
 import uuid
 

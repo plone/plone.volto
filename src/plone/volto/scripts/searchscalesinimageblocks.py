@@ -6,13 +6,14 @@ time bin/instance -O Plone run scripts/blocksremoveserver.py oldservername newse
     newservername can be empty to remove the server name
 """
 
+from copy import deepcopy
 from plone import api
 from plone.restapi.behaviors import IBlocks
-from copy import deepcopy
 
 import os
 import sys
 import transaction
+
 
 PATH = "/Plone"
 

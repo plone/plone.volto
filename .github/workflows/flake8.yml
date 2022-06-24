@@ -31,4 +31,7 @@ jobs:
 
       # run black
       - name: run flake8
-        run: flakeheaven lint src/ setup.py
+        run: |
+          flakeheaven plugins
+          flakeheaven missed
+          flakeheaven lint src/ setup.py

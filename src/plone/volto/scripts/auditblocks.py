@@ -3,9 +3,9 @@ bin/instance -O Plone run scripts/auditblocks.py <block_name>
     This script audits the blocks that you have in a site. If an optional block_name is
     defined, then it returns where is that block defined.
 """
+from collections import Counter
 from plone import api
 from plone.restapi.behaviors import IBlocks
-from collections import Counter
 
 import sys
 

@@ -2,7 +2,6 @@ from Acquisition import aq_base
 from logging import getLogger
 from plone import api
 from plone.app.contenttypes.behaviors.collection import ICollection
-from plone.app.contenttypes.behaviors.leadimage import ILeadImage
 from plone.app.linkintegrity.utils import referencedRelationship
 from plone.app.redirector.interfaces import IRedirectionStorage
 from plone.app.textfield.value import RichTextValue
@@ -17,6 +16,7 @@ from uuid import uuid4
 from zope.component import getUtility
 from zope.lifecycleevent import modified
 
+
 try:
     from plone.app.contenttypes.utils import migrate_base_class_to_new_class
 except ImportError:
@@ -24,9 +24,6 @@ except ImportError:
     from plone.app.contenttypes.migration.dxmigration import (
         migrate_base_class_to_new_class,
     )
-
-import requests
-import transaction
 
 logger = getLogger(__name__)
 
@@ -90,7 +87,6 @@ class MigrateToVolto(BrowserView):
         for brain in catalog(portal_type="Folder", sort_on="path"):
             obj = brain.getObject()
             obj = make_document(obj, slate=self.slate)
-            parent = obj.__parent__
             migrated_default_page = False
             if self.migrate_default_pages:
                 migrated_default_page = self.do_migrate_default_page(obj)

@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 """Setup tests for this package."""
-from plone.volto.testing import PLONE_VOLTO_CORE_INTEGRATION_TESTING  # noqa
 from plone import api
+from plone.volto.testing import PLONE_VOLTO_CORE_INTEGRATION_TESTING  # noqa
+
 
 try:
     from Products.CMFPlone.utils import get_installer
@@ -11,6 +12,7 @@ else:
     HAS_INSTALLER = True
 
 import unittest
+
 
 try:
     from Products.CMFPlone.factory import PLONE60MARKER
@@ -44,8 +46,8 @@ class TestSetup(unittest.TestCase):
 
     def test_browserlayer(self):
         """Test that IPloneVoltoCoreLayer is registered."""
-        from plone.volto.interfaces import IPloneVoltoCoreLayer
         from plone.browserlayer import utils
+        from plone.volto.interfaces import IPloneVoltoCoreLayer
 
         self.assertIn(IPloneVoltoCoreLayer, utils.registered_layers())
 
@@ -90,7 +92,7 @@ class TestUninstall(unittest.TestCase):
 
     def test_browserlayer_removed(self):
         """Test that IPloneVoltoCoreLayer is removed."""
-        from plone.volto.interfaces import IPloneVoltoCoreLayer
         from plone.browserlayer import utils
+        from plone.volto.interfaces import IPloneVoltoCoreLayer
 
         self.assertNotIn(IPloneVoltoCoreLayer, utils.registered_layers())

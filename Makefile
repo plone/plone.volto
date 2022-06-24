@@ -22,6 +22,8 @@ PACKAGE_NAME=plone.volto
 PACKAGE_PATH=src/
 CHECK_PATH=setup.py $(PACKAGE_PATH)
 
+all: build
+
 # Add the following 'help' target to your Makefile
 # And add help text after each target name starting with '\#\#'
 .PHONY: help

@@ -16,6 +16,7 @@ from uuid import uuid4
 from zope.component import getUtility
 from zope.lifecycleevent import modified
 
+
 try:
     from plone.app.contenttypes.utils import migrate_base_class_to_new_class
 except ImportError:

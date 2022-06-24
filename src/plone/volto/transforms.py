@@ -7,9 +7,9 @@ from plone.restapi.serializer.blocks import uid_to_url
 from Products.CMFPlone.interfaces import IPloneSiteRoot
 from six import string_types
 from zope.component import adapter
+from zope.component import subscribers
 from zope.interface import implementer
 from zope.publisher.interfaces.browser import IBrowserRequest
-from zope.component import subscribers
 
 
 class NestedResolveUIDDeserializerBase(object):

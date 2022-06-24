@@ -13,6 +13,7 @@ import json
 import responses
 import unittest
 
+
 try:
     from Products.CMFPlone.factory import PLONE60MARKER
 

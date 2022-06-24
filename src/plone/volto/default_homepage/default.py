@@ -1,5 +1,6 @@
 from datetime import datetime
 
+
 default_home = {
     "draftJS": {
         "title": "Welcome to Volto!",

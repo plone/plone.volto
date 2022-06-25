@@ -8,6 +8,30 @@ Changelog
 
 .. towncrier release notes start
 
+4.0.0a5 (2022-06-25)
+--------------------
+
+New features:
+
+
+- Add form ``@@migrate_richtext`` to migrate ``html-richtext`` to slate blocks or draftjs blocks
+  [pbauer] (#47)
+- Add ``@@migrate_to_volto`` to prepare existing sites for Volto.
+  [pbauer] (#55)
+
+
+Bug fixes:
+
+
+- Update test to 6.0.0a4 and new pip practices.
+  [sneridagh] (#51)
+- Conditional custom ``IImageScaleFactory`` adapter for Plone < 6 (svg are now handled in `plone.namedfile <https://github.com/plone/plone.namedfile/commit/b4f80204759703aa812d1db35589cd92e89ea108>`_).
+  [cekk] (#60)
+- Fixed code quality configuration.
+  Removed unused imports and variables and sorted the imports.
+  [maurits] (#71)
+
+
 4.0.0a4 (2022-04-08)
 --------------------
 

@@ -8,6 +8,16 @@ Changelog
 
 .. towncrier release notes start
 
+4.0.0a6 (2022-06-25)
+--------------------
+
+Bug fixes:
+
+
+- Re-release 4.0.0a5/4.0.0a5.dev0
+  [tisto] (#72)
+
+
 4.0.0a5 (2022-06-25)
 --------------------
 

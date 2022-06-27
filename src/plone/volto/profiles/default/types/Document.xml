@@ -1,16 +1,16 @@
 <?xml version="1.0"?>
-<object
-    i18n:domain="plone"
-    meta_type="Dexterity FTI"
-    name="Document"
-    xmlns:i18n="http://xml.zope.org/namespaces/i18n">
+<object xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+        meta_type="Dexterity FTI"
+        name="Document"
+        i18n:domain="plone"
+>
 
   <property name="filter_content_types">False</property>
   <property name="klass">plone.volto.content.FolderishDocument</property>
 
   <!-- Enabled behaviors -->
   <property name="behaviors">
-    <element value="plone.constraintypes"/>
+    <element value="plone.constraintypes" />
     <element value="plone.namefromtitle" />
     <element value="plone.allowdiscussion" />
     <element value="plone.excludefromnavigation" />

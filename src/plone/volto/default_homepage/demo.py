@@ -1,5 +1,6 @@
 from datetime import datetime
 
+
 demo_home_page = {
     "draftJS": {
         "title": "Welcome to Plone 6!",

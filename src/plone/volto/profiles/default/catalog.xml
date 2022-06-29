@@ -2,6 +2,6 @@
 <object name="portal_catalog">
   <column value="nav_title" />
   <column value="head_title" />
-  <column value="hasPreviewImage"/>
-  <column value="image_field"/>
+  <column value="hasPreviewImage" />
+  <column value="image_field" />
 </object>

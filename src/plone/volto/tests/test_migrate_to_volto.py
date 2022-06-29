@@ -1,7 +1,6 @@
 from Acquisition import aq_base
 from plone import api
 from plone.app.testing import setRoles
-from plone.app.testing import SITE_OWNER_NAME, SITE_OWNER_PASSWORD
 from plone.app.testing import TEST_USER_ID
 from plone.app.textfield.value import RichTextValue
 from plone.volto.content import FolderishDocument
@@ -13,6 +12,7 @@ from Products.CMFPlone.utils import get_installer
 import json
 import responses
 import unittest
+
 
 try:
     from Products.CMFPlone.factory import PLONE60MARKER
@@ -93,8 +93,8 @@ class TestMigrateToVolto(unittest.TestCase):
         self.assertTrue(aq_base(event).isPrincipiaFolderish)
         self.assertEqual(event.__class__, FolderishEvent)
 
-        # Doc renders
-        html = doc.__call__()
+        # Test that doc renders without error.
+        doc.__call__()
         # We can add content
         news_in_doc = api.content.create(
             container=doc,
@@ -105,7 +105,7 @@ class TestMigrateToVolto(unittest.TestCase):
         self.assertEqual(news_in_doc.__class__, FolderishNewsItem)
 
     def test_folders_are_migrated(self):
-        folder = api.content.create(
+        api.content.create(
             container=self.portal,
             type="Folder",
             id="folder1",
@@ -178,7 +178,7 @@ class TestMigrateToVolto(unittest.TestCase):
             id="folder",
             title="Folder",
         )
-        default = api.content.create(
+        api.content.create(
             container=folder,
             type="Document",
             id="doc",
@@ -204,7 +204,7 @@ class TestMigrateToVolto(unittest.TestCase):
             id="folder",
             title="Folder",
         )
-        default = api.content.create(
+        api.content.create(
             container=folder,
             type="Collection",
             id="collection",
@@ -233,7 +233,7 @@ class TestMigrateToVolto(unittest.TestCase):
             title="Folder",
             description="This of the folder",
         )
-        default = api.content.create(
+        api.content.create(
             container=folder,
             type="News Item",
             id="news",

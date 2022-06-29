@@ -1,45 +1,73 @@
 <?xml version="1.0"?>
-<object name="portal_actions" meta_type="Plone Actions Tool"
-   xmlns:i18n="http://xml.zope.org/namespaces/i18n">
- <action-provider name="portal_workflow"/>
- <action-provider name="portal_types"/>
- <action-provider name="portal_actions" />
- <object name="site_actions" meta_type="CMF Action Category">
-  <property name="title" i18n:translate="">Site actions</property>
-  <object name="sitemap" meta_type="CMF Action" i18n:domain="plone">
-   <property name="title" i18n:translate="">Site Map</property>
-   <property name="description" i18n:translate=""></property>
-   <property name="url_expr">string:${globals_view/navigationRootUrl}/sitemap</property>
-   <property name="icon_expr">string:plone-sitemap</property>
-   <property name="available_expr"></property>
-   <property name="permissions">
-    <element value="View"/>
-   </property>
-   <property name="visible">True</property>
+<object xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+        meta_type="Plone Actions Tool"
+        name="portal_actions"
+>
+  <action-provider name="portal_workflow" />
+  <action-provider name="portal_types" />
+  <action-provider name="portal_actions" />
+  <object meta_type="CMF Action Category"
+          name="site_actions"
+  >
+    <property name="title"
+              i18n:translate=""
+    >Site actions</property>
+    <object meta_type="CMF Action"
+            name="sitemap"
+            i18n:domain="plone"
+    >
+      <property name="title"
+                i18n:translate=""
+      >Site Map</property>
+      <property name="description"
+                i18n:translate=""
+      />
+      <property name="url_expr">string:${globals_view/navigationRootUrl}/sitemap</property>
+      <property name="icon_expr">string:plone-sitemap</property>
+      <property name="available_expr" />
+      <property name="permissions">
+        <element value="View" />
+      </property>
+      <property name="visible">True</property>
+    </object>
+    <object meta_type="CMF Action"
+            name="accessibility"
+            i18n:domain="plone"
+    >
+      <property name="title"
+                i18n:translate=""
+      >Accessibility</property>
+      <property name="description"
+                i18n:translate=""
+      />
+      <property name="url_expr">string:${globals_view/navigationRootUrl}/accessibility-info</property>
+      <property name="icon_expr">string:plone-accessibility</property>
+      <property name="available_expr" />
+      <property name="permissions">
+        <element value="View" />
+      </property>
+      <property name="visible">True</property>
+    </object>
+    <object meta_type="CMF Action"
+            name="contact"
+            i18n:domain="plone"
+    >
+      <property name="title"
+                i18n:translate=""
+      >Contact</property>
+      <property name="description"
+                i18n:translate=""
+      />
+      <property name="url_expr">string:${globals_view/navigationRootUrl}/contact-form</property>
+      <property name="icon_expr">string:plone-contact-info</property>
+      <property name="available_expr" />
+      <property name="permissions">
+        <element value="View" />
+      </property>
+      <property name="visible">True</property>
+      <property name="modal"
+                type="text"
+      >{}</property>
+    </object>
   </object>
-  <object name="accessibility" meta_type="CMF Action" i18n:domain="plone">
-   <property name="title" i18n:translate="">Accessibility</property>
-   <property name="description" i18n:translate=""></property>
-   <property
-      name="url_expr">string:${globals_view/navigationRootUrl}/accessibility-info</property>
-   <property name="icon_expr">string:plone-accessibility</property>
-   <property name="available_expr"></property>
-   <property name="permissions">
-    <element value="View"/>
-   </property>
-   <property name="visible">True</property>
-  </object>
-  <object name="contact" meta_type="CMF Action" i18n:domain="plone">
-   <property name="title" i18n:translate="">Contact</property>
-   <property name="description" i18n:translate=""></property>
-   <property name="url_expr">string:${globals_view/navigationRootUrl}/contact-form</property>
-   <property name="icon_expr">string:plone-contact-info</property>
-   <property name="available_expr"></property>
-   <property name="permissions">
-    <element value="View"/>
-   </property>
-   <property name="visible">True</property>
-   <property name="modal" type="text">{}</property>
-  </object>
- </object>
 </object>

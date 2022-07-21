@@ -36,8 +36,10 @@ class TestSummarySerialization(unittest.TestCase):
         column_exists = column in self.catalog.schema()
         if column_exists:
             self.catalog.delColumn(column)
-        brain = self.catalog(UID=self.doc1.UID())[0]
-        summary = getMultiAdapter((brain, self.request), ISerializeToJsonSummary)()
-        self.assertIn("image_field", summary)
-        if column_exists:
-            self.catalog.addColumn(column)
+        try:
+            brain = self.catalog(UID=self.doc1.UID())[0]
+            summary = getMultiAdapter((brain, self.request), ISerializeToJsonSummary)()
+            self.assertIn("image_field", summary)
+        finally:
+            if column_exists:
+                self.catalog.addColumn(column)

@@ -76,6 +76,22 @@
         factory=".transforms.NestedResolveUIDSerializerRoot"
         provides="plone.restapi.interfaces.IBlockFieldSerializationTransformer"
         />
+    <subscriber
+        factory=".transforms.PreviewImageResolveUIDDeserializer"
+        provides="plone.restapi.interfaces.IBlockFieldDeserializationTransformer"
+        />
+    <subscriber
+        factory=".transforms.PreviewImageResolveUIDDeserializerRoot"
+        provides="plone.restapi.interfaces.IBlockFieldDeserializationTransformer"
+        />
+    <subscriber
+        factory=".transforms.PreviewImageResolveUIDSerializer"
+        provides="plone.restapi.interfaces.IBlockFieldSerializationTransformer"
+        />
+    <subscriber
+        factory=".transforms.PreviewImageResolveUIDSerializerRoot"
+        provides="plone.restapi.interfaces.IBlockFieldSerializationTransformer"
+        />
   </configure>
 
 </configure>

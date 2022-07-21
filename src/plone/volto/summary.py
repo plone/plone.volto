@@ -7,4 +7,5 @@ class JSONSummarySerializerMetadata:
     def default_metadata_fields(self):
         return {
             "image_field",
+            "image_scales",
         }

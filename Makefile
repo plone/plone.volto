@@ -56,6 +56,7 @@ build-plone-6.0: bin/pip bin/black ## Build Plone 6.0
 	@echo "$(GREEN)==> Build with Plone 6.0$(RESET)"
 	bin/pip install Plone plone.app.testing -c https://dist.plone.org/release/$(PLONE6)/constraints.txt
 	bin/pip install -e ".[test]"
+	bin/pip install zest.releaser[recommended]
 	bin/mkwsgiinstance -d . -u admin:admin
 
 .PHONY: build
@@ -111,3 +112,7 @@ test: ## run tests
 .PHONY: start
 start: ## Start a Plone instance on localhost:8080
 	PYTHONWARNINGS=ignore ./bin/runwsgi etc/zope.ini
+
+.PHONY: release
+release: ## Make a release
+	./bin/fullrelease

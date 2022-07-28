@@ -1,14 +1,14 @@
 # -*- coding: utf-8 -*-
 
 from plone.dexterity.interfaces import IDexterityFTI
+from plone.dexterity.utils import iterSchemata
 from plone.restapi.interfaces import IDeserializeFromJson
-from plone.volto.testing import PLONE_VOLTO_CORE_INTEGRATION_TESTING  # noqa
+from plone.restapi.interfaces import IFieldSerializer
 from plone.uuid.interfaces import IUUID
+from plone.volto.testing import PLONE_VOLTO_CORE_INTEGRATION_TESTING  # noqa
+from z3c.form.interfaces import IDataManager
 from zope.component import getMultiAdapter
 from zope.component import queryUtility
-from plone.dexterity.utils import iterSchemata
-from plone.restapi.interfaces import IFieldSerializer
-from z3c.form.interfaces import IDataManager
 
 import json
 import unittest
@@ -57,15 +57,25 @@ class TestBlocksTransforms(unittest.TestCase):
             blocks={
                 "123": {
                     "@type": "teaserGrid",
-                    "columns": [{"href": self.portal.doc1.absolute_url()}],
+                    "columns": [
+                        {
+                            "href": self.portal.doc1.absolute_url(),
+                            "preview_image": self.image.absolute_url(),
+                        }
+                    ],
                 }
             }
         )
         doc_uid = IUUID(self.portal.doc1)
+        image_uid = IUUID(self.image)
 
         self.assertEqual(
             self.portal.doc1.blocks["123"]["columns"][0]["href"],
             "../resolveuid/{}".format(doc_uid),
+        )
+        self.assertEqual(
+            self.portal.doc1.blocks["123"]["columns"][0]["preview_image"],
+            "../resolveuid/{}".format(image_uid),
         )
 
     def test_deserialize_nested_fields_arrayed_resolveuid(self):
@@ -102,18 +112,27 @@ class TestBlocksTransforms(unittest.TestCase):
 
     def test_serialize_nested_fields_resolveuid(self):
         doc_uid = IUUID(self.portal.doc1)
+        image_uid = IUUID(self.image)
         value = self.serialize(
             context=self.portal.doc1,
             blocks={
                 "123": {
                     "@type": "teaserGrid",
-                    "columns": [{"href": "../resolveuid/{}".format(doc_uid)}],
+                    "columns": [
+                        {
+                            "href": "../resolveuid/{}".format(doc_uid),
+                            "preview_image": "../resolveuid/{}".format(image_uid),
+                        }
+                    ],
                 }
             },
         )
 
         self.assertEqual(
             value["123"]["columns"][0]["href"], self.portal.doc1.absolute_url()
+        )
+        self.assertEqual(
+            value["123"]["columns"][0]["preview_image"], self.image.absolute_url()
         )
 
     def test_serialize_nested_fields_arrayed_resolveuid(self):

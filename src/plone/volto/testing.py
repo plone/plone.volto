@@ -101,3 +101,37 @@ PLONE_VOLTO_CORESANDBOX_ACCEPTANCE_TESTING = FunctionalTesting(
     ),
     name="PloneVoltoCoreSandboxLayer:AcceptanceTesting",
 )
+
+
+class PloneVoltoMigrationLayer(PloneSandboxLayer):
+
+    defaultBases = (PLONE_APP_CONTENTTYPES_FIXTURE,)
+
+    def setUpZope(self, app, configurationContext):
+        # Load any other ZCML that is required for your tests.
+        # The z3c.autoinclude feature is disabled in the Plone fixture base
+        # layer.
+        self.loadZCML(package=plone.volto)
+
+    def setUpPloneSite(self, portal):
+        setRoles(portal, TEST_USER_ID, ["Manager"])
+        login(portal, TEST_USER_NAME)
+        api.content.create(
+            type="Document", id="front-page", title="Welcome", container=portal
+        )
+        logout()
+
+
+PLONE_VOLTO_MIGRATION_FIXTURE = PloneVoltoMigrationLayer()
+
+
+PLONE_VOLTO_MIGRATION_INTEGRATION_TESTING = IntegrationTesting(
+    bases=(PLONE_VOLTO_MIGRATION_FIXTURE,),
+    name="PloneVoltoMigrationLayer:IntegrationTesting",
+)
+
+
+PLONE_VOLTO_MIGRATION_FUNCTIONAL_TESTING = FunctionalTesting(
+    bases=(PLONE_VOLTO_MIGRATION_FIXTURE, z2.ZSERVER_FIXTURE),
+    name="PloneVoltoMigrationLayer:FunctionalTesting",
+)

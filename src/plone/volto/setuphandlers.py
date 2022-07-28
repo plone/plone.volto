@@ -34,7 +34,9 @@ NO_RICHTEXT_BEHAVIOR_CONTENT_TYPES = [
 class HiddenProfiles(object):
     def getNonInstallableProfiles(self):
         """Hide uninstall profile from site-creation and quickinstaller"""
-        return ["plone.volto:uninstall"]
+        return [
+            "plone.volto:uninstall",
+        ]
 
 
 def post_install(context):
@@ -62,7 +64,7 @@ def post_install_coresandbox(context):
 def post_install_multilingual(context):
     """Post install script for multilingual fixture"""
     enable_pam(context)
-    create_default_homepage(context, block_type="draftJS")
+    create_default_homepage(context)
 
 
 def enable_pam(portal):

@@ -5,6 +5,7 @@ from plone import api
 from plone.app.contenttypes.behaviors.leadimage import ILeadImageBehavior
 from plone.volto.behaviors.preview import IPreview
 from plone.volto.scripts.utils import print_info
+
 import transaction
 
 

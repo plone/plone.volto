@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 """Setup tests for this package."""
+from importlib import import_module
 from plone import api
 from plone.volto.testing import PLONE_VOLTO_CORE_INTEGRATION_TESTING  # noqa
 
@@ -14,14 +15,7 @@ else:
 import unittest
 
 
-try:
-    from Products.CMFPlone.factory import PLONE60MARKER
-
-    PLONE60MARKER  # pyflakes
-except ImportError:
-    PLONE_6 = False
-else:
-    PLONE_6 = True
+PLONE_6 = getattr(import_module("Products.CMFPlone.factory"), "PLONE60MARKER", False)
 
 
 class TestSetup(unittest.TestCase):

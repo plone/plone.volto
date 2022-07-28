@@ -15,8 +15,8 @@ GREEN=`tput setaf 2`
 RESET=`tput sgr0`
 YELLOW=`tput setaf 3`
 
-PLONE5=5.2.7
-PLONE6=6.0.0a6
+PLONE5=5.2.9
+PLONE6=6.0.0b1
 
 CODE_QUALITY_VERSION=1.0.1
 LINT=docker run --rm -v "$(PWD)":/github/workspace plone/code-quality:${CODE_QUALITY_VERSION} check
@@ -56,7 +56,7 @@ build-plone-6.0: bin/pip bin/black ## Build Plone 6.0
 	@echo "$(GREEN)==> Build with Plone 6.0$(RESET)"
 	bin/pip install Plone plone.app.testing -c https://dist.plone.org/release/$(PLONE6)/constraints.txt
 	bin/pip install -e ".[test]"
-	bin/pip install zest.releaser[recommended]
+	bin/pip install zest.releaser[recommended] zestreleaser.towncrier
 	bin/mkwsgiinstance -d . -u admin:admin
 
 .PHONY: build

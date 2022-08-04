@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
-from plone.volto.interfaces import IFolderishDocument
-from plone.volto.interfaces import IFolderishEvent
-from plone.volto.interfaces import IFolderishNewsItem
 from plone.app.contenttypes.interfaces import IDocument
 from plone.app.contenttypes.interfaces import IEvent
 from plone.app.contenttypes.interfaces import INewsItem
 from plone.dexterity.content import Container
+from plone.volto.interfaces import IFolderishDocument
+from plone.volto.interfaces import IFolderishEvent
+from plone.volto.interfaces import IFolderishNewsItem
 from zope.interface import implementer
 
 

@@ -8,6 +8,59 @@ Changelog
 
 .. towncrier release notes start
 
+4.0.0a7 (2022-07-22)
+--------------------
+
+New features:
+
+
+- Use new metadata utility for adding the ``image_scales`` to the default serialization.
+  [ericof] (#74)
+
+
+Bug fixes:
+
+
+- Use plone/code-analysis-action on GitHub Actions and plone/code-quality Docker image and versions to format code.
+  [ericof] (#68)
+- Fix the handler for resolving UIDs in nested blocks to avoid trying to resolve them twice. This also makes it possible to use deserialization and serialization transforms that intentionally run before the resolveuid transform in the context of nested blocks.
+  [davisagli] (#76)
+
+
+4.0.0a6 (2022-06-25)
+--------------------
+
+Bug fixes:
+
+
+- Re-release 4.0.0a5/4.0.0a5.dev0
+  [tisto] (#72)
+
+
+4.0.0a5 (2022-06-25)
+--------------------
+
+New features:
+
+
+- Add form ``@@migrate_richtext`` to migrate ``html-richtext`` to slate blocks or draftjs blocks
+  [pbauer] (#47)
+- Add ``@@migrate_to_volto`` to prepare existing sites for Volto.
+  [pbauer] (#55)
+
+
+Bug fixes:
+
+
+- Update test to 6.0.0a4 and new pip practices.
+  [sneridagh] (#51)
+- Conditional custom ``IImageScaleFactory`` adapter for Plone < 6 (svg are now handled in `plone.namedfile <https://github.com/plone/plone.namedfile/commit/b4f80204759703aa812d1db35589cd92e89ea108>`_).
+  [cekk] (#60)
+- Fixed code quality configuration.
+  Removed unused imports and variables and sorted the imports.
+  [maurits] (#71)
+
+
 4.0.0a4 (2022-04-08)
 --------------------
 

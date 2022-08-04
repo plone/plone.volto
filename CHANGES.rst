@@ -8,6 +8,19 @@ Changelog
 
 .. towncrier release notes start
 
+4.0.0a8 (2022-08-04)
+--------------------
+
+New features:
+
+
+- Add better implementation of the PLONE6 check (cosmetic)
+  [sneridagh] (#59)
+- Use slate as default text block in default contents for ``default-homepage`` and
+  ``multilingual`` profile.
+  [sneridagh] (#77)
+
+
 4.0.0a7 (2022-07-22)
 --------------------
 

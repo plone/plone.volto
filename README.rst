@@ -266,6 +266,18 @@ There is a new operation "*plone.app.querystring.operation.string.objectBrowserR
 This is needed for pull-request `#3342 <https://github.com/plone/volto/pull/3342>`_  in Volto that enable the ObjectBrowser widget
 in listing blocks path criteria to select a path based on its UID and not a static path name.
 
+Expected data stored in "v" value of the criteria should be like this::
+
+  {
+      "object": {
+          "UID": "123456789",
+          "Title": "Foo",
+          "path": "/foo"
+      },
+      "depth": 1
+
+  }
+
 Credits and History
 ===================
 

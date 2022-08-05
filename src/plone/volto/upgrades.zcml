@@ -59,4 +59,12 @@
       destination="1016"
       import_steps="typeinfo"
       />
+  
+  <genericsetup:upgradeDepends
+      title="Add new query operator for objectbrowser selection"
+      profile="plone.volto:default"
+      source="1016"
+      destination="1017"
+      import_steps="plone.app.registry"
+      />
 </configure>

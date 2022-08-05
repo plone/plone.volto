@@ -1,5 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<registry>
+<registry xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+          i18n:domain="plone.volto">
   <records interface="Products.CMFPlone.interfaces.controlpanel.INavigationSchema"
            prefix="plone"
   >
@@ -48,4 +49,18 @@
     </value>
   </record>
 
+  <!-- new querystring operator for objectbrowser -->
+  <records interface="plone.app.querystring.interfaces.IQueryOperation"
+           prefix="plone.app.querystring.operation.string.objectBrowserReference">
+      <value key="title" i18n:translate="">Object in site</value>
+      <value key="description" i18n:translate="">Select a site content.</value>
+      <value key="operation">plone.volto.queryparser._objectbrowserReference</value>
+      <value key="widget">ReferenceWidget</value>
+  </records>
+  <records interface="plone.app.querystring.interfaces.IQueryField"
+           prefix="plone.app.querystring.field.path" purge="False">
+      <value key="operations" purge="False">
+          <element>plone.app.querystring.operation.string.objectBrowserReference</element>
+      </value>
+  </records>
 </registry>

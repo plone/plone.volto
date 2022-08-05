@@ -258,8 +258,16 @@ existing ones. These are know to work well with Volto layout and grid system::
 sure your add-on's profiles are applied AFTER this one.**
 
 
+Queryparser operation for ObjectBrowser
+---------------------------------------
+
+There is a new operation "*plone.app.querystring.operation.string.objectBrowserReference*" for path index in querystring.
+
+This is needed for pull-request `#3342 <https://github.com/plone/volto/pull/3342>`_  in Volto that enable the ObjectBrowser widget
+in listing blocks path criteria to select a path based on its UID and not a static path name.
+
 Credits and History
--------------------
+===================
 
 .. image:: https://kitconcept.com/logo.svg
    :width: 150px

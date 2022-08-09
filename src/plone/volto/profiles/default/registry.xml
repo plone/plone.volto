@@ -55,7 +55,7 @@
       <value key="title" i18n:translate="">Object in site</value>
       <value key="description" i18n:translate="">Select a site content.</value>
       <value key="operation">plone.volto.queryparser._objectbrowserReference</value>
-      <value key="widget">ReferenceWidget</value>
+      <value key="widget">ObjectBrowserWidget</value>
   </records>
   <records interface="plone.app.querystring.interfaces.IQueryField"
            prefix="plone.app.querystring.field.path" purge="False">

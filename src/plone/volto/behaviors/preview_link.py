@@ -11,8 +11,8 @@ from z3c.form.util import getSpecification
 from z3c.relationfield.schema import RelationChoice
 from zope.component import adapter
 from zope.component import queryMultiAdapter
-from zope.interface import Interface
 from zope.interface import implementer
+from zope.interface import Interface
 from zope.interface import provider
 from zope.schema import TextLine
 

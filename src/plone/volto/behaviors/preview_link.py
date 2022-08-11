@@ -24,7 +24,7 @@ class IPreviewLink(model.Schema):
         title=_("label_previewimage", default="Preview image"),
         description=_(
             "help_previewimage",
-            default="Insert an image that will be used in listing and teaser blocks.",
+            default="Select an image that will be used in listing and teaser blocks.",
         ),
         vocabulary="plone.app.vocabularies.Catalog",
         required=False,

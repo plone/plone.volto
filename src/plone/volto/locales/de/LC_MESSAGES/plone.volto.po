@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2021-11-18 08:27+0000\n"
+"POT-Creation-Date: 2022-08-11 23:31+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,13 +21,21 @@ msgstr ""
 msgid "Adds Head title field"
 msgstr "Kopftitel Feld hinzufügen"
 
-#: plone/volto/configure.zcml:37
+#: plone/volto/profiles.zcml:15
 msgid "Configures the Plone backend to work with Volto, the new default frontend for Plone 6."
 msgstr "Konfiguration des Plone Backends für Volto, dem neuen Standard-Frontend von Plone 6"
 
-#: plone/volto/configure.zcml:55
+#: plone/volto/profiles.zcml:33
 msgid "Creates a default page for the site"
 msgstr "Erstellt eine Startseite für die Webseite"
+
+#: plone/volto/profiles.zcml:42
+msgid "Creates a default page for the site using (legacy) draftJS blocks"
+msgstr ""
+
+#: plone/volto/profiles.zcml:51
+msgid "Creates a default page for the site using slate blocks"
+msgstr ""
 
 #: plone/volto/behaviors/configure.zcml:31
 msgid "Head title field"
@@ -50,15 +58,23 @@ msgstr "Navigationstitel"
 msgid "Navigation title used in sections, menus and doormats"
 msgstr "Navigationstitel der in der Navigation, Brotkrumen und Auflistungen verwendet wird"
 
-#: plone/volto/configure.zcml:55
+#: plone/volto/profiles.zcml:42
+msgid "Plone 6 Frontend (Default content on homepage with draftJS blocks)"
+msgstr ""
+
+#: plone/volto/profiles.zcml:51
+msgid "Plone 6 Frontend (Default content on homepage with slate blocks)"
+msgstr ""
+
+#: plone/volto/profiles.zcml:33
 msgid "Plone 6 Frontend (Default content on homepage)"
 msgstr "Plone 6 Frontend (Standard Inhalte)"
 
-#: plone/volto/configure.zcml:37
+#: plone/volto/profiles.zcml:15
 msgid "Plone 6 Frontend (plone.volto)"
 msgstr "Plone 6 Frontend (plone.volto)"
 
-#: plone/volto/configure.zcml:46
+#: plone/volto/profiles.zcml:24
 msgid "Plone 6 Frontend (plone.volto): uninstall"
 msgstr "Plone 6 Frontend (plone.volto): Deinstallation"
 
@@ -74,21 +90,35 @@ msgstr "Legende zum Vorschaubild"
 msgid "Preview image for listings"
 msgstr "Vorschaubild für Auflistungen"
 
-#: plone/volto/configure.zcml:64
+#: plone/volto/profiles.zcml:60
 msgid "Special requirements and setup for demo site"
 msgstr "Setup für Demo Website"
 
-#: plone/volto/configure.zcml:73
+#: plone/volto/profiles.zcml:70
+msgid "Special test fixture for coresandbox use cases"
+msgstr ""
+
+#: plone/volto/profiles.zcml:80
 msgid "Special test fixture for multilingual use case"
 msgstr "Text Fixture für Mehrsprachigkeit"
 
-#: plone/volto/configure.zcml:81
+#: plone/volto/profiles.zcml:88
 msgid "Specific profile for re-adding the richtext behavior"
 msgstr "Profil um das Rich-Text Behavior erneut hinzuzufügen"
 
-#: plone/volto/configure.zcml:46
+#: plone/volto/profiles.zcml:24
 msgid "Uninstalls the plone.volto add-on."
 msgstr "Deinstalliert die Erweiterung plone.volto"
+
+#. Default: "The languages in which the site should be translatable."
+#: plone/volto/coresandbox/example.py:811
+msgid "description_available_languages"
+msgstr ""
+
+#. Default: "Available languages"
+#: plone/volto/coresandbox/example.py:810
+msgid "heading_available_languages"
+msgstr ""
 
 #. Default: "Insert an image that will be used in listing and teaser blocks."
 #: plone/volto/behaviors/preview.py:15
@@ -100,14 +130,18 @@ msgstr "Bild einfügen welches in Auflistungen und Anreißer-Blöcken verwendet 
 msgid "label_previewimage"
 msgstr "Vorschaubild"
 
-#: plone/volto/configure.zcml:64
+#: plone/volto/profiles.zcml:70
+msgid "plone.volto coresandbox Cypress tests fixtures"
+msgstr ""
+
+#: plone/volto/profiles.zcml:60
 msgid "plone.volto demo special requirements"
 msgstr ""
 
-#: plone/volto/configure.zcml:73
+#: plone/volto/profiles.zcml:80
 msgid "plone.volto multilingual Cypress tests fixtures"
 msgstr ""
 
-#: plone/volto/configure.zcml:81
+#: plone/volto/profiles.zcml:88
 msgid "plone.volto p51 profile"
 msgstr ""

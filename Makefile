@@ -75,6 +75,7 @@ black: bin/black ## Format codebase
 isort: bin/isort ## Format imports in the codebase
 	bin/isort $(CHECK_PATH)
 
+.PHONY: zpretty
 zpretty: bin/zpretty ## Format xml and zcml with zpretty
 	find "${PACKAGE_PATH}" -name '*.xml' | xargs bin/zpretty -x -i
 	find "${PACKAGE_PATH}" -name '*.zcml' | xargs bin/zpretty -z -i

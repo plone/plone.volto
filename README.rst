@@ -173,13 +173,13 @@ Plone). This will be fixed in core in upcoming sprints.
 Preview Image Behavior
 ----------------------
 
-The preview image behavior makes content types provide a preview_image field that can store a preview image that Volto views can pick up.
+The preview image behavior makes content types provide a ``preview_image`` field that can store a preview image that Volto views can pick up.
 This is especially userful for listings (e.g. listing block customizations) and teaser elements (e.g. teaser blocks such as [volto-blocks-grid](https://github.com/kitconcept/volto-blocks-grid)).
 
-The "volto.preview_image behavior can be enabled in the generic setup XML definition of a content type (e.g. "/profiles/default/types/MyContentType.xml")::
+The ``volto.preview_image`` behavior can be enabled in the generic setup XML definition of a content type (e.g. ``/profiles/default/types/MyContentType.xml``)::
 
    <?xml version="1.0" encoding="UTF-8" ?>
-   <object i18n:domain="fzj.internet" meta_type="Dexterity FTI" name="MyContentType"
+   <object i18n:domain="my.project" meta_type="Dexterity FTI" name="MyContentType"
      xmlns:i18n="http://xml.zope.org/namespaces/i18n">
 
      ...
@@ -192,6 +192,8 @@ The "volto.preview_image behavior can be enabled in the generic setup XML defini
      ...
    </object>
 
+There is also another variation of the preview image behavior called ``volto.preview_image_link``.
+This one stores preview images using a relation to an Image content type, rather than in an image field. This might be preferable if many content items use the same preview image.
 
 Navigation Title Behavior
 -------------------------

@@ -17,6 +17,16 @@ import plone.volto
 import plone.volto.coresandbox
 
 
+try:
+    from Products.CMFPlone.factory import PLONE60MARKER
+
+    PLONE60MARKER  # pyflakes
+except ImportError:
+    PLONE_6 = False
+else:
+    PLONE_6 = True
+
+
 class PloneVoltoCoreLayer(PloneSandboxLayer):
 
     defaultBases = (PLONE_APP_CONTENTTYPES_FIXTURE,)

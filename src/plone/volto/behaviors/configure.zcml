@@ -17,7 +17,7 @@
       provides=".preview.IPreview"
       />
 
-  <configure zcml:condition="have plone-6">
+  <configure zcml:condition="have plone-60">
     <plone:behavior
         name="volto.preview_image_link"
         title="Preview Image Link"

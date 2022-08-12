@@ -15,7 +15,6 @@ def _objectbrowserReference(context, row):
 
     }
     """
-
     values = row.values
     if not isinstance(values, dict):
         return {}
@@ -26,6 +25,11 @@ def _objectbrowserReference(context, row):
     values = getPathByUID(context, obj["UID"])
 
     query = {}
+    if isinstance(depth, str):
+        try:
+            depth = int(depth)
+        except ValueError:
+            depth = None
     if depth is not None:
         query["depth"] = depth
         # when a depth value is specified, a trailing slash matters on the

@@ -48,3 +48,20 @@ class TestQueryparser(unittest.TestCase):
             }
         }
         self.assertEqual(parsed, expected)
+
+    def test_objectbrowser_reference_operator_accept_depth_in_string(self):
+        doc_uid = IUUID(self.portal.doc1)
+        values = {"object": {"UID": doc_uid}, "depth": "1"}
+        data = Row(
+            index="path",
+            operator="plone.app.querystring.operation.string.objectBrowserReference",
+            values=values,
+        )
+        parsed = _objectbrowserReference(self.portal, data)
+        expected = {
+            "path": {
+                "query": ["/".join(self.portal.doc1.getPhysicalPath())],
+                "depth": 1,
+            }
+        }
+        self.assertEqual(parsed, expected)

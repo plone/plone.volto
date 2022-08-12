@@ -252,7 +252,7 @@ default_home = {
                             "entityRanges": [{"key": 0, "length": 10, "offset": 36}],
                             "inlineStyleRanges": [],
                             "key": "68rve",
-                            "text": "Volto also supports other APIs like Guillotina, a Python resource management system, inspired by Plone and using the same basic concepts like traversal, content types and permissions model.",
+                            "text": "Volto also supports other APIs like Guillotina, a Python resource management system, inspired by Plone and using the same basic concepts like traversal, content types, and permissions model.",
                             "type": "unstyled",
                         }
                     ],
@@ -367,7 +367,7 @@ default_home = {
                                 "type": "link",
                             },
                             {
-                                "text": ". Volto can be esily themed and is highly customizable."
+                                "text": ". Volto can be easily themed and is highly customizable."
                             },
                         ],
                         "type": "p",
@@ -415,7 +415,7 @@ default_home = {
                                 "type": "link",
                             },
                             {
-                                "text": ", a Python resource management system, inspired by Plone and using the same basic concepts like traversal, content types and permissions model."
+                                "text": ", a Python resource management system, inspired by Plone and using the same basic concepts like traversal, content types, and permissions model."
                             },
                         ],
                         "type": "p",

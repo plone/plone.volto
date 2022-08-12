@@ -8,6 +8,16 @@ Changelog
 
 .. towncrier release notes start
 
+4.0.0a9 (2022-08-12)
+--------------------
+
+New features:
+
+
+- - Added preview image link behavior (Plone 6+ only)
+    [robgietema] (#49)
+
+
 4.0.0a8 (2022-08-04)
 --------------------
 

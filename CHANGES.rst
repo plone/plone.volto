@@ -20,11 +20,6 @@ New features:
   ``multilingual`` profile.
   [sneridagh] (#77)
   
-  
-Bug fixes:
-
-
-- Fixed an error where 'easily' would show up as 'esily' on Volto Homepage (#82)
 
 4.0.0a7 (2022-07-22)
 --------------------

@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from Acquisition import aq_base
 from plone.namedfile.file import FILECHUNK_CLASSES
+from plone.rfc822.interfaces import IPrimaryFieldInfo
 from plone.scale.interfaces import IImageScaleFactory
 from plone.scale.interfaces import IScaledImageQuality
 from plone.scale.scale import scaleImage
@@ -31,6 +32,23 @@ class VoltoImageScalingFactory(object):
         return scaleImage(
             data, direction=direction, height=height, width=width, **parameters
         )
+
+    def get_original_value(self, fieldname=None):
+        """Get the image value.
+
+        In most cases this will be a NamedBlobImage field.
+        """
+        fieldname = fieldname or self.fieldname
+        if fieldname is not None:
+            return getattr(self.context, fieldname, None)
+        try:
+            primary = IPrimaryFieldInfo(self.context, None)
+        except TypeError:
+            return
+        if primary is None:
+            return
+        self.fieldname = primary.fieldname
+        return primary.value
 
     def __call__(
         self,

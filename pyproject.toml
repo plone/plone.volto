@@ -19,6 +19,11 @@ directory = "bugfix"
 name = "Bug fixes:"
 showcontent = true
 
+[[tool.towncrier.type]]
+directory = "internal"
+name = "Internal:"
+showcontent = true
+
 [tool.flakeheaven.plugins]
 # Disable some checks.
 # - E501 line too long

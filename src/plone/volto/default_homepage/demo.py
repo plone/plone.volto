@@ -463,7 +463,7 @@ demo_home_page = {
             },
             "539b7bb6-23e1-425c-8d93-70c03d52806e": {
                 "@type": "slate",
-                "plaintext": " The features of Plone   Plone Documentation   Plone Training   Forum   Add-ons for Plone   ",
+                "plaintext": " The features of Plone   Plone Documentation   Plone Training   Forum   Add-ons for Plone (backend)   Add-ons for Volto (frontend)   ",
                 "value": [
                     {
                         "children": [
@@ -563,11 +563,33 @@ demo_home_page = {
                                     {
                                         "children": [
                                             {
-                                                "text": "Add-ons for Plone"
+                                                "text": "Add-ons for Plone (backend)"
                                             }
                                         ],
                                         "data": {
                                             "url": "https://github.com/collective/awesome-plone#contents"
+                                        },
+                                        "type": "link"
+                                    },
+                                    {
+                                        "text": ""
+                                    }
+                                ],
+                                "type": "li"
+                            },
+                            {
+                                "children": [
+                                    {
+                                        "text": ""
+                                    },
+                                    {
+                                        "children": [
+                                            {
+                                                "text": "Add-ons for Volto (frontend)"
+                                            }
+                                        ],
+                                        "data": {
+                                            "url": "https://github.com/collective/awesome-volto#awesome-volto"
                                         },
                                         "type": "link"
                                     },

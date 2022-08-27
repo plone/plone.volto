@@ -349,271 +349,560 @@ demo_home_page = {
         "title": "Welcome to Plone 6!",
         "description": "Congratulations! You have successfully installed Plone.",
         "blocks": {
-            "0358abe2-b4f1-463d-a279-a63ea80daf19": {"@type": "description"},
-            "07c273fc-8bfc-4e7d-a327-d513e5a945bb": {"@type": "title"},
-            "3b5ac7a5-2d98-423e-807c-5eebc0bf0054": {"@type": "system"},
-            "bedf0ed6-3237-46ac-8c91-994826b1cf05": {
-                "@type": "slate",
-                "value": [
-                    {
-                        "type": "h2",
-                        "children": [{"text": "Find out more about Plone"}],
-                    }
-                ],
-                "plaintext": "Find out more about Plone",
+            "0358abe2-b4f1-463d-a279-a63ea80daf19": {
+                "@type": "description"
             },
-            "577b38a2-84ed-4911-9644-72b73b79bf9b": {
+            "07c273fc-8bfc-4e7d-a327-d513e5a945bb": {
+                "@type": "title"
+            },
+            "249cb267-394b-4e18-991d-8d5038fc60b7": {
                 "@type": "slate",
+                "plaintext": "More demo sites",
                 "value": [
                     {
-                        "type": "p",
                         "children": [
                             {
-                                "text": "Plone is a powerful content management system built on a rock-solid application stack written using the Python programming language. More about these technologies:"
+                                "text": "More demo sites"
                             }
                         ],
+                        "type": "h2"
                     }
-                ],
-                "plaintext": "Plone is a powerful content management system built on a rock-solid application stack written using the Python programming language. More about these technologies:",
-            },
-            "539b7bb6-23e1-425c-8d93-70c03d52806e": {
-                "@type": "slate",
-                "value": [
-                    {
-                        "type": "ul",
-                        "children": [
-                            {
-                                "type": "li",
-                                "children": [
-                                    {"text": "The "},
-                                    {
-                                        "type": "link",
-                                        "data": {"url": "https://plone.com/"},
-                                        "children": [
-                                            {
-                                                "text": "Plone open source Content Management System"
-                                            }
-                                        ],
-                                    },
-                                    {
-                                        "text": " web site for evaluators and decision makers."
-                                    },
-                                ],
-                            },
-                            {
-                                "type": "li",
-                                "children": [
-                                    {"text": "The "},
-                                    {
-                                        "type": "link",
-                                        "data": {"url": "https://plone.org/"},
-                                        "children": [{"text": "Plone community "}],
-                                    },
-                                    {"text": "web site for developers."},
-                                ],
-                            },
-                            {
-                                "type": "li",
-                                "children": [
-                                    {"text": "The "},
-                                    {
-                                        "type": "link",
-                                        "data": {"url": "https://www.python.org/"},
-                                        "children": [
-                                            {"text": "Python programming language"}
-                                        ],
-                                    },
-                                    {"text": " web site."},
-                                ],
-                            },
-                        ],
-                    }
-                ],
-                "plaintext": "The Plone open source Content Management System web site for evaluators and decision makers. The Plone community web site for developers. The Python programming language web site.",
-            },
-            "5d166d4b-195b-4dc2-ac11-8d283673ee8d": {
-                "@type": "slate",
-                "value": [
-                    {
-                        "type": "h2",
-                        "children": [{"text": "Support the Plone Foundation"}],
-                    }
-                ],
-                "plaintext": "Support the Plone Foundation",
-            },
-            "8696b042-7119-4700-9e7f-2b22e8982a7b": {
-                "@type": "slate",
-                "value": [
-                    {
-                        "type": "p",
-                        "children": [
-                            {
-                                "text": "Plone is made possible only through the efforts of thousands of dedicated individuals and hundreds of companies. The Plone Foundation:"
-                            }
-                        ],
-                    }
-                ],
-                "plaintext": "Plone is made possible only through the efforts of thousands of dedicated individuals and hundreds of companies. The Plone Foundation:",
-            },
-            "7ab29abe-b38c-406b-94d7-b270e544a998": {
-                "@type": "slate",
-                "value": [
-                    {
-                        "type": "ul",
-                        "children": [
-                            {
-                                "type": "li",
-                                "children": [
-                                    {"text": "\u2026protects and promotes Plone."}
-                                ],
-                            },
-                            {
-                                "type": "li",
-                                "children": [
-                                    {
-                                        "text": "\u2026is a registered 501(c)(3) charitable organization."
-                                    }
-                                ],
-                            },
-                            {
-                                "type": "li",
-                                "children": [
-                                    {"text": "\u2026donations are tax-deductible."}
-                                ],
-                            },
-                            {
-                                "type": "li",
-                                "children": [
-                                    {"text": ""},
-                                    {
-                                        "type": "link",
-                                        "data": {
-                                            "url": "https://plone.org/sponsors/be-a-hero"
-                                        },
-                                        "children": [
-                                            {
-                                                "text": "Support the Foundation and help make Plone better!"
-                                            }
-                                        ],
-                                    },
-                                    {"text": ""},
-                                    {
-                                        "type": "link",
-                                        "data": {
-                                            "url": "https://plone.org/sponsors/be-a-hero"
-                                        },
-                                        "children": [{"text": ""}],
-                                    },
-                                    {"text": ""},
-                                ],
-                            },
-                        ],
-                    }
-                ],
-                "plaintext": "\u2026protects and promotes Plone. \u2026is a registered 501(c)(3) charitable organization. \u2026donations are tax-deductible.  Support the Foundation and help make Plone better!   ",
-            },
-            "e1220183-552c-45d9-a661-5ad0854615ac": {
-                "@type": "slate",
-                "value": [{"type": "h2", "children": [{"text": "Demo"}]}],
-                "plaintext": "Demo",
-            },
-            "9509e96d-5718-4687-95c1-f9d3db115b92": {
-                "@type": "slate",
-                "value": [
-                    {
-                        "type": "p",
-                        "children": [
-                            {
-                                "text": "You can use this site to test Plone 6. These are the versions used in this demo:"
-                            }
-                        ],
-                    }
-                ],
-                "plaintext": "You can use this site to test Plone 6. These are the versions used in this demo:",
+                ]
             },
             "2c68bdda-7dd3-4599-9111-db5ffb2230f9": {
                 "@type": "slate",
+                "plaintext": "You can log in and use it as admin user using these credentials :",
                 "value": [
                     {
-                        "type": "p",
                         "children": [
                             {
                                 "text": "You can log in and use it as admin user using these "
                             },
                             {
-                                "type": "strong",
-                                "children": [{"text": "credentials"}],
+                                "children": [
+                                    {
+                                        "text": "credentials"
+                                    }
+                                ],
+                                "type": "strong"
                             },
-                            {"text": ":"},
+                            {
+                                "text": ":"
+                            }
                         ],
+                        "type": "p"
                     }
-                ],
-                "plaintext": "You can log in and use it as admin user using these credentials :",
+                ]
             },
-            "93dd5f95-b3e3-4a47-9121-cde08ca07203": {
-                "@type": "slate",
-                "value": [
-                    {
-                        "type": "p",
-                        "children": [
-                            {"text": "user: "},
-                            {"type": "strong", "children": [{"text": "admin"}]},
-                            {"text": ""},
-                        ],
-                    }
-                ],
-                "plaintext": "user: admin ",
+            "3b5ac7a5-2d98-423e-807c-5eebc0bf0054": {
+                "@type": "system"
             },
             "3ed49dc1-caf0-41ff-bb41-9153eeaa45da": {
                 "@type": "slate",
+                "plaintext": "password: admin ",
                 "value": [
                     {
-                        "type": "p",
                         "children": [
-                            {"text": "password: "},
-                            {"type": "strong", "children": [{"text": "admin"}]},
-                            {"text": ""},
+                            {
+                                "text": "password: "
+                            },
+                            {
+                                "children": [
+                                    {
+                                        "text": "admin"
+                                    }
+                                ],
+                                "type": "strong"
+                            },
+                            {
+                                "text": ""
+                            }
                         ],
+                        "type": "p"
                     }
-                ],
-                "plaintext": "password: admin ",
+                ]
             },
             "4b2cd280-3c87-431b-a0fe-d7ec56587bde": {
                 "@type": "slate",
+                "plaintext": " Disclaimer : This instance is reset every night, so all changes will be lost afterwards.",
                 "value": [
                     {
-                        "type": "p",
                         "children": [
-                            {"text": ""},
                             {
-                                "type": "strong",
-                                "children": [{"text": "Disclaimer"}],
+                                "text": ""
+                            },
+                            {
+                                "children": [
+                                    {
+                                        "text": "Disclaimer"
+                                    }
+                                ],
+                                "type": "strong"
                             },
                             {
                                 "text": ": This instance is reset every night, so all changes will be lost afterwards."
-                            },
+                            }
                         ],
+                        "type": "p"
                     }
-                ],
-                "plaintext": " Disclaimer : This instance is reset every night, so all changes will be lost afterwards.",
+                ]
             },
-            "b1d7da87-11d6-4dd2-81f2-0069826ffbd6": {
+            "5026c0b5-cb0e-4e74-bd9b-461ad6cc40c0": {
                 "@type": "slate",
-                "value": [{"type": "p", "children": [{"text": "Happy hacking!"}]}],
-                "plaintext": "Happy hacking!",
+                "plaintext": "Technical Details",
+                "value": [
+                    {
+                        "children": [
+                            {
+                                "text": "Technical Details"
+                            }
+                        ],
+                        "type": "h2"
+                    }
+                ]
+            },
+            "539b7bb6-23e1-425c-8d93-70c03d52806e": {
+                "@type": "slate",
+                "plaintext": " The features of Plone   Plone Documentation   Plone Training   Forum   Add-ons for Plone (backend)   Add-ons for Volto (frontend)   ",
+                "value": [
+                    {
+                        "children": [
+                            {
+                                "children": [
+                                    {
+                                        "text": ""
+                                    },
+                                    {
+                                        "children": [
+                                            {
+                                                "text": "The features of Plone"
+                                            }
+                                        ],
+                                        "data": {
+                                            "url": "https://plone.com/features.html"
+                                        },
+                                        "type": "link"
+                                    },
+                                    {
+                                        "text": ""
+                                    }
+                                ],
+                                "type": "li"
+                            },
+                            {
+                                "children": [
+                                    {
+                                        "text": ""
+                                    },
+                                    {
+                                        "children": [
+                                            {
+                                                "text": "Plone Documentation"
+                                            }
+                                        ],
+                                        "data": {
+                                            "url": "https://docs.plone.org/"
+                                        },
+                                        "type": "link"
+                                    },
+                                    {
+                                        "text": ""
+                                    }
+                                ],
+                                "type": "li"
+                            },
+                            {
+                                "children": [
+                                    {
+                                        "text": ""
+                                    },
+                                    {
+                                        "children": [
+                                            {
+                                                "text": "Plone Training"
+                                            }
+                                        ],
+                                        "data": {
+                                            "url": "https://training.plone.org/"
+                                        },
+                                        "type": "link"
+                                    },
+                                    {
+                                        "text": ""
+                                    }
+                                ],
+                                "type": "li"
+                            },
+                            {
+                                "children": [
+                                    {
+                                        "text": ""
+                                    },
+                                    {
+                                        "children": [
+                                            {
+                                                "text": "Forum"
+                                            }
+                                        ],
+                                        "data": {
+                                            "url": "https://community.plone.org/"
+                                        },
+                                        "type": "link"
+                                    },
+                                    {
+                                        "text": ""
+                                    }
+                                ],
+                                "type": "li"
+                            },
+                            {
+                                "children": [
+                                    {
+                                        "text": ""
+                                    },
+                                    {
+                                        "children": [
+                                            {
+                                                "text": "Add-ons for Plone (backend)"
+                                            }
+                                        ],
+                                        "data": {
+                                            "url": "https://github.com/collective/awesome-plone#contents"
+                                        },
+                                        "type": "link"
+                                    },
+                                    {
+                                        "text": ""
+                                    }
+                                ],
+                                "type": "li"
+                            },
+                            {
+                                "children": [
+                                    {
+                                        "text": ""
+                                    },
+                                    {
+                                        "children": [
+                                            {
+                                                "text": "Add-ons for Volto (frontend)"
+                                            }
+                                        ],
+                                        "data": {
+                                            "url": "https://github.com/collective/awesome-volto#awesome-volto"
+                                        },
+                                        "type": "link"
+                                    },
+                                    {
+                                        "text": ""
+                                    },
+                                    {
+                                        "children": [
+                                            {
+                                                "text": ""
+                                            }
+                                        ],
+                                        "data": {
+                                            "url": "https://github.com/collective/awesome-plone#contents"
+                                        },
+                                        "type": "link"
+                                    },
+                                    {
+                                        "text": ""
+                                    }
+                                ],
+                                "type": "li"
+                            }
+                        ],
+                        "type": "ul"
+                    }
+                ]
+            },
+            "577b38a2-84ed-4911-9644-72b73b79bf9b": {
+                "@type": "slate",
+                "plaintext": "Plone is a powerful content management system built on a rock-solid application stack written using the Python programming language.",
+                "value": [
+                    {
+                        "children": [
+                            {
+                                "text": "Plone is a powerful content management system built on a rock-solid application stack written using the Python programming language."
+                            }
+                        ],
+                        "type": "p"
+                    }
+                ]
+            },
+            "5d166d4b-195b-4dc2-ac11-8d283673ee8d": {
+                "@type": "slate",
+                "plaintext": "Support the Plone Foundation",
+                "value": [
+                    {
+                        "children": [
+                            {
+                                "text": "Support the Plone Foundation"
+                            }
+                        ],
+                        "type": "h2"
+                    }
+                ]
+            },
+            "7ab29abe-b38c-406b-94d7-b270e544a998": {
+                "@type": "slate",
+                "plaintext": "\u2026protects and promotes Plone. \u2026is a registered 501(c)(3) charitable organization. \u2026donations are tax-deductible.  Support the Foundation and help make Plone better!   ",
+                "value": [
+                    {
+                        "children": [
+                            {
+                                "children": [
+                                    {
+                                        "text": "\u2026protects and promotes Plone."
+                                    }
+                                ],
+                                "type": "li"
+                            },
+                            {
+                                "children": [
+                                    {
+                                        "text": "\u2026is a registered 501(c)(3) charitable organization."
+                                    }
+                                ],
+                                "type": "li"
+                            },
+                            {
+                                "children": [
+                                    {
+                                        "text": "\u2026donations are tax-deductible."
+                                    }
+                                ],
+                                "type": "li"
+                            },
+                            {
+                                "children": [
+                                    {
+                                        "text": ""
+                                    },
+                                    {
+                                        "children": [
+                                            {
+                                                "text": "Support the Foundation and help make Plone better!"
+                                            }
+                                        ],
+                                        "data": {
+                                            "url": "https://plone.org/sponsors/be-a-hero"
+                                        },
+                                        "type": "link"
+                                    },
+                                    {
+                                        "text": ""
+                                    },
+                                    {
+                                        "children": [
+                                            {
+                                                "text": ""
+                                            }
+                                        ],
+                                        "data": {
+                                            "url": "https://plone.org/sponsors/be-a-hero"
+                                        },
+                                        "type": "link"
+                                    },
+                                    {
+                                        "text": ""
+                                    }
+                                ],
+                                "type": "li"
+                            }
+                        ],
+                        "type": "ul"
+                    }
+                ]
+            },
+            "8696b042-7119-4700-9e7f-2b22e8982a7b": {
+                "@type": "slate",
+                "plaintext": "Plone is made possible only through the efforts of thousands of dedicated individuals and hundreds of companies. The Plone Foundation:",
+                "value": [
+                    {
+                        "children": [
+                            {
+                                "text": "Plone is made possible only through the efforts of thousands of dedicated individuals and hundreds of companies. The Plone Foundation:"
+                            }
+                        ],
+                        "type": "p"
+                    }
+                ]
+            },
+            "93dd5f95-b3e3-4a47-9121-cde08ca07203": {
+                "@type": "slate",
+                "plaintext": "username: admin ",
+                "value": [
+                    {
+                        "children": [
+                            {
+                                "text": "username: "
+                            },
+                            {
+                                "children": [
+                                    {
+                                        "text": "admin"
+                                    }
+                                ],
+                                "type": "strong"
+                            },
+                            {
+                                "text": ""
+                            }
+                        ],
+                        "type": "p"
+                    }
+                ]
+            },
+            "9509e96d-5718-4687-95c1-f9d3db115b92": {
+                "@type": "slate",
+                "plaintext": "You can use this site to test Plone 6.",
+                "value": [
+                    {
+                        "children": [
+                            {
+                                "text": "You can use this site to test Plone 6."
+                            }
+                        ],
+                        "type": "p"
+                    }
+                ]
             },
             "a7889552-ad4e-4afb-bbbd-2911661e8cbe": {
                 "@type": "slate",
+                "plaintext": "2022 - Plone Foundation",
                 "value": [
                     {
-                        "type": "p",
                         "children": [
-                            {"text": f"{datetime.now().year} - Plone Foundation"}
+                            {
+                                "text": "2022 - Plone Foundation"
+                            }
                         ],
+                        "type": "p"
                     }
-                ],
-                "plaintext": f"{datetime.now().year} - Plone Foundation",
+                ]
             },
+            "b1d7da87-11d6-4dd2-81f2-0069826ffbd6": {
+                "@type": "slate",
+                "plaintext": "Happy hacking!",
+                "value": [
+                    {
+                        "children": [
+                            {
+                                "text": "Happy hacking!"
+                            }
+                        ],
+                        "type": "p"
+                    }
+                ]
+            },
+            "b918c45d-e817-4231-9711-ec5a0bc41505": {
+                "@type": "slate",
+                "plaintext": " Plone 6 (nightly build, this site)   Plone 6 Classic (nightly build)   Plone 5.2 (stable) ",
+                "value": [
+                    {
+                        "children": [
+                            {
+                                "children": [
+                                    {
+                                        "text": ""
+                                    },
+                                    {
+                                        "children": [
+                                            {
+                                                "text": "Plone 6 (nightly build, this site)"
+                                            }
+                                        ],
+                                        "data": {
+                                            "url": "https://6.demo.plone.org/"
+                                        },
+                                        "type": "link"
+                                    },
+                                    {
+                                        "text": ""
+                                    }
+                                ],
+                                "type": "li"
+                            },
+                            {
+                                "children": [
+                                    {
+                                        "text": ""
+                                    },
+                                    {
+                                        "children": [
+                                            {
+                                                "text": "Plone 6 Classic (nightly build)"
+                                            }
+                                        ],
+                                        "data": {
+                                            "url": "https://6-classic.demo.plone.org/"
+                                        },
+                                        "type": "link"
+                                    },
+                                    {
+                                        "text": ""
+                                    }
+                                ],
+                                "type": "li"
+                            },
+                            {
+                                "children": [
+                                    {
+                                        "text": ""
+                                    },
+                                    {
+                                        "children": [
+                                            {
+                                                "text": "Plone 5.2 (stable)"
+                                            }
+                                        ],
+                                        "data": {
+                                            "url": "https://demo.plone.org/"
+                                        },
+                                        "type": "link"
+                                    },
+                                    {
+                                        "text": ""
+                                    }
+                                ],
+                                "type": "li"
+                            }
+                        ],
+                        "type": "ul"
+                    }
+                ]
+            },
+            "bedf0ed6-3237-46ac-8c91-994826b1cf05": {
+                "@type": "slate",
+                "plaintext": "Find out more about Plone",
+                "value": [
+                    {
+                        "children": [
+                            {
+                                "text": "Find out more about Plone"
+                            }
+                        ],
+                        "type": "h2"
+                    }
+                ]
+            },
+            "e1220183-552c-45d9-a661-5ad0854615ac": {
+                "@type": "slate",
+                "plaintext": "Demo",
+                "value": [
+                    {
+                        "children": [
+                            {
+                                "text": "Demo"
+                            }
+                        ],
+                        "type": "h2"
+                    }
+                ]
+            }
         },
         "blocks_layout": {
             "items": [
@@ -622,18 +911,21 @@ demo_home_page = {
                 "bedf0ed6-3237-46ac-8c91-994826b1cf05",
                 "577b38a2-84ed-4911-9644-72b73b79bf9b",
                 "539b7bb6-23e1-425c-8d93-70c03d52806e",
+                "249cb267-394b-4e18-991d-8d5038fc60b7",
+                "b918c45d-e817-4231-9711-ec5a0bc41505",
                 "5d166d4b-195b-4dc2-ac11-8d283673ee8d",
                 "8696b042-7119-4700-9e7f-2b22e8982a7b",
                 "7ab29abe-b38c-406b-94d7-b270e544a998",
                 "e1220183-552c-45d9-a661-5ad0854615ac",
                 "9509e96d-5718-4687-95c1-f9d3db115b92",
-                "3b5ac7a5-2d98-423e-807c-5eebc0bf0054",
                 "2c68bdda-7dd3-4599-9111-db5ffb2230f9",
                 "93dd5f95-b3e3-4a47-9121-cde08ca07203",
                 "3ed49dc1-caf0-41ff-bb41-9153eeaa45da",
                 "4b2cd280-3c87-431b-a0fe-d7ec56587bde",
                 "b1d7da87-11d6-4dd2-81f2-0069826ffbd6",
                 "a7889552-ad4e-4afb-bbbd-2911661e8cbe",
+                "5026c0b5-cb0e-4e74-bd9b-461ad6cc40c0",
+                "3b5ac7a5-2d98-423e-807c-5eebc0bf0054"
             ]
         },
     },

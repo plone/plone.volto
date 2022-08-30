@@ -8,6 +8,21 @@ Changelog
 
 .. towncrier release notes start
 
+4.0.0a10 (2022-08-30)
+---------------------
+
+Bug fixes:
+
+
+- Update default homepage content for Slate. @stevepiercy (#84)
+
+
+Internal:
+
+
+- - Added `make i18n` command [davisagli] (#81)
+
+
 4.0.0a9 (2022-08-12)
 --------------------
 

@@ -3,9 +3,6 @@
         meta_type="Plone Actions Tool"
         name="portal_actions"
 >
-  <action-provider name="portal_workflow" />
-  <action-provider name="portal_types" />
-  <action-provider name="portal_actions" />
   <object meta_type="CMF Action Category"
           name="site_actions"
   >
@@ -65,9 +62,6 @@
         <element value="View" />
       </property>
       <property name="visible">True</property>
-      <property name="modal"
-                type="text"
-      >{}</property>
     </object>
   </object>
 </object>

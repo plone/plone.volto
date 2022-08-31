@@ -347,7 +347,7 @@ demo_home_page = {
     },
     "slate": {
         "title": "Welcome to Plone 6!",
-        "description": "Congratulations! You have successfully installed Plone.",
+        "description": "This site is a demonstration of Plone 6 with Volto for its frontend.",
         "blocks": {
             "0358abe2-b4f1-463d-a279-a63ea80daf19": {"@type": "description"},
             "07c273fc-8bfc-4e7d-a327-d513e5a945bb": {"@type": "title"},
@@ -356,53 +356,7 @@ demo_home_page = {
                 "plaintext": "More demo sites",
                 "value": [{"children": [{"text": "More demo sites"}], "type": "h2"}],
             },
-            "2c68bdda-7dd3-4599-9111-db5ffb2230f9": {
-                "@type": "slate",
-                "plaintext": "You can log in and use it as admin user using these credentials :",
-                "value": [
-                    {
-                        "children": [
-                            {
-                                "text": "You can log in and use it as admin user using these "
-                            },
-                            {"children": [{"text": "credentials"}], "type": "strong"},
-                            {"text": ":"},
-                        ],
-                        "type": "p",
-                    }
-                ],
-            },
             "3b5ac7a5-2d98-423e-807c-5eebc0bf0054": {"@type": "system"},
-            "3ed49dc1-caf0-41ff-bb41-9153eeaa45da": {
-                "@type": "slate",
-                "plaintext": "password: admin ",
-                "value": [
-                    {
-                        "children": [
-                            {"text": "password: "},
-                            {"children": [{"text": "admin"}], "type": "strong"},
-                            {"text": ""},
-                        ],
-                        "type": "p",
-                    }
-                ],
-            },
-            "4b2cd280-3c87-431b-a0fe-d7ec56587bde": {
-                "@type": "slate",
-                "plaintext": " Disclaimer : This instance is reset every night, so all changes will be lost afterwards.",
-                "value": [
-                    {
-                        "children": [
-                            {"text": ""},
-                            {"children": [{"text": "Disclaimer"}], "type": "strong"},
-                            {
-                                "text": ": This instance is reset every night, so all changes will be lost afterwards."
-                            },
-                        ],
-                        "type": "p",
-                    }
-                ],
-            },
             "5026c0b5-cb0e-4e74-bd9b-461ad6cc40c0": {
                 "@type": "slate",
                 "plaintext": "Technical Details",
@@ -604,43 +558,29 @@ demo_home_page = {
                     }
                 ],
             },
-            "93dd5f95-b3e3-4a47-9121-cde08ca07203": {
-                "@type": "slate",
-                "plaintext": "username: admin ",
-                "value": [
-                    {
-                        "children": [
-                            {"text": "username: "},
-                            {"children": [{"text": "admin"}], "type": "strong"},
-                            {"text": ""},
-                        ],
-                        "type": "p",
-                    }
-                ],
-            },
             "9509e96d-5718-4687-95c1-f9d3db115b92": {
                 "@type": "slate",
-                "plaintext": "You can use this site to test Plone 6.",
+                "plaintext": "You can use this site to test Plone 6.\n\nYou can log in and use it as an admin user using these credentials :\n\nusername: admin password: admin  Disclaimer : This instance is reset every night, so all changes will be lost afterwards.\n\nHappy hacking!",
                 "value": [
                     {
                         "children": [
-                            {"text": "You can use this site to test Plone 6."}
+                            {
+                                "text": "You can use this site to test Plone 6.\n\nYou can log in and use it as an admin user using these "
+                            },
+                            {"children": [{"text": "credentials"}], "type": "strong"},
+                            {"text": ":\n\nusername: "},
+                            {"children": [{"text": "admin"}], "type": "strong"},
+                            {"text": "\npassword: "},
+                            {"children": [{"text": "admin\n\n"}], "type": "strong"},
+                            {"text": ""},
+                            {"children": [{"text": "Disclaimer"}], "type": "strong"},
+                            {
+                                "text": ": This instance is reset every night, so all changes will be lost afterwards.\n\nHappy hacking!"
+                            },
                         ],
                         "type": "p",
                     }
                 ],
-            },
-            "a7889552-ad4e-4afb-bbbd-2911661e8cbe": {
-                "@type": "slate",
-                "plaintext": "2022 - Plone Foundation",
-                "value": [
-                    {"children": [{"text": "2022 - Plone Foundation"}], "type": "p"}
-                ],
-            },
-            "b1d7da87-11d6-4dd2-81f2-0069826ffbd6": {
-                "@type": "slate",
-                "plaintext": "Happy hacking!",
-                "value": [{"children": [{"text": "Happy hacking!"}], "type": "p"}],
             },
             "b918c45d-e817-4231-9711-ec5a0bc41505": {
                 "@type": "slate",
@@ -714,22 +654,16 @@ demo_home_page = {
             "items": [
                 "07c273fc-8bfc-4e7d-a327-d513e5a945bb",
                 "0358abe2-b4f1-463d-a279-a63ea80daf19",
+                "e1220183-552c-45d9-a661-5ad0854615ac",
+                "9509e96d-5718-4687-95c1-f9d3db115b92",
+                "249cb267-394b-4e18-991d-8d5038fc60b7",
+                "b918c45d-e817-4231-9711-ec5a0bc41505",
                 "bedf0ed6-3237-46ac-8c91-994826b1cf05",
                 "577b38a2-84ed-4911-9644-72b73b79bf9b",
                 "539b7bb6-23e1-425c-8d93-70c03d52806e",
-                "249cb267-394b-4e18-991d-8d5038fc60b7",
-                "b918c45d-e817-4231-9711-ec5a0bc41505",
                 "5d166d4b-195b-4dc2-ac11-8d283673ee8d",
                 "8696b042-7119-4700-9e7f-2b22e8982a7b",
                 "7ab29abe-b38c-406b-94d7-b270e544a998",
-                "e1220183-552c-45d9-a661-5ad0854615ac",
-                "9509e96d-5718-4687-95c1-f9d3db115b92",
-                "2c68bdda-7dd3-4599-9111-db5ffb2230f9",
-                "93dd5f95-b3e3-4a47-9121-cde08ca07203",
-                "3ed49dc1-caf0-41ff-bb41-9153eeaa45da",
-                "4b2cd280-3c87-431b-a0fe-d7ec56587bde",
-                "b1d7da87-11d6-4dd2-81f2-0069826ffbd6",
-                "a7889552-ad4e-4afb-bbbd-2911661e8cbe",
                 "5026c0b5-cb0e-4e74-bd9b-461ad6cc40c0",
                 "3b5ac7a5-2d98-423e-807c-5eebc0bf0054",
             ]

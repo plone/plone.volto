@@ -8,6 +8,63 @@ Changelog
 
 .. towncrier release notes start
 
+4.0.0a10 (2022-08-30)
+---------------------
+
+Bug fixes:
+
+
+- Update default homepage content for Slate. @stevepiercy (#84)
+
+
+Internal:
+
+
+- - Added `make i18n` command [davisagli] (#81)
+
+
+4.0.0a9 (2022-08-12)
+--------------------
+
+New features:
+
+
+- - Added preview image link behavior (Plone 6+ only)
+    [robgietema] (#49)
+
+
+4.0.0a8 (2022-08-04)
+--------------------
+
+New features:
+
+
+- Add better implementation of the PLONE6 check (cosmetic)
+  [sneridagh] (#59)
+- Use slate as default text block in default contents for ``default-homepage`` and
+  ``multilingual`` profile.
+  [sneridagh] (#77)
+  
+
+4.0.0a7 (2022-07-22)
+--------------------
+
+New features:
+
+
+- Use new metadata utility for adding the ``image_scales`` to the default serialization.
+  [ericof] (#74)
+
+
+Bug fixes:
+
+
+- Use plone/code-analysis-action on GitHub Actions and plone/code-quality Docker image and versions to format code.
+  [ericof] (#68)
+- Fix the handler for resolving UIDs in nested blocks to avoid trying to resolve them twice. This also makes it possible to use deserialization and serialization transforms that intentionally run before the resolveuid transform in the context of nested blocks.
+  [davisagli] (#76)
+
+
 4.0.0a6 (2022-06-25)
 --------------------
 
@@ -47,6 +104,7 @@ Bug fixes:
 
 - Fix deprecated import of isDefaultPage
   [pbauer]
+
 
 4.0.0a3 (2022-02-04)
 --------------------

@@ -8,6 +8,21 @@ Changelog
 
 .. towncrier release notes start
 
+4.0.0a11 (2022-09-04)
+---------------------
+
+Bug fixes:
+
+
+- Update demo homepage content for Slate, round 2. @stevepiercy (#85)
+
+
+Internal:
+
+
+- Sign CONTRIBUTORS.rst. @stevepiercy (#88)
+
+
 4.0.0a10 (2022-08-30)
 ---------------------
 

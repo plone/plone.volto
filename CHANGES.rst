@@ -35,7 +35,7 @@ Bug fixes:
 Internal:
 
 
-- - Added `make i18n` command [davisagli] (#81)
+- Added `make i18n` command [davisagli] (#81)
 
 
 4.0.0a9 (2022-08-12)
@@ -44,8 +44,8 @@ Internal:
 New features:
 
 
-- - Added preview image link behavior (Plone 6+ only)
-    [robgietema] (#49)
+- Added preview image link behavior (Plone 6+ only)
+  [robgietema] (#49)
 
 
 4.0.0a8 (2022-08-04)

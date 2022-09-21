@@ -48,4 +48,11 @@
     </value>
   </record>
 
+  <record name="plone.icon.volto-settings">
+    <field type="plone.registry.field.TextLine">
+      <title>Plone Icon Volto Control Panel</title>
+    </field>
+    <value key="resource">++plone++plone.volto/volto.svg</value>
+  </record>
+
 </registry>

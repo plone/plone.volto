@@ -15,8 +15,8 @@ GREEN=`tput setaf 2`
 RESET=`tput sgr0`
 YELLOW=`tput setaf 3`
 
-PLONE5=5.2.7
-PLONE6=6.0.0a6
+PLONE5=5.2.9
+PLONE6=6.0.0b1
 
 CODE_QUALITY_VERSION=1.0.1
 LINT=docker run --rm -v "$(PWD)":/github/workspace plone/code-quality:${CODE_QUALITY_VERSION} check
@@ -44,6 +44,10 @@ bin/black bin/isort bin/pyroma bin/zpretty: bin/pip
 	@echo "$(GREEN)==> Install pre-commit hook$(RESET)"
 	echo -e '#!/usr/bin/env bash\nmake lint' > .git/hooks/pre-commit && chmod ug+x .git/hooks/pre-commit
 
+bin/i18ndude: bin/pip
+	@echo "$(GREEN)==> Install i18ndude$(RESET)"
+	bin/pip install i18ndude
+
 .PHONY: build-plone-5.2
 build-plone-5.2: bin/pip bin/black ## Build Plone 5.2
 	@echo "$(GREEN)==> Build with Plone 5.2$(RESET)"
@@ -56,7 +60,7 @@ build-plone-6.0: bin/pip bin/black ## Build Plone 6.0
 	@echo "$(GREEN)==> Build with Plone 6.0$(RESET)"
 	bin/pip install Plone plone.app.testing -c https://dist.plone.org/release/$(PLONE6)/constraints.txt
 	bin/pip install -e ".[test]"
-	bin/pip install zest.releaser[recommended]
+	bin/pip install zest.releaser[recommended] zestreleaser.towncrier
 	bin/mkwsgiinstance -d . -u admin:admin
 
 .PHONY: build
@@ -75,12 +79,17 @@ black: bin/black ## Format codebase
 isort: bin/isort ## Format imports in the codebase
 	bin/isort $(CHECK_PATH)
 
+.PHONY: zpretty
 zpretty: bin/zpretty ## Format xml and zcml with zpretty
 	find "${PACKAGE_PATH}" -name '*.xml' | xargs bin/zpretty -x -i
 	find "${PACKAGE_PATH}" -name '*.zcml' | xargs bin/zpretty -z -i
 
 .PHONY: format
 format: black isort zpretty ## Format the codebase according to our standards
+
+.PHONY: i18n
+i18n: bin/i18ndude ## update translations
+	./scripts/update_translations.sh
 
 .PHONY: lint
 lint: lint-isort lint-black lint-flake8 lint-zpretty ## check code style

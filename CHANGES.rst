@@ -8,14 +8,44 @@ Changelog
 
 .. towncrier release notes start
 
+4.0.0a11 (2022-09-04)
+---------------------
+
+Bug fixes:
+
+
+- Update demo homepage content for Slate, round 2. @stevepiercy (#85)
+
+
+Internal:
+
+
+- Sign CONTRIBUTORS.rst. @stevepiercy (#88)
+
+
+4.0.0a10 (2022-08-30)
+---------------------
+
+Bug fixes:
+
+
+- Update default homepage content for Slate. @stevepiercy (#84)
+
+
+Internal:
+
+
+- Added `make i18n` command [davisagli] (#81)
+
+
 4.0.0a9 (2022-08-12)
 --------------------
 
 New features:
 
 
-- - Added preview image link behavior (Plone 6+ only)
-    [robgietema] (#49)
+- Added preview image link behavior (Plone 6+ only)
+  [robgietema] (#49)
 
 
 4.0.0a8 (2022-08-04)

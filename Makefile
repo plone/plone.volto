@@ -44,6 +44,10 @@ bin/black bin/isort bin/pyroma bin/zpretty: bin/pip
 	@echo "$(GREEN)==> Install pre-commit hook$(RESET)"
 	echo -e '#!/usr/bin/env bash\nmake lint' > .git/hooks/pre-commit && chmod ug+x .git/hooks/pre-commit
 
+bin/i18ndude: bin/pip
+	@echo "$(GREEN)==> Install i18ndude$(RESET)"
+	bin/pip install i18ndude
+
 .PHONY: build-plone-5.2
 build-plone-5.2: bin/pip bin/black ## Build Plone 5.2
 	@echo "$(GREEN)==> Build with Plone 5.2$(RESET)"
@@ -82,6 +86,10 @@ zpretty: bin/zpretty ## Format xml and zcml with zpretty
 
 .PHONY: format
 format: black isort zpretty ## Format the codebase according to our standards
+
+.PHONY: i18n
+i18n: bin/i18ndude ## update translations
+	./scripts/update_translations.sh
 
 .PHONY: lint
 lint: lint-isort lint-black lint-flake8 lint-zpretty ## check code style

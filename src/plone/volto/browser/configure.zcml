@@ -6,6 +6,12 @@
     xmlns:zcml="http://namespaces.zope.org/zcml"
     >
 
+  <plone:static
+      directory="static"
+      name="plone.volto"
+      type="plone"
+      />
+
   <browser:page
       name="breadcrumbs_view"
       for="*"

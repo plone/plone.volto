@@ -1,11 +1,15 @@
 from copy import deepcopy
 from OFS.interfaces import IOrderedContainer
 from plone import api
+from plone.registry import field
+from plone.registry.interfaces import IRegistry
+from plone.registry.record import Record
 from plone.restapi.behaviors import IBlocks
 from plone.volto import content
 from plone.volto import logger
 from plone.volto.setuphandlers import NO_RICHTEXT_BEHAVIOR_CONTENT_TYPES
 from plone.volto.setuphandlers import remove_behavior
+from zope.component import getUtility
 
 
 MIGRATION = {
@@ -111,3 +115,11 @@ def from12to13_migrate_listings(context):
 def remove_plone_richtext_behavior(context):
     for type_ in NO_RICHTEXT_BEHAVIOR_CONTENT_TYPES:
         remove_behavior(type_, "plone.richtext")
+
+
+def add_control_panel_classic_icon(context):
+    registry = getUtility(IRegistry)
+    registry.records["plone.icon.volto-settings"] = Record(
+        field.TextLine(title="Plone Icon Volto Control Panel"),
+    )
+    registry["plone.icon.volto-settings"] = "++plone++plone.volto/volto.svg"

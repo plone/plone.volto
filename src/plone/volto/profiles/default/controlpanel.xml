@@ -8,7 +8,7 @@
              appId="VoltoSettings"
              category="plone-general"
              condition_expr=""
-             icon_expr="string:$portal_url/product_icon.png"
+             icon_expr="string:volto-settings"
              title="Volto Settings"
              url_expr="string:${portal_url}/volto_settings"
              visible="True"

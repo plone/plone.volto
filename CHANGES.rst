@@ -8,6 +8,16 @@ Changelog
 
 .. towncrier release notes start
 
+4.0.0a12 (2022-09-27)
+---------------------
+
+New features:
+
+
+- Add proper icon in classic control panel
+  [sneridagh] (#89)
+
+
 4.0.0a11 (2022-09-04)
 ---------------------
 

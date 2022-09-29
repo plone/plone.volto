@@ -1,14 +1,14 @@
 # -*- coding: utf-8 -*-
 
 from plone.dexterity.interfaces import IDexterityFTI
+from plone.dexterity.utils import iterSchemata
 from plone.restapi.interfaces import IDeserializeFromJson
+from plone.restapi.interfaces import IFieldSerializer
 from plone.volto.testing import PLONE_VOLTO_CORE_INTEGRATION_TESTING  # noqa
+from plone.volto.upgrades import from12to13_migrate_listings
+from z3c.form.interfaces import IDataManager
 from zope.component import getMultiAdapter
 from zope.component import queryUtility
-from plone.dexterity.utils import iterSchemata
-from plone.restapi.interfaces import IFieldSerializer
-from z3c.form.interfaces import IDataManager
-from plone.volto.upgrades import from12to13_migrate_listings
 
 import json
 import unittest

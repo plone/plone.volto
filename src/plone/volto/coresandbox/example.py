@@ -7,7 +7,6 @@ from plone.app.z3cform.widget import RelatedItemsFieldWidget
 from plone.app.z3cform.widget import SelectFieldWidget
 from plone.autoform import directives
 from plone.dexterity.content import Container
-
 from plone.namedfile.field import NamedBlobFile
 from plone.namedfile.field import NamedBlobImage
 from plone.schema import Email
@@ -18,16 +17,14 @@ from plone.schema import Email
 from plone.supermodel import model
 from plone.supermodel.directives import fieldset
 from plone.supermodel.directives import primary
-
 from z3c.form.browser.checkbox import CheckBoxFieldWidget
 from z3c.form.browser.radio import RadioFieldWidget
-
 from z3c.relationfield.schema import RelationChoice
 from z3c.relationfield.schema import RelationList
 from zope import schema
+from zope.i18nmessageid import MessageFactory
 from zope.interface import implementer
 
-from zope.i18nmessageid import MessageFactory
 
 _ = PloneMessageFactory = MessageFactory("plone")
 

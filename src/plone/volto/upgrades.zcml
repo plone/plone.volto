@@ -59,4 +59,20 @@
       destination="1016"
       import_steps="typeinfo"
       />
+
+  <genericsetup:upgradeSteps
+      profile="plone.volto:default"
+      source="1016"
+      destination="1017"
+      >
+    <genericsetup:upgradeDepends
+        title="Update controlpanel info for Plone Site"
+        import_steps="controlpanel"
+        />
+    <genericsetup:upgradeStep
+        title="Add proper icon for Volto settings in classic"
+        handler=".upgrades.add_control_panel_classic_icon"
+        />
+  </genericsetup:upgradeSteps>
+
 </configure>

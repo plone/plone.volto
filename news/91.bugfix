@@ -1,0 +1,2 @@
+- Fix hasPreviewImage and image_field indexers when the preview_image_link
+  relation is broken. [davisagli]

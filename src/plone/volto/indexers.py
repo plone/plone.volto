@@ -10,7 +10,9 @@ def hasPreviewImage(obj):
     Indexer for knowing in a catalog search if a content with the IPreview behavior has
     a preview_image
     """
-    if obj.aq_base.preview_image or obj.aq_base.preview_image_link:
+    if obj.aq_base.preview_image or (
+        obj.aq_base.preview_image_link and not obj.preview_image_link.isBroken()
+    ):
         return True
     return False
 
@@ -23,7 +25,10 @@ def image_field_indexer(obj):
     image_field = ""
     if getattr(base_obj, "preview_image", False):
         image_field = "preview_image"
-    elif getattr(base_obj, "preview_image_link", False):
+    elif (
+        getattr(base_obj, "preview_image_link", False)
+        and not base_obj.preview_image_link.isBroken()
+    ):
         image_field = "preview_image_link"
     elif getattr(base_obj, "image", False):
         image_field = "image"

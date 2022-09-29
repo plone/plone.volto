@@ -8,6 +8,16 @@ Changelog
 
 .. towncrier release notes start
 
+4.0.0a13 (2022-09-29)
+---------------------
+
+Bug fixes:
+
+
+- Keep folder order when migrating from folderishtypes [cekk] (#86)
+- Fix hasPreviewImage and image_field indexers when the preview_image_link relation is broken. [davisagli] (#91)
+
+
 4.0.0a12 (2022-09-27)
 ---------------------
 

@@ -1,10 +1,15 @@
 from copy import deepcopy
+from OFS.interfaces import IOrderedContainer
 from plone import api
+from plone.registry import field
+from plone.registry.interfaces import IRegistry
+from plone.registry.record import Record
 from plone.restapi.behaviors import IBlocks
 from plone.volto import content
 from plone.volto import logger
 from plone.volto.setuphandlers import NO_RICHTEXT_BEHAVIOR_CONTENT_TYPES
 from plone.volto.setuphandlers import remove_behavior
+from zope.component import getUtility
 
 
 MIGRATION = {
@@ -17,10 +22,10 @@ MIGRATION = {
 def migrate_content_classes(context):
     """Migrate content created with collective.folderishtypes to plone.volto."""
     interface = "collective.folderishtypes.interfaces.IFolderishType"
-    idxs = [
-        "object_provides",
-    ]
-    brains = api.content.find(object_provides=interface)
+    idxs = ["object_provides", "getObjPositionInParent"]
+    brains = api.content.find(
+        object_provides=interface, sort_on="getObjPositionInParent"
+    )
     total_brains = len(brains)
     logger.info(f"Migration: {total_brains} contents to be migrated.")
     for idx, brain in enumerate(brains):
@@ -28,9 +33,16 @@ def migrate_content_classes(context):
         content_id = content.getId()
         content.__class__ = MIGRATION[content.portal_type]
         parent = content.aq_parent
+        ordered = IOrderedContainer(parent, None)
+        if ordered is not None:
+            order = ordered.getObjectPosition(content.getId())
+            if order == 1:
+                # can be the default one and we will lose the ordering
+                order = ordered.keys().index(content.getId())
         parent._delOb(content_id)
         parent._setOb(content_id, content)
         content = parent[content_id]
+        ordered.moveObjectToPosition(content.getId(), order)
         content.reindexObject(idxs=idxs)
 
         if idx and idx % 100 == 0:
@@ -103,3 +115,11 @@ def from12to13_migrate_listings(context):
 def remove_plone_richtext_behavior(context):
     for type_ in NO_RICHTEXT_BEHAVIOR_CONTENT_TYPES:
         remove_behavior(type_, "plone.richtext")
+
+
+def add_control_panel_classic_icon(context):
+    registry = getUtility(IRegistry)
+    registry.records["plone.icon.volto-settings"] = Record(
+        field.TextLine(title="Plone Icon Volto Control Panel"),
+    )
+    registry["plone.icon.volto-settings"] = "++plone++plone.volto/volto.svg"

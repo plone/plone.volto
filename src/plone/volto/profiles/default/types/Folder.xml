@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<object xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+        meta_type="Dexterity FTI"
+        name="Folder"
+        i18n:domain="plone"
+>
+
+  <!-- Folders in Volto are disabled by default -->
+  <property name="global_allow">False</property>
+
+</object>

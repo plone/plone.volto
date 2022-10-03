@@ -1,9 +1,12 @@
-# keep in sync with: https://github.com/kitconcept/buildout/edit/master/Makefile
-# update by running 'make update'
-SHELL := /bin/bash
-CURRENT_DIR:=$(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
-
-version = 3
+### Defensive settings for make:
+#     https://tech.davis-hansson.com/p/make/
+SHELL:=bash
+.ONESHELL:
+.SHELLFLAGS:=-xeu -o pipefail -O inherit_errexit -c
+.SILENT:
+.DELETE_ON_ERROR:
+MAKEFLAGS+=--warn-undefined-variables
+MAKEFLAGS+=--no-builtin-rules
 
 # We like colors
 # From: https://coderwall.com/p/izxssa/colored-makefile-for-golang-projects
@@ -12,7 +15,17 @@ GREEN=`tput setaf 2`
 RESET=`tput sgr0`
 YELLOW=`tput setaf 3`
 
-all: .installed.cfg
+PLONE5=5.2.9
+PLONE6=6.0.0b1
+
+CODE_QUALITY_VERSION=1.0.1
+LINT=docker run --rm -v "$(PWD)":/github/workspace plone/code-quality:${CODE_QUALITY_VERSION} check
+
+PACKAGE_NAME=plone.volto
+PACKAGE_PATH=src/
+CHECK_PATH=setup.py $(PACKAGE_PATH)
+
+all: build
 
 # Add the following 'help' target to your Makefile
 # And add help text after each target name starting with '\#\#'
@@ -20,72 +33,95 @@ all: .installed.cfg
 help: ## This help message
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
 
-.PHONY: Update Makefile and Buildout
-update: ## Update Make and Buildout
-	wget -O Makefile https://raw.githubusercontent.com/kitconcept/buildout/master/Makefile
-	wget -O requirements.txt https://raw.githubusercontent.com/kitconcept/buildout/master/requirements.txt
-	wget -O plone-4.3.x.cfg https://raw.githubusercontent.com/kitconcept/buildout/master/plone-4.3.x.cfg
-	wget -O plone-5.1.x.cfg https://raw.githubusercontent.com/kitconcept/buildout/master/plone-5.1.x.cfg
-	wget -O plone-5.2.x.cfg https://raw.githubusercontent.com/kitconcept/buildout/master/plone-5.2.x.cfg
-	wget -O travis.cfg https://raw.githubusercontent.com/kitconcept/buildout/master/travis.cfg
-	wget -O versions.cfg https://raw.githubusercontent.com/kitconcept/buildout/master/versions.cfg
+bin/pip:
+	@echo "$(GREEN)==> Setup Virtual Env$(RESET)"
+	python3 -m venv .
+	bin/pip install -U pip wheel
 
-.installed.cfg: bin/buildout *.cfg
-	bin/buildout
+bin/black bin/isort bin/pyroma bin/zpretty: bin/pip
+	@echo "$(GREEN)==> Install Code Quality tools$(RESET)"
+	bin/pip install -r https://raw.githubusercontent.com/plone/code-quality/v$(CODE_QUALITY_VERSION)/requirements.txt
+	@echo "$(GREEN)==> Install pre-commit hook$(RESET)"
+	echo -e '#!/usr/bin/env bash\nmake lint' > .git/hooks/pre-commit && chmod ug+x .git/hooks/pre-commit
 
-bin/buildout: bin/pip
-	bin/pip install --upgrade pip
-	bin/pip install -r requirements.txt
-	@touch -c $@
+bin/i18ndude: bin/pip
+	@echo "$(GREEN)==> Install i18ndude$(RESET)"
+	bin/pip install i18ndude
 
-bin/python bin/pip:
-	python$(version) -m venv . || virtualenv --clear --python=python$(version) .
+.PHONY: build-plone-5.2
+build-plone-5.2: bin/pip bin/black ## Build Plone 5.2
+	@echo "$(GREEN)==> Build with Plone 5.2$(RESET)"
+	bin/pip install Plone plone.app.testing -c https://dist.plone.org/release/$(PLONE5)/constraints.txt
+	bin/pip install -e ".[test]"
+	bin/mkwsgiinstance -d . -u admin:admin
 
+.PHONY: build-plone-6.0
+build-plone-6.0: bin/pip bin/black ## Build Plone 6.0
+	@echo "$(GREEN)==> Build with Plone 6.0$(RESET)"
+	bin/pip install Plone plone.app.testing -c https://dist.plone.org/release/$(PLONE6)/constraints.txt
+	bin/pip install -e ".[test]"
+	bin/pip install zest.releaser[recommended] zestreleaser.towncrier
+	bin/mkwsgiinstance -d . -u admin:admin
 
-.PHONY: Build Plone 5.2
-build: .installed.cfg  ## Build Plone 5.2
-	bin/pip install --upgrade pip
-	bin/pip install -r requirements.txt
-	bin/buildout
+.PHONY: build
+build: build-plone-6.0 ## Build Plone 6.0
 
-.PHONY: Build Plone 6.0
-build-plone-6.0:  bin/pip ## Build Plone 6.0
-	bin/pip install --upgrade pip
-	bin/pip install -r https://dist.plone.org/release/6.0.0a2/requirements.txt
-	bin/buildout -c plone-6.0.x.cfg
+.PHONY: clean
+clean: ## Remove old virtualenv and creates a new one
+	@echo "$(RED)==> Cleaning environment and build$(RESET)"
+	rm -rf bin lib lib64 include share etc var inituser pyvenv.cfg .installed.cfg
 
-.PHONY: Test
-test:  ## Test
-	bin/test
+.PHONY: black
+black: bin/black ## Format codebase
+	bin/black $(CHECK_PATH)
 
-.PHONY: Test Performance
-test-performance:
-	jmeter -n -t performance.jmx -l jmeter.jtl
+.PHONY: isort
+isort: bin/isort ## Format imports in the codebase
+	bin/isort $(CHECK_PATH)
 
-.PHONY: Code Analysis
-code-analysis:  ## Code Analysis
-	bin/code-analysis
-	if [ -f "bin/black" ]; then bin/black src/ --check ; fi
+.PHONY: zpretty
+zpretty: bin/zpretty ## Format xml and zcml with zpretty
+	find "${PACKAGE_PATH}" -name '*.xml' | xargs bin/zpretty -x -i
+	find "${PACKAGE_PATH}" -name '*.zcml' | xargs bin/zpretty -z -i
 
-.PHONY: Black
-black:  ## Black
-	bin/code-analysis
-	if [ -f "bin/black" ]; then bin/black src/ ; fi
+.PHONY: format
+format: black isort zpretty ## Format the codebase according to our standards
 
-.PHONY: Build Docs
-docs:  ## Build Docs
-	bin/sphinxbuilder
+.PHONY: i18n
+i18n: bin/i18ndude ## update translations
+	./scripts/update_translations.sh
 
-.PHONY: Test Release
-test-release:  ## Run Pyroma and Check Manifest
-	bin/pyroma -n 10 -d .
+.PHONY: lint
+lint: lint-isort lint-black lint-flake8 lint-zpretty ## check code style
 
-.PHONY: Release
-release:  ## Release
-	bin/fullrelease
+.PHONY: lint-black
+lint-black: ## validate black formating
+	$(LINT) black "$(CHECK_PATH)"
 
-.PHONY: Clean
-clean:  ## Clean
-	git clean -Xdf
+.PHONY: lint-flake8
+lint-flake8: ## validate black formating
+	$(LINT) flake8 "$(CHECK_PATH)"
 
-.PHONY: all clean
+.PHONY: lint-isort
+lint-isort: ## validate using isort
+	$(LINT) isort "$(CHECK_PATH)"
+
+.PHONY: lint-pyroma
+lint-pyroma: ## validate using pyroma
+	$(LINT) .
+
+.PHONY: lint-zpretty
+lint-zpretty: ## validate ZCML/XML using zpretty
+	$(LINT) zpretty "$(PACKAGE_PATH)"
+
+.PHONY: test
+test: ## run tests
+	PYTHONWARNINGS=ignore ./bin/zope-testrunner --auto-color --auto-progress --test-path $(PACKAGE_PATH)
+
+.PHONY: start
+start: ## Start a Plone instance on localhost:8080
+	PYTHONWARNINGS=ignore ./bin/runwsgi etc/zope.ini
+
+.PHONY: release
+release: ## Make a release
+	./bin/fullrelease

@@ -1,8 +1,8 @@
 # -*- coding: UTF-8 -*-
-from plone.volto.interfaces import IVoltoSettings
 from plone.app.registry.browser.controlpanel import ControlPanelFormWrapper
 from plone.app.registry.browser.controlpanel import RegistryEditForm
 from plone.restapi.controlpanels import RegistryConfigletPanel
+from plone.volto.interfaces import IVoltoSettings
 from zope.component import adapter
 from zope.interface import Interface
 

@@ -43,6 +43,7 @@
   <adapter
       factory=".scaling.VoltoImageScalingFactory"
       for="plone.app.contenttypes.interfaces.IImage"
+      zcml:condition="not-have plone-60"
       />
 
   <adapter
@@ -74,6 +75,22 @@
         />
     <subscriber
         factory=".transforms.NestedResolveUIDSerializerRoot"
+        provides="plone.restapi.interfaces.IBlockFieldSerializationTransformer"
+        />
+    <subscriber
+        factory=".transforms.PreviewImageResolveUIDDeserializer"
+        provides="plone.restapi.interfaces.IBlockFieldDeserializationTransformer"
+        />
+    <subscriber
+        factory=".transforms.PreviewImageResolveUIDDeserializerRoot"
+        provides="plone.restapi.interfaces.IBlockFieldDeserializationTransformer"
+        />
+    <subscriber
+        factory=".transforms.PreviewImageResolveUIDSerializer"
+        provides="plone.restapi.interfaces.IBlockFieldSerializationTransformer"
+        />
+    <subscriber
+        factory=".transforms.PreviewImageResolveUIDSerializerRoot"
         provides="plone.restapi.interfaces.IBlockFieldSerializationTransformer"
         />
   </configure>

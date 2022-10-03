@@ -1,0 +1,118 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      i18n:domain="plone"
+      metal:use-macro="context/main_template/macros/master">
+
+<div metal:fill-slot="main">
+<tal:main-macro metal:define-macro="main">
+
+    <h1 class="documentFirstHeading" i18n:translate="">Migrate to Volto</h1>
+
+    <p class="lead" i18n:translate="">Here you can prepare this site for Volto.</p>
+
+    <h3 i18n:translate="">What is Volto?</h3>
+    <p i18n:translate="">Volto is a React-based frontend for Plone. It is the default UI for Plone 6.</p>
+
+    <h3 i18n:translate="">What will happen?</h3>
+    <p i18n:translate="">When you click on "Migrate to Volto" the following things will happen:</p>
+    <ol>
+        <li i18n:translate="">Install the package <code>plone.volto</code> and <code>plone.restapi</code>.</li>
+        <li i18n:translate="">The html of Richtext-Fields (previously edited using TinyMCE) is converted into Volto blocks so you can edit it in Volto.</li>
+        <li i18n:translate="">Pages, News Items and Events are made folderish. That means they can contain other content like Images or Pages.</li>
+        <li i18n:translate="">Default Pages of Folders are merged with the Folderish Pages that replace the Folder whereever that is possible.
+            This works well with Pages and Collections where the text and/or query are added to the folderish page that repalces the Folder.</li>
+        <li i18n:translate="">Collections are migrated to Pages with Listing Blocks configured like the Collection.</li>
+        <li i18n:translate="">A migrated site will still work in Plone Classic but behave different. Editors can only work with the Data using Volto.</li>
+    </ol>
+
+    <form id="migrate_to_volto" action="@@migrate_to_volto" tal:attributes="action request/URL" method="post" enctype="multipart/form-data">
+
+        <div class="formControls form-group">
+            <input type="hidden" name="form.submitted" value="1"/>
+            <button class="btn btn-primary submit-widget button-field context"
+                    type="submit" name="submit" value="export">Migrate to Volto
+            </button>
+        </div>
+
+        <h3 i18n:translate="" class="mt-5">Requirements</h3>
+        <ul>
+            <li i18n:translate="">
+            To migrate Richtext to Volto Blocks you need to have <code>blocks-conversion-tool</code> running on a accessible url.
+            The easiest way to have that running on your machine is: <code>docker run -it -p 5000:5000 plone/blocks-conversion-tool:latest</code>.
+            More for options read <a href="https://github.com/plone/blocks-conversion-tool">https://github.com/plone/blocks-conversion-tool</a>.
+            </li>
+        </ul>
+
+        <h3 i18n:translate="">Advanced settings</h3>
+        <p i18n:translate="">
+        It is recommendet to use the default settings but here you can disable some of the migration-steps.
+        </p>
+
+        <div class="form-check mb-3">
+            <input
+                class="form-check-input"
+                type="checkbox"
+                name="migrate_folders:boolean"
+                id="migrate_folders"
+                tal:attributes="checked python:view.migrate_folders"
+                />
+            <label class="form-check-label" for="migrate_folders">
+            Migrate Folders to Folderish Pages
+            </label>
+        </div>
+
+        <div class="form-check mb-3 ms-4">
+            <input
+                class="form-check-input"
+                type="checkbox"
+                name="migrate_default_pages:boolean"
+                id="migrate_default_pages"
+                tal:attributes="checked python:view.migrate_default_pages"
+                />
+            <label class="form-check-label" for="migrate_default_pages">
+            Migrate default Pages into the Folderish Pages if possible
+            </label>
+            <div class="form-text" i18n:translate="">
+            Collections and Pages that are the default-page of a Folder will be applied on the migrated Folderish Page.
+            For Collections that means adding a listing block with the same query.
+            This only happens if you also you migrate Folders to Folderish Pages.
+            </div>
+        </div>
+
+        <div class="form-check mb-3">
+            <input
+                class="form-check-input"
+                type="checkbox"
+                name="purge_richtext:boolean"
+                id="purge_richtext"
+                tal:attributes="checked python:view.purge_richtext"
+                />
+            <label class="form-check-label" for="purge_richtext">
+            Purge old Richtext-fields after migrating to Volto blocks
+            </label>
+            <div class="form-text" i18n:translate="">
+            The RichtextValue objects will be removed from the migrated objects. The old fields (from the behavior plone.volto) are no longer available.
+            </div>
+
+        </div>
+
+        <div class="field mb-3">
+            <label for="service_url" class="form-label">
+            URL of blocks-conversion-tool.
+            </label>
+            <input class="form-control" type="text" name="service_url" id="service_url" value=""
+                    tal:attributes="value python:view.service_url">
+            <div class="form-text" i18n:translate="">
+            The migration requires a service to run. See https://github.com/plone/blocks-conversion-tool for details.
+            </div>
+
+        </div>
+
+    </form>
+
+</tal:main-macro>
+</div>
+
+</html>

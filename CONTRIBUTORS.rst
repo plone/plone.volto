@@ -12,3 +12,4 @@ Contributors
 - Roberto Diaz
 - Rodrigo Ferreira de Souza
 - Alin Voinea
+- Steve Piercy

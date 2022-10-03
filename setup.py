@@ -3,6 +3,7 @@
 
 from setuptools import find_packages
 from setuptools import setup
+
 import sys
 
 
@@ -24,7 +25,7 @@ long_description = "\n\n".join(
 
 setup(
     name="plone.volto",
-    version="4.0.0a4.dev0",
+    version="4.0.0a14.dev0",
     description="Volto integration add-on for Plone",
     long_description=long_description,
     # Get more from https://pypi.org/classifiers/
@@ -67,6 +68,7 @@ setup(
             "plone.app.contenttypes",
             "plone.app.robotframework[debug]",
             "collective.MockMailHost",
+            "responses",
         ]
     },
     entry_points="""

@@ -1,0 +1,85 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      i18n:domain="plone"
+      metal:use-macro="context/main_template/macros/master">
+
+<div metal:fill-slot="main">
+    <tal:main-macro metal:define-macro="main">
+
+      <h1 class="documentFirstHeading">Migrate Richtext to Slate Block</h1>
+
+      <p class="documentDescription">Migrate text from RichText-fields to text in the Volto Editor</p>
+
+        <form id="migrate_richtext" action="@@migrate_richtext" tal:attributes="action request/URL" method="post" enctype="multipart/form-data">
+
+            <div class="field mb-3">
+              <label for="portal_types" class="form-label">
+                <span i18n:translate="">Content Types to handle</span>
+              </label>
+              <tal:types tal:repeat="ptype python: view.portal_types_info">
+                <div class="form-check">
+                  <input type="checkbox"
+                         name="portal_types"
+                         class="form-check-input"
+                         tal:attributes="value ptype/value; id ptype/value;
+                                         checked python: ptype['value'] in view.portal_types">
+                  <label class="form-check-label"
+                         tal:attributes="for ptype/value"
+                         tal:content="string:${ptype/title} - ${ptype/value} (${ptype/number})"></label>
+                </div>
+              </tal:types>
+            </div>
+
+            <div class="field mb-3">
+              <label for="service_url" class="form-label">
+                URL of blocks-conversion-tool. The migration requires a service to run. See https://github.com/plone/blocks-conversion-tool for details.
+              </label>
+              <input class="form-control" type="text" name="service_url" id="service_url" value=""
+                     tal:attributes="value python:view.service_url">
+            </div>
+
+            <div class="field mb-3">
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="slate:int" value="1" id="slate" checked="checked">
+                <label for="slate" class="form-check-label"  i18n:translate="">
+                  Convert to Slate (default)
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="slate:int" value="0" id="draftjs">
+                <label for="draftjs" class="form-check-label" i18n:translate="">
+                  Convert to draftjs (a old format used until Volto 15)
+                </label>
+              </div>
+            </div>
+
+            <div class="form-check">
+                <input
+                    class="form-check-input"
+                    type="checkbox"
+                    name="purge_richtext:boolean"
+                    id="purge_richtext"
+                    tal:attributes="checked python:view.purge_richtext"
+                    />
+              <label class="form-check-label" for="purge_richtext">
+                Purge Richtext-fields after migrating to Slate
+              </label>
+            </div>
+
+
+            <div class="formControls" class="form-group">
+                <input type="hidden" name="form.submitted" value="1"/>
+
+                <button class="btn btn-primary submit-widget button-field context"
+                        type="submit" name="submit" value="export">Migrate
+                </button>
+            </div>
+
+        </form>
+
+    </tal:main-macro>
+</div>
+
+</html>

@@ -29,7 +29,7 @@
       description="Creates a default page for the site"
       provides="Products.GenericSetup.interfaces.EXTENSION"
       directory="profiles/homepage"
-      post_handler=".setuphandlers.create_default_homepage_draftjs"
+      post_handler=".setuphandlers.create_default_homepage"
       />
 
   <genericsetup:registerProfile

@@ -1,12 +1,14 @@
 <?xml version="1.0"?>
-<object
-    i18n:domain="plone"
-    meta_type="Dexterity FTI"
-    name="Document"
-    xmlns:i18n="http://xml.zope.org/namespaces/i18n">
+<object xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+        meta_type="Dexterity FTI"
+        name="Document"
+        i18n:domain="plone"
+>
 
   <!-- Enabled behaviors -->
-  <property name="behaviors" purge="false">
+  <property name="behaviors"
+            purge="false"
+  >
     <element value="plone.richtext" />
   </property>
 

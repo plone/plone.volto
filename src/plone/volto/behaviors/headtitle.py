@@ -10,7 +10,10 @@ from zope.interface import provider
 class IHeadTitle(model.Schema):
 
     head_title = schema.TextLine(
-        title=_("Header title"),
+        title=_("label_head_title", default="Header title"),
         required=False,
-        description=_("Header title should consist of year and number of the report"),
+        description=_(
+            "help_head_title",
+            default="The header title is shown above the title in teasers.",
+        ),
     )

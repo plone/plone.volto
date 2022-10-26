@@ -21,7 +21,7 @@
     <object meta_type="CMF Action"
             name="contact"
             i18n:domain="plone"
-    >   
+    >
       <property name="url_expr">string:${globals_view/navigationRootUrl}/contact-form</property>
     </object>
   </object>

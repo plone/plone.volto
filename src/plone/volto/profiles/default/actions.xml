@@ -6,62 +6,23 @@
   <object meta_type="CMF Action Category"
           name="site_actions"
   >
-    <property name="title"
-              i18n:translate=""
-    >Site actions</property>
     <object meta_type="CMF Action"
             name="sitemap"
             i18n:domain="plone"
     >
-      <property name="title"
-                i18n:translate=""
-      >Site Map</property>
-      <property name="description"
-                i18n:translate=""
-      />
       <property name="url_expr">string:${globals_view/navigationRootUrl}/sitemap</property>
-      <property name="icon_expr">string:plone-sitemap</property>
-      <property name="available_expr" />
-      <property name="permissions">
-        <element value="View" />
-      </property>
-      <property name="visible">True</property>
     </object>
     <object meta_type="CMF Action"
             name="accessibility"
             i18n:domain="plone"
     >
-      <property name="title"
-                i18n:translate=""
-      >Accessibility</property>
-      <property name="description"
-                i18n:translate=""
-      />
       <property name="url_expr">string:${globals_view/navigationRootUrl}/accessibility-info</property>
-      <property name="icon_expr">string:plone-accessibility</property>
-      <property name="available_expr" />
-      <property name="permissions">
-        <element value="View" />
-      </property>
-      <property name="visible">True</property>
     </object>
     <object meta_type="CMF Action"
             name="contact"
             i18n:domain="plone"
-    >
-      <property name="title"
-                i18n:translate=""
-      >Contact</property>
-      <property name="description"
-                i18n:translate=""
-      />
+    >   
       <property name="url_expr">string:${globals_view/navigationRootUrl}/contact-form</property>
-      <property name="icon_expr">string:plone-contact-info</property>
-      <property name="available_expr" />
-      <property name="permissions">
-        <element value="View" />
-      </property>
-      <property name="visible">True</property>
     </object>
   </object>
 </object>

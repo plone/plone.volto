@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<object xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+        meta_type="Plone Actions Tool"
+        name="portal_actions"
+>
+  <object meta_type="CMF Action Category"
+          name="site_actions"
+  >
+    <object meta_type="CMF Action"
+            name="accessibility"
+            i18n:domain="plone"
+    >
+      <property name="visible">False</property>
+    </object>
+    <object meta_type="CMF Action"
+            name="contact"
+            i18n:domain="plone"
+    >
+      <property name="url_expr">python:f"{plone_portal_state.navigation_root_url()}/contact-form"</property>
+    </object>
+  </object>
+</object>

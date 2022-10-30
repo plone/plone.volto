@@ -1,0 +1,1 @@
+Show a warning in the classic ui when plone.volto is installed. Fix https://github.com/plone/Products.CMFPlone/issues/3664 [pbauer]

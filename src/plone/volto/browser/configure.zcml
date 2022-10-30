@@ -54,9 +54,9 @@
       name="voltobackendwarning"
       for="*"
       manager="plone.app.layout.viewlets.interfaces.IGlobalStatusMessage"
-      layer="plone.volto.interfaces.IPloneVoltoCoreLayer"
       template="voltobackendwarning.pt"
       permission="zope2.View"
+      layer="plone.volto.interfaces.IPloneVoltoCoreLayer"
       />
 
 </configure>

@@ -50,4 +50,13 @@
       zcml:condition="have plone-60"
       />
 
+  <browser:viewlet
+      name="voltobackendwarning"
+      for="*"
+      manager="plone.app.layout.viewlets.interfaces.IGlobalStatusMessage"
+      template="voltobackendwarning.pt"
+      permission="zope2.View"
+      layer="plone.volto.interfaces.IPloneVoltoCoreLayer"
+      />
+
 </configure>

@@ -1,0 +1,15 @@
+<tal:statusmsg tal:define="icons nocall: context/@@iconresolver"
+               i18n:domain="plone">
+
+    <div class="portalMessage statusmessage statusmessage-warning alert alert-warning"
+         role="alert">
+        <tal:icon tal:replace="structure python:icons.tag('plone-statusmessage-warning', tag_alt='warning', tag_class='statusmessage-icon mb-1 me-2')" />
+        <strong i18n:translate="">Warning</strong>:
+        <span class="content">
+            <tal:warning i18n:translate="volto_backend_warning">This site is configured to use the Volto frontend. You are accessing the backend.</tal:warning>
+            <br />
+            <tal:warning i18n:translate="volto_backend_warning_link">For more information, please read the <a href="https://6.dev-docs.plone.org/volto/index.html">documentation</a>.</tal:warning>
+        </span>
+    </div>
+
+</tal:statusmsg>

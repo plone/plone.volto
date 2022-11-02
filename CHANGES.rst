@@ -8,6 +8,17 @@ Changelog
 
 .. towncrier release notes start
 
+4.0.0a14 (2022-11-02)
+---------------------
+
+Bug fixes:
+
+
+- Improve help text for head_title field. [davisagli] (#92)
+- Adjust Plone site actions to work in Volto. [nileshgulia1, davisagli] (#93)
+- Show a warning in the classic UI when plone.volto is installed. Fix https://github.com/plone/Products.CMFPlone/issues/3664 [pbauer] (#94)
+
+
 4.0.0a13 (2022-09-29)
 ---------------------
 

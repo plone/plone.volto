@@ -80,7 +80,11 @@ class MigrateToVolto(BrowserView):
                 try:
                     obj = brain.getObject()
                 except Exception:
-                    logger.info("Catalog inconsistent. Could not find %s", brain.getPath(), exc_info=True)
+                    logger.info(
+                        "Catalog inconsistent. Could not find %s",
+                        brain.getPath(),
+                        exc_info=True,
+                    )
                     continue
 
                 old_class_name = get_old_class_name_string(obj)

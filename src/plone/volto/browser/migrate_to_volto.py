@@ -2,12 +2,15 @@ from Acquisition import aq_base
 from logging import getLogger
 from plone import api
 from plone.app.contenttypes.behaviors.collection import ICollection
+from plone.app.contenttypes.utils import get_old_class_name_string
+from plone.app.contenttypes.utils import get_portal_type_name_string
 from plone.app.linkintegrity.utils import referencedRelationship
 from plone.app.redirector.interfaces import IRedirectionStorage
 from plone.app.textfield.value import RichTextValue
 from plone.dexterity.interfaces import IDexterityFTI
 from plone.volto.browser.migrate_richtext import get_blocks_from_richtext
 from plone.volto.browser.migrate_richtext import migrate_richtext_to_blocks
+from Products.BTreeFolder2.BTreeFolder2 import BTreeFolder2Base
 from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone.relationhelper import restore_relations
 from Products.CMFPlone.utils import get_installer
@@ -74,7 +77,19 @@ class MigrateToVolto(BrowserView):
         catalog = getToolByName(self.context, "portal_catalog")
         for portal_type in folderish_types:
             for brain in catalog(portal_type=portal_type, sort_on="path"):
-                obj = brain.getObject()
+                try:
+                    obj = brain.getObject()
+                except Exception:
+                    logger.info("Catalog inconsistent. Could not find %s", brain.getPath(), exc_info=True)
+                    continue
+
+                old_class_name = get_old_class_name_string(obj)
+                new_class_name = get_portal_type_name_string(obj)
+                is_container = isinstance(obj, BTreeFolder2Base)
+                if old_class_name == new_class_name and is_container:
+                    # we're already ok (maybe migration is running multiple times)
+                    continue
+
                 relations = export_relations(obj)
                 migrate_base_class_to_new_class(obj, migrate_to_folderish=True)
                 modified(obj)

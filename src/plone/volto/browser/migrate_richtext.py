@@ -104,8 +104,8 @@ def migrate_richtext_to_blocks(
 
             if ILeadImage(obj, None) and ILeadImage(obj).image:
                 uuid = str(uuid4())
-                obj.blocks_layout["items"].append(uuid)
-                obj.blocks[uuid] = {"@type": "leadimage"}
+                blocks[uuid] = {"@type": "leadimage"}
+                blocks_layout["items"].append(uuid)
 
             text_blocks, text_uuids = get_blocks_from_richtext(
                 text,

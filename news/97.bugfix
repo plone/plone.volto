@@ -1,1 +1,1 @@
-Handle issues that may appear when running multiple times or when plone.volto was installed first. [pbauer]
+Make the `migrate_to_volto` process more robust when running multiple times or when plone.volto was installed first. [pbauer]

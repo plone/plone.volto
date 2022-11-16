@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from Acquisition import aq_base
 from Acquisition import aq_inner
 from plone.app.layout.navigation.interfaces import INavigationRoot
 from plone.app.layout.navigation.root import getNavigationRoot
@@ -20,15 +21,14 @@ class PhysicalNavigationBreadcrumbs(BrowserView):
         container = utils.parent(context)
 
         name, item_url = get_view_url(context)
+        last_crumb = {
+            "absolute_url": item_url,
+            "Title": utils.pretty_title_or_id(context, context),
+            "nav_title": getattr(aq_base(context), "nav_title", ""),
+        }
 
         if container is None:
-            return (
-                {
-                    "absolute_url": item_url,
-                    "Title": utils.pretty_title_or_id(context, context),
-                    "nav_title": getattr(context, "nav_title", ""),
-                },
-            )
+            return (last_crumb,)
 
         # Replicate Products.CMFPlone.browser.navigaton.RootPhysicalNavigationBreadcrumbs.breadcrumbs()
         # cause it is not registered during tests
@@ -50,11 +50,5 @@ class PhysicalNavigationBreadcrumbs(BrowserView):
         if not check_default_page_via_view(
             context, request
         ) and not rootPath.startswith(itemPath):
-            base += (
-                {
-                    "absolute_url": item_url,
-                    "Title": utils.pretty_title_or_id(context, context),
-                    "nav_title": getattr(context, "nav_title", ""),
-                },
-            )
+            base += (last_crumb,)
         return base

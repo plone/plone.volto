@@ -1,1 +1,0 @@
-Fix adding a leadimage block during migration to Volto when a leadimage exists. [pbauer]

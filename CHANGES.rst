@@ -8,6 +8,17 @@ Changelog
 
 .. towncrier release notes start
 
+4.0.0a15 (2022-11-16)
+---------------------
+
+Bug fixes:
+
+
+- Fix adding a leadimage block during migration to Volto when a leadimage exists. [pbauer] (#96)
+- Make the `migrate_to_volto` process more robust when running multiple times or when plone.volto was installed first. [pbauer] (#97)
+- Don't acquire nav_title from parent in breadcrumbs view. [davisagli] (#98)
+
+
 4.0.0a14 (2022-11-02)
 ---------------------
 

@@ -8,6 +8,15 @@ Changelog
 
 .. towncrier release notes start
 
+4.0.0 (2022-11-18)
+------------------
+
+Internal:
+
+
+- Re-release plone.volto 4.0.0a15 as 4.0.0 [tisto] (#99)
+
+
 4.0.0a15 (2022-11-16)
 ---------------------
 

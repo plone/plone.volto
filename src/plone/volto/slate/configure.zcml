@@ -1,0 +1,47 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:i18n="http://namespaces.zope.org/i18n"
+    i18n_domain="eea"
+    >
+
+  <i18n:registerTranslations directory="locales" />
+
+  <include file="profiles.zcml" />
+  <include package=".browser" />
+  <include package=".upgrades" />
+
+  <!-- <include file="htmlblock.zcml" /> -->
+
+  <utility
+      factory=".utility.SlateConverter"
+      provides=".interfaces.ISlateConverter"
+      />
+
+  <adapter
+      factory=".indexers.SlateTextIndexer"
+      provides="plone.restapi.interfaces.IBlockSearchableText"
+      for="*
+           *"
+      name="slate"
+      />
+
+  <subscriber
+      factory=".block.SlateBlockSerializerRoot"
+      provides="plone.restapi.interfaces.IBlockFieldSerializationTransformer"
+      />
+
+  <subscriber
+      factory=".block.SlateBlockSerializer"
+      provides="plone.restapi.interfaces.IBlockFieldSerializationTransformer"
+      />
+
+  <subscriber
+      factory=".block.SlateBlockDeserializer"
+      provides="plone.restapi.interfaces.IBlockFieldDeserializationTransformer"
+      />
+  <subscriber
+      factory=".block.SlateBlockDeserializerRoot"
+      provides="plone.restapi.interfaces.IBlockFieldDeserializationTransformer"
+      />
+
+</configure>

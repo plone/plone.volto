@@ -1,0 +1,32 @@
+[
+  {
+    "type": "p",
+    "children": [
+      {
+        "text": "Since version 2.0."
+      },
+      {
+        "text": "\n"
+      },
+      {
+        "text": "It is based."
+      }
+    ]
+  },
+  {
+    "type": "p",
+    "children": [
+      {
+        "text": "The normal HTML parser."
+      }
+    ]
+  },
+  {
+    "type": "p",
+    "children": [
+      {
+        "text": "However, note that."
+      }
+    ]
+  }
+]

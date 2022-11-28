@@ -1,0 +1,47 @@
+[
+   {
+      "type":"p",
+      "children":[
+         {
+            "text":""
+         },
+         {
+            "type":"b",
+            "children":[
+               {
+                  "text":""
+               },
+               {
+                  "type":"dataentity",
+                  "data":{
+                     "column":"Land%cov",
+                     "provider_url":"/data/statsforcountryprofile_bise.csv"
+                  },
+                  "children":[
+                     {
+                        "text":""
+                     },
+                     {
+                        "type":"i",
+                        "children":[
+                           {
+                              "text":"28.06(percent) "
+                           }
+                        ]
+                     },
+                     {
+                        "text":""
+                     }
+                  ]
+               },
+               {
+                  "text":"%"
+               }
+            ]
+         },
+         {
+            "text":" of land, "
+         }
+      ]
+   }
+]

@@ -1,0 +1,43 @@
+[
+  {
+    "type": "p",
+    "children": [
+      {
+        "text": "Paragraph "
+      },
+      {
+        "type": "strong",
+        "children": [
+          {
+            "text": ""
+          },
+          {
+            "type": "a",
+            "children": [
+              {
+                "text": "with bold and slate "
+              }
+            ],
+            "data": {
+              "link": {
+                "internal": {
+                  "internal_link": [
+                    {
+                      "@id": "/front-page"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          {
+            "text": ""
+          }
+        ]
+      },
+      {
+        "text": "link"
+      }
+    ]
+  }
+]

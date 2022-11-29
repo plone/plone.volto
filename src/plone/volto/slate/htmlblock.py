@@ -11,6 +11,11 @@ from zope.component import getUtility
 from zope.interface import implementer
 from zope.publisher.interfaces.browser import IBrowserRequest
 
+import logging
+
+
+logger = logging.getLogger("slate")
+
 
 @implementer(IBlockFieldSerializationTransformer)
 @adapter(IBlocks, IBrowserRequest)
@@ -27,8 +32,16 @@ class SlateHTMLBlockSerializer(object):
 
     def __call__(self, block):
 
-        value = getattr(block, self.field, [])
-        block["value"] = getUtility(ISlateConverter).html2slate(value)
+        if not block:
+            block = {}
+
+        value = block.get(self.field, "")
+
+        if isinstance(value, str):
+            block["value"] = getUtility(ISlateConverter).html2slate(value)
+            logger.info("Converted to slate: %s ===> %s", value, block["value"])
+            return block
+
         return block
 
 
@@ -52,9 +65,12 @@ class SlateHTMLBlockDeserializer(object):
         self.request = request
 
     def __call__(self, block):
+        if not block:
+            block = {}
 
-        value = getattr(block, self.field, [])
+        value = block.get(self.field, [])
         block["value"] = getUtility(ISlateConverter).slate2html(value)
+        logger.info("Converted to html %s ====> %s", value, block["value"])
         return block
 
 

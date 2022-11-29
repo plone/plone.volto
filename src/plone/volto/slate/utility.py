@@ -11,7 +11,12 @@ class SlateConverter(object):
 
         :param text:
         """
-        return text_to_slate(text)
+        value = text_to_slate(text)
+
+        if not value:  # minimal proper value for slate
+            return [{"type": "p", "children": [{"text": ""}]}]
+
+        return value
 
     def slate2html(self, value):
         """slate2html.

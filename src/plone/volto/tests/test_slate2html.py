@@ -8,9 +8,15 @@ from pkg_resources import resource_filename
 from plone.volto.slate.slate2html import slate_to_html
 
 import json
+import lxml.html
 import os
 import re
 import unittest
+
+
+def format_html(text):
+    e = lxml.html.fromstring(text)
+    return lxml.html.tostring(e, pretty_print=True).decode()
 
 
 def read_data(filename):
@@ -118,21 +124,9 @@ class TestConvertSlate2HTML(unittest.TestCase):
         html = slate_to_html(slate)
         self.assertEqual(
             html,
-            "<p>Since version 2.0, lxml comes with a dedicated Python package "
-            "for dealing with HTML: lxml.html. <br>It is based on lxml's HTML "
-            "parser, but provides a special Element API for HTML elements, as "
-            "well as a number of utilities for common HTML processing tasks."
-            "</p><p>The normal HTML parser is capable of handling broken HTML,"
-            " but for pages that are far enough from HTML to call them "
-            "'tag soup', it may still fail to parse the page in a useful way. "
-            "A way to deal with this is ElementSoup, which deploys the "
-            "well-known BeautifulSoup parser to build an lxml HTML tree.</p>"
-            "<p>However, note that the most common problem with web pages is "
-            "the lack of (or the existence of incorrect) encoding declarations."
-            " It is therefore often sufficient to only use the encoding "
-            "detection of BeautifulSoup, called UnicodeDammit, and to leave "
-            "the rest to lxml's own HTML parser, which is several times faster."
-            "</p>",
+            "<p>Since version 2.0.<br>It is based."
+            "</p><p>The normal HTML parser.</p>"
+            "<p>However, note that.</p>",
         )
 
     # def test_one_list_item(self):
@@ -189,8 +183,8 @@ class TestConvertSlate2HTML(unittest.TestCase):
     def test_slate_list(self):
         """test_slate_list."""
         slate = read_json("6.json")
-        res = slate_to_html(slate).strip()
-        html = read_data("6-1.html").strip()
+        res = format_html(slate_to_html(slate).strip())
+        html = format_html(read_data("6-1.html").strip())
         self.assertEqual(res, html)
 
     # def test_slate_data(self):

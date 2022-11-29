@@ -4,19 +4,11 @@
     i18n_domain="plone.volto"
     >
 
-  <include file="./htmlblock.zcml" />
+  <!-- <include file="./htmlblock.zcml" /> -->
 
   <utility
       factory=".utility.SlateConverter"
       provides=".interfaces.ISlateConverter"
-      />
-
-  <adapter
-      factory=".indexers.SlateTextIndexer"
-      provides="plone.restapi.interfaces.IBlockSearchableText"
-      for="*
-           *"
-      name="slate"
       />
 
   <subscriber

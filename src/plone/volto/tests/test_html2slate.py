@@ -1,19 +1,18 @@
 """ test html2slate """
 # -*- coding: utf-8 -*-
 
+from pkg_resources import resource_filename
+from plone.volto.slate.html2slate import convert_linebreaks_to_spaces
+from plone.volto.slate.html2slate import convert_tabs_to_spaces
+from plone.volto.slate.html2slate import fragments_fromstring
+from plone.volto.slate.html2slate import merge_adjacent_text_nodes
+from plone.volto.slate.html2slate import remove_space_before_after_endline
+from plone.volto.slate.html2slate import remove_space_follow_space
+from plone.volto.slate.html2slate import text_to_slate
+
 import json
 import os
 import unittest
-
-from pkg_resources import resource_filename
-
-from eea.volto.slate.html2slate import (convert_linebreaks_to_spaces,
-                                        convert_tabs_to_spaces,
-                                        fragments_fromstring,
-                                        merge_adjacent_text_nodes,
-                                        remove_space_before_after_endline,
-                                        remove_space_follow_space,
-                                        text_to_slate)
 
 
 def read_data(filename):
@@ -21,7 +20,7 @@ def read_data(filename):
 
     :param filename:
     """
-    fpath = resource_filename("eea.volto.slate", os.path.join("tests/data", filename))
+    fpath = resource_filename("plone.volto.slate", os.path.join("tests/data", filename))
 
     with open(fpath) as f:
         return f.read()
@@ -32,7 +31,7 @@ def read_json(filename):
 
     :param filename:
     """
-    fpath = resource_filename("eea.volto.slate", os.path.join("tests/data", filename))
+    fpath = resource_filename("plone.volto.slate", os.path.join("tests/data", filename))
 
     with open(fpath) as f:
         return json.load(f)

@@ -1,26 +1,32 @@
 """ test tranformers module """
-# pylint: disable=import-error,no-name-in-module,too-few-public-methods,
-# pylint: disable=not-callable,no-self-use,unused-argument,invalid-name
-# -*- coding: utf-8 -*-
-import json
-import unittest
 
-from zope.component import getMultiAdapter, queryUtility
-import transaction
-from plone.app.testing import TEST_USER_ID, setRoles
+# -*- coding: utf-8 -*-
+from plone.app.testing import setRoles
+from plone.app.testing import TEST_USER_ID
 from plone.dexterity.interfaces import IDexterityFTI
-from plone.dexterity.utils import createContentInContainer, iterSchemata
-from plone.restapi.interfaces import IDeserializeFromJson, IFieldSerializer
+from plone.dexterity.utils import createContentInContainer
+from plone.dexterity.utils import iterSchemata
+from plone.restapi.interfaces import IDeserializeFromJson
+from plone.restapi.interfaces import IFieldSerializer
+
+# from plone.volto.slate.base import FUNCTIONAL_TESTING
+from plone.volto.testing import PLONE_VOLTO_CORE_INTEGRATION_TESTING  # noqa
+
 # from plone.uuid.interfaces import IUUID
 from z3c.form.interfaces import IDataManager
+from zope.component import getMultiAdapter
+from zope.component import queryUtility
 
-from eea.volto.slate.tests.base import FUNCTIONAL_TESTING
+import json
+import transaction
+import unittest
 
 
 class TestBlockTransformers(unittest.TestCase):
     """TestBlockTransformers."""
 
-    layer = FUNCTIONAL_TESTING
+    # layer = FUNCTIONAL_TESTING
+    layer = PLONE_VOLTO_CORE_INTEGRATION_TESTING
 
     def setUp(self):
         self.app = self.layer["app"]
@@ -35,7 +41,7 @@ class TestBlockTransformers(unittest.TestCase):
         fti.behaviors = tuple(behavior_list)
 
         self.doc = createContentInContainer(
-            self.portal, u"Document", id=u"doc", title=u"A document"
+            self.portal, "Document", id="doc", title="A document"
         )
         transaction.commit()
 
@@ -49,8 +55,7 @@ class TestBlockTransformers(unittest.TestCase):
         blocks = blocks or ""
         context = context or self.portal.doc
         self.request["BODY"] = json.dumps({"blocks": blocks})
-        deserializer = getMultiAdapter((context, self.request),
-                                       IDeserializeFromJson)
+        deserializer = getMultiAdapter((context, self.request), IDeserializeFromJson)
 
         return deserializer(validate_all=validate_all)
 
@@ -67,8 +72,7 @@ class TestBlockTransformers(unittest.TestCase):
                 break
         dm = getMultiAdapter((context, field), IDataManager)
         dm.set(blocks)
-        serializer = getMultiAdapter((field, context, self.request),
-                                     IFieldSerializer)
+        serializer = getMultiAdapter((field, context, self.request), IFieldSerializer)
         return serializer()
 
     # def test_internal_link_deserializer(self):
@@ -166,6 +170,6 @@ class TestBlockTransformers(unittest.TestCase):
     #    self.assertTrue(resolve_link == "/front-page")
 
     def test_bogus(self):
-        """ Bogus test to avoid deleting the entire module """
+        """Bogus test to avoid deleting the entire module"""
 
         self.assertTrue(1 > 0)

@@ -1,12 +1,10 @@
 """ slate2html module """
-# pylint: disable=import-error,no-name-in-module,too-few-public-methods,
-# pylint: disable=not-callable,no-self-use,unused-argument,invalid-name
-import json
 
+from .config import KNOWN_BLOCK_TYPES
 from lxml.html import builder as E
 from lxml.html import tostring
 
-from .config import KNOWN_BLOCK_TYPES
+import json
 
 
 def join(element, children):
@@ -114,7 +112,7 @@ class Slate2HTML(object):
             children += self.serialize(child)
 
         # TO DO: handle unicode properly
-        return u"".join(tostring(f).decode("utf-8") for f in children)
+        return "".join(tostring(f).decode("utf-8") for f in children)
 
 
 def slate_to_html(value):

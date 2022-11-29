@@ -1,17 +1,16 @@
 """ Slate2HTML module """
-# pylint: disable=import-error,no-name-in-module,too-few-public-methods,
-# pylint: disable=not-callable,no-self-use,unused-argument,invalid-name
+
 # -*- coding: utf-8 -*-
+
+from pkg_resources import resource_filename
+
+# from plone.volto.slate.html2slate import text_to_slate
+from plone.volto.slate.slate2html import slate_to_html
 
 import json
 import os
 import re
 import unittest
-
-from pkg_resources import resource_filename
-
-# from eea.volto.slate.html2slate import text_to_slate
-from eea.volto.slate.slate2html import slate_to_html
 
 
 def read_data(filename):
@@ -19,8 +18,7 @@ def read_data(filename):
 
     :param filename:
     """
-    fpath = resource_filename("eea.volto.slate", os.path.join("tests/data",
-                                                              filename))
+    fpath = resource_filename("plone.volto.slate", os.path.join("tests/data", filename))
 
     with open(fpath) as f:
         return f.read()
@@ -31,8 +29,7 @@ def read_json(filename):
 
     :param filename:
     """
-    fpath = resource_filename("eea.volto.slate", os.path.join("tests/data",
-                                                              filename))
+    fpath = resource_filename("plone.volto.slate", os.path.join("tests/data", filename))
 
     with open(fpath) as f:
         return json.load(f)
@@ -56,14 +53,12 @@ class TestConvertSlate2HTML(unittest.TestCase):
 
     def test_convert_simple_string(self):
         """test_convert_simple_string."""
-        res = slate_to_html([{"children": [{"text": "Hello world"}],
-                              "type": "p"}])
+        res = slate_to_html([{"children": [{"text": "Hello world"}], "type": "p"}])
         self.assertEqual(res, "<p>Hello world</p>")
 
     def test_convert_simple_paragraph(self):
         """test_convert_simple_paragraph."""
-        res = slate_to_html([{"children": [{"text": "Hello world"}],
-                              "type": "p"}])
+        res = slate_to_html([{"children": [{"text": "Hello world"}], "type": "p"}])
         self.assertEqual(res, "<p>Hello world</p>")
 
     def test_convert_simple_paragraph_multi_breaks(self):
@@ -72,8 +67,7 @@ class TestConvertSlate2HTML(unittest.TestCase):
             [
                 {
                     "children": [
-                        {"text":
-                         "Hello \nworld \n in a multi line \nparagraph"}
+                        {"text": "Hello \nworld \n in a multi line \nparagraph"}
                     ],
                     "type": "p",
                 }

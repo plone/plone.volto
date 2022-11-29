@@ -118,6 +118,8 @@ def remove_space_follow_space(text, node):
 
 
 def is_inline(node):
+    assert node is not None
+
     if isinstance(node, str) or node.type == TEXT_NODE:
         return True
 
@@ -127,7 +129,26 @@ def is_inline(node):
     return False
 
 
+def get_inline_ancestor_sibling(node):
+    """Find a "visual sibling" by moving up in DOM hierarchy and finding a sibling"""
+
+    next_ = node.next
+
+    while next_ is None:
+        node = node.parent
+        if node is None or not is_inline(node):
+            break
+        next_ = node.next
+
+    if (next_ is not None) and (not is_inline(next_)):
+        return None
+
+    return next_
+
+
 def remove_element_edges(text, node):
+    """Sequences of spaces at the beginning and end of an element are removed"""
+
     previous = node.prev
     next_ = node.next
     parent = node.parent
@@ -136,9 +157,8 @@ def remove_element_edges(text, node):
         text = FIRST_ALL_SPACE.sub("", text)
 
     if ANY_SPACE_AT_END.search(text):
-        if ((next_ is None) and (not is_inline(parent))) or (
-            next_ and next_.tag == "br"
-        ):
+        has_inline_ancestor_sibling = get_inline_ancestor_sibling(node) is not None
+        if not has_inline_ancestor_sibling or (next_ and next_.tag == "br"):
             text = ANY_SPACE_AT_END.sub("", text)
 
     return text
@@ -164,7 +184,9 @@ def clean_padding_text(text, node):
 
 
 def collapse_inline_space(node, expanded=False):
-    """See
+    """Process inline text according to whitespace rules
+
+    See
 
     https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Whitespace
     """

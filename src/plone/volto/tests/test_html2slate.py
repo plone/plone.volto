@@ -349,7 +349,7 @@ class TestConvertHTML2Slate(unittest.TestCase):
             read_json("5.json"),
         )
 
-    def test_slate_list(self):
+    def test_html2slate_list(self):
         """test_slate_list."""
         text = read_data("6.html")
         res = text_to_slate(text)

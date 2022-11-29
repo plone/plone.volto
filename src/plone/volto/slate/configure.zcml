@@ -4,30 +4,11 @@
     i18n_domain="plone.volto"
     >
 
-  <!-- <include file="./htmlblock.zcml" /> -->
-
   <utility
       factory=".utility.SlateConverter"
       provides=".interfaces.ISlateConverter"
       />
 
-  <subscriber
-      factory=".block.SlateBlockSerializerRoot"
-      provides="plone.restapi.interfaces.IBlockFieldSerializationTransformer"
-      />
-
-  <subscriber
-      factory=".block.SlateBlockSerializer"
-      provides="plone.restapi.interfaces.IBlockFieldSerializationTransformer"
-      />
-
-  <subscriber
-      factory=".block.SlateBlockDeserializer"
-      provides="plone.restapi.interfaces.IBlockFieldDeserializationTransformer"
-      />
-  <subscriber
-      factory=".block.SlateBlockDeserializerRoot"
-      provides="plone.restapi.interfaces.IBlockFieldDeserializationTransformer"
-      />
+  <!-- <include file="./htmlblock.zcml" /> -->
 
 </configure>

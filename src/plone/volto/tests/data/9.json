@@ -1,93 +1,93 @@
 [
   {
-    "children":[
+    "children": [
       {
-        "children":[
+        "children": [
           {
-            "text":""
+            "text": ""
           },
           {
-            "children":[
+            "children": [
               {
-                "text":"asdsad"
+                "text": "asdsad"
               }
             ],
-            "type":"strong"
+            "type": "strong"
           },
           {
-            "text":" "
+            "text": " "
           },
           {
-            "children":[
+            "children": [
               {
-                "text":"adasdjkasjk"
+                "text": "adasdjkasjk"
               }
             ],
-            "type":"em"
+            "type": "em"
           },
           {
-            "text":""
+            "text": ""
           }
         ],
-        "type":"li"
+        "type": "li"
       },
       {
-        "children":[
+        "children": [
           {
-            "text":""
+            "text": ""
           },
           {
-            "children":[
+            "children": [
               {
-                "text":""
+                "text": ""
               },
               {
-                "children":[
+                "children": [
                   {
-                    "text":"adasda"
+                    "text": "adasda"
                   }
                 ],
-                "type":"strong"
+                "type": "strong"
               },
               {
-                "text":""
+                "text": ""
               }
             ],
-            "type":"em"
+            "type": "em"
           },
           {
-            "text":""
+            "text": ""
           }
         ],
-        "type":"li"
+        "type": "li"
       },
       {
-        "children":[
+        "children": [
           {
-            "children":[
+            "children": [
               {
-                "text":"sdasdsa"
+                "text": "sdasdsa"
               }
             ],
-            "type":"li"
+            "type": "li"
           },
           {
-            "children":[
+            "children": [
               {
-                "children":[
+                "children": [
                   {
-                    "text":"dasdas"
+                    "text": "dasdas"
                   }
                 ],
-                "type":"li"
+                "type": "li"
               }
             ],
-            "type":"ol"
+            "type": "ol"
           }
         ],
-        "type":"ol"
+        "type": "ol"
       }
     ],
-    "type":"ol"
+    "type": "ol"
   }
 ]

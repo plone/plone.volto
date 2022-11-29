@@ -4,7 +4,7 @@
     i18n_domain="plone.volto"
     >
 
-  <include file="./htmlblock.zcml" />
+  <!-- <include file="./htmlblock.zcml" /> -->
 
   <utility
       factory=".utility.SlateConverter"

@@ -1,47 +1,27 @@
 [
-   {
-      "type":"p",
-      "children":[
-         {
-            "text":""
-         },
-         {
-            "type":"b",
-            "children":[
-               {
-                  "text":""
-               },
-               {
-                  "type":"dataentity",
-                  "data":{
-                     "column":"Land%cov",
-                     "provider_url":"/data/statsforcountryprofile_bise.csv"
-                  },
-                  "children":[
-                     {
-                        "text":""
-                     },
-                     {
-                        "type":"i",
-                        "children":[
-                           {
-                              "text":"28.06(percent) "
-                           }
-                        ]
-                     },
-                     {
-                        "text":""
-                     }
-                  ]
-               },
-               {
-                  "text":"%"
-               }
-            ]
-         },
-         {
-            "text":" of land,"
-         }
-      ]
-   }
+  {
+    "children": [
+      { "text": "" },
+      {
+        "children": [
+          {
+            "children": [
+              { "text": "" },
+              { "children": [{ "text": "28.06(percent) " }], "type": "i" },
+              { "text": "" }
+            ],
+            "data": {
+              "column": "Land%cov",
+              "provider_url": "/data/statsforcountryprofile_bise.csv"
+            },
+            "type": "dataentity"
+          },
+          { "text": "%" }
+        ],
+        "type": "b"
+      },
+      { "text": " of land," }
+    ],
+    "type": "p"
+  }
 ]

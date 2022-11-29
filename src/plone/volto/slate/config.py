@@ -1,5 +1,5 @@
 """ config module """
-KNOWN_BLOCK_TYPES = [
+ACCEPTED_TAGS = [
     "a",
     "b",
     "blockquote",

@@ -1,6 +1,6 @@
 """ slate2html module """
 
-from .config import KNOWN_BLOCK_TYPES
+from .config import ACCEPTED_TAGS
 from lxml.html import builder as E
 from lxml.html import tostring
 
@@ -36,11 +36,11 @@ class Slate2HTML(object):
 
         tagname = element["type"]
 
-        if element.get("data") and element["type"] not in KNOWN_BLOCK_TYPES:
+        if element.get("data") and element["type"] not in ACCEPTED_TAGS:
             handler = self.handle_slate_data_element
         else:
             handler = getattr(self, "handle_tag_{}".format(tagname), None)
-            if not handler and tagname in KNOWN_BLOCK_TYPES:
+            if not handler and tagname in ACCEPTED_TAGS:
                 handler = self.handle_block
 
         res = handler(element)

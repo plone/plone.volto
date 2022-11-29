@@ -3,10 +3,10 @@
 A port of volto-slate' deserialize.js module
 """
 
+from .config import ACCEPTED_TAGS
 from .config import DEFAULT_BLOCK_TYPE
 from .config import ELEMENT_NODE
 from .config import INLINE_ELEMENTS
-from .config import KNOWN_BLOCK_TYPES
 from .config import TEXT_NODE
 from collections import deque
 from resiliparse.parse.html import HTMLTree
@@ -14,6 +14,8 @@ from resiliparse.parse.html import HTMLTree
 import json
 import re
 
+
+SLATE_INLINE_ELEMENTS = [e.lower() for e in INLINE_ELEMENTS]
 
 SPACE_BEFORE_ENDLINE = re.compile(r"\s+\n", re.M)
 SPACE_AFTER_DEADLINE = re.compile(r"\n\s+", re.M)
@@ -263,7 +265,7 @@ class HTML2Slate(object):
             handler = self.handle_slate_data_element
         else:
             handler = getattr(self, "handle_tag_{}".format(tagname), None)
-            if not handler and tagname in KNOWN_BLOCK_TYPES:
+            if not handler and tagname in ACCEPTED_TAGS:
                 handler = self.handle_block
 
         if handler:
@@ -381,11 +383,10 @@ class HTML2Slate(object):
         Extract from Slate docs:
         https://docs.slatejs.org/concepts/02-nodes#blocks-vs-inlines
 
-        You can define which nodes are treated as inline nodes by overriding the
-        editor.isInline function. (By default it always returns false.). Note that inline
-        nodes cannot be the first or last child of a parent block, nor can it be next to
-        another inline node in the children array. Slate will automatically space these
-        with { text: '' } children by default with normalizeNode.
+        ... Note that inline nodes cannot be the first or last child of a parent block,
+        nor can it be next to another inline node in the children array. Slate will
+        automatically space these with { text: '' } children by default with
+        normalizeNode.
 
         Elements can either contain block elements or inline elements intermingled with
         text nodes as children. But elements cannot contain some children that are blocks
@@ -397,9 +398,13 @@ class HTML2Slate(object):
             children.append({"text": ""})
             return
 
-        if not children[0].get("text"):
+        first = children[0]
+        last = children[-1]
+
+        if first.get("text") is None and first.get("type") in SLATE_INLINE_ELEMENTS:
             children.insert(0, {"text": ""})
-        if not children[-1].get("text"):
+
+        if last.get("text") is None and last.get("type") in SLATE_INLINE_ELEMENTS:
             children.append({"text": ""})
 
 

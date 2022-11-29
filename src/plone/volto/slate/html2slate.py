@@ -167,8 +167,12 @@ def clean_padding_text(text, node):
     """Cleans head/tail whitespaces of a single html text with multiple toplevel tags"""
 
     if is_whitespace(text):
-        has_prev = node.prev and node.prev.type == ELEMENT_NODE
-        has_next = node.next and node.next.type == ELEMENT_NODE
+        has_prev = (
+            node.prev and node.prev.type == ELEMENT_NODE and not is_inline(node.prev)
+        )
+        has_next = (
+            node.next and node.next.type == ELEMENT_NODE and not is_inline(node.next)
+        )
 
         if has_prev and has_next:
             return ""

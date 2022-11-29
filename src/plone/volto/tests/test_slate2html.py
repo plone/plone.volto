@@ -183,7 +183,8 @@ class TestConvertSlate2HTML(unittest.TestCase):
     def test_slate_list(self):
         """test_slate_list."""
         slate = read_json("6.json")
-        res = format_html(slate_to_html(slate).strip())
+        s = slate_to_html(slate).strip()
+        res = format_html(s)
         html = format_html(read_data("6-1.html").strip())
         self.assertEqual(res, html)
 

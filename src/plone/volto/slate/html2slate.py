@@ -66,9 +66,9 @@ def merge_adjacent_text_nodes(children):
         if i not in text_positions:
             result.append(v)
         if i in range_dict:
-            result.append(
-                {"text": "".join([c["text"] for c in children[i : range_dict[i] + 1]])}
-            )
+            # flake8 and autopep8 conflict on how list slicing should look like
+            slice = children.__getitem__(i, range_dict[i] + 1)
+            result.append({"text": "".join([c["text"] for c in slice])})
     return result
 
 

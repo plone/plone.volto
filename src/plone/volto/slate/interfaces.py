@@ -1,7 +1,6 @@
 """Module where all interfaces, events and exceptions live."""
 
 from zope.interface import Interface
-from zope.publisher.interfaces.browser import IDefaultBrowserLayer
 
 
 class ISlateNodeSerializeTransform(Interface):

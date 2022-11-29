@@ -1,27 +1,25 @@
-# pylint: disable=import-error,no-name-in-module,too-few-public-methods,
-# pylint: disable=not-callable,no-self-use,unused-argument
 """ block module """
-import os
 
-from zope.interface import implementer
-from zope.component import adapter
-from zope.publisher.interfaces.browser import IBrowserRequest
+from .utils import iterate_children
 from plone import api
 from plone.restapi.behaviors import IBlocks
 from plone.restapi.deserializer.blocks import path2uid
-from plone.restapi.interfaces import (IBlockFieldDeserializationTransformer,
-                                      IBlockFieldSerializationTransformer)
+from plone.restapi.interfaces import IBlockFieldDeserializationTransformer
+from plone.restapi.interfaces import IBlockFieldSerializationTransformer
 from plone.restapi.serializer.blocks import uid_to_url
 from Products.CMFPlone.interfaces import IPloneSiteRoot
+from zope.component import adapter
+from zope.interface import implementer
+from zope.publisher.interfaces.browser import IBrowserRequest
 
-from .utils import iterate_children
+import os
 
 
 def transform_links(context, value, transformer):
-    """ Convert absolute links to resolveuid
-       http://localhost:55001/plone/link-target
-       ->
-       ../resolveuid/023c61b44e194652804d05a15dc126f4"""
+    """Convert absolute links to resolveuid
+    http://localhost:55001/plone/link-target
+    ->
+    ../resolveuid/023c61b44e194652804d05a15dc126f4"""
     data = value.get("data", {})
     if data.get("link", {}).get("internal", {}).get("internal_link"):
         internal_link = data["link"]["internal"]["internal_link"]
@@ -82,13 +80,13 @@ class SlateBlockSerializerBase(SlateBlockTransformer):
 @implementer(IBlockFieldSerializationTransformer)
 @adapter(IBlocks, IBrowserRequest)
 class SlateBlockSerializer(SlateBlockSerializerBase):
-    """ Serializer for content-types with IBlocks behavior """
+    """Serializer for content-types with IBlocks behavior"""
 
 
 @implementer(IBlockFieldSerializationTransformer)
 @adapter(IPloneSiteRoot, IBrowserRequest)
 class SlateBlockSerializerRoot(SlateBlockSerializerBase):
-    """ Serializer for site root """
+    """Serializer for site root"""
 
 
 class SlateBlockDeserializerBase(SlateBlockTransformer):
@@ -109,10 +107,10 @@ class SlateBlockDeserializerBase(SlateBlockTransformer):
 @adapter(IBlocks, IBrowserRequest)
 @implementer(IBlockFieldDeserializationTransformer)
 class SlateBlockDeserializer(SlateBlockDeserializerBase):
-    """ Deserializer for content-types that implements IBlocks behavior """
+    """Deserializer for content-types that implements IBlocks behavior"""
 
 
 @adapter(IPloneSiteRoot, IBrowserRequest)
 @implementer(IBlockFieldDeserializationTransformer)
 class SlateBlockDeserializerRoot(SlateBlockDeserializerBase):
-    """ Deserializer for site root """
+    """Deserializer for site root"""

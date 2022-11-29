@@ -1,22 +1,21 @@
 """ Transformers to store the slate HTML value serialized as HTML
 """
 
-
+from .interfaces import ISlateConverter
 from plone.restapi.behaviors import IBlocks
-from plone.restapi.interfaces import (IBlockFieldDeserializationTransformer,
-                                      IBlockFieldSerializationTransformer)
+from plone.restapi.interfaces import IBlockFieldDeserializationTransformer
+from plone.restapi.interfaces import IBlockFieldSerializationTransformer
 from Products.CMFPlone.interfaces import IPloneSiteRoot
-from zope.component import adapter, getUtility
+from zope.component import adapter
+from zope.component import getUtility
 from zope.interface import implementer
 from zope.publisher.interfaces.browser import IBrowserRequest
-
-from .interfaces import ISlateConverter
 
 
 @implementer(IBlockFieldSerializationTransformer)
 @adapter(IBlocks, IBrowserRequest)
 class SlateHTMLBlockSerializer(object):
-    """ Serialize the content of an HTML block as Slate value """
+    """Serialize the content of an HTML block as Slate value"""
 
     field = "value"
     order = -1000  # should be the first
@@ -36,13 +35,13 @@ class SlateHTMLBlockSerializer(object):
 @implementer(IBlockFieldSerializationTransformer)
 @adapter(IPloneSiteRoot, IBrowserRequest)
 class SlateHTMLBlockSerializerRoot(SlateHTMLBlockSerializer):
-    """ Serializer for site root """
+    """Serializer for site root"""
 
 
 @adapter(IBlocks, IBrowserRequest)
 @implementer(IBlockFieldDeserializationTransformer)
 class SlateHTMLBlockDeserializer(object):
-    """ Store a slate value as an HTML """
+    """Store a slate value as an HTML"""
 
     field = "value"
     order = 1000  # needs to be the last
@@ -62,4 +61,4 @@ class SlateHTMLBlockDeserializer(object):
 @adapter(IPloneSiteRoot, IBrowserRequest)
 @implementer(IBlockFieldDeserializationTransformer)
 class SlateHTMLBlockDeserializerRoot(SlateHTMLBlockDeserializer):
-    """ Deserializer for site root """
+    """Deserializer for site root"""

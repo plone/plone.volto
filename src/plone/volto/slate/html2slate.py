@@ -3,14 +3,17 @@
 A port of volto-slate' deserialize.js module
 """
 
-import json
-import re
+from .config import DEFAULT_BLOCK_TYPE
+from .config import ELEMENT_NODE
+from .config import INLINE_ELEMENTS
+from .config import KNOWN_BLOCK_TYPES
+from .config import TEXT_NODE
 from collections import deque
-
 from resiliparse.parse.html import HTMLTree
 
-from .config import (DEFAULT_BLOCK_TYPE, ELEMENT_NODE, INLINE_ELEMENTS,
-                     KNOWN_BLOCK_TYPES, TEXT_NODE)
+import json
+import re
+
 
 SPACE_BEFORE_ENDLINE = re.compile(r"\s+\n", re.M)
 SPACE_AFTER_DEADLINE = re.compile(r"\n\s+", re.M)

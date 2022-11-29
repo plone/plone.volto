@@ -399,3 +399,30 @@ class TestConvertHTML2Slate(unittest.TestCase):
             res,
             read_json("8.json"),
         )
+
+    def test_paragraph_sample(self):
+        """Encountered on first test with Volto"""
+        text = "<p>START <strong><em>partA</em></strong> <del>partB</del> END</p>"
+        res = text_to_slate(text)
+        self.assertEqual(
+            res,
+            [
+                {
+                    "children": [
+                        {"text": "START "},
+                        {
+                            "children": [
+                                {"text": ""},
+                                {"children": [{"text": "partA"}], "type": "em"},
+                                {"text": ""},
+                            ],
+                            "type": "strong",
+                        },
+                        {"text": " "},
+                        {"children": [{"text": "partB"}], "type": "del"},
+                        {"text": " END"},
+                    ],
+                    "type": "p",
+                }
+            ],
+        )

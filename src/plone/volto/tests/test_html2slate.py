@@ -20,7 +20,7 @@ def read_data(filename):
 
     :param filename:
     """
-    fpath = resource_filename("plone.volto.slate", os.path.join("tests/data", filename))
+    fpath = resource_filename("plone.volto", os.path.join("tests/data", filename))
 
     with open(fpath) as f:
         return f.read()
@@ -31,7 +31,7 @@ def read_json(filename):
 
     :param filename:
     """
-    fpath = resource_filename("plone.volto.slate", os.path.join("tests/data", filename))
+    fpath = resource_filename("plone.volto", os.path.join("tests/data", filename))
 
     with open(fpath) as f:
         return json.load(f)

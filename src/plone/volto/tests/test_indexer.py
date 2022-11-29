@@ -5,9 +5,7 @@ from plone.app.testing import setRoles
 from plone.app.testing import TEST_USER_ID
 from plone.dexterity.interfaces import IDexterityFTI
 from plone.dexterity.utils import createContentInContainer
-from plone.volto.testing import PLONE_VOLTO_CORE_INTEGRATION_TESTING  # noqa
-
-# from plone.volto.slate.tests.base import FUNCTIONAL_TESTING
+from plone.volto.testing import PLONE_VOLTO_CORE_FUNCTIONAL_TESTING
 from zope.component import queryUtility
 
 import transaction
@@ -17,8 +15,7 @@ import unittest
 class TestSearchTextInBlocks(unittest.TestCase):
     """TestSearchTextInBlocks."""
 
-    layer = PLONE_VOLTO_CORE_INTEGRATION_TESTING
-    # layer = FUNCTIONAL_TESTING
+    layer = PLONE_VOLTO_CORE_FUNCTIONAL_TESTING
 
     def setUp(self):
         self.app = self.layer["app"]

@@ -8,9 +8,7 @@ from plone.dexterity.utils import createContentInContainer
 from plone.dexterity.utils import iterSchemata
 from plone.restapi.interfaces import IDeserializeFromJson
 from plone.restapi.interfaces import IFieldSerializer
-
-# from plone.volto.slate.base import FUNCTIONAL_TESTING
-from plone.volto.testing import PLONE_VOLTO_CORE_INTEGRATION_TESTING  # noqa
+from plone.volto.testing import PLONE_VOLTO_CORE_FUNCTIONAL_TESTING  # noqa
 
 # from plone.uuid.interfaces import IUUID
 from z3c.form.interfaces import IDataManager
@@ -25,8 +23,7 @@ import unittest
 class TestBlockTransformers(unittest.TestCase):
     """TestBlockTransformers."""
 
-    # layer = FUNCTIONAL_TESTING
-    layer = PLONE_VOLTO_CORE_INTEGRATION_TESTING
+    layer = PLONE_VOLTO_CORE_FUNCTIONAL_TESTING
 
     def setUp(self):
         self.app = self.layer["app"]

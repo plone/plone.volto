@@ -24,19 +24,18 @@ FIRST_SPACE = re.compile("^ ", re.M)
 FIRST_ANY_SPACE = re.compile(r"^\s", re.M)
 FIRST_ALL_SPACE = re.compile(r"^\s+", re.M)
 ANY_SPACE_AT_END = re.compile(r"\s$", re.M)
+ANY_WHITESPACE = re.compile(r"\s|\t|\n", re.M)
 
 
 def is_inline_slate(el):
     """Returns true if the element is a text node
 
-    Some richtext editors provide support for "inline elements", which is to
-    say they mark some portions of text and add flags for that, like
-    "bold:true,italic:true", etc.
+    Some richtext editors provide support for "inline elements", which is to say they
+    mark some portions of text and add flags for that, like "bold:true,italic:true", etc.
 
-    From experience, this is a bad way to go when the output is intended to be
-    HTML. In HTML DOM there is only markup and that markup is semantic. So
-    keeping it purely markup greately simplifies the number of cases that need
-    to be covered.
+    From experience, this is a bad way to go when the output is intended to be HTML. In
+    HTML DOM there is only markup and that markup is semantic. So keeping it purely
+    markup greately simplifies the number of cases that need to be covered.
     """
 
     if isinstance(el, dict) and "text" in el:
@@ -373,22 +372,20 @@ class HTML2Slate(object):
         return value
 
     def _pad_with_space(self, children):
-        """Mutate the children array in-place. It pads them with
-        'empty spaces'.
+        """Mutate the children array in-place. It pads them with 'empty spaces'.
 
         Extract from Slate docs:
         https://docs.slatejs.org/concepts/02-nodes#blocks-vs-inlines
 
-        You can define which nodes are treated as inline nodes by overriding
-        the editor.isInline function. (By default it always returns false.).
-        Note that inline nodes cannot be the first or last child of a parent
-        block, nor can it be next to another inline node in the children array.
-        Slate will automatically space these with { text: '' } children by
-        default with normalizeNode.
+        You can define which nodes are treated as inline nodes by overriding the
+        editor.isInline function. (By default it always returns false.). Note that inline
+        nodes cannot be the first or last child of a parent block, nor can it be next to
+        another inline node in the children array. Slate will automatically space these
+        with { text: '' } children by default with normalizeNode.
 
-        Elements can either contain block elements or inline elements
-        intermingled with text nodes as children. But elements cannot contain
-        some children that are blocks and some that are inlines.
+        Elements can either contain block elements or inline elements intermingled with
+        text nodes as children. But elements cannot contain some children that are blocks
+        and some that are inlines.
         """
 
         # TO DO: needs reimplementation according to above info
@@ -413,9 +410,7 @@ def text_to_slate(text):
 def is_whitespace(text):
     """Returns true if the text is only whitespace characters"""
 
-    # TODO: rewrite using mozila code
-
     if not isinstance(text, str):
         return False
 
-    return len(re.sub(r"\s|\t|\n", "", text)) == 0
+    return len(ANY_WHITESPACE.sub("", text)) == 0

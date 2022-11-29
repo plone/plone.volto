@@ -429,10 +429,9 @@ class TestConvertHTML2Slate(unittest.TestCase):
 
     def test_ol_sample(self):
         """Encountered while testing"""
-        text = (
-            "<ol><li><strong>asdsad</strong>"
-            " <em>adasdjkasjk</em></li><li><em><strong>adasda</strong></em></li>"
-            "<ol><li>sdasdsa</li><ol><li>dasdas</li></ol></ol></ol>"
-        )
+        text = read_data("9.html")
         res = text_to_slate(text)
-        self.assertEqual(res, [])
+        self.assertEqual(
+            res,
+            read_json("9.json"),
+        )

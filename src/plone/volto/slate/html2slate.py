@@ -393,7 +393,6 @@ class HTML2Slate(object):
         and some that are inlines.
         """
 
-        # TO DO: needs reimplementation according to above info
         if len(children) == 0:
             children.append({"text": ""})
             return

@@ -3,14 +3,12 @@
 # -*- coding: utf-8 -*-
 
 from pkg_resources import resource_filename
-
-# from plone.volto.slate.html2slate import text_to_slate
+from plone.volto.slate.html2slate import text_to_slate
 from plone.volto.slate.slate2html import slate_to_html
 
 import json
 import lxml.html
 import os
-import re
 import unittest
 
 
@@ -39,17 +37,6 @@ def read_json(filename):
 
     with open(fpath) as f:
         return json.load(f)
-
-
-def clean_whitespace(html):
-    """clean_whitespace.
-
-    :param html:
-    """
-    html = html.replace("\n", " ")
-    html = re.sub(r"\s+", " ", html)
-    html = html.replace("> <", "><")
-    return html
 
 
 class TestConvertSlate2HTML(unittest.TestCase):
@@ -105,18 +92,11 @@ class TestConvertSlate2HTML(unittest.TestCase):
             "<p>Hello <strong>world</strong> mixed <i>content</i>.</p>",
         )
 
-    # def test_convert_case_simple_p(self):
-    #    """test_convert_case_simple_p."""
-    #    slate = read_json("1.json")
-    #    html = slate_to_html(slate)
-    #    self.assertEqual(
-    #        html,
-    #        "<p>Since version 2.0, lxml comes with a dedicated Python package "
-    #        "for dealing with HTML: lxml.html. <br>It is based on lxml's HTML "
-    #        " parser, but provides a special Element API for HTML elements, as"
-    #        " well as a number of utilities for common HTML processing tasks."
-    #        "</p>",
-    #    )
+    def test_convert_case_simple_p(self):
+        """test_convert_case_simple_p."""
+        slate = read_json("1.json")
+        html = slate_to_html(slate)
+        self.assertEqual(html, "<p>Since.<br>It is .</p>")
 
     def test_convert_case_multiple_p(self):
         """test_convert_case_multiple_p."""
@@ -129,48 +109,41 @@ class TestConvertSlate2HTML(unittest.TestCase):
             "<p>However, note that.</p>",
         )
 
-    # def test_one_list_item(self):
-    #    """test_one_list_item."""
-    #    slate = [
-    #        {
-    #            "children": [
-    #                {"text": ""},
-    #                {
-    #                    "children": [
-    #                        {"text": "Brown bear ("},
-    #                        {"children": [{"text": "ursus arctos"}],
-    #                         "type": "em"},
-    #                        {"text": ") in Italy"},
-    #                    ],
-    #                    "data": {
-    #                        "link": {
-    #                            "internal": {
-    #                                "internal_link": [
-    #                                    {"@id":
-    #                                     "/case-study-hub/CS-brown-bears-Italy"
-    #                                     }
-    #                                ]
-    #                            }
-    #                        }
-    #                    },
-    #                    "type": "a",
-    #                },
-    #                {"text": ""},
-    #            ],
-    #            "type": "li",
-    #        }
-    #    ]
-    #    text = clean_whitespace(
-    #        """<li><a href="/case-study-hub/CS-brown-bears-Italy"
-    #    >Brown bear (<em>ursus arctos</em>) in Italy</a>
-    #    </li>"""
-    #    )
-    #    res = slate_to_html(slate)
+    def test_one_list_item(self):
+        """test_one_list_item."""
+        slate = [
+            {
+                "children": [
+                    {"text": ""},
+                    {
+                        "children": [
+                            {"text": "Brown bear ("},
+                            {"children": [{"text": "ursus arctos"}], "type": "em"},
+                            {"text": ") in Italy"},
+                        ],
+                        "data": {
+                            "link": {
+                                "internal": {
+                                    "internal_link": [
+                                        {"@id": "/case-study-hub/CS-brown-bears-Italy"}
+                                    ]
+                                }
+                            }
+                        },
+                        "type": "a",
+                    },
+                    {"text": ""},
+                ],
+                "type": "li",
+            }
+        ]
+        text = """<li><a href="/case-study-hub/CS-brown-bears-Italy">Brown bear (<em>ursus arctos</em>) in Italy</a></li>"""
+        res = slate_to_html(slate)
 
-    #    self.assertEqual(
-    #        res,
-    #        text,
-    #    )
+        self.assertEqual(
+            res,
+            text,
+        )
 
     def test_convert_slate_output_markup(self):
         """test_convert_slate_output_markup."""
@@ -188,20 +161,20 @@ class TestConvertSlate2HTML(unittest.TestCase):
         html = format_html(read_data("6-1.html").strip())
         self.assertEqual(res, html)
 
-    # def test_slate_data(self):
-    #    """test_slate_data."""
-    #    slate = read_json("7.json")
-    #    html = slate_to_html(slate).strip()
+    def test_slate_data(self):
+        """test_slate_data."""
+        slate = read_json("7.json")
+        html = slate_to_html(slate).strip()
 
-    #    self.assertTrue("<span data-slate-data=" in html)
+        self.assertTrue("<span data-slate-data=" in html)
 
-    #    self.assertEqual(text_to_slate(html), slate)
+        self.assertEqual(text_to_slate(html), slate)
 
-    # def test_wrapped_slate_data(self):
-    #    """test_wrapped_slate_data."""
-    #    slate = read_json("8.json")
-    #    html = slate_to_html(slate).strip()
+    def test_wrapped_slate_data(self):
+        """test_wrapped_slate_data."""
+        slate = read_json("8.json")
+        html = slate_to_html(slate).strip()
 
-    #    self.assertTrue("<span data-slate-data=" in html)
+        self.assertTrue("<span data-slate-data=" in html)
 
-    #    self.assertEqual(text_to_slate(html), slate)
+        self.assertEqual(text_to_slate(html), slate)

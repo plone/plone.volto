@@ -132,6 +132,27 @@ class TestConvertHTML2Slate(unittest.TestCase):
 
         assert br.parent is p
 
+    def test_show_bs4_api(self):
+        from bs4 import BeautifulSoup
+
+        html = "<p class='first'>Hello <br/>world</p>"
+        tree = BeautifulSoup(html, "html.parser")
+        fragments = list(tree.children)
+        (p,) = fragments
+        hello, br, world = list(p)
+
+        assert hello.name is None
+        assert hello.nextSibling.name == "br"
+        assert hello.string == "Hello "
+        assert hello.previousSibling is None
+
+        assert br.previousSibling.string == "Hello "
+        assert br.previousSibling is hello
+
+        assert p.attrs["class"] == ["first"]
+
+        assert br.parent is p
+
     def test_convert_simple_string(self):
         res = text_to_slate("Hello world")
         self.assertEqual(res, [{"children": [{"text": "Hello world"}], "type": "p"}])

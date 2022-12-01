@@ -121,16 +121,8 @@ class TestConvertSlate2HTML(unittest.TestCase):
                             {"children": [{"text": "ursus arctos"}], "type": "em"},
                             {"text": ") in Italy"},
                         ],
-                        "data": {
-                            "link": {
-                                "internal": {
-                                    "internal_link": [
-                                        {"@id": "/case-study-hub/CS-brown-bears-Italy"}
-                                    ]
-                                }
-                            }
-                        },
-                        "type": "a",
+                        "data": {"url": "/case-study-hub/CS-brown-bears-Italy"},
+                        "type": "link",
                     },
                     {"text": ""},
                 ],
@@ -148,9 +140,10 @@ class TestConvertSlate2HTML(unittest.TestCase):
     def test_convert_slate_output_markup(self):
         """test_convert_slate_output_markup."""
         slate = read_json("5.json")
-        res = slate_to_html(slate).strip()
 
+        res = slate_to_html(slate).strip()
         html = read_data("5.html").strip()
+
         self.assertEqual(res, html)
 
     def test_slate_list(self):

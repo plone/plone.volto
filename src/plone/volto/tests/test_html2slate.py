@@ -316,18 +316,8 @@ class TestConvertHTML2Slate(unittest.TestCase):
                                 {"children": [{"text": "ursus arctos"}], "type": "em"},
                                 {"text": ") in Italy"},
                             ],
-                            "data": {
-                                "link": {
-                                    "internal": {
-                                        "internal_link": [
-                                            {
-                                                "@id": "/case-study-hub/CS-brown-bears-Italy"
-                                            }
-                                        ]
-                                    }
-                                }
-                            },
-                            "type": "a",
+                            "data": {"url": "/case-study-hub/CS-brown-bears-Italy"},
+                            "type": "link",
                         },
                         {"text": ""},
                     ],
@@ -367,10 +357,8 @@ class TestConvertHTML2Slate(unittest.TestCase):
                         {"text": ""},
                         {
                             "children": [{"text": "Black stork"}],
-                            "data": {
-                                "link": {"internal": {"internal_link": [{"@id": "/"}]}}
-                            },
-                            "type": "a",
+                            "data": {"url": "/"},
+                            "type": "link",
                         },
                         {"text": ""},
                     ],

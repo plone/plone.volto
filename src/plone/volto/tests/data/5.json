@@ -12,22 +12,14 @@
             "text": ""
           },
           {
-            "type": "a",
+            "type": "link",
             "children": [
               {
                 "text": "with bold and slate "
               }
             ],
             "data": {
-              "link": {
-                "internal": {
-                  "internal_link": [
-                    {
-                      "@id": "/front-page"
-                    }
-                  ]
-                }
-              }
+              "url": "/front-page"
             }
           },
           {

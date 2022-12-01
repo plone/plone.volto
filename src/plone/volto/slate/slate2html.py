@@ -7,6 +7,9 @@ from lxml.html import tostring
 import json
 
 
+SLATE_ACCEPTED_TAGS = ACCEPTED_TAGS + ["link"]
+
+
 def join(element, children):
     """join.
 
@@ -36,11 +39,11 @@ class Slate2HTML(object):
 
         tagname = element["type"]
 
-        if element.get("data") and element["type"] not in ACCEPTED_TAGS:
+        if element.get("data") and element["type"] not in SLATE_ACCEPTED_TAGS:
             handler = self.handle_slate_data_element
         else:
             handler = getattr(self, "handle_tag_{}".format(tagname), None)
-            if not handler and tagname in ACCEPTED_TAGS:
+            if not handler and tagname in SLATE_ACCEPTED_TAGS:
                 handler = self.handle_block
 
         res = handler(element)
@@ -48,24 +51,18 @@ class Slate2HTML(object):
             return res
         return [res]
 
-    def handle_tag_a(self, element):
-        """handle_tag_a.
+    def handle_tag_link(self, element):
+        """handle_tag_link.
 
         :param element:
         """
-        internal_link = (
-            element.get("data", {})
-            .get("link", {})
-            .get("internal", {})
-            .get("internal_link", [])
-        )
+        url = element.get("data", {}).get("url")
 
         attributes = {}
+        if url is not None:
+            attributes["href"] = url
 
-        if internal_link:
-            attributes["href"] = internal_link[0]["@id"]
-
-        el = getattr(E, element["type"].upper())
+        el = getattr(E, "A")
 
         children = []
         for child in element["children"]:

@@ -15,7 +15,9 @@ import json
 import re
 
 
-SLATE_INLINE_ELEMENTS = [e.lower() for e in INLINE_ELEMENTS]
+SLATE_INLINE_ELEMENTS = [e.lower() for e in INLINE_ELEMENTS] + [
+    "link"  # Volto's <a> link
+]
 
 SPACE_BEFORE_ENDLINE = re.compile(r"\s+\n", re.M)
 SPACE_AFTER_DEADLINE = re.compile(r"\n\s+", re.M)
@@ -312,25 +314,14 @@ class HTML2Slate(object):
 
         :param node:
         """
-        link = node["href"] if "href" in node.attrs else ""
+        link = node["href"] if "href" in node.attrs else None
 
-        element = {"type": "a", "children": self.deserialize_children(node)}
-        if link:
-            if link.startswith("http") or link.startswith("//"):
-                # TO DO: implement external link
-                pass
-            else:
-                element["data"] = {
-                    "link": {
-                        "internal": {
-                            "internal_link": [
-                                {
-                                    "@id": link,
-                                }
-                            ]
-                        }
-                    }
-                }
+        element = {
+            "type": "link",
+            "children": self.deserialize_children(node),
+        }
+        if link is not None:
+            element["data"] = {"url": link}
 
         return element
 

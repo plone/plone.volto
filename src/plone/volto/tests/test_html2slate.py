@@ -69,7 +69,7 @@ class TestTextUtilities(unittest.TestCase):
         html = "<h1>   Hello <span> World!</span>   </h1>"
         fragments = fragments_fromstring(html)
         h1 = fragments[0]
-        span = h1.query_selector("span")
+        span = h1.findChild("span")
 
         text = remove_space_follow_space(" World!", span)
         assert text == "World!"
@@ -78,7 +78,7 @@ class TestTextUtilities(unittest.TestCase):
         html = "<h1><b>Hello </b> World!</h1>"
         fragments = fragments_fromstring(html)
         h1 = fragments[0]
-        b = h1.query_selector("b")
+        b = h1.findChild("b")
         node = b.next
 
         text = remove_space_follow_space(" World!", node)
@@ -88,7 +88,7 @@ class TestTextUtilities(unittest.TestCase):
         html = "<h1>   Hello <b>bla </b><span> World!</span>   </h1>"
         fragments = fragments_fromstring(html)
         h1 = fragments[0]
-        span = h1.query_selector("span")
+        span = h1.findChild("span")
 
         text = remove_space_follow_space(" World!", span)
         assert text == "World!"
@@ -97,7 +97,7 @@ class TestTextUtilities(unittest.TestCase):
         html = "<h1>   Hello <b><i>bla </i></b><span> World!</span>   </h1>"
         fragments = fragments_fromstring(html)
         h1 = fragments[0]
-        span = h1.query_selector("span")
+        span = h1.findChild("span")
 
         text = remove_space_follow_space(" World!", span)
         assert text == "World!"
@@ -107,30 +107,6 @@ class TestConvertHTML2Slate(unittest.TestCase):
     """TestConvertHTML2Slate."""
 
     maxDiff = None
-
-    def test_show_resiliparse_api(self):
-        from resiliparse.parse.html import HTMLTree
-
-        html = "<p class='first'>Hello <br/>world</p>"
-        tree = HTMLTree.parse(html)
-        document = tree.document
-        body = document.query_selector("body")
-        fragments = body.child_nodes
-        (p,) = fragments
-        hello, br, world = p.child_nodes
-
-        assert hello.tag == "#text"
-        assert hello.next.tag == "br"
-        assert hello.text == "Hello "
-        assert hello.prev is None
-
-        assert br.prev.text == "Hello "
-        assert br.prev is hello
-
-        assert p.attrs == ["class"]
-        assert p["class"] == "first"
-
-        assert br.parent is p
 
     def test_show_bs4_api(self):
         from bs4 import BeautifulSoup

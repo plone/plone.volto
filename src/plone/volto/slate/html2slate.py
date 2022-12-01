@@ -5,11 +5,11 @@ A port of volto-slate' deserialize.js module
 
 from .config import ACCEPTED_TAGS
 from .config import DEFAULT_BLOCK_TYPE
-from .config import ELEMENT_NODE
 from .config import INLINE_ELEMENTS
-from .config import TEXT_NODE
+from bs4 import BeautifulSoup
+from bs4.element import NavigableString
+from bs4.element import Tag
 from collections import deque
-from resiliparse.parse.html import HTMLTree
 
 import json
 import re
@@ -97,9 +97,9 @@ def remove_space_follow_space(text, node):
     if not text.startswith(" "):
         return text
 
-    previous = node.prev
+    previous = node.previousSibling
     if previous:
-        if previous.type == TEXT_NODE:
+        if is_textnode(previous):
             if previous.text.endswith(" "):
                 return FIRST_SPACE.sub("", text)
         elif is_inline(previous):
@@ -108,8 +108,8 @@ def remove_space_follow_space(text, node):
                 return FIRST_SPACE.sub("", text)
     else:
         parent = node.parent
-        if parent.prev:
-            prev_text = collapse_inline_space(parent.prev)
+        if parent.previousSibling:
+            prev_text = collapse_inline_space(parent.previousSibling)
             if prev_text and prev_text.endswith(" "):
                 return FIRST_SPACE.sub("", text)
         else:
@@ -121,10 +121,10 @@ def remove_space_follow_space(text, node):
 def is_inline(node):
     assert node is not None
 
-    if isinstance(node, str) or node.type == TEXT_NODE:
+    if isinstance(node, str) or is_textnode(node):
         return True
 
-    if node.tag.upper() in INLINE_ELEMENTS:
+    if node.name.upper() in INLINE_ELEMENTS:
         return True
 
     return False
@@ -133,13 +133,13 @@ def is_inline(node):
 def get_inline_ancestor_sibling(node):
     """Find a "visual sibling" by moving up in DOM hierarchy and finding a sibling"""
 
-    next_ = node.next
+    next_ = node.nextSibling
 
     while next_ is None:
         node = node.parent
         if node is None or not is_inline(node):
             break
-        next_ = node.next
+        next_ = node.nextSibling
 
     if (next_ is not None) and (not is_inline(next_)):
         return None
@@ -150,8 +150,8 @@ def get_inline_ancestor_sibling(node):
 def remove_element_edges(text, node):
     """Sequences of spaces at the beginning and end of an element are removed"""
 
-    previous = node.prev
-    next_ = node.next
+    previous = node.previousSibling
+    next_ = node.nextSibling
     parent = node.parent
 
     if (not is_inline(parent)) and (previous is None) and FIRST_ANY_SPACE.search(text):
@@ -159,7 +159,7 @@ def remove_element_edges(text, node):
 
     if ANY_SPACE_AT_END.search(text):
         has_inline_ancestor_sibling = get_inline_ancestor_sibling(node) is not None
-        if not has_inline_ancestor_sibling or (next_ and next_.tag == "br"):
+        if not has_inline_ancestor_sibling or (next_ and next_.name == "br"):
             text = ANY_SPACE_AT_END.sub("", text)
 
     return text
@@ -170,19 +170,23 @@ def clean_padding_text(text, node):
 
     if is_whitespace(text):
         has_prev = (
-            node.prev and node.prev.type == ELEMENT_NODE and not is_inline(node.prev)
+            node.previousSibling
+            and is_element(node.previousSibling)
+            and not is_inline(node.previousSibling)
         )
         has_next = (
-            node.next and node.next.type == ELEMENT_NODE and not is_inline(node.next)
+            node.nextSibling
+            and is_element(node.nextSibling)
+            and not is_inline(node.nextSibling)
         )
 
         if has_prev and has_next:
             return ""
 
-        if node.prev and not node.next:
+        if node.previousSibling and not node.nextSibling:
             return ""
 
-        if node.next and not node.prev:
+        if node.nextSibling and not node.previousSibling:
             return ""
 
     return text
@@ -220,10 +224,19 @@ def collapse_inline_space(node, expanded=False):
 
 
 def fragments_fromstring(text):
-    tree = HTMLTree.parse(text)
-    document = tree.document
-    body = document.query_selector("body")
-    return body.child_nodes
+    tree = BeautifulSoup(text, "html.parser")
+    # tree = HTMLTree.parse(text)
+    # document = tree.document
+    # body = document.query_selector("body")
+    return list(tree)
+
+
+def is_textnode(node):
+    return isinstance(node, NavigableString)
+
+
+def is_element(node):
+    return isinstance(node, Tag)
 
 
 class HTML2Slate(object):
@@ -252,13 +265,13 @@ class HTML2Slate(object):
         if node is None:
             return []
 
-        if node.tag == "#text":
+        if is_textnode(node):
             text = collapse_inline_space(node)
             return [{"text": text}] if text else None
-        elif node.type != ELEMENT_NODE:
+        elif not is_element(node):
             return None
 
-        tagname = node.tag
+        tagname = node.name
         handler = None
 
         if "data-slate-data" in node.attrs:
@@ -285,7 +298,7 @@ class HTML2Slate(object):
 
         res = []
 
-        for child in node.child_nodes:
+        for child in node.children:
             b = self.deserialize(child)
             if isinstance(b, list):
                 res += b
@@ -333,7 +346,7 @@ class HTML2Slate(object):
 
         :param node:
         """
-        return {"type": node.tag, "children": self.deserialize_children(node)}
+        return {"type": node.name, "children": self.deserialize_children(node)}
 
     def handle_tag_b(self, node):
         # TO DO: implement <b> special cases
@@ -344,7 +357,8 @@ class HTML2Slate(object):
 
         :param node:
         """
-        element = json.loads(node["data-slate-data"])
+        data = node["data-slate-data"]
+        element = json.loads(data)
         element["children"] = self.deserialize_children(node)
         return element
 

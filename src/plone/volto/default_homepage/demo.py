@@ -347,7 +347,6 @@ demo_home_page = {
     },
     "slate": {
         "title": "Welcome to Plone 6!",
-        "description": "This site is a demonstration of Plone 6 with Volto for its frontend.",
         "blocks": {
             "0358abe2-b4f1-463d-a279-a63ea80daf19": {"@type": "description"},
             "07c273fc-8bfc-4e7d-a327-d513e5a945bb": {"@type": "title"},

@@ -290,21 +290,25 @@ default_home = {
         },
     },
     "slate": {
-        "title": "Welcome to Volto!",
-        "description": "The React powered content management system",
+        "title": "Welcome to Plone 6!",
+        "description": "This site is Plone 6 with Volto for its frontend.",
         "blocks": {
             "0358abe2-b4f1-463d-a279-a63ea80daf19": {"@type": "description"},
             "07c273fc-8bfc-4e7d-a327-d513e5a945bb": {"@type": "title"},
             "16f63011-a6ec-4f1c-8f78-4c5166dfff2c": {
                 "@type": "slate",
-                "plaintext": "You can log in and use it as admin user using these credentials :",
+                "plaintext": "You can log in and use it as an admin user using these credentials :",
                 "value": [
                     {
                         "children": [
                             {
-                                "text": "You can log in and use it as admin user using these "
+                                "text": "You can log in and use it as an admin user using these "
                             },
                             {"children": [{"text": "credentials"}], "type": "strong"},
+                            {"text": ":\n\nusername: "},
+                            {"children": [{"text": "admin"}], "type": "strong"},
+                            {"text": "\npassword: "},
+                            {"children": [{"text": "admin\n\n"}], "type": "strong"},
                             {"text": ":"},
                         ],
                         "type": "p",
@@ -316,37 +320,9 @@ default_home = {
                 "plaintext": "Demo",
                 "value": [{"children": [{"text": "Demo"}], "type": "h2"}],
             },
-            "259ad2e9-a5f7-4e0c-a37b-b8d3a9da1a0d": {
-                "@type": "slate",
-                "plaintext": "password: admin ",
-                "value": [
-                    {
-                        "children": [
-                            {"text": "password: "},
-                            {"children": [{"text": "admin"}], "type": "strong"},
-                            {"text": ""},
-                        ],
-                        "type": "p",
-                    }
-                ],
-            },
-            "26d7d965-80f3-4312-9dc6-5166d00260a5": {
-                "@type": "slate",
-                "plaintext": "user: admin ",
-                "value": [
-                    {
-                        "children": [
-                            {"text": "user: "},
-                            {"children": [{"text": "admin"}], "type": "strong"},
-                            {"text": ""},
-                        ],
-                        "type": "p",
-                    }
-                ],
-            },
             "38ff6b46-4cbd-4933-a462-251c3e963b7a": {
                 "@type": "slate",
-                "plaintext": " Plone is a CMS built on Python with over 21 years of experience. Plone has very interesting features that appeal to developers and users alike, such as customizable content types, hierarchical URL object traversing and a sophisticated content workflow powered by a granular permissions model. This allows you to build anything from simple websites to enterprise-grade intranets. Volto exposes all these features and communicates with Plone via its mature REST API . Volto can be esily themed and is highly customizable.",
+                "plaintext": " Plone is a content management system built on Python and React, with its first release in 2001. Plone has features that appeal to developers and users alike, such as customizable content types, hierarchical URL object traversing, and a sophisticated content workflow powered by a granular permissions model. This allows you to build anything from simple websites to enterprise-grade intranets. Volto exposes all these features and communicates with Plone via its mature REST API. Volto can be easily themed and is highly customizable.",
                 "value": [
                     {
                         "children": [
@@ -357,7 +333,7 @@ default_home = {
                                 "type": "link",
                             },
                             {
-                                "text": " is a CMS built on Python with over 21 years of experience. Plone has very interesting features that appeal to developers and users alike, such as customizable content types, hierarchical URL object traversing and a sophisticated content workflow powered by a granular permissions model. This allows you to build anything from simple websites to enterprise-grade intranets. Volto exposes all these features and communicates with Plone via its mature "
+                                "text": " is a content management system built on Python and React, with its first release in 2001. Plone has features that appeal to developers and users alike, such as customizable content types, hierarchical URL object traversing, and a sophisticated content workflow powered by a granular permissions model. This allows you to build anything from simple websites to enterprise-grade intranets. Volto exposes all these features and communicates with Plone via its mature "
                             },
                             {
                                 "children": [{"text": "REST API"}],
@@ -376,12 +352,12 @@ default_home = {
             },
             "58cb10e2-49a5-4a87-9f5b-479c34bc5d36": {
                 "@type": "slate",
-                "plaintext": "You can use this site to test Volto. It runs on the master branch of Volto using latest Plone 5.2 Backend running on Python 3.",
+                "plaintext": "You can use this site to test Volto. It runs on the master branch of Volto, using latest Plone 6 backend running on Python 3.",
                 "value": [
                     {
                         "children": [
                             {
-                                "text": "You can use this site to test Volto. It runs on the master branch of Volto using latest Plone 5.2 Backend running on Python 3."
+                                "text": "You can use this site to test Volto. It runs on the master branch of Volto, using latest Plone 6 backend running on Python 3."
                             }
                         ],
                         "type": "p",
@@ -404,18 +380,18 @@ default_home = {
             },
             "712fb2c2-865e-4a21-bc74-b044a411deff": {
                 "@type": "slate",
-                "plaintext": "Volto also supports other APIs like Guillotina , a Python resource management system, inspired by Plone and using the same basic concepts like traversal, content types and permissions model.",
+                "plaintext": "Volto also supports other APIs, such as Guillotina which is a Python resource management system, inspired by Plone and using the same basic concepts including traversal, content types, and permissions model.",
                 "value": [
                     {
                         "children": [
-                            {"text": "Volto also supports other APIs like "},
+                            {"text": "Volto also supports other APIs, such as "},
                             {
                                 "children": [{"text": "Guillotina"}],
                                 "data": {"url": "https://guillotina.io/"},
                                 "type": "link",
                             },
                             {
-                                "text": ", a Python resource management system, inspired by Plone and using the same basic concepts like traversal, content types, and permissions model."
+                                "text": " which is a Python resource management system, inspired by Plone and using the same basic concepts including traversal, content types, and permissions model."
                             },
                         ],
                         "type": "p",
@@ -424,7 +400,7 @@ default_home = {
             },
             "78ff07d8-dc59-4af9-a669-1d551953ef34": {
                 "@type": "slate",
-                "plaintext": " Volto is a React-based frontend for content management systems, currently supporting three backend implementations: Plone, Guillotina and a NodeJS reference implementation.",
+                "plaintext": " Volto is a React-based frontend for content management systems, currently supporting three backend implementations: Plone, Guillotina, and a NodeJS reference implementation.",
                 "value": [
                     {
                         "children": [
@@ -435,7 +411,7 @@ default_home = {
                                 "type": "link",
                             },
                             {
-                                "text": " is a React-based frontend for content management systems, currently supporting three backend implementations: Plone, Guillotina and a NodeJS reference implementation."
+                                "text": " is a React-based frontend for content management systems, currently supporting three backend implementations: Plone, Guillotina, and a NodeJS reference implementation."
                             },
                         ],
                         "type": "p",
@@ -446,22 +422,6 @@ default_home = {
                 "@type": "slate",
                 "plaintext": "Happy hacking!",
                 "value": [{"children": [{"text": "Happy hacking!"}], "type": "p"}],
-            },
-            "fe6a8835-78d6-4026-ac2e-55ed26de14c3": {
-                "@type": "slate",
-                "plaintext": " Disclaimer : This instance is reset every night, so all changes will be lost afterwards.",
-                "value": [
-                    {
-                        "children": [
-                            {"text": ""},
-                            {"children": [{"text": "Disclaimer"}], "type": "strong"},
-                            {
-                                "text": ": This instance is reset every night, so all changes will be lost afterwards."
-                            },
-                        ],
-                        "type": "p",
-                    }
-                ],
             },
         },
         "blocks_layout": {
@@ -474,9 +434,6 @@ default_home = {
                 "237b0f68-d700-47ec-9356-77a54c8d5237",
                 "58cb10e2-49a5-4a87-9f5b-479c34bc5d36",
                 "16f63011-a6ec-4f1c-8f78-4c5166dfff2c",
-                "26d7d965-80f3-4312-9dc6-5166d00260a5",
-                "259ad2e9-a5f7-4e0c-a37b-b8d3a9da1a0d",
-                "fe6a8835-78d6-4026-ac2e-55ed26de14c3",
                 "ddc9926a-03d3-4c64-87a1-2b941aa08ebe",
                 "59f1e88e-bc2b-4aeb-95e7-26e0850fec0f",
             ]

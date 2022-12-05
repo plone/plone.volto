@@ -269,13 +269,35 @@ include 2 converters:
 - Volto's flavor of Slate JSON to HTML (``Slate2HTML``)
 - HTML to Volto's flavor of Slate JSON (``HTML2Slate``)
 
-These two classes can be inherited and extended for your custom tags and
-plugins.
+These two classes can be inherited and extended for your custom elements and
+plugins. To handle any custom element, you need to provide a method called
+``handle_tag_<elementname>``. For example, if you have a custom element of
+``@type`` "a", you can do:
+
+    from plone.volto.slate.slate2html import Slate2HTML
+
+    class CustomSlate2HTML(Slate2HTML):
+
+        def handle_tag_a(self, element):
+            el = E.A
+
+            children = []
+            for child in element["children"]:
+                children += self.serialize(child)
+
+            url  = element.data.get('url', '')
+            attributes = {"url": url}
+
+            return el(*children, **attributes)
+
+The counterpart HTML2Slate follows the same principle. Check the source code of
+the two modules for more details.
 
 It's also possible to include an optional ``htmlblock.zcml`` configuration file,
 located in ``plone.volto.slate``. The effect is that the value of the Slate
 blocks will be stored as HTML, and it will be transparently converted to
-Slate, when the content is loaded in Volto.
+Slate, when the content is loaded in Volto. Note, for the moment this feature
+is intended only to test the quality of the converters.
 
 Credits and History
 -------------------

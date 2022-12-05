@@ -272,7 +272,7 @@ include 2 converters:
 These two classes can be inherited and extended for your custom elements and
 plugins. To handle any custom element, you need to provide a method called
 ``handle_tag_<elementname>``. For example, if you have a custom element of
-``@type`` "a", you can do:
+``@type`` "a", you can do::
 
     from plone.volto.slate.slate2html import Slate2HTML
 

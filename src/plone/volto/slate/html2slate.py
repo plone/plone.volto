@@ -227,9 +227,6 @@ def collapse_inline_space(node, expanded=False):
 
 def fragments_fromstring(text):
     tree = BeautifulSoup(text, "html.parser")
-    # tree = HTMLTree.parse(text)
-    # document = tree.document
-    # body = document.query_selector("body")
     return list(tree)
 
 
@@ -378,38 +375,10 @@ class HTML2Slate(object):
                 child["children"] = merge_adjacent_text_nodes(children)
                 stack.extend(child["children"])
 
-                self._pad_with_space(child["children"])
+                if len(child["children"]) == 0:
+                    child["children"].append({"text": ""})
 
         return value
-
-    def _pad_with_space(self, children):
-        """Mutate the children array in-place. It pads them with 'empty spaces'.
-
-        Extract from Slate docs:
-        https://docs.slatejs.org/concepts/02-nodes#blocks-vs-inlines
-
-        ... Note that inline nodes cannot be the first or last child of a parent block,
-        nor can it be next to another inline node in the children array. Slate will
-        automatically space these with { text: '' } children by default with
-        normalizeNode.
-
-        Elements can either contain block elements or inline elements intermingled with
-        text nodes as children. But elements cannot contain some children that are blocks
-        and some that are inlines.
-        """
-
-        if len(children) == 0:
-            children.append({"text": ""})
-            return
-
-        first = children[0]
-        last = children[-1]
-
-        if first.get("text") is None and first.get("type") in SLATE_INLINE_ELEMENTS:
-            children.insert(0, {"text": ""})
-
-        if last.get("text") is None and last.get("type") in SLATE_INLINE_ELEMENTS:
-            children.append({"text": ""})
 
 
 def text_to_slate(text):

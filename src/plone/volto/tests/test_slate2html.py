@@ -18,10 +18,6 @@ def format_html(text):
 
 
 def read_data(filename):
-    """read_data.
-
-    :param filename:
-    """
     fpath = resource_filename("plone.volto", os.path.join("tests/data", filename))
 
     with open(fpath) as f:
@@ -29,10 +25,6 @@ def read_data(filename):
 
 
 def read_json(filename):
-    """read_json.
-
-    :param filename:
-    """
     fpath = resource_filename("plone.volto", os.path.join("tests/data", filename))
 
     with open(fpath) as f:
@@ -45,17 +37,14 @@ class TestConvertSlate2HTML(unittest.TestCase):
     maxDiff = None
 
     def test_convert_simple_string(self):
-        """test_convert_simple_string."""
         res = slate_to_html([{"children": [{"text": "Hello world"}], "type": "p"}])
         self.assertEqual(res, "<p>Hello world</p>")
 
     def test_convert_simple_paragraph(self):
-        """test_convert_simple_paragraph."""
         res = slate_to_html([{"children": [{"text": "Hello world"}], "type": "p"}])
         self.assertEqual(res, "<p>Hello world</p>")
 
     def test_convert_simple_paragraph_multi_breaks(self):
-        """test_convert_simple_paragraph_multi_breaks."""
         res = slate_to_html(
             [
                 {
@@ -71,7 +60,6 @@ class TestConvertSlate2HTML(unittest.TestCase):
         )
 
     def test_convert_text_and_a_tag(self):
-        """test_convert_text_and_a_tag."""
         res = slate_to_html(
             [
                 {
@@ -93,13 +81,11 @@ class TestConvertSlate2HTML(unittest.TestCase):
         )
 
     def test_convert_case_simple_p(self):
-        """test_convert_case_simple_p."""
         slate = read_json("1.json")
         html = slate_to_html(slate)
         self.assertEqual(html, "<p>Since.<br>It is .</p>")
 
     def test_convert_case_multiple_p(self):
-        """test_convert_case_multiple_p."""
         slate = read_json("2.json")
         html = slate_to_html(slate)
         self.assertEqual(
@@ -110,7 +96,6 @@ class TestConvertSlate2HTML(unittest.TestCase):
         )
 
     def test_one_list_item(self):
-        """test_one_list_item."""
         slate = [
             {
                 "children": [
@@ -138,7 +123,6 @@ class TestConvertSlate2HTML(unittest.TestCase):
         )
 
     def test_convert_slate_output_markup(self):
-        """test_convert_slate_output_markup."""
         slate = read_json("5.json")
 
         res = slate_to_html(slate).strip()
@@ -147,15 +131,13 @@ class TestConvertSlate2HTML(unittest.TestCase):
         self.assertEqual(res, html)
 
     def test_slate_list(self):
-        """test_slate_list."""
         slate = read_json("6.json")
         s = slate_to_html(slate).strip()
         res = format_html(s)
-        html = format_html(read_data("6-1.html").strip())
+        html = format_html(read_data("6-clean.html").strip())
         self.assertEqual(res, html)
 
     def test_slate_data(self):
-        """test_slate_data."""
         slate = read_json("7.json")
         html = slate_to_html(slate).strip()
 
@@ -164,7 +146,6 @@ class TestConvertSlate2HTML(unittest.TestCase):
         self.assertEqual(text_to_slate(html), slate)
 
     def test_wrapped_slate_data(self):
-        """test_wrapped_slate_data."""
         slate = read_json("8.json")
         html = slate_to_html(slate).strip()
 

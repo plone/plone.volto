@@ -4,9 +4,6 @@
       {
         "children": [
           {
-            "text": ""
-          },
-          {
             "children": [
               {
                 "text": "asdsad"
@@ -24,9 +21,6 @@
               }
             ],
             "type": "em"
-          },
-          {
-            "text": ""
           }
         ],
         "type": "li"
@@ -34,13 +28,7 @@
       {
         "children": [
           {
-            "text": ""
-          },
-          {
             "children": [
-              {
-                "text": ""
-              },
               {
                 "children": [
                   {
@@ -48,15 +36,9 @@
                   }
                 ],
                 "type": "strong"
-              },
-              {
-                "text": ""
               }
             ],
             "type": "em"
-          },
-          {
-            "text": ""
           }
         ],
         "type": "li"

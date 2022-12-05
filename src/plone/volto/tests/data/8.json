@@ -1,14 +1,11 @@
 [
   {
     "children": [
-      { "text": "" },
       {
         "children": [
           {
             "children": [
-              { "text": "" },
-              { "children": [{ "text": "28.06(percent) " }], "type": "i" },
-              { "text": "" }
+              { "children": [{ "text": "28.06(percent) " }], "type": "i" }
             ],
             "data": {
               "column": "Land%cov",

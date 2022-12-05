@@ -9,9 +9,6 @@
         "type": "strong",
         "children": [
           {
-            "text": ""
-          },
-          {
             "type": "link",
             "children": [
               {
@@ -21,9 +18,6 @@
             "data": {
               "url": "/front-page"
             }
-          },
-          {
-            "text": ""
           }
         ]
       },

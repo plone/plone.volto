@@ -1,5 +1,6 @@
 """ config module """
-ACCEPTED_TAGS = [
+
+ACCEPTED_TAGS = [  # valid volto-slate elements
     "a",
     "b",
     "blockquote",
@@ -26,7 +27,7 @@ ACCEPTED_TAGS = [
 
 DEFAULT_BLOCK_TYPE = "p"
 
-INLINE_ELEMENTS = [
+INLINE_ELEMENTS = [  # these are elements that HTML spec defines as inline elements
     "A",
     "ABBR",
     "ACRONYM",
@@ -84,7 +85,7 @@ INLINE_ELEMENTS = [
     "WBR",
 ]
 
-BLOCK_ELEMENTS = [
+BLOCK_ELEMENTS = [  # these are elements that HTML spec defines as block elements
     "ADDRESS",
     "ARTICLE",
     "ASIDE",

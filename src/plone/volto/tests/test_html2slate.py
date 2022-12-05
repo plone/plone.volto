@@ -16,10 +16,6 @@ import unittest
 
 
 def read_data(filename):
-    """read_data.
-
-    :param filename:
-    """
     fpath = resource_filename("plone.volto", os.path.join("tests/data", filename))
 
     with open(fpath) as f:
@@ -27,10 +23,6 @@ def read_data(filename):
 
 
 def read_json(filename):
-    """read_json.
-
-    :param filename:
-    """
     fpath = resource_filename("plone.volto", os.path.join("tests/data", filename))
 
     with open(fpath) as f:
@@ -104,7 +96,6 @@ class TestTextUtilities(unittest.TestCase):
 
 
 class TestConvertHTML2Slate(unittest.TestCase):
-    """TestConvertHTML2Slate."""
 
     maxDiff = None
 
@@ -134,7 +125,6 @@ class TestConvertHTML2Slate(unittest.TestCase):
         self.assertEqual(res, [{"children": [{"text": "Hello world"}], "type": "p"}])
 
     def test_convert_simple_paragraph(self):
-        """test_convert_simple_paragraph."""
         res = text_to_slate("<p>Hello world</p>")
         self.assertEqual(res, [{"children": [{"text": "Hello world"}], "type": "p"}])
 
@@ -159,7 +149,6 @@ class TestConvertHTML2Slate(unittest.TestCase):
             [
                 {
                     "children": [
-                        {"text": ""},  # This is space padding
                         {
                             "type": "b",
                             "children": [{"text": "Hello "}],
@@ -179,7 +168,6 @@ class TestConvertHTML2Slate(unittest.TestCase):
             [
                 {
                     "children": [
-                        {"text": ""},  # This is space padding
                         {
                             "type": "b",
                             "children": [{"text": "hello"}],
@@ -199,10 +187,8 @@ class TestConvertHTML2Slate(unittest.TestCase):
             [
                 {
                     "children": [
-                        {"text": ""},
                         {
                             "children": [
-                                {"text": ""},
                                 {
                                     "children": [{"text": "28.06(percent) "}],
                                     "type": "i",
@@ -219,7 +205,6 @@ class TestConvertHTML2Slate(unittest.TestCase):
         )
 
     def test_convert_text_and_tag(self):
-        """test_convert_simple_paragraph."""
         res = text_to_slate("Hello <strong>world</strong> mixed <i>content</i>.")
 
         self.assertEqual(
@@ -239,7 +224,6 @@ class TestConvertHTML2Slate(unittest.TestCase):
         )
 
     def test_merge_text_nodes(self):
-        """test_merge_text_nodes."""
         q = [{"text": "a"}, {"text": "b"}, {"text": "c"}]
         res = merge_adjacent_text_nodes(q)
         self.assertEqual(res, [{"text": "abc"}])
@@ -277,7 +261,6 @@ class TestConvertHTML2Slate(unittest.TestCase):
         )
 
     def test_convert_case_simple_p(self):
-        """test_convert_case_simple_p."""
         text = read_data("1.html")
         res = text_to_slate(text)
 
@@ -287,7 +270,6 @@ class TestConvertHTML2Slate(unittest.TestCase):
         )
 
     def test_convert_case_multiple_p(self):
-        """test_convert_case_multiple_p."""
         text = read_data("2.html")
         res = text_to_slate(text)
 
@@ -309,7 +291,6 @@ class TestConvertHTML2Slate(unittest.TestCase):
             [
                 {
                     "children": [
-                        {"text": ""},
                         {
                             "children": [
                                 {"text": "Brown bear ("},
@@ -319,7 +300,6 @@ class TestConvertHTML2Slate(unittest.TestCase):
                             "data": {"url": "/case-study-hub/CS-brown-bears-Italy"},
                             "type": "link",
                         },
-                        {"text": ""},
                     ],
                     "type": "li",
                 }
@@ -327,7 +307,6 @@ class TestConvertHTML2Slate(unittest.TestCase):
         )
 
     def test_convert_slate_output_markup(self):
-        """test_convert_slate_output_markup."""
         text = read_data("5.html")
         res = text_to_slate(text)
 
@@ -337,7 +316,6 @@ class TestConvertHTML2Slate(unittest.TestCase):
         )
 
     def test_html2slate_list(self):
-        """test_slate_list."""
         text = read_data("6.html")
         res = text_to_slate(text)
 
@@ -354,13 +332,11 @@ class TestConvertHTML2Slate(unittest.TestCase):
             [
                 {
                     "children": [
-                        {"text": ""},
                         {
                             "children": [{"text": "Black stork"}],
                             "data": {"url": "/"},
                             "type": "link",
                         },
-                        {"text": ""},
                     ],
                     "type": "li",
                 }
@@ -377,7 +353,6 @@ class TestConvertHTML2Slate(unittest.TestCase):
         )
 
     def test_wrapped_slate_data(self):
-        """test_wrapped_slate_data."""
         text = read_data("8.html")
         res = text_to_slate(text)
         self.assertEqual(
@@ -386,7 +361,6 @@ class TestConvertHTML2Slate(unittest.TestCase):
         )
 
     def test_paragraph_sample(self):
-        """Encountered on first test with Volto"""
         text = "<p>START <strong><em>partA</em></strong> <del>partB</del> END</p>"
         res = text_to_slate(text)
         self.assertEqual(
@@ -397,9 +371,7 @@ class TestConvertHTML2Slate(unittest.TestCase):
                         {"text": "START "},
                         {
                             "children": [
-                                {"text": ""},
                                 {"children": [{"text": "partA"}], "type": "em"},
-                                {"text": ""},
                             ],
                             "type": "strong",
                         },
@@ -413,7 +385,6 @@ class TestConvertHTML2Slate(unittest.TestCase):
         )
 
     def test_ol_sample(self):
-        """Encountered while testing"""
         text = read_data("9.html")
         res = text_to_slate(text)
         self.assertEqual(

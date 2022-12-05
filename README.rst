@@ -263,18 +263,18 @@ sure your add-on's profiles are applied AFTER this one.**
 Slate support
 -------------
 
-Starting with Volto 16, the default richtext implementation uses SlateJS. We
+Starting with Volto 16, the default rich text implementation uses SlateJS. We
 include 2 converters:
 
-- Volto's flavour of Slate JSON to HTML (``Slate2HTML``)
-- HTML to Volto's flavour of Slate JSON (``HTML2Slate``)
+- Volto's flavor of Slate JSON to HTML (``Slate2HTML``)
+- HTML to Volto's flavor of Slate JSON (``HTML2Slate``)
 
 These two classes can be inherited and extended for your custom tags and
 plugins.
 
-It's also possible to include an optional ``htmlblock.zcml`` configure file
-(located in ``plone.volto.slate`` ). The effect is that the value of the slate
-blocks will be stored as an HTML and it will be transparently converted to
+It's also possible to include an optional ``htmlblock.zcml`` configuration file,
+located in ``plone.volto.slate``. The effect is that the value of the Slate
+blocks will be stored as HTML, and it will be transparently converted to
 Slate, when the content is loaded in Volto.
 
 Credits and History

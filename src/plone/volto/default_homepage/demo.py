@@ -373,7 +373,7 @@ demo_home_page = {
                                     {
                                         "children": [{"text": "The features of Plone"}],
                                         "data": {
-                                            "url": "https://plone.org/what-is-plone/plone/plone-features"
+                                            "url": "https://plone.org/why-plone/features"
                                         },
                                         "type": "link",
                                     },
@@ -387,7 +387,7 @@ demo_home_page = {
                                     {
                                         "children": [{"text": "Plone Documentation"}],
                                         "data": {
-                                            "url": "https://6.dev-docs.plone.org/"
+                                            "url": "https://docs.plone.org/"
                                         },
                                         "type": "link",
                                     },
@@ -583,7 +583,7 @@ demo_home_page = {
             },
             "b918c45d-e817-4231-9711-ec5a0bc41505": {
                 "@type": "slate",
-                "plaintext": " Plone 6 (nightly build, this site)   Plone 6 Classic UI (nightly build) ",
+                "plaintext": " Plone 6 Plone 6 Classic UI",
                 "value": [
                     {
                         "children": [
@@ -593,10 +593,10 @@ demo_home_page = {
                                     {
                                         "children": [
                                             {
-                                                "text": "Plone 6 (nightly build, this site)"
+                                                "text": "Plone 6"
                                             }
                                         ],
-                                        "data": {"url": "https://6.demo.plone.org/"},
+                                        "data": {"url": "https://demo.plone.org/"},
                                         "type": "link",
                                     },
                                     {"text": ""},
@@ -609,7 +609,7 @@ demo_home_page = {
                                     {
                                         "children": [
                                             {
-                                                "text": "Plone 6 Classic UI (nightly build)"
+                                                "text": "Plone 6 Classic UI"
                                             }
                                         ],
                                         "data": {

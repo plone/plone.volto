@@ -347,7 +347,6 @@ demo_home_page = {
     },
     "slate": {
         "title": "Welcome to Plone 6!",
-        "description": "This site is a demonstration of Plone 6 with Volto for its frontend.",
         "blocks": {
             "0358abe2-b4f1-463d-a279-a63ea80daf19": {"@type": "description"},
             "07c273fc-8bfc-4e7d-a327-d513e5a945bb": {"@type": "title"},
@@ -364,7 +363,7 @@ demo_home_page = {
             },
             "539b7bb6-23e1-425c-8d93-70c03d52806e": {
                 "@type": "slate",
-                "plaintext": " The features of Plone   Plone Documentation   Plone Training   Forum   Add-ons for Plone (backend)   Add-ons for Volto (frontend)   ",
+                "plaintext": " The features of Plone   Plone Documentation   Plone Training   Plone Community Forum   Add-ons for Plone (backend)   Add-ons for Volto (frontend)   ",
                 "value": [
                     {
                         "children": [
@@ -374,7 +373,7 @@ demo_home_page = {
                                     {
                                         "children": [{"text": "The features of Plone"}],
                                         "data": {
-                                            "url": "https://plone.com/features.html"
+                                            "url": "https://plone.org/why-plone/features"
                                         },
                                         "type": "link",
                                     },
@@ -410,7 +409,7 @@ demo_home_page = {
                                 "children": [
                                     {"text": ""},
                                     {
-                                        "children": [{"text": "Forum"}],
+                                        "children": [{"text": "Plone Community Forum"}],
                                         "data": {"url": "https://community.plone.org/"},
                                         "type": "link",
                                     },
@@ -465,12 +464,12 @@ demo_home_page = {
             },
             "577b38a2-84ed-4911-9644-72b73b79bf9b": {
                 "@type": "slate",
-                "plaintext": "Plone is a powerful content management system built on a rock-solid application stack written using the Python programming language.",
+                "plaintext": "Plone is a powerful content management system built on a rock-solid application stack written in the Python and JavaScript programming languages.",
                 "value": [
                     {
                         "children": [
                             {
-                                "text": "Plone is a powerful content management system built on a rock-solid application stack written using the Python programming language."
+                                "text": "Plone is a powerful content management system built on a rock-solid application stack written in the Python and JavaScript programming languages."
                             }
                         ],
                         "type": "p",
@@ -489,27 +488,25 @@ demo_home_page = {
             },
             "7ab29abe-b38c-406b-94d7-b270e544a998": {
                 "@type": "slate",
-                "plaintext": "\u2026protects and promotes Plone. \u2026is a registered 501(c)(3) charitable organization. \u2026donations are tax-deductible.  Support the Foundation and help make Plone better!   ",
+                "plaintext": "…protects and promotes Plone. …is a registered 501(c)(3) charitable organization. …donations are tax-deductible.  Support the Foundation and help make Plone better!   ",
                 "value": [
                     {
                         "children": [
                             {
-                                "children": [
-                                    {"text": "\u2026protects and promotes Plone."}
-                                ],
+                                "children": [{"text": "…protects and promotes Plone."}],
                                 "type": "li",
                             },
                             {
                                 "children": [
                                     {
-                                        "text": "\u2026is a registered 501(c)(3) charitable organization."
+                                        "text": "…is a registered 501(c)(3) charitable organization."
                                     }
                                 ],
                                 "type": "li",
                             },
                             {
                                 "children": [
-                                    {"text": "\u2026donations are tax-deductible."}
+                                    {"text": "…donations are tax-deductible."}
                                 ],
                                 "type": "li",
                             },
@@ -584,7 +581,7 @@ demo_home_page = {
             },
             "b918c45d-e817-4231-9711-ec5a0bc41505": {
                 "@type": "slate",
-                "plaintext": " Plone 6 (nightly build, this site)   Plone 6 Classic (nightly build)   Plone 5.2 (stable) ",
+                "plaintext": " Plone 6 Plone 6 Classic UI",
                 "value": [
                     {
                         "children": [
@@ -592,12 +589,8 @@ demo_home_page = {
                                 "children": [
                                     {"text": ""},
                                     {
-                                        "children": [
-                                            {
-                                                "text": "Plone 6 (nightly build, this site)"
-                                            }
-                                        ],
-                                        "data": {"url": "https://6.demo.plone.org/"},
+                                        "children": [{"text": "Plone 6"}],
+                                        "data": {"url": "https://demo.plone.org/"},
                                         "type": "link",
                                     },
                                     {"text": ""},
@@ -608,24 +601,10 @@ demo_home_page = {
                                 "children": [
                                     {"text": ""},
                                     {
-                                        "children": [
-                                            {"text": "Plone 6 Classic (nightly build)"}
-                                        ],
+                                        "children": [{"text": "Plone 6 Classic UI"}],
                                         "data": {
                                             "url": "https://6-classic.demo.plone.org/"
                                         },
-                                        "type": "link",
-                                    },
-                                    {"text": ""},
-                                ],
-                                "type": "li",
-                            },
-                            {
-                                "children": [
-                                    {"text": ""},
-                                    {
-                                        "children": [{"text": "Plone 5.2 (stable)"}],
-                                        "data": {"url": "https://demo.plone.org/"},
                                         "type": "link",
                                     },
                                     {"text": ""},

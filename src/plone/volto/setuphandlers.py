@@ -287,12 +287,14 @@ def create_root_homepage(context, block_type=None, default_home=default_home):
         portal.blocks = home_data["blocks"]
         portal.blocks_layout = home_data["blocks_layout"]
         portal.title = home_data["title"]
-        portal.description = home_data["description"]
+        if home_data.get("description"):
+            portal.description = home_data["description"]
     else:
         blocks = home_data["blocks"]
         blocks_layout = home_data["blocks_layout"]
         portal.setTitle(home_data["title"])
-        portal.setDescription(home_data["description"])
+        if home_data.get("description"):
+            portal.setDescription(home_data["description"])
 
         # Use the hack for setting the home page in Plone Site object
         if not getattr(portal, "blocks", False):

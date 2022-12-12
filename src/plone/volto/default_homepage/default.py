@@ -291,10 +291,26 @@ default_home = {
     },
     "slate": {
         "title": "Welcome to Plone 6!",
-        "description": "This site is Plone 6 with Volto for its frontend.",
         "blocks": {
-            "0358abe2-b4f1-463d-a279-a63ea80daf19": {"@type": "description"},
             "07c273fc-8bfc-4e7d-a327-d513e5a945bb": {"@type": "title"},
+            "ccff1e6e-f89a-49ff-81d7-cb5f5c3b4b48": {
+                "@type": "slate",
+                "plaintext": " Learn more about Plone ",
+                "value": [
+                    {
+                        "children": [
+                            {"text": ""},
+                            {
+                                "children": [{"text": "Learn more about Plone"}],
+                                "data": {"url": "https://plone.org/"},
+                                "type": "link",
+                            },
+                            {"text": ""},
+                        ],
+                        "type": "h3",
+                    }
+                ],
+            },
             "09bd0162-397d-4141-983d-8f03ac2c481c": {
                 "@type": "slate",
                 "plaintext": "  If you're seeing this text instead of the web site you were expecting, the owner of this web site has just installed Plone. Do not contact the Plone Team or the Plone support channels about this.",
@@ -315,24 +331,96 @@ default_home = {
                     }
                 ],
             },
-            "1fd6c4e5-c606-4d74-a725-0df3e715e995": {
+            "eec7a1b7-40ab-49e1-a1ba-a8bc3d838598": {
                 "@type": "slate",
-                "plaintext": "Plone is made possible only through the efforts of thousands of dedicated individuals and hundreds of companies. The Plone Foundation:",
+                "plaintext": "Get started",
+                "value": [{"children": [{"text": "Get started"}], "type": "h2"}],
+            },
+            "eb436460-6bd6-418d-b788-a9f09c0a1f73": {
+                "@type": "slate",
+                "plaintext": "Before you start exploring your newly created Plone site, please do the following:",
                 "value": [
                     {
                         "children": [
                             {
-                                "text": "Plone is made possible only through the efforts of thousands of dedicated individuals and hundreds of companies. The Plone Foundation:"
+                                "text": "Before you start exploring your newly created Plone site, please do the following:"
                             }
                         ],
                         "type": "p",
                     }
                 ],
             },
-            "35fb577b-bbc8-4e5a-b88e-b89631d13640": {
+            "4d8a7881-111b-4d57-b2e6-788e8ede90a9": {
                 "@type": "slate",
-                "plaintext": "Make it your own",
-                "value": [{"children": [{"text": "Make it your own"}], "type": "h2"}],
+                "plaintext": "Make sure you are logged in as an admin/manager user. You should have a Site Setup entry in the user menu.  Set up your mail server . Plone needs a valid SMTP server to verify users and send out password reminders.  Decide what security level you want on your site. Allow self registration, password policies, and more.",
+                "value": [
+                    {
+                        "children": [
+                            {
+                                "children": [
+                                    {
+                                        "text": "Make sure you are logged in as an admin/manager user. You should have a Site Setup entry in the user menu."
+                                    }
+                                ],
+                                "type": "li",
+                            },
+                            {
+                                "children": [
+                                    {"text": ""},
+                                    {
+                                        "children": [
+                                            {"text": "Set up your mail server"}
+                                        ],
+                                        "data": {"url": "/controlpanel/mail"},
+                                        "type": "link",
+                                    },
+                                    {
+                                        "text": ". Plone needs a valid SMTP server to verify users and send out password reminders."
+                                    },
+                                ],
+                                "type": "li",
+                            },
+                            {
+                                "children": [
+                                    {"text": ""},
+                                    {
+                                        "children": [
+                                            {
+                                                "text": "Decide what security level you want on your"
+                                            }
+                                        ],
+                                        "data": {"url": "/controlpanel/security"},
+                                        "type": "link",
+                                    },
+                                    {
+                                        "text": " site. Allow self registration, password policies, and more."
+                                    },
+                                ],
+                                "type": "li",
+                            },
+                        ],
+                        "type": "ol",
+                    }
+                ],
+            },
+            "97cd02b5-29fc-4993-afe2-3cc5fe5bd85b": {
+                "@type": "slate",
+                "plaintext": "Get comfortable",
+                "value": [{"children": [{"text": "Get comfortable"}], "type": "h2"}],
+            },
+            "b6ad38e2-1736-407e-a327-dcea2206f707": {
+                "@type": "slate",
+                "plaintext": "After that, we suggest you do one or more of the following:",
+                "value": [
+                    {
+                        "children": [
+                            {
+                                "text": "After that, we suggest you do one or more of the following:"
+                            }
+                        ],
+                        "type": "p",
+                    }
+                ],
             },
             "37997f0f-ed85-44b0-a579-d3ff00e5a974": {
                 "@type": "slate",
@@ -409,6 +497,103 @@ default_home = {
                     }
                 ],
             },
+            "35fb577b-bbc8-4e5a-b88e-b89631d13640": {
+                "@type": "slate",
+                "plaintext": "Make it your own",
+                "value": [{"children": [{"text": "Make it your own"}], "type": "h2"}],
+            },
+            "dbe0349e-6577-46bd-9ede-685b81d2e814": {
+                "@type": "slate",
+                "plaintext": "Plone has many settings to make it do what you want. Some examples include:",
+                "value": [
+                    {
+                        "children": [
+                            {
+                                "text": "Plone has many settings to make it do what you want. Some examples include:"
+                            }
+                        ],
+                        "type": "p",
+                    }
+                ],
+            },
+            "ffbec3a5-a970-4c43-8897-68cc1022bcb9": {
+                "@type": "slate",
+                "plaintext": "Create content-types and define their default-layout in the content types controlpanel  Manage Users, Groups and their Roles in the users and groups controlpanels   ...and many more settings are available in the Site Setup .",
+                "value": [
+                    {
+                        "children": [
+                            {
+                                "children": [
+                                    {
+                                        "text": "Create content-types and define their default-layout in the "
+                                    },
+                                    {
+                                        "children": [
+                                            {"text": "content types controlpanel"}
+                                        ],
+                                        "data": {
+                                            "url": "/controlpanel/dexterity-types"
+                                        },
+                                        "type": "link",
+                                    },
+                                    {"text": ""},
+                                ],
+                                "type": "li",
+                            },
+                            {
+                                "children": [
+                                    {
+                                        "text": "Manage Users, Groups and their Roles in the "
+                                    },
+                                    {
+                                        "children": [{"text": "users"}],
+                                        "data": {"url": "/controlpanel/users"},
+                                        "type": "link",
+                                    },
+                                    {"text": " and "},
+                                    {
+                                        "children": [{"text": "groups"}],
+                                        "data": {"url": "/controlpanel/groups"},
+                                        "type": "link",
+                                    },
+                                    {"text": " controlpanels"},
+                                ],
+                                "type": "li",
+                            },
+                            {
+                                "children": [
+                                    {"text": ""},
+                                    {
+                                        "children": [{"text": ""}],
+                                        "data": {
+                                            "url": "http://localhost:8080/Plone2/@@markup-controlpanel"
+                                        },
+                                        "type": "link",
+                                    },
+                                    {
+                                        "text": "...and many more settings are available in the "
+                                    },
+                                    {
+                                        "children": [{"text": "Site Setup"}],
+                                        "data": {"url": "/controlpanel"},
+                                        "type": "link",
+                                    },
+                                    {"text": "."},
+                                ],
+                                "type": "li",
+                            },
+                        ],
+                        "type": "ul",
+                    }
+                ],
+            },
+            "c53b5868-ccba-4fee-b504-bf3867bb1ef0": {
+                "@type": "slate",
+                "plaintext": "About Plone and Volto",
+                "value": [
+                    {"children": [{"text": "About Plone and Volto"}], "type": "h2"}
+                ],
+            },
             "38ff6b46-4cbd-4933-a462-251c3e963b7a": {
                 "@type": "slate",
                 "plaintext": " Plone is a content management system built on Python, with its first release in 2001. Plone has features that appeal to developers and users alike, such as customizable content types, hierarchical URL object traversing, and a sophisticated content workflow powered by a granular permissions model. This allows you to build anything from simple websites to enterprise-grade intranets.",
@@ -429,67 +614,61 @@ default_home = {
                     }
                 ],
             },
-            "4d8a7881-111b-4d57-b2e6-788e8ede90a9": {
+            "b4193840-3c95-4b28-a088-f679c11e2dcb": {
                 "@type": "slate",
-                "plaintext": "Make sure you are logged in as an admin/manager user. You should have a Site Setup entry in the user menu.  Set up your mail server . Plone needs a valid SMTP server to verify users and send out password reminders.  Decide what security level you want on your site. Allow self registration, password policies, and more.",
+                "plaintext": " Volto is the frontent for Plone written in React. It exposes all these features and communicates with Plone via its mature REST API . Volto can be easily themed and is highly customizable.",
+                "value": [
+                    {
+                        "children": [
+                            {"text": ""},
+                            {
+                                "children": [{"text": "Volto"}],
+                                "data": {
+                                    "url": "https://6.docs.plone.org/volto/index.html"
+                                },
+                                "type": "link",
+                            },
+                            {
+                                "text": " is the frontent for Plone written in React. It exposes all these features and communicates with Plone via its mature "
+                            },
+                            {
+                                "children": [{"text": "REST API"}],
+                                "data": {
+                                    "url": "https://github.com/plone/plone.restapi"
+                                },
+                                "type": "link",
+                            },
+                            {
+                                "text": ". Volto can be easily themed and is highly customizable."
+                            },
+                        ],
+                        "type": "p",
+                    }
+                ],
+            },
+            "b7922dfd-9aac-4494-b5f7-3701cc646f99": {
+                "@type": "slate",
+                "plaintext": "Support the Plone Foundation",
+                "value": [
+                    {
+                        "children": [{"text": "Support the Plone Foundation"}],
+                        "type": "h2",
+                    }
+                ],
+            },
+            "1fd6c4e5-c606-4d74-a725-0df3e715e995": {
+                "@type": "slate",
+                "plaintext": "Plone is made possible only through the efforts of thousands of dedicated individuals and hundreds of companies. The Plone Foundation:",
                 "value": [
                     {
                         "children": [
                             {
-                                "children": [
-                                    {
-                                        "text": "Make sure you are logged in as an admin/manager user. You should have a Site Setup entry in the user menu."
-                                    }
-                                ],
-                                "type": "li",
-                            },
-                            {
-                                "children": [
-                                    {"text": ""},
-                                    {
-                                        "children": [
-                                            {"text": "Set up your mail server"}
-                                        ],
-                                        "data": {
-                                            "url": "http://localhost:3000/controlpanel/mail"
-                                        },
-                                        "type": "link",
-                                    },
-                                    {
-                                        "text": ". Plone needs a valid SMTP server to verify users and send out password reminders."
-                                    },
-                                ],
-                                "type": "li",
-                            },
-                            {
-                                "children": [
-                                    {"text": ""},
-                                    {
-                                        "children": [
-                                            {
-                                                "text": "Decide what security level you want on your"
-                                            }
-                                        ],
-                                        "data": {
-                                            "url": "http://localhost:3000/controlpanel/security"
-                                        },
-                                        "type": "link",
-                                    },
-                                    {
-                                        "text": " site. Allow self registration, password policies, and more."
-                                    },
-                                ],
-                                "type": "li",
-                            },
+                                "text": "Plone is made possible only through the efforts of thousands of dedicated individuals and hundreds of companies. The Plone Foundation:"
+                            }
                         ],
-                        "type": "ol",
+                        "type": "p",
                     }
                 ],
-            },
-            "78ff07d8-dc59-4af9-a669-1d551953ef34": {
-                "@type": "slate",
-                "plaintext": "Welcome",
-                "value": [{"children": [{"text": "Welcome"}], "type": "h2"}],
             },
             "958d0b18-d445-40df-8da4-cc4ef813678f": {
                 "@type": "slate",
@@ -542,111 +721,6 @@ default_home = {
                     }
                 ],
             },
-            "97cd02b5-29fc-4993-afe2-3cc5fe5bd85b": {
-                "@type": "slate",
-                "plaintext": "Get comfortable",
-                "value": [{"children": [{"text": "Get comfortable"}], "type": "h2"}],
-            },
-            "a9b59282-1f01-4030-93c0-ae8e0dd0ca5c": {
-                "@type": "slate",
-                "plaintext": "– The Plone Team",
-                "value": [{"children": [{"text": "– The Plone Team"}], "type": "p"}],
-            },
-            "b4193840-3c95-4b28-a088-f679c11e2dcb": {
-                "@type": "slate",
-                "plaintext": " Volto is the frontent for Plone written in React. It exposes all these features and communicates with Plone via its mature REST API . Volto can be easily themed and is highly customizable.",
-                "value": [
-                    {
-                        "children": [
-                            {"text": ""},
-                            {
-                                "children": [{"text": "Volto"}],
-                                "data": {
-                                    "url": "https://6.docs.plone.org/volto/index.html"
-                                },
-                                "type": "link",
-                            },
-                            {
-                                "text": " is the frontent for Plone written in React. It exposes all these features and communicates with Plone via its mature "
-                            },
-                            {
-                                "children": [{"text": "REST API"}],
-                                "data": {
-                                    "url": "https://github.com/plone/plone.restapi"
-                                },
-                                "type": "link",
-                            },
-                            {
-                                "text": ". Volto can be easily themed and is highly customizable."
-                            },
-                        ],
-                        "type": "p",
-                    }
-                ],
-            },
-            "b6ad38e2-1736-407e-a327-dcea2206f707": {
-                "@type": "slate",
-                "plaintext": "After that, we suggest you do one or more of the following:",
-                "value": [
-                    {
-                        "children": [
-                            {
-                                "text": "After that, we suggest you do one or more of the following:"
-                            }
-                        ],
-                        "type": "p",
-                    }
-                ],
-            },
-            "b7922dfd-9aac-4494-b5f7-3701cc646f99": {
-                "@type": "slate",
-                "plaintext": "Support the Plone Foundation",
-                "value": [
-                    {
-                        "children": [{"text": "Support the Plone Foundation"}],
-                        "type": "h2",
-                    }
-                ],
-            },
-            "c53b5868-ccba-4fee-b504-bf3867bb1ef0": {
-                "@type": "slate",
-                "plaintext": "About Plone and Volto",
-                "value": [
-                    {"children": [{"text": "About Plone and Volto"}], "type": "h2"}
-                ],
-            },
-            "ccff1e6e-f89a-49ff-81d7-cb5f5c3b4b48": {
-                "@type": "slate",
-                "plaintext": " Learn more about Plone ",
-                "value": [
-                    {
-                        "children": [
-                            {"text": ""},
-                            {
-                                "children": [{"text": "Learn more about Plone"}],
-                                "data": {"url": "https://plone.org/"},
-                                "type": "link",
-                            },
-                            {"text": ""},
-                        ],
-                        "type": "h3",
-                    }
-                ],
-            },
-            "dbe0349e-6577-46bd-9ede-685b81d2e814": {
-                "@type": "slate",
-                "plaintext": "Plone has many settings to make it do what you want. Some examples include:",
-                "value": [
-                    {
-                        "children": [
-                            {
-                                "text": "Plone has many settings to make it do what you want. Some examples include:"
-                            }
-                        ],
-                        "type": "p",
-                    }
-                ],
-            },
             "e775170b-cc9f-4372-8d05-35ae43e8556b": {
                 "@type": "slate",
                 "plaintext": "Thanks for using our product. We hope you like it!",
@@ -661,108 +735,15 @@ default_home = {
                     }
                 ],
             },
-            "eb436460-6bd6-418d-b788-a9f09c0a1f73": {
+            "a9b59282-1f01-4030-93c0-ae8e0dd0ca5c": {
                 "@type": "slate",
-                "plaintext": "Before you start exploring your newly created Plone site, please do the following:",
-                "value": [
-                    {
-                        "children": [
-                            {
-                                "text": "Before you start exploring your newly created Plone site, please do the following:"
-                            }
-                        ],
-                        "type": "p",
-                    }
-                ],
-            },
-            "eec7a1b7-40ab-49e1-a1ba-a8bc3d838598": {
-                "@type": "slate",
-                "plaintext": "Get started",
-                "value": [{"children": [{"text": "Get started"}], "type": "h2"}],
-            },
-            "ffbec3a5-a970-4c43-8897-68cc1022bcb9": {
-                "@type": "slate",
-                "plaintext": "Create content-types and define their default-layout in the content types controlpanel  Manage Users, Groups and their Roles in the users and groups controlpanels   ...and many more settings are available in the Site Setup .",
-                "value": [
-                    {
-                        "children": [
-                            {
-                                "children": [
-                                    {
-                                        "text": "Create content-types and define their default-layout in the "
-                                    },
-                                    {
-                                        "children": [
-                                            {"text": "content types controlpanel"}
-                                        ],
-                                        "data": {
-                                            "url": "http://localhost:3000/controlpanel/dexterity-types"
-                                        },
-                                        "type": "link",
-                                    },
-                                    {"text": ""},
-                                ],
-                                "type": "li",
-                            },
-                            {
-                                "children": [
-                                    {
-                                        "text": "Manage Users, Groups and their Roles in the "
-                                    },
-                                    {
-                                        "children": [{"text": "users"}],
-                                        "data": {
-                                            "url": "http://localhost:3000/controlpanel/users"
-                                        },
-                                        "type": "link",
-                                    },
-                                    {"text": " and "},
-                                    {
-                                        "children": [{"text": "groups"}],
-                                        "data": {
-                                            "url": "http://localhost:3000/controlpanel/groups"
-                                        },
-                                        "type": "link",
-                                    },
-                                    {"text": " controlpanels"},
-                                ],
-                                "type": "li",
-                            },
-                            {
-                                "children": [
-                                    {"text": ""},
-                                    {
-                                        "children": [{"text": ""}],
-                                        "data": {
-                                            "url": "http://localhost:8080/Plone2/@@markup-controlpanel"
-                                        },
-                                        "type": "link",
-                                    },
-                                    {
-                                        "text": "...and many more settings are available in the "
-                                    },
-                                    {
-                                        "type": "link",
-                                        "data": {
-                                            "url": "http://localhost:3000/controlpanel"
-                                        },
-                                        "children": [{"text": "Site Setup"}],
-                                    },
-                                    {"text": "."},
-                                ],
-                                "type": "li",
-                            },
-                        ],
-                        "type": "ul",
-                    }
-                ],
+                "plaintext": "– The Plone Team",
+                "value": [{"children": [{"text": "– The Plone Team"}], "type": "p"}],
             },
         },
         "blocks_layout": {
             "items": [
                 "07c273fc-8bfc-4e7d-a327-d513e5a945bb",
-                "0358abe2-b4f1-463d-a279-a63ea80daf19",
-                "78ff07d8-dc59-4af9-a669-1d551953ef34",
                 "ccff1e6e-f89a-49ff-81d7-cb5f5c3b4b48",
                 "09bd0162-397d-4141-983d-8f03ac2c481c",
                 "eec7a1b7-40ab-49e1-a1ba-a8bc3d838598",

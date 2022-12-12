@@ -8,6 +8,16 @@ Changelog
 
 .. towncrier release notes start
 
+4.0.2 (2022-12-12)
+------------------
+
+Bug fixes:
+
+
+- Fix create default homepage script problem with non existent description field. Fix default and demo page texts
+  [sneridagh] (#103)
+
+
 4.0.1 (2022-12-12)
 ------------------
 

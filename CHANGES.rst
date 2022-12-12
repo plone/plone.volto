@@ -8,6 +8,15 @@ Changelog
 
 .. towncrier release notes start
 
+4.0.1 (2022-12-12)
+------------------
+
+Internal:
+
+
+- Prepare 6 final default text for demo and local installs. [stevepiercy] (#102)
+
+
 4.0.0 (2022-11-18)
 ------------------
 

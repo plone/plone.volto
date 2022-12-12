@@ -386,9 +386,7 @@ demo_home_page = {
                                     {"text": ""},
                                     {
                                         "children": [{"text": "Plone Documentation"}],
-                                        "data": {
-                                            "url": "https://docs.plone.org/"
-                                        },
+                                        "data": {"url": "https://docs.plone.org/"},
                                         "type": "link",
                                     },
                                     {"text": ""},
@@ -591,11 +589,7 @@ demo_home_page = {
                                 "children": [
                                     {"text": ""},
                                     {
-                                        "children": [
-                                            {
-                                                "text": "Plone 6"
-                                            }
-                                        ],
+                                        "children": [{"text": "Plone 6"}],
                                         "data": {"url": "https://demo.plone.org/"},
                                         "type": "link",
                                     },
@@ -607,11 +601,7 @@ demo_home_page = {
                                 "children": [
                                     {"text": ""},
                                     {
-                                        "children": [
-                                            {
-                                                "text": "Plone 6 Classic UI"
-                                            }
-                                        ],
+                                        "children": [{"text": "Plone 6 Classic UI"}],
                                         "data": {
                                             "url": "https://6-classic.demo.plone.org/"
                                         },

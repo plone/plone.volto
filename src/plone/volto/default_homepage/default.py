@@ -550,9 +550,7 @@ default_home = {
             "a9b59282-1f01-4030-93c0-ae8e0dd0ca5c": {
                 "@type": "slate",
                 "plaintext": "– The Plone Team",
-                "value": [
-                    {"children": [{"text": "– The Plone Team"}], "type": "p"}
-                ],
+                "value": [{"children": [{"text": "– The Plone Team"}], "type": "p"}],
             },
             "b4193840-3c95-4b28-a088-f679c11e2dcb": {
                 "@type": "slate",

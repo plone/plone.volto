@@ -529,14 +529,6 @@ demo_home_page = {
                                         "type": "link",
                                     },
                                     {"text": ""},
-                                    {
-                                        "children": [{"text": ""}],
-                                        "data": {
-                                            "url": "https://github.com/collective/awesome-plone#contents"
-                                        },
-                                        "type": "link",
-                                    },
-                                    {"text": ""},
                                 ],
                                 "type": "li",
                             },
@@ -602,14 +594,6 @@ demo_home_page = {
                                                 "text": "Support the Foundation and help make Plone better!"
                                             }
                                         ],
-                                        "data": {
-                                            "url": "https://plone.org/sponsors/be-a-hero"
-                                        },
-                                        "type": "link",
-                                    },
-                                    {"text": ""},
-                                    {
-                                        "children": [{"text": ""}],
                                         "data": {
                                             "url": "https://plone.org/sponsors/be-a-hero"
                                         },

@@ -43,7 +43,7 @@
         <h3 i18n:translate="" class="mt-5">Requirements for this migration wizard</h3>
         <ul>
             <li i18n:translate="">
-            To migrate Richtext to Volto Blocks you need to have <code>blocks-conversion-tool</code> running on a accessible url.
+            To migrate Richtext to Volto Blocks you need to have <code>blocks-conversion-tool</code> running on an accessible URL.
             The easiest way to have that running on your machine is: <code>docker run -it -p 5000:5000 plone/blocks-conversion-tool:latest</code>.
             More for options read <a href="https://github.com/plone/blocks-conversion-tool">https://github.com/plone/blocks-conversion-tool</a>.
             </li>

@@ -33,7 +33,7 @@
     </ol>
 
     <p i18n:translate="">A site migrated to Volto in this Plone backend will still be accessible through the Plone Classic User Interface but with
-                         limited functionality. The core contenttypes wil have all their graphical RichText fields replaced by the blocks behavior for
+                         limited functionality. The core content types will have all their GUI RichText fields replaced by the blocks behavior for
                          the composition of the main content. So after migration you can only edit this content using the Volto UI.</p>
 
     <form id="migrate_to_volto" action="@@migrate_to_volto" tal:attributes="action request/URL" method="post" enctype="multipart/form-data">

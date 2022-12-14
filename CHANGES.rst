@@ -8,6 +8,15 @@ Changelog
 
 .. towncrier release notes start
 
+4.0.3 (2022-12-14)
+------------------
+
+Bug fixes:
+
+
+- Fix a11y problems in both demo and default pages @sneridagh (#105)
+
+
 4.0.2 (2022-12-12)
 ------------------
 

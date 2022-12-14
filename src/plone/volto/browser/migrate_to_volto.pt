@@ -25,7 +25,7 @@
     <p i18n:translate="">When you click on "Migrate to Volto" at the end of the form, the following things will happen:</p>
     <ol>
         <li i18n:translate="">Install the package <code>plone.volto</code> and <code>plone.restapi</code>.</li>
-        <li i18n:translate="">The HTML of Richtext-Fields (previously edited using TinyMCE) is converted into Volto blocks so you can edit it in Volto.</li>
+        <li i18n:translate="">The HTML of RichText fields (previously edited using TinyMCE) is converted into Volto blocks so you can edit it in Volto.</li>
         <li i18n:translate="">Pages, News Items, and Events are made folderish. That means they can contain other content, such as Images or Pages.</li>
         <li i18n:translate="">Default Pages of Folders are merged with the Folderish Pages that replace the Folder wherever that is possible.
             This works well with Pages and Collections where the text and/or query are added to the folderish page that replaces the Folder.</li>

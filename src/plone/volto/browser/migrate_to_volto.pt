@@ -17,7 +17,7 @@
 
     <h3 i18n:translate="">What do you need for Volto?</h3>
     <p i18n:translate="">Volto needs to run continuously alongside the current Plone backend service from which you access this wizard. The Volto 
-                         server performs initial server side rendering (SSR) of the React application for pages. It also delivers the javascript frontend
+                         server performs initial server-side rendering (SSR) of the React application for pages. It also delivers the JavaScript frontend
                          to your browser. Without a Volto frontend prepared for this website and the means to host it, continuing this migration makes no
                          sense! Read the <a href="https://6.docs.plone.org/volto/index.html">Volto Frontend documentation</a> for more information.</p>
 

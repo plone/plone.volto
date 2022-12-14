@@ -294,39 +294,15 @@ default_home = {
         "title": "Welcome to Plone 6!",
         "blocks": {
             "07c273fc-8bfc-4e7d-a327-d513e5a945bb": {"@type": "title"},
-            "ccff1e6e-f89a-49ff-81d7-cb5f5c3b4b48": {
-                "@type": "slate",
-                "plaintext": " Learn more about Plone ",
-                "value": [
-                    {
-                        "children": [
-                            {"text": ""},
-                            {
-                                "children": [{"text": "Learn more about Plone"}],
-                                "data": {"url": "https://plone.org/"},
-                                "type": "link",
-                            },
-                            {"text": ""},
-                        ],
-                        "type": "h3",
-                    }
-                ],
-            },
             "09bd0162-397d-4141-983d-8f03ac2c481c": {
                 "@type": "slate",
-                "plaintext": "  If you're seeing this text instead of the web site you were expecting, the owner of this web site has just installed Plone. Do not contact the Plone Team or the Plone support channels about this.",
+                "plaintext": "If you're seeing this text instead of the web site you were expecting, the owner of this web site has just installed Plone. Do not contact the Plone Team or the Plone support channels about this.",
                 "value": [
                     {
                         "children": [
-                            {"text": ""},
-                            {
-                                "children": [{"text": ""}],
-                                "data": {"url": "https://github.com/plone/volto"},
-                                "type": "link",
-                            },
                             {
                                 "text": "If you're seeing this text instead of the web site you were expecting, the owner of this web site has just installed Plone. Do not contact the Plone Team or the Plone support channels about this."
-                            },
+                            }
                         ],
                         "type": "p",
                     }
@@ -519,7 +495,7 @@ default_home = {
             },
             "ffbec3a5-a970-4c43-8897-68cc1022bcb9": {
                 "@type": "slate",
-                "plaintext": "Create content-types and define their default-layout in the content types controlpanel  Manage Users, Groups and their Roles in the users and groups controlpanels   ...and many more settings are available in the Site Setup .",
+                "plaintext": "Create content-types and define their default-layout in the content types controlpanel  Manage Users, Groups and their Roles in the users and groups controlpanels ...and many more settings are available in the Site Setup .",
                 "value": [
                     {
                         "children": [
@@ -563,14 +539,6 @@ default_home = {
                             },
                             {
                                 "children": [
-                                    {"text": ""},
-                                    {
-                                        "children": [{"text": ""}],
-                                        "data": {
-                                            "url": "http://localhost:8080/Plone2/@@markup-controlpanel"
-                                        },
-                                        "type": "link",
-                                    },
                                     {
                                         "text": "...and many more settings are available in the "
                                     },
@@ -745,7 +713,6 @@ default_home = {
         "blocks_layout": {
             "items": [
                 "07c273fc-8bfc-4e7d-a327-d513e5a945bb",
-                "ccff1e6e-f89a-49ff-81d7-cb5f5c3b4b48",
                 "09bd0162-397d-4141-983d-8f03ac2c481c",
                 "eec7a1b7-40ab-49e1-a1ba-a8bc3d838598",
                 "eb436460-6bd6-418d-b788-a9f09c0a1f73",

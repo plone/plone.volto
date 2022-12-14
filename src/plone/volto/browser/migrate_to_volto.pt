@@ -13,7 +13,7 @@
     <p class="lead" i18n:translate="">Here you can prepare this site for Volto.</p>
 
     <h3 i18n:translate="">What is Volto?</h3>
-    <p i18n:translate="">Volto is a React-based frontend for Plone. It is the default UI for Plone 6. Volto is a separate server side application.</p>
+    <p i18n:translate="">Volto is a React-based frontend for Plone. It is the default UI for Plone 6. Volto is a separate server-side application.</p>
 
     <h3 i18n:translate="">What do you need for Volto?</h3>
     <p i18n:translate="">Volto needs to run continuously alongside the current Plone backend service from which you access this wizard. The Volto 

@@ -13,33 +13,37 @@
     <p class="lead" i18n:translate="">Here you can prepare this site for Volto.</p>
 
     <h3 i18n:translate="">What is Volto?</h3>
-    <p i18n:translate="">Volto is a React-based frontend for Plone. It is the default UI for Plone 6.</p>
+    <p i18n:translate="">Volto is a React-based frontend for Plone. It is the default UI for Plone 6. Volto is a separate server-side application.</p>
+
+    <h3 i18n:translate="">What do you need for Volto?</h3>
+    <p i18n:translate="">Volto needs to run continuously alongside the current Plone backend service from which you access this wizard. The Volto 
+                         server performs initial server-side rendering (SSR) of the React application for pages. It also delivers the JavaScript frontend
+                         to your browser. Without a Volto frontend prepared for this website and the means to host it, continuing this migration makes no
+                         sense! Read the <a href="https://6.docs.plone.org/volto/index.html">Volto Frontend documentation</a> for more information.</p>
 
     <h3 i18n:translate="">What will happen?</h3>
-    <p i18n:translate="">When you click on "Migrate to Volto" the following things will happen:</p>
+    <p i18n:translate="">When you click on "Migrate to Volto" at the end of the form, the following things will happen:</p>
     <ol>
         <li i18n:translate="">Install the package <code>plone.volto</code> and <code>plone.restapi</code>.</li>
-        <li i18n:translate="">The html of Richtext-Fields (previously edited using TinyMCE) is converted into Volto blocks so you can edit it in Volto.</li>
-        <li i18n:translate="">Pages, News Items and Events are made folderish. That means they can contain other content like Images or Pages.</li>
-        <li i18n:translate="">Default Pages of Folders are merged with the Folderish Pages that replace the Folder whereever that is possible.
-            This works well with Pages and Collections where the text and/or query are added to the folderish page that repalces the Folder.</li>
+        <li i18n:translate="">The HTML of RichText fields (previously edited using TinyMCE) is converted into Volto blocks so you can edit it in Volto.</li>
+        <li i18n:translate="">Pages, News Items, and Events are made folderish. That means they can contain other content, such as Images or Pages.</li>
+        <li i18n:translate="">Default Pages of Folders are merged with the Folderish Pages that replace the Folder wherever that is possible.
+            This works well with Pages and Collections where the text and/or query are added to the folderish page that replaces the Folder.</li>
         <li i18n:translate="">Collections are migrated to Pages with Listing Blocks configured like the Collection.</li>
-        <li i18n:translate="">A migrated site will still work in Plone Classic but behave different. Editors can only work with the Data using Volto.</li>
     </ol>
+
+    <p i18n:translate="">A site migrated to Volto in this Plone backend will still be accessible through the Plone Classic User Interface but with
+                         limited functionality. The core content types will have all their GUI RichText fields replaced by the blocks behavior for
+                         the composition of the main content. So after migration you can only edit this content using the Volto UI.</p>
 
     <form id="migrate_to_volto" action="@@migrate_to_volto" tal:attributes="action request/URL" method="post" enctype="multipart/form-data">
 
-        <div class="formControls form-group">
-            <input type="hidden" name="form.submitted" value="1"/>
-            <button class="btn btn-primary submit-widget button-field context"
-                    type="submit" name="submit" value="export">Migrate to Volto
-            </button>
-        </div>
 
-        <h3 i18n:translate="" class="mt-5">Requirements</h3>
+
+        <h3 i18n:translate="" class="mt-5">Requirements for this migration wizard</h3>
         <ul>
             <li i18n:translate="">
-            To migrate Richtext to Volto Blocks you need to have <code>blocks-conversion-tool</code> running on a accessible url.
+            To migrate RichText to Volto Blocks you need to have <code>blocks-conversion-tool</code> running on an accessible URL.
             The easiest way to have that running on your machine is: <code>docker run -it -p 5000:5000 plone/blocks-conversion-tool:latest</code>.
             More for options read <a href="https://github.com/plone/blocks-conversion-tool">https://github.com/plone/blocks-conversion-tool</a>.
             </li>
@@ -108,6 +112,13 @@
             The migration requires a service to run. See https://github.com/plone/blocks-conversion-tool for details.
             </div>
 
+        </div>
+
+        <div class="formControls form-group">
+            <input type="hidden" name="form.submitted" value="1"/>
+            <button class="btn btn-primary submit-widget button-field context"
+                    type="submit" name="submit" value="export">Migrate to Volto
+            </button>
         </div>
 
     </form>

@@ -1,3 +1,4 @@
+# flake8: noqa
 from datetime import datetime
 
 
@@ -347,24 +348,105 @@ demo_home_page = {
     },
     "slate": {
         "title": "Welcome to Plone 6!",
-        "description": "This site is a demonstration of Plone 6 with Volto for its frontend.",
+        "description": "This site is Plone 6 with Volto for its frontend.",
         "blocks": {
-            "0358abe2-b4f1-463d-a279-a63ea80daf19": {"@type": "description"},
             "07c273fc-8bfc-4e7d-a327-d513e5a945bb": {"@type": "title"},
+            "0358abe2-b4f1-463d-a279-a63ea80daf19": {"@type": "description"},
+            "e1220183-552c-45d9-a661-5ad0854615ac": {
+                "@type": "slate",
+                "plaintext": "Demo",
+                "value": [{"children": [{"text": "Demo"}], "type": "h2"}],
+            },
+            "9509e96d-5718-4687-95c1-f9d3db115b92": {
+                "@type": "slate",
+                "plaintext": "You can use this site to test Plone 6.\n\nYou can log in and use it as an admin user using these credentials :\n\nusername: admin password: admin  Disclaimer : This instance is reset every night, so all changes will be lost afterwards.\n\nHappy hacking!",
+                "value": [
+                    {
+                        "children": [
+                            {
+                                "text": "You can use this site to test Plone 6.\n\nYou can log in and use it as an admin user using these "
+                            },
+                            {"children": [{"text": "credentials"}], "type": "strong"},
+                            {"text": ":\n\nusername: "},
+                            {"children": [{"text": "admin"}], "type": "strong"},
+                            {"text": "\npassword: "},
+                            {"children": [{"text": "admin\n\n"}], "type": "strong"},
+                            {"text": ""},
+                            {"children": [{"text": "Disclaimer"}], "type": "strong"},
+                            {
+                                "text": ": This instance is reset every night, so all changes will be lost afterwards.\n\nHappy hacking!"
+                            },
+                        ],
+                        "type": "p",
+                    }
+                ],
+            },
             "249cb267-394b-4e18-991d-8d5038fc60b7": {
                 "@type": "slate",
                 "plaintext": "More demo sites",
                 "value": [{"children": [{"text": "More demo sites"}], "type": "h2"}],
             },
-            "3b5ac7a5-2d98-423e-807c-5eebc0bf0054": {"@type": "system"},
-            "5026c0b5-cb0e-4e74-bd9b-461ad6cc40c0": {
+            "b918c45d-e817-4231-9711-ec5a0bc41505": {
                 "@type": "slate",
-                "plaintext": "Technical Details",
-                "value": [{"children": [{"text": "Technical Details"}], "type": "h2"}],
+                "plaintext": " Plone 6 Plone 6 Classic UI",
+                "value": [
+                    {
+                        "children": [
+                            {
+                                "children": [
+                                    {"text": ""},
+                                    {
+                                        "children": [{"text": "Plone 6"}],
+                                        "data": {"url": "https://demo.plone.org/"},
+                                        "type": "link",
+                                    },
+                                    {"text": ""},
+                                ],
+                                "type": "li",
+                            },
+                            {
+                                "children": [
+                                    {"text": ""},
+                                    {
+                                        "children": [{"text": "Plone 6 Classic UI"}],
+                                        "data": {
+                                            "url": "https://6-classic.demo.plone.org/"
+                                        },
+                                        "type": "link",
+                                    },
+                                    {"text": ""},
+                                ],
+                                "type": "li",
+                            },
+                        ],
+                        "type": "ul",
+                    }
+                ],
+            },
+            "bedf0ed6-3237-46ac-8c91-994826b1cf05": {
+                "@type": "slate",
+                "plaintext": "Find out more about Plone",
+                "value": [
+                    {"children": [{"text": "Find out more about Plone"}], "type": "h2"}
+                ],
+            },
+            "577b38a2-84ed-4911-9644-72b73b79bf9b": {
+                "@type": "slate",
+                "plaintext": "Plone is a powerful content management system built on a rock-solid application stack written in the Python and JavaScript programming languages.",
+                "value": [
+                    {
+                        "children": [
+                            {
+                                "text": "Plone is a powerful content management system built on a rock-solid application stack written in the Python and JavaScript programming languages."
+                            }
+                        ],
+                        "type": "p",
+                    }
+                ],
             },
             "539b7bb6-23e1-425c-8d93-70c03d52806e": {
                 "@type": "slate",
-                "plaintext": " The features of Plone   Plone Documentation   Plone Training   Forum   Add-ons for Plone (backend)   Add-ons for Volto (frontend)   ",
+                "plaintext": " The features of Plone   Plone Documentation   Plone Training   Plone Community Forum   Add-ons for Plone (backend)   Add-ons for Volto (frontend)   ",
                 "value": [
                     {
                         "children": [
@@ -374,7 +456,7 @@ demo_home_page = {
                                     {
                                         "children": [{"text": "The features of Plone"}],
                                         "data": {
-                                            "url": "https://plone.com/features.html"
+                                            "url": "https://plone.org/why-plone/features"
                                         },
                                         "type": "link",
                                     },
@@ -410,7 +492,7 @@ demo_home_page = {
                                 "children": [
                                     {"text": ""},
                                     {
-                                        "children": [{"text": "Forum"}],
+                                        "children": [{"text": "Plone Community Forum"}],
                                         "data": {"url": "https://community.plone.org/"},
                                         "type": "link",
                                     },
@@ -447,33 +529,11 @@ demo_home_page = {
                                         "type": "link",
                                     },
                                     {"text": ""},
-                                    {
-                                        "children": [{"text": ""}],
-                                        "data": {
-                                            "url": "https://github.com/collective/awesome-plone#contents"
-                                        },
-                                        "type": "link",
-                                    },
-                                    {"text": ""},
                                 ],
                                 "type": "li",
                             },
                         ],
                         "type": "ul",
-                    }
-                ],
-            },
-            "577b38a2-84ed-4911-9644-72b73b79bf9b": {
-                "@type": "slate",
-                "plaintext": "Plone is a powerful content management system built on a rock-solid application stack written using the Python programming language.",
-                "value": [
-                    {
-                        "children": [
-                            {
-                                "text": "Plone is a powerful content management system built on a rock-solid application stack written using the Python programming language."
-                            }
-                        ],
-                        "type": "p",
                     }
                 ],
             },
@@ -487,29 +547,41 @@ demo_home_page = {
                     }
                 ],
             },
-            "7ab29abe-b38c-406b-94d7-b270e544a998": {
+            "8696b042-7119-4700-9e7f-2b22e8982a7b": {
                 "@type": "slate",
-                "plaintext": "\u2026protects and promotes Plone. \u2026is a registered 501(c)(3) charitable organization. \u2026donations are tax-deductible.  Support the Foundation and help make Plone better!   ",
+                "plaintext": "Plone is made possible only through the efforts of thousands of dedicated individuals and hundreds of companies. The Plone Foundation:",
                 "value": [
                     {
                         "children": [
                             {
-                                "children": [
-                                    {"text": "\u2026protects and promotes Plone."}
-                                ],
+                                "text": "Plone is made possible only through the efforts of thousands of dedicated individuals and hundreds of companies. The Plone Foundation:"
+                            }
+                        ],
+                        "type": "p",
+                    }
+                ],
+            },
+            "7ab29abe-b38c-406b-94d7-b270e544a998": {
+                "@type": "slate",
+                "plaintext": "…protects and promotes Plone. …is a registered 501(c)(3) charitable organization. …donations are tax-deductible.  Support the Foundation and help make Plone better!   ",
+                "value": [
+                    {
+                        "children": [
+                            {
+                                "children": [{"text": "…protects and promotes Plone."}],
                                 "type": "li",
                             },
                             {
                                 "children": [
                                     {
-                                        "text": "\u2026is a registered 501(c)(3) charitable organization."
+                                        "text": "…is a registered 501(c)(3) charitable organization."
                                     }
                                 ],
                                 "type": "li",
                             },
                             {
                                 "children": [
-                                    {"text": "\u2026donations are tax-deductible."}
+                                    {"text": "…donations are tax-deductible."}
                                 ],
                                 "type": "li",
                             },
@@ -528,14 +600,6 @@ demo_home_page = {
                                         "type": "link",
                                     },
                                     {"text": ""},
-                                    {
-                                        "children": [{"text": ""}],
-                                        "data": {
-                                            "url": "https://plone.org/sponsors/be-a-hero"
-                                        },
-                                        "type": "link",
-                                    },
-                                    {"text": ""},
                                 ],
                                 "type": "li",
                             },
@@ -544,111 +608,12 @@ demo_home_page = {
                     }
                 ],
             },
-            "8696b042-7119-4700-9e7f-2b22e8982a7b": {
+            "5026c0b5-cb0e-4e74-bd9b-461ad6cc40c0": {
                 "@type": "slate",
-                "plaintext": "Plone is made possible only through the efforts of thousands of dedicated individuals and hundreds of companies. The Plone Foundation:",
-                "value": [
-                    {
-                        "children": [
-                            {
-                                "text": "Plone is made possible only through the efforts of thousands of dedicated individuals and hundreds of companies. The Plone Foundation:"
-                            }
-                        ],
-                        "type": "p",
-                    }
-                ],
+                "plaintext": "Technical Details",
+                "value": [{"children": [{"text": "Technical Details"}], "type": "h2"}],
             },
-            "9509e96d-5718-4687-95c1-f9d3db115b92": {
-                "@type": "slate",
-                "plaintext": "You can use this site to test Plone 6.\n\nYou can log in and use it as an admin user using these credentials :\n\nusername: admin password: admin  Disclaimer : This instance is reset every night, so all changes will be lost afterwards.\n\nHappy hacking!",
-                "value": [
-                    {
-                        "children": [
-                            {
-                                "text": "You can use this site to test Plone 6.\n\nYou can log in and use it as an admin user using these "
-                            },
-                            {"children": [{"text": "credentials"}], "type": "strong"},
-                            {"text": ":\n\nusername: "},
-                            {"children": [{"text": "admin"}], "type": "strong"},
-                            {"text": "\npassword: "},
-                            {"children": [{"text": "admin\n\n"}], "type": "strong"},
-                            {"text": ""},
-                            {"children": [{"text": "Disclaimer"}], "type": "strong"},
-                            {
-                                "text": ": This instance is reset every night, so all changes will be lost afterwards.\n\nHappy hacking!"
-                            },
-                        ],
-                        "type": "p",
-                    }
-                ],
-            },
-            "b918c45d-e817-4231-9711-ec5a0bc41505": {
-                "@type": "slate",
-                "plaintext": " Plone 6 (nightly build, this site)   Plone 6 Classic (nightly build)   Plone 5.2 (stable) ",
-                "value": [
-                    {
-                        "children": [
-                            {
-                                "children": [
-                                    {"text": ""},
-                                    {
-                                        "children": [
-                                            {
-                                                "text": "Plone 6 (nightly build, this site)"
-                                            }
-                                        ],
-                                        "data": {"url": "https://6.demo.plone.org/"},
-                                        "type": "link",
-                                    },
-                                    {"text": ""},
-                                ],
-                                "type": "li",
-                            },
-                            {
-                                "children": [
-                                    {"text": ""},
-                                    {
-                                        "children": [
-                                            {"text": "Plone 6 Classic (nightly build)"}
-                                        ],
-                                        "data": {
-                                            "url": "https://6-classic.demo.plone.org/"
-                                        },
-                                        "type": "link",
-                                    },
-                                    {"text": ""},
-                                ],
-                                "type": "li",
-                            },
-                            {
-                                "children": [
-                                    {"text": ""},
-                                    {
-                                        "children": [{"text": "Plone 5.2 (stable)"}],
-                                        "data": {"url": "https://demo.plone.org/"},
-                                        "type": "link",
-                                    },
-                                    {"text": ""},
-                                ],
-                                "type": "li",
-                            },
-                        ],
-                        "type": "ul",
-                    }
-                ],
-            },
-            "bedf0ed6-3237-46ac-8c91-994826b1cf05": {
-                "@type": "slate",
-                "plaintext": "Find out more about Plone",
-                "value": [
-                    {"children": [{"text": "Find out more about Plone"}], "type": "h2"}
-                ],
-            },
-            "e1220183-552c-45d9-a661-5ad0854615ac": {
-                "@type": "slate",
-                "plaintext": "Demo",
-                "value": [{"children": [{"text": "Demo"}], "type": "h2"}],
-            },
+            "3b5ac7a5-2d98-423e-807c-5eebc0bf0054": {"@type": "system"},
         },
         "blocks_layout": {
             "items": [

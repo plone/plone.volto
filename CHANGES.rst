@@ -8,6 +8,34 @@ Changelog
 
 .. towncrier release notes start
 
+4.0.3 (2022-12-14)
+------------------
+
+Bug fixes:
+
+
+- Fix a11y problems in both demo and default pages @sneridagh (#105)
+
+
+4.0.2 (2022-12-12)
+------------------
+
+Bug fixes:
+
+
+- Fix create default homepage script problem with non existent description field. Fix default and demo page texts
+  [sneridagh] (#103)
+
+
+4.0.1 (2022-12-12)
+------------------
+
+Internal:
+
+
+- Prepare 6 final default text for demo and local installs. [stevepiercy] (#102)
+
+
 4.0.0 (2022-11-18)
 ------------------
 

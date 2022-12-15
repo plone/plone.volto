@@ -8,7 +8,7 @@
         <span class="content">
             <tal:warning i18n:translate="volto_backend_warning">This site is configured to use the Volto frontend. You are accessing the backend.</tal:warning>
             <br />
-            <tal:warning i18n:translate="volto_backend_warning_link">For more information, please read the <a href="https://6.dev-docs.plone.org/volto/index.html">documentation</a>.</tal:warning>
+            <tal:warning i18n:translate="volto_backend_warning_link">For more information, please read the <a href="https://6.docs.plone.org/volto/index.html">documentation</a>.</tal:warning>
         </span>
     </div>
 

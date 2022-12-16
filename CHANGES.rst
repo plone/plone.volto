@@ -8,6 +8,18 @@ Changelog
 
 .. towncrier release notes start
 
+4.0.4 (2022-12-16)
+------------------
+
+Bug fixes:
+
+
+- Clarifications in the @@migrate_to_volto wizard. Volto is a separate service that needs to be configured and hosted. It is not included in the Plone backend.
+  Editing the main content that was in RichText fields before will no longer be possible after migration.
+  Fix link to Volto frontend documentation.
+  [fredvd, stevepiercy] (#106)
+
+
 4.0.3 (2022-12-14)
 ------------------
 

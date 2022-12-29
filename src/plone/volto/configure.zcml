@@ -40,12 +40,6 @@
       />
 
   <adapter
-      factory=".scaling.VoltoImageScalingFactory"
-      for="plone.app.contenttypes.interfaces.IImage"
-      zcml:condition="not-have plone-60"
-      />
-
-  <adapter
       factory=".indexers.hasPreviewImage"
       name="hasPreviewImage"
       />

@@ -34,11 +34,7 @@ class TestBlocksLinkintegrity(TestCase):
                 "columns": [
                     {
                         "@type": "teaser",
-                        "href": [
-                            {
-                                "@id": f"../resolveuid/{uid}",
-                            }
-                        ],
+                        "href": f"../resolveuid/{uid}",
                     }
                 ],
             },
@@ -55,11 +51,7 @@ class TestBlocksLinkintegrity(TestCase):
             "111": {
                 "hrefList": [
                     {
-                        "href": [
-                            {
-                                "@id": f"../resolveuid/{uid}",
-                            }
-                        ],
+                        "href": f"../resolveuid/{uid}",
                     }
                 ],
             },
@@ -76,11 +68,7 @@ class TestBlocksLinkintegrity(TestCase):
             "111": {
                 "slides": [
                     {
-                        "href": [
-                            {
-                                "@id": f"../resolveuid/{uid}",
-                            }
-                        ],
+                        "href": f"../resolveuid/{uid}",
                     }
                 ],
             },

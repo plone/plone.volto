@@ -31,14 +31,16 @@ class TestBlocksLinkintegrity(TestCase):
         blocks = {
             "111": {
                 "@type": "__grid",
-                "columns": {
-                    "@type": "teaser",
-                    "href": [
-                        {
-                            "@id": f"../resolveuid/{uid}",
-                        }
-                    ],
-                },
+                "columns": [
+                    {
+                        "@type": "teaser",
+                        "href": [
+                            {
+                                "@id": f"../resolveuid/{uid}",
+                            }
+                        ],
+                    }
+                ],
             },
         }
         self.portal.doc1.blocks = blocks
@@ -51,13 +53,15 @@ class TestBlocksLinkintegrity(TestCase):
         uid = IUUID(self.doc2)
         blocks = {
             "111": {
-                "hrefList": {
-                    "href": [
-                        {
-                            "@id": f"../resolveuid/{uid}",
-                        }
-                    ],
-                },
+                "hrefList": [
+                    {
+                        "href": [
+                            {
+                                "@id": f"../resolveuid/{uid}",
+                            }
+                        ],
+                    }
+                ],
             },
         }
         self.portal.doc1.blocks = blocks
@@ -70,13 +74,15 @@ class TestBlocksLinkintegrity(TestCase):
         uid = IUUID(self.doc2)
         blocks = {
             "111": {
-                "slides": {
-                    "href": [
-                        {
-                            "@id": f"../resolveuid/{uid}",
-                        }
-                    ],
-                },
+                "slides": [
+                    {
+                        "href": [
+                            {
+                                "@id": f"../resolveuid/{uid}",
+                            }
+                        ],
+                    }
+                ],
             },
         }
         self.portal.doc1.blocks = blocks

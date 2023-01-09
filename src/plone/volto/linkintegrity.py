@@ -24,7 +24,7 @@ class NestedBlockLinkRetriever:
 
     def __call__(self, block):
         links = set()
-        for nested_name in ["columns", "hrefList", "slides"]:
+        for nested_name in ("columns", "hrefList", "slides"):
             nested_blocks = block.get(nested_name, [])
             if not isinstance(nested_blocks, list):
                 continue

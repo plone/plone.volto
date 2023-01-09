@@ -30,6 +30,7 @@ class NestedBlockLinkRetriever:
                 continue
             for nested_block in nested_blocks:
                 links |= self.retrieveLinks(nested_block)
+        return links
 
     def retrieveLinks(self, block):
         links = set()

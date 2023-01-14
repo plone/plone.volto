@@ -93,6 +93,11 @@
         factory=".transforms.PreviewImageResolveUIDSerializerRoot"
         provides="plone.restapi.interfaces.IBlockFieldSerializationTransformer"
         />
+
+    <subscriber
+        factory=".linkintegrity.NestedBlockLinkRetriever"
+        provides="plone.restapi.interfaces.IBlockFieldLinkIntegrityRetriever"
+        />
   </configure>
 
 </configure>

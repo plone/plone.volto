@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+from plone.dexterity.schema import invalidate_cache
 from plone.namedfile.file import NamedBlobImage
 from plone.restapi.interfaces import ISerializeToJsonSummary
 from plone.volto.testing import PLONE_6
@@ -32,6 +33,7 @@ class TestPreviewLinkBehavior(unittest.TestCase):
 
         fti = self.portal.portal_types.Document
         fti.behaviors += ("volto.preview_image_link",)
+        invalidate_cache(fti)
 
         self.doc = self.portal[self.portal.invokeFactory("Document", id="doc1")]
         self.image = self.portal[

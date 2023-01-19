@@ -8,6 +8,21 @@ Changelog
 
 .. towncrier release notes start
 
+4.0.5 (2023-01-19)
+------------------
+
+Bug fixes:
+
+
+- Include internal links from nested blocks in link integrity recordkeeping. [davisagli] (#108)
+
+
+Internal:
+
+
+- Update default Plone Classic UI message to inform developers to install, start, and visit the Volto frontend, if desired, with updated links to relevant docs. [stevepiercy] (#107)
+
+
 4.0.4 (2022-12-16)
 ------------------
 

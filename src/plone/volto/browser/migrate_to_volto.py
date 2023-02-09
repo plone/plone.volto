@@ -314,7 +314,8 @@ def make_document(obj, slate=True):
 
     obj.portal_type = "Document"
     # Invalidate cache to find the behaviors
-    del obj._v__providedBy__
+    if getattr(obj, "_v__providedBy__", None) is not None:
+        del obj._v__providedBy__
 
     if not obj.blocks:
         obj.blocks = blocks

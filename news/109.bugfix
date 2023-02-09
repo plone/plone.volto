@@ -1,0 +1,2 @@
+Prevent AttributeError when migrating to FolderishDocument.
+[pbauer]

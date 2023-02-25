@@ -196,15 +196,45 @@ class TestMigrateToVolto(unittest.TestCase):
             id="folder",
             title="Folder",
         )
-        api.content.create(
+        collection = api.content.create(
             container=folder,
             type="Collection",
             id="collection",
             title="Collection",
             description="This is a default collection",
+            limit=1000,
+            item_count=30,
+            sort_on="modified",
+            sort_reversed=True,
         )
+        collection.query = [
+            {
+                "i": "path",
+                "o": "plone.app.querystring.operation.string.relativePath",
+                "v": "..::1",
+            }, {
+                "i": "portal_type",
+                "o": "plone.app.querystring.operation.selection.any",
+                "v": ["Document"],
+            }
+        ]
         folder.setDefaultPage("collection")
+        api.content.create(
+            container=folder,
+            type="Document",
+            id="doc1",
+            title="Doc 1",
+            description="This is a document",
+        )
+        api.content.create(
+            container=folder,
+            type="Document",
+            id="doc2",
+            title="Doc 2",
+            description="This is a document",
+        )
         self.assertIn("collection", folder.keys())
+        self.assertEqual(len(collection.results()), 2)
 
         view = self.portal.restrictedTraverse("@@migrate_to_volto")
         self.request.form["form.submitted"] = True
@@ -216,6 +246,29 @@ class TestMigrateToVolto(unittest.TestCase):
         self.assertNotIn("collection", folder.keys())
         self.assertEqual(folder.title, "Collection")
         self.assertEqual(folder.description, "This is a default collection")
+        listing = collection.blocks[collection.blocks_layout["items"][1]]
+        self.assertEqual(listing["@type"], "listing")
+        self.assertEqual(
+            listing["querystring"],
+            {
+                "b_size": 30,
+                "limit": 1000,
+                "query": [
+                    {
+                        "i": "path",
+                        "o": "plone.app.querystring.operation.string.relativePath",
+                        "v": ".::1",
+                    }, {
+                        "i": "portal_type",
+                        "o": "plone.app.querystring.operation.selection.any",
+                        "v": ["Document"],
+                    }
+                ],
+                "sort_on": "modified",
+                "sort_order_boolean": True,
+                "sort_order": "descending"
+            },
+        )
 
     def test_default_page_news_are_not_migrated(self):
         folder = api.content.create(

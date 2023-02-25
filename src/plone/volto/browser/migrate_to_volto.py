@@ -255,6 +255,7 @@ def generate_listing_block_from_collection(obj, move_relative_path=False):
         qs["limit"] = collection.limit
     if collection.sort_on:
         qs["sort_on"] = collection.sort_on
+    qs["sort_order"] = "descending" if collection.sort_reversed else "ascending"
     qs["sort_order_boolean"] = True if collection.sort_reversed else False
 
     # Set layout of collection to listing block

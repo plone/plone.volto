@@ -159,6 +159,7 @@ class TestMigrateToVolto(unittest.TestCase):
                 ],
                 "sort_on": "effective",
                 "sort_order_boolean": False,
+                "sort_order": "ascending"
             },
         )
 

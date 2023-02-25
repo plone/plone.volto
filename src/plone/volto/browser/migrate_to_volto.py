@@ -149,7 +149,7 @@ class MigrateToVolto(BrowserView):
             blocks_layout = default_page_obj.blocks_layout or blocks_layout
 
             if default_page_type == "Collection":
-                uuid, block = generate_listing_block_from_collection(default_page_obj)
+                uuid, block = generate_listing_block_from_collection(default_page_obj, move_relative_path=True)
                 blocks[uuid] = block
                 blocks_layout["items"].append(uuid)
 
@@ -237,10 +237,17 @@ def generate_listing_block(obj):
     return uuid, block
 
 
-def generate_listing_block_from_collection(obj):
+def generate_listing_block_from_collection(obj, move_relative_path=False):
     """Transform collection query and setting to listing block."""
     collection = ICollection(obj)
     uuid = str(uuid4())
+    if move_relative_path and collection.query:
+        # when we migrate collections that were used as default-pages
+        # with a relative path to the parent ("..::") that path now needs
+        # to point to itself.
+        for qu in collection.query:
+            if "path" in qu["i"] and "relativePath" in qu["o"] and qu["v"].startswith(".."):
+                qu["v"] = qu["v"].replace("..", ".", 1)
     qs = {"query": collection.query}
     if collection.item_count:
         qs["b_size"] = collection.item_count

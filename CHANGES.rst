@@ -8,6 +8,16 @@ Changelog
 
 .. towncrier release notes start
 
+4.0.6 (2023-02-27)
+------------------
+
+Bug fixes:
+
+
+- Prevent AttributeError when migrating to FolderishDocument.
+  [pbauer] (#109)
+
+
 4.0.5 (2023-01-19)
 ------------------
 

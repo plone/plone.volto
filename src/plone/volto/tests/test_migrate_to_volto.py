@@ -159,7 +159,7 @@ class TestMigrateToVolto(unittest.TestCase):
                 ],
                 "sort_on": "effective",
                 "sort_order_boolean": False,
-                "sort_order": "ascending"
+                "sort_order": "ascending",
             },
         )
 
@@ -212,11 +212,12 @@ class TestMigrateToVolto(unittest.TestCase):
                 "i": "path",
                 "o": "plone.app.querystring.operation.string.relativePath",
                 "v": "..::1",
-            }, {
+            },
+            {
                 "i": "portal_type",
                 "o": "plone.app.querystring.operation.selection.any",
                 "v": ["Document"],
-            }
+            },
         ]
         folder.setDefaultPage("collection")
         api.content.create(
@@ -258,15 +259,16 @@ class TestMigrateToVolto(unittest.TestCase):
                         "i": "path",
                         "o": "plone.app.querystring.operation.string.relativePath",
                         "v": ".::1",
-                    }, {
+                    },
+                    {
                         "i": "portal_type",
                         "o": "plone.app.querystring.operation.selection.any",
                         "v": ["Document"],
-                    }
+                    },
                 ],
                 "sort_on": "modified",
                 "sort_order_boolean": True,
-                "sort_order": "descending"
+                "sort_order": "descending",
             },
         )
 

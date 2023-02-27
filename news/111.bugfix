@@ -1,0 +1,2 @@
+Better migration of collections: Fix migrating sort_order. Adapt relative path of query when migrating default-page collection to listing block.
+[pbauer]

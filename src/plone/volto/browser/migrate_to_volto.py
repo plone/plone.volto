@@ -307,7 +307,9 @@ def make_document(obj, service_url="http://localhost:5000/html", slate=True):
             text = text.raw
         if text and text.strip():
             # We have Richtext. Get the block-data for it
-            text_blocks, uuids = get_blocks_from_richtext(text, service_url=service_url, slate=slate)
+            text_blocks, uuids = get_blocks_from_richtext(
+                text, service_url=service_url, slate=slate
+            )
             if uuids:
                 blocks.update(text_blocks)
                 blocks_layout["items"] += uuids

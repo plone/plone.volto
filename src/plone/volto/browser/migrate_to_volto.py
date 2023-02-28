@@ -105,7 +105,7 @@ class MigrateToVolto(BrowserView):
         catalog = getToolByName(self.context, "portal_catalog")
         for brain in catalog(portal_type="Folder", sort_on="path"):
             obj = brain.getObject()
-            obj = make_document(obj, slate=self.slate)
+            obj = make_document(obj, service_url=self.service_url, slate=self.slate)
             migrated_default_page = False
             if self.migrate_default_pages:
                 migrated_default_page = self.do_migrate_default_page(obj)
@@ -122,7 +122,7 @@ class MigrateToVolto(BrowserView):
         catalog = getToolByName(self.context, "portal_catalog")
         for brain in catalog(portal_type="Collection", sort_on="path"):
             obj = brain.getObject()
-            obj = make_document(obj, slate=self.slate)
+            obj = make_document(obj, service_url=self.service_url, slate=self.slate)
 
     def do_migrate_default_page(self, obj):
         """This assumes the obj is already a FolderishDocument"""
@@ -281,7 +281,7 @@ def generate_listing_block_from_collection(obj, move_relative_path=False):
     return uuid, block
 
 
-def make_document(obj, slate=True):
+def make_document(obj, service_url="http://localhost:5000/html", slate=True):
     """Convert any item to a FolderishDocument"""
     blocks = {}
     blocks_layout = {"items": []}
@@ -307,7 +307,7 @@ def make_document(obj, slate=True):
             text = text.raw
         if text and text.strip():
             # We have Richtext. Get the block-data for it
-            text_blocks, uuids = get_blocks_from_richtext(text, slate=slate)
+            text_blocks, uuids = get_blocks_from_richtext(text, service_url=service_url, slate=slate)
             if uuids:
                 blocks.update(text_blocks)
                 blocks_layout["items"] += uuids

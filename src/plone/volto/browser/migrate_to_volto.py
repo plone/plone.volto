@@ -149,7 +149,9 @@ class MigrateToVolto(BrowserView):
             blocks_layout = default_page_obj.blocks_layout or blocks_layout
 
             if default_page_type == "Collection":
-                uuid, block = generate_listing_block_from_collection(default_page_obj)
+                uuid, block = generate_listing_block_from_collection(
+                    default_page_obj, move_relative_path=True
+                )
                 blocks[uuid] = block
                 blocks_layout["items"].append(uuid)
 
@@ -237,10 +239,21 @@ def generate_listing_block(obj):
     return uuid, block
 
 
-def generate_listing_block_from_collection(obj):
+def generate_listing_block_from_collection(obj, move_relative_path=False):
     """Transform collection query and setting to listing block."""
     collection = ICollection(obj)
     uuid = str(uuid4())
+    if move_relative_path and collection.query:
+        # when we migrate collections that were used as default-pages
+        # with a relative path to the parent ("..::") that path now needs
+        # to point to itself.
+        for query_part in collection.query:
+            if (
+                "path" in query_part["i"]
+                and "relativePath" in query_part["o"]
+                and query_part["v"].startswith("..")
+            ):
+                query_part["v"] = query_part["v"].replace("..", ".", 1)
     qs = {"query": collection.query}
     if collection.item_count:
         qs["b_size"] = collection.item_count
@@ -248,6 +261,7 @@ def generate_listing_block_from_collection(obj):
         qs["limit"] = collection.limit
     if collection.sort_on:
         qs["sort_on"] = collection.sort_on
+    qs["sort_order"] = "descending" if collection.sort_reversed else "ascending"
     qs["sort_order_boolean"] = True if collection.sort_reversed else False
 
     # Set layout of collection to listing block

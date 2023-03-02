@@ -8,6 +8,16 @@ Changelog
 
 .. towncrier release notes start
 
+4.0.7 (2023-03-02)
+------------------
+
+Bug fixes:
+
+
+- Better migration of collections: Fix migrating sort_order. Adapt relative path of query when migrating default-page collection to listing block.
+  [pbauer] (#111)
+
+
 4.0.6 (2023-02-27)
 ------------------
 

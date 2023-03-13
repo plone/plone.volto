@@ -1,0 +1,2 @@
+Use correct service_url when calling make_document. Fix #95
+[pbauer]

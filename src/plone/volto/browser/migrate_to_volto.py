@@ -105,7 +105,7 @@ class MigrateToVolto(BrowserView):
         catalog = getToolByName(self.context, "portal_catalog")
         for brain in catalog(portal_type="Folder", sort_on="path"):
             obj = brain.getObject()
-            obj = make_document(obj, slate=self.slate)
+            obj = make_document(obj, service_url=self.service_url, slate=self.slate)
             migrated_default_page = False
             if self.migrate_default_pages:
                 migrated_default_page = self.do_migrate_default_page(obj)
@@ -122,7 +122,7 @@ class MigrateToVolto(BrowserView):
         catalog = getToolByName(self.context, "portal_catalog")
         for brain in catalog(portal_type="Collection", sort_on="path"):
             obj = brain.getObject()
-            obj = make_document(obj, slate=self.slate)
+            obj = make_document(obj, service_url=self.service_url, slate=self.slate)
 
     def do_migrate_default_page(self, obj):
         """This assumes the obj is already a FolderishDocument"""
@@ -149,7 +149,9 @@ class MigrateToVolto(BrowserView):
             blocks_layout = default_page_obj.blocks_layout or blocks_layout
 
             if default_page_type == "Collection":
-                uuid, block = generate_listing_block_from_collection(default_page_obj)
+                uuid, block = generate_listing_block_from_collection(
+                    default_page_obj, move_relative_path=True
+                )
                 blocks[uuid] = block
                 blocks_layout["items"].append(uuid)
 
@@ -237,10 +239,21 @@ def generate_listing_block(obj):
     return uuid, block
 
 
-def generate_listing_block_from_collection(obj):
+def generate_listing_block_from_collection(obj, move_relative_path=False):
     """Transform collection query and setting to listing block."""
     collection = ICollection(obj)
     uuid = str(uuid4())
+    if move_relative_path and collection.query:
+        # when we migrate collections that were used as default-pages
+        # with a relative path to the parent ("..::") that path now needs
+        # to point to itself.
+        for query_part in collection.query:
+            if (
+                "path" in query_part["i"]
+                and "relativePath" in query_part["o"]
+                and query_part["v"].startswith("..")
+            ):
+                query_part["v"] = query_part["v"].replace("..", ".", 1)
     qs = {"query": collection.query}
     if collection.item_count:
         qs["b_size"] = collection.item_count
@@ -248,6 +261,7 @@ def generate_listing_block_from_collection(obj):
         qs["limit"] = collection.limit
     if collection.sort_on:
         qs["sort_on"] = collection.sort_on
+    qs["sort_order"] = "descending" if collection.sort_reversed else "ascending"
     qs["sort_order_boolean"] = True if collection.sort_reversed else False
 
     # Set layout of collection to listing block
@@ -267,7 +281,7 @@ def generate_listing_block_from_collection(obj):
     return uuid, block
 
 
-def make_document(obj, slate=True):
+def make_document(obj, service_url="http://localhost:5000/html", slate=True):
     """Convert any item to a FolderishDocument"""
     blocks = {}
     blocks_layout = {"items": []}
@@ -293,7 +307,9 @@ def make_document(obj, slate=True):
             text = text.raw
         if text and text.strip():
             # We have Richtext. Get the block-data for it
-            text_blocks, uuids = get_blocks_from_richtext(text, slate=slate)
+            text_blocks, uuids = get_blocks_from_richtext(
+                text, service_url=service_url, slate=slate
+            )
             if uuids:
                 blocks.update(text_blocks)
                 blocks_layout["items"] += uuids
@@ -314,7 +330,8 @@ def make_document(obj, slate=True):
 
     obj.portal_type = "Document"
     # Invalidate cache to find the behaviors
-    del obj._v__providedBy__
+    if getattr(obj, "_v__providedBy__", None) is not None:
+        del obj._v__providedBy__
 
     if not obj.blocks:
         obj.blocks = blocks

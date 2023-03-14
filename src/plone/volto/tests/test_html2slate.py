@@ -391,3 +391,12 @@ class TestConvertHTML2Slate(unittest.TestCase):
             res,
             read_json("9.json"),
         )
+
+    def test_noroot_sample(self):
+        text = read_data("10.html")
+        res = text_to_slate(text)
+
+        self.assertEqual(
+            res,
+            read_json("10.json"),
+        )

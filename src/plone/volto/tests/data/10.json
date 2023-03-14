@@ -1,0 +1,282 @@
+[
+  { "type": "h2", "children": [{ "text": "A new EU adaptation strategy" }] },
+  {
+    "type": "p",
+    "children": [
+      {
+        "text": "On 24 February 2021, the European Commission adopted the Communication \u2018"
+      },
+      {
+        "type": "link",
+        "children": [
+          {
+            "text": "Forging a climate-resilient Europe \u2013 the new EU Strategy on Adaptation to Climate Change"
+          }
+        ],
+        "data": {
+          "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=COM:2021:82:FIN"
+        }
+      },
+      {
+        "text": "\u2019. The Strategy outlines a long-term vision for the EU to become a climate-resilient society, fully adapted to the unavoidable impacts of climate change by 2050. This strategy aims to reinforce the adaptive capacity of the EU and the world and minimise vulnerability to the impacts of climate change, in line with the "
+      },
+      {
+        "type": "link",
+        "children": [{ "text": "Paris Agreement" }],
+        "data": {
+          "url": "https://unfccc.int/process-and-meetings/the-paris-agreement/the-paris-agreement"
+        }
+      },
+      { "text": " and the " },
+      {
+        "type": "link",
+        "children": [{ "text": "proposal for a European Climate Law" }],
+        "data": {
+          "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:52020PC0080"
+        }
+      },
+      { "text": "." }
+    ]
+  },
+  {
+    "type": "p",
+    "children": [
+      {
+        "text": "The Strategy aims to build a climate resilient society by improving knowledge of climate impacts and adaptation solutions; by stepping up adaptation planning and climate risk assessments; by accelerating adaptation action; and by helping to strengthen climate resilience globally. It pursues three objectives and proposes a range of actions in order to meet them:"
+      }
+    ]
+  },
+  {
+    "type": "ul",
+    "children": [
+      {
+        "type": "li",
+        "children": [
+          { "type": "strong", "children": [{ "text": "Smarter adaptation" }] },
+          {
+            "text": ": Improving knowledge and manage uncertainty; including:"
+          },
+          {
+            "type": "ul",
+            "children": [
+              {
+                "type": "li",
+                "children": [
+                  { "text": "Pushing the frontiers of adaptation knowledge;" }
+                ]
+              },
+              {
+                "type": "li",
+                "children": [
+                  { "text": "More and better climate loss data; and" }
+                ]
+              },
+              {
+                "type": "li",
+                "children": [
+                  {
+                    "text": "Enhancing and expanding Climate-ADAPT as the European platform for adaptation knowledge."
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "li",
+        "children": [
+          { "text": "More " },
+          { "type": "strong", "children": [{ "text": "systemic adaptation" }] },
+          {
+            "text": ": Supporting policy development at all levels and all relevant policy fields; including three cross-cutting priorities to integrate adaptation into:"
+          },
+          {
+            "type": "ul",
+            "children": [
+              {
+                "type": "li",
+                "children": [{ "text": "Macro-fiscal policy;" }]
+              },
+              {
+                "type": "li",
+                "children": [{ "text": "Nature-based solutions; and" }]
+              },
+              {
+                "type": "li",
+                "children": [{ "text": "Local adaptation actions." }]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "li",
+        "children": [
+          { "type": "strong", "children": [{ "text": "Faster adaptation" }] },
+          { "text": ": Speed up adaptation implementation across the board." }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "p",
+    "children": [
+      {
+        "text": "Climate-ADAPT, the European platform for adaptation knowledge, will be enhanced and expanded. As a first concrete deliverable of the new Strategy, the "
+      },
+      {
+        "type": "link",
+        "children": [{ "text": "European Climate and Health Observatory" }],
+        "data": { "url": "https://climate-adapt.eea.europa.eu/observatory" }
+      },
+      {
+        "text": " will be launched on Climate-ADAPT, to better track, analyse and prevent the impacts of climate change on human health."
+      }
+    ]
+  },
+  {
+    "type": "p",
+    "children": [
+      { "text": "The Strategy integrates " },
+      { "type": "strong", "children": [{ "text": "international action" }] },
+      { "text": " for climate resilience into its framework." }
+    ]
+  },
+  {
+    "type": "p",
+    "children": [
+      {
+        "text": "\nThe new EU Adaptation Strategy links directly to recent global agreements, such as the "
+      },
+      {
+        "type": "link",
+        "children": [{ "text": "Paris Agreement" }],
+        "data": {
+          "url": "https://unfccc.int/process-and-meetings/the-paris-agreement/the-paris-agreement"
+        }
+      },
+      { "text": ", the " },
+      {
+        "type": "link",
+        "children": [
+          { "text": "Sendai Framework for Disaster Risk Reduction" }
+        ],
+        "data": {
+          "url": "https://www.undrr.org/publication/sendai-framework-disaster-risk-reduction-2015-2030"
+        }
+      },
+      { "text": " and the " },
+      {
+        "type": "link",
+        "children": [{ "text": "Sustainable Development Agenda" }],
+        "data": {
+          "url": "https://www.un.org/sustainabledevelopment/development-agenda/"
+        }
+      },
+      {
+        "text": " as well as the EU implementation of these goals. It also connects directly to major EU initiatives like the "
+      },
+      {
+        "type": "link",
+        "children": [{ "text": "Mission for a Climate resilient Europe" }],
+        "data": {
+          "url": "https://ec.europa.eu/info/publications/climate-resilient-europe_en"
+        }
+      },
+      { "text": " and the Union\u2019s " },
+      {
+        "type": "link",
+        "children": [{ "text": "sustainable finance " }],
+        "data": {
+          "url": "https://ec.europa.eu/info/business-economy-euro/banking-and-finance/sustainable-finance_en"
+        }
+      },
+      {
+        "text": "agenda (foreseen for be renewed in the second quarter of 2021)."
+      }
+    ]
+  },
+  {
+    "type": "p",
+    "children": [
+      { "text": "The " },
+      {
+        "type": "link",
+        "children": [{ "text": "European Green Deal" }],
+        "data": {
+          "url": "https://ec.europa.eu/info/strategy/priorities-2019-2024/european-green-deal_en"
+        }
+      },
+      {
+        "text": " (announced in December 2019) presents the Commission's plan for a sustainable green transition. At the heart of the Green Deal, the first European "
+      },
+      {
+        "type": "link",
+        "children": [{ "text": "Climate Law proposal" }],
+        "data": {
+          "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:52020PC0080"
+        }
+      },
+      {
+        "text": " establishes the framework for achieving climate neutrality by 2050. The proposal recognises adaptation as a key component of the long-term global response to climate change and requires Member States and the Union to enhance their adaptive capacity, strengthen resilience and reduce vulnerability to climate change. It also introduces a requirement for the implementation of national strategies."
+      }
+    ]
+  },
+  {
+    "type": "p",
+    "children": [
+      { "text": "Also this new EU Adaptation Strategy was part of the " },
+      {
+        "type": "link",
+        "children": [{ "text": "Green Deal action plan" }],
+        "data": {
+          "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?qid=1596443911913&uri=CELEX:52019DC0640#document2"
+        }
+      },
+      {
+        "text": ". The new EU Adaptation Strategy development was based on the evaluation of the "
+      },
+      {
+        "type": "link",
+        "children": [
+          { "text": "2013 EU strategy on adaptation to climate change" }
+        ],
+        "data": {
+          "url": "https://climate-adapt.eea.europa.eu/metadata/publications/eu-strategy-on-adaptation-to-climate-change"
+        }
+      },
+      {
+        "text": " and the gathering of a wide range of stakeholder views to i) inform and design the explored policy options, as well as ii) the appropriate level of ambition. An extensive "
+      },
+      {
+        "type": "link",
+        "children": [{ "text": "Blueprint" }],
+        "data": {
+          "url": "https://ec.europa.eu/clima/sites/clima/files/consultations/docs/0037/blueprint_en.pdf"
+        }
+      },
+      {
+        "text": " of the new EU Strategy was provided as part of the open consultation process in 2020 to stimulate public debate and an impact assessment was made."
+      }
+    ]
+  },
+  {
+    "type": "p",
+    "children": [
+      { "text": "The 2018 Commission\u2019s " },
+      {
+        "type": "link",
+        "children": [
+          { "text": "evaluation of the (2013) EU Adaptation Strategy" }
+        ],
+        "data": {
+          "url": "https://climate-adapt.eea.europa.eu/metadata/publications/evaluation-of-the-eu-strategy-on-adaptation-to-climate-change/"
+        }
+      },
+      {
+        "text": " finds that this strategy had delivered on its objectives to promote action by Member States, \u2018climate-proof\u2019 action at the EU level and support better-informed decision-making. The evaluation included the \u2018adaptation preparedness scoreboard\u2019 for measuring Member States\u2019 level of readiness based on qualitative, process-based indicators."
+      }
+    ]
+  }
+]

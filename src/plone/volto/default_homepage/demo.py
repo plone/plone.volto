@@ -396,7 +396,7 @@ demo_home_page = {
                                 "children": [
                                     {"text": ""},
                                     {
-                                        "children": [{"text": "Plone 6"}],
+                                        "children": [{"text": "Plone 6 (this site)"}],
                                         "data": {"url": "https://demo.plone.org/"},
                                         "type": "link",
                                     },
@@ -410,7 +410,7 @@ demo_home_page = {
                                     {
                                         "children": [{"text": "Plone 6 Classic UI"}],
                                         "data": {
-                                            "url": "https://6-classic.demo.plone.org/"
+                                            "url": "https://classic.demo.plone.org/"
                                         },
                                         "type": "link",
                                     },

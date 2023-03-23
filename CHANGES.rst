@@ -8,6 +8,17 @@ Changelog
 
 .. towncrier release notes start
 
+4.0.8 (2023-03-23)
+------------------
+
+Bug fixes:
+
+
+- Use correct service_url when calling make_document. Fix #95
+  [pbauer] (#95)
+- Change home page more demo link. Fix #114 (#114)
+
+
 4.0.7 (2023-03-02)
 ------------------
 

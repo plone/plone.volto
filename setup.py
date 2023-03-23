@@ -25,7 +25,7 @@ long_description = "\n\n".join(
 
 setup(
     name="plone.volto",
-    version="4.0.8.dev0",
+    version="4.0.9.dev0",
     description="Volto integration add-on for Plone",
     long_description=long_description,
     # Get more from https://pypi.org/classifiers/
@@ -49,7 +49,7 @@ setup(
     author_email="tisto@plone.org",
     url="https://github.com/plone/plone.volto",
     license="GPL version 2",
-    packages=find_packages("src", exclude=["ez_setup"]),
+    packages=find_packages("src"),
     namespace_packages=["plone"],
     package_dir={"": "src"},
     include_package_data=True,

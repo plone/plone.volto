@@ -1,5 +1,4 @@
 from Acquisition import aq_base
-
 from plone.dexterity.interfaces import IDexterityContent
 from plone.indexer.decorator import indexer
 from plone.volto.behaviors.preview import IPreview

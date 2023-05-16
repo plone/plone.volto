@@ -13,6 +13,7 @@ def numberOfFolderishDocuments(obj):
     """
     return len(obj.objectIds(spec=obj.meta_type, ordered=False))
 
+
 @indexer(IPreview)
 def hasPreviewImage(obj):
     """

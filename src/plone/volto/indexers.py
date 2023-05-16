@@ -13,10 +13,11 @@ def numberOfFolderishDocuments(obj):
     How many FolderishDocument are contained in the FolderishDocument obj.
     For UX affordance to show which pages aren't leaf nodes.
     """
-    catalog = getToolByName(obj, 'portal_catalog')
+    catalog = getToolByName(obj, "portal_catalog")
     query = {
-        'object_provides': IFolderishDocument.__identifier__,
-        'path': {'query': '/'.join(obj.getPhysicalPath()), 'depth': 1}}
+        "object_provides": IFolderishDocument.__identifier__,
+        "path": {"query": "/".join(obj.getPhysicalPath()), "depth": 1},
+    }
     return len(catalog.unrestrictedSearchResults(query))
 
 

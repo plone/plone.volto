@@ -16,7 +16,7 @@ def numberOfFolderishDocuments(obj):
     catalog = getToolByName(obj, 'portal_catalog')
     query = {
         'object_provides': IFolderishDocument.__identifier__,
-        'path': {'query':"/".join(obj.getPhysicalPath()), 'depth': 1}}
+        'path': {'query': '/'.join(obj.getPhysicalPath()), 'depth': 1}}
     return len(catalog.unrestrictedSearchResults(query))
 
 

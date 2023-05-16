@@ -1,10 +1,9 @@
 from Acquisition import aq_base
-from Products.CMFCore.utils import getToolByName
-
 from plone.dexterity.interfaces import IDexterityContent
 from plone.indexer.decorator import indexer
 from plone.volto.behaviors.preview import IPreview
 from plone.volto.interfaces import IFolderishDocument
+from Products.CMFCore.utils import getToolByName
 
 
 @indexer(IFolderishDocument)

@@ -1,7 +1,23 @@
 from Acquisition import aq_base
+from Products.CMFCore.utils import getToolByName
+
 from plone.dexterity.interfaces import IDexterityContent
 from plone.indexer.decorator import indexer
 from plone.volto.behaviors.preview import IPreview
+from plone.volto.interfaces import IFolderishDocument
+
+
+@indexer(IFolderishDocument)
+def numberOfFolderishDocuments(obj):
+    """
+    How many FolderishDocument are contained in the FolderishDocument obj.
+    For UX affordance to show which pages aren't leaf nodes.
+    """
+    catalog = getToolByName(obj, 'portal_catalog')
+    query = {
+        'object_provides': IFolderishDocument.__identifier__,
+        'path': {'query':"/".join(obj.getPhysicalPath()), 'depth': 1}}
+    return len(catalog.unrestrictedSearchResults(query))
 
 
 @indexer(IPreview)

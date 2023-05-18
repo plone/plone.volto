@@ -1,8 +1,6 @@
 # -*- coding: utf-8 -*-
 from importlib import import_module
 from plone import api
-from plone.app.multilingual.browser.setup import SetupMultilingualSite
-from plone.app.multilingual.setuphandlers import enable_translatable_behavior
 from plone.dexterity.interfaces import IDexterityFTI
 from plone.volto.default_homepage.default import default_home
 from plone.volto.default_homepage.demo import demo_home_page
@@ -16,7 +14,18 @@ from zope.interface import implementer
 import json
 import logging
 import transaction
+import pkg_resources
 
+try:
+    pkg_resources.get_distribution("plone.app.multilingual")
+    from plone.app.multilingual.browser.setup import SetupMultilingualSite
+    from plone.app.multilingual.setuphandlers import (
+        enable_translatable_behavior,
+    )
+
+    HAS_MULTILINGUAL = True
+except pkg_resources.DistributionNotFound:
+    HAS_MULTILINGUAL = False
 
 PLONE_6 = getattr(import_module("Products.CMFPlone.factory"), "PLONE60MARKER", False)
 
@@ -68,12 +77,13 @@ def post_install_multilingual(context):
 
 
 def enable_pam(portal):
-    # Ensure that portal is portal
-    portal = api.portal.get()
-    # Setup the plone.app.multilingual data
-    sms = SetupMultilingualSite(portal)
-    sms.setupSite(portal)
-    enable_translatable_behavior(portal)
+    if HAS_MULTILINGUAL:
+        # Ensure that portal is portal
+        portal = api.portal.get()
+        # Setup the plone.app.multilingual data
+        sms = SetupMultilingualSite(portal)
+        sms.setupSite(portal)
+        enable_translatable_behavior(portal)
 
 
 def ensure_pam_consistency(portal):

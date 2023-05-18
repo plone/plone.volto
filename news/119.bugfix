@@ -1,0 +1,2 @@
+Use the plone.app.multilingual conditionally so as is not an explicit dependency
+[@foxtrot-01]

@@ -9,7 +9,10 @@ from plone.volto import content
 from plone.volto import logger
 from plone.volto.setuphandlers import NO_RICHTEXT_BEHAVIOR_CONTENT_TYPES
 from plone.volto.setuphandlers import remove_behavior
+from Products.CMFCore.utils import getToolByName
 from zope.component import getUtility
+
+import transaction
 
 
 MIGRATION = {
@@ -123,3 +126,27 @@ def add_control_panel_classic_icon(context):
         field.TextLine(title="Plone Icon Volto Control Panel"),
     )
     registry["plone.icon.volto-settings"] = "++plone++plone.volto/volto.svg"
+
+
+def add_new_catalog_indexes(context):
+    catalog = getToolByName(context, "portal_catalog")
+    indexes = catalog.indexes()
+
+    wanted = (("block_types", "KeywordIndex"),)
+    for name, meta_type in wanted:
+        if name not in indexes:
+            catalog.addIndex(name, meta_type)
+            logger.info("Added %s for field %s.", meta_type, name)
+
+
+def reindex_block_objects(context):
+    catalog = getToolByName(context, "portal_catalog")
+    brains = catalog(object_provides="plone.restapi.behaviors.IBlocks")
+    total = len(brains)
+    for index, brain in enumerate(brains):
+        obj = brain.getObject()
+        obj.reindexObject(idxs=["block_types"], update_metadata=0)
+        logger.info("Reindexing object %s.", brain.getPath())
+        if index % 250 == 0:
+            logger.info("Reindexed %i/%i objects so far", index, total)
+            transaction.commit()

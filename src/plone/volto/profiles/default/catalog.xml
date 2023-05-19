@@ -4,4 +4,9 @@
   <column value="head_title" />
   <column value="hasPreviewImage" />
   <column value="image_field" />
+  <index meta_type="KeywordIndex"
+         name="block_types"
+  >
+    <indexed_attr value="block_types" />
+  </index>
 </object>

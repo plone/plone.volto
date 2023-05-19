@@ -33,3 +33,11 @@ def image_field_indexer(obj):
     elif getattr(base_obj, "image", False):
         image_field = "image"
     return image_field
+
+
+@indexer(IDexterityContent)
+def block_types_indexer(obj):
+    """Indexer for block_types."""
+    # TODO(margaridasp): crawl to get nested blocks
+    block_types = [block.get("@type") for block in obj.blocks.values()]
+    return set(block_types)

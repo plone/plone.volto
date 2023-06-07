@@ -40,6 +40,10 @@ class TestMigrateToVolto(unittest.TestCase):
         self.assertFalse(installer.is_product_installed("plone.volto"))
 
         view = self.portal.restrictedTraverse("@@migrate_to_volto")
+        # check checkboxes
+        self.request.form["migrate_folders"] = True
+        self.request.form["migrate_default_pages"] = True
+        self.request.form["purge_richtext"] = True
         self.request.form["form.submitted"] = True
         view()
 
@@ -66,6 +70,10 @@ class TestMigrateToVolto(unittest.TestCase):
         )
 
         view = self.portal.restrictedTraverse("@@migrate_to_volto")
+        # check checkboxes
+        self.request.form["migrate_folders"] = True
+        self.request.form["migrate_default_pages"] = True
+        self.request.form["purge_richtext"] = True
         self.request.form["form.submitted"] = True
         view()
 
@@ -105,6 +113,9 @@ class TestMigrateToVolto(unittest.TestCase):
         self.assertEqual(self.portal["folder1"].portal_type, "Folder")
 
         view = self.portal.restrictedTraverse("@@migrate_to_volto")
+        self.request.form["migrate_folders"] = True
+        self.request.form["migrate_default_pages"] = True
+        self.request.form["purge_richtext"] = True
         self.request.form["form.submitted"] = True
         view()
 
@@ -134,6 +145,10 @@ class TestMigrateToVolto(unittest.TestCase):
         self.assertEqual(self.portal["collection"].portal_type, "Collection")
 
         view = self.portal.restrictedTraverse("@@migrate_to_volto")
+        # check checkboxes
+        self.request.form["migrate_folders"] = True
+        self.request.form["migrate_default_pages"] = True
+        self.request.form["purge_richtext"] = True
         self.request.form["form.submitted"] = True
         view()
 
@@ -180,6 +195,10 @@ class TestMigrateToVolto(unittest.TestCase):
         folder.setDefaultPage("doc")
 
         view = self.portal.restrictedTraverse("@@migrate_to_volto")
+        # check checkboxes
+        self.request.form["migrate_folders"] = True
+        self.request.form["migrate_default_pages"] = True
+        self.request.form["purge_richtext"] = True
         self.request.form["form.submitted"] = True
         view()
 
@@ -238,6 +257,10 @@ class TestMigrateToVolto(unittest.TestCase):
         self.assertEqual(len(collection.results()), 2)
 
         view = self.portal.restrictedTraverse("@@migrate_to_volto")
+        # check checkboxes
+        self.request.form["migrate_folders"] = True
+        self.request.form["migrate_default_pages"] = True
+        self.request.form["purge_richtext"] = True
         self.request.form["form.submitted"] = True
         view()
 
@@ -291,6 +314,10 @@ class TestMigrateToVolto(unittest.TestCase):
         self.assertIn("news", folder.keys())
 
         view = self.portal.restrictedTraverse("@@migrate_to_volto")
+        # check checkboxes
+        self.request.form["migrate_folders"] = True
+        self.request.form["migrate_default_pages"] = True
+        self.request.form["purge_richtext"] = True
         self.request.form["form.submitted"] = True
         view()
 
@@ -329,6 +356,9 @@ class TestMigrateToVolto(unittest.TestCase):
         self.assertTrue(isinstance(doc.text, RichTextValue))
 
         view = self.portal.restrictedTraverse("@@migrate_to_volto")
+        self.request.form["migrate_folders"] = True
+        self.request.form["migrate_default_pages"] = True
+        self.request.form["purge_richtext"] = True
         self.request.form["form.submitted"] = True
         view()
 

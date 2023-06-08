@@ -37,9 +37,9 @@ class MigrateToVolto(BrowserView):
     def __call__(self):
         request = self.request
         self.service_url = request.get("service_url", "http://localhost:5000/html")
-        self.migrate_folders = request.get("migrate_folders", False)
-        self.migrate_default_pages = request.get("migrate_default_pages", False)
-        self.purge_richtext = request.get("purge_richtext", False)
+        self.migrate_folders = request.get("migrate_folders", True)
+        self.migrate_default_pages = request.get("migrate_default_pages", True)
+        self.purge_richtext = request.get("purge_richtext", True)
         # We can still use outdated draftjs by setting slate to False on the request
         self.slate = request.get("slate", True)
 

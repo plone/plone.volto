@@ -2,6 +2,15 @@ from Acquisition import aq_base
 from plone.dexterity.interfaces import IDexterityContent
 from plone.indexer.decorator import indexer
 from plone.volto.behaviors.preview import IPreview
+from plone.volto.interfaces import IFolderishDocument
+
+
+@indexer(IFolderishDocument)
+def numberOfFolderishDocuments(obj):
+    """
+    For UX affordance to show which pages aren't leaf nodes.
+    """
+    return len(obj.objectIds(spec=obj.meta_type, ordered=False))
 
 
 @indexer(IPreview)

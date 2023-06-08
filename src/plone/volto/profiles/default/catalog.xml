@@ -4,4 +4,5 @@
   <column value="head_title" />
   <column value="hasPreviewImage" />
   <column value="image_field" />
+  <column value="numberOfFolderishDocuments" />
 </object>

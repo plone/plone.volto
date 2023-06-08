@@ -46,6 +46,10 @@
       />
 
   <adapter
+      factory=".indexers.numberOfFolderishDocuments"
+      name="numberOfFolderishDocuments"
+      />
+  <adapter
       factory=".indexers.hasPreviewImage"
       name="hasPreviewImage"
       />

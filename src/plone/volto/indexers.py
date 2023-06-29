@@ -1,6 +1,7 @@
 from Acquisition import aq_base
 from plone.dexterity.interfaces import IDexterityContent
 from plone.indexer.decorator import indexer
+from plone.restapi.blocks import visit_blocks
 from plone.volto.behaviors.preview import IPreview
 
 
@@ -37,7 +38,10 @@ def image_field_indexer(obj):
 
 @indexer(IDexterityContent)
 def block_types_indexer(obj):
-    """Indexer for block_types."""
-    # TODO(margaridasp): crawl to get nested blocks
-    block_types = [block.get("@type") for block in obj.blocks.values()]
-    return set(block_types)
+    """Indexer for all block types included in a page."""
+    block_types = set()
+    for block in visit_blocks(obj, obj.blocks):
+        block_type = block.get("@type")
+        if block_type:
+            block_types.add(block_type)
+    return block_types

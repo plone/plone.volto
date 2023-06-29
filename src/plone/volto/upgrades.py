@@ -128,19 +128,12 @@ def add_control_panel_classic_icon(context):
     registry["plone.icon.volto-settings"] = "++plone++plone.volto/volto.svg"
 
 
-def add_new_catalog_indexes(context):
+def add_block_types_index(context):
     catalog = getToolByName(context, "portal_catalog")
     indexes = catalog.indexes()
-
-    wanted = (("block_types", "KeywordIndex"),)
-    for name, meta_type in wanted:
-        if name not in indexes:
-            catalog.addIndex(name, meta_type)
-            logger.info("Added %s for field %s.", meta_type, name)
-
-
-def reindex_block_objects(context):
-    catalog = getToolByName(context, "portal_catalog")
+    if "block_types" not in indexes:
+        catalog.addIndex("block_types", "KeywordIndex")
+        logger.info("Added block_types index.")
     brains = catalog(object_provides="plone.restapi.behaviors.IBlocks")
     total = len(brains)
     for index, brain in enumerate(brains):
@@ -148,5 +141,5 @@ def reindex_block_objects(context):
         obj.reindexObject(idxs=["block_types"], update_metadata=0)
         logger.info("Reindexing object %s.", brain.getPath())
         if index % 250 == 0:
-            logger.info("Reindexed %i/%i objects so far", index, total)
+            logger.info(f"Reindexed {index}/{total} objects")
             transaction.commit()

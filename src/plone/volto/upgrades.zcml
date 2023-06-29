@@ -75,19 +75,4 @@
         />
   </genericsetup:upgradeSteps>
 
-  <genericsetup:upgradeSteps
-      profile="plone.volto:default"
-      source="1017"
-      destination="1018"
-      >
-    <genericsetup:upgradeStep
-        title="Update catalog indexes"
-        handler=".upgrades.add_new_catalog_indexes"
-        />
-    <genericsetup:upgradeStep
-        title="Reindex all block objects to update the block_types index"
-        handler=".upgrades.reindex_block_objects"
-        />
-  </genericsetup:upgradeSteps>
-
 </configure>

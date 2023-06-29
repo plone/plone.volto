@@ -64,6 +64,16 @@ class TestBlockTypesIndexer(TestCase):
         self.assertEqual(block_types_index.numObjects(), 0)
 
     def test_nested_blocks(self):
-        """Ensure that nested block types are also included on block_types."""
-        # TODO(margaridasp): first implement the functionality on the indexer
-        pass
+        """Ensure that nested block types are also included in block_types."""
+        blocks = {
+            "1": {
+                "@type": "gridBlock",
+                "blocks": {
+                    "2": {"@type": "teaser"},
+                },
+            },
+        }
+        self.portal.doc1.blocks = blocks
+        self.portal.doc1.reindexObject(idxs=["block_types"])
+        brains = self.catalog(block_types="teaser")
+        self.assertEqual(len(brains), 1)

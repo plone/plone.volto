@@ -8,6 +8,18 @@ Changelog
 
 .. towncrier release notes start
 
+4.0.9 (2023-06-22)
+------------------
+
+Bug fixes:
+
+
+- Let the migration-form @@migrate_to_volto transform richtext to slate-blocks by default.
+  [pbauer] (#122)
+- Fix value of unchecked checkboxes in migrate_to_volto.
+  [pbauer] (#124)
+
+
 4.0.8 (2023-03-23)
 ------------------
 

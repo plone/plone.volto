@@ -330,7 +330,6 @@ class TestMigrateToVolto(unittest.TestCase):
 
         view = self.portal.restrictedTraverse("@@migrate_to_volto")
         self.request.form["form.submitted"] = True
-        self.request.form["slate"] = True
         view()
 
         doc = self.portal["doc"]

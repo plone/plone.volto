@@ -59,8 +59,7 @@ setup(
         "plone.api",
         "Products.GenericSetup",
         "setuptools",
-        # TODO update pin once https://github.com/plone/plone.restapi/pull/1648 is released
-        "plone.restapi>=8.13.0",
+        "plone.restapi>=8.41.0",
         "plone.app.vocabularies>=4.3.0",
         "collective.monkeypatcher",
     ],

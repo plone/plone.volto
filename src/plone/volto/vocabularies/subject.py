@@ -1,6 +1,6 @@
 from BTrees.IIBTree import intersection
 from plone.app.layout.navigation.root import getNavigationRootObject
-from plone.app.vocabularies.terms import safe_encode
+from plone.base.utils import safe_bytes
 from plone.registry.interfaces import IRegistry
 from Products.CMFCore.utils import getToolByName
 from zope.component import queryUtility
@@ -41,7 +41,7 @@ def unsafe_simplevocabulary_from_values(values, query=None):
         [
             UnsafeSimpleSubjectTerm(value, value, value)
             for value in values
-            if query is None or safe_encode(query) in safe_encode(value)
+            if query is None or safe_bytes(query) in safe_bytes(value)
         ]
     )
 
@@ -87,11 +87,11 @@ class KeywordsVocabulary(object):
         pquery = {
             self.path_index: {"query": "/".join(section.getPhysicalPath()), "depth": -1}
         }
-        kwfilter = safe_encode(kwfilter)
+        kwfilter = safe_bytes(kwfilter)
         # uses internal zcatalog specific details to quickly get the values.
         path_result, info = path_idx._apply_index(pquery)
         for tag in tags_idx.uniqueValues():
-            if kwfilter and kwfilter not in safe_encode(tag):
+            if kwfilter and kwfilter not in safe_bytes(tag):
                 continue
             tquery = {self.keyword_index: tag}
             tags_result, info = tags_idx._apply_index(tquery)

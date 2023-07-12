@@ -13,15 +13,14 @@ from zope.interface import implementer
 
 import json
 import logging
-import transaction
 import pkg_resources
+import transaction
+
 
 try:
     pkg_resources.get_distribution("plone.app.multilingual")
     from plone.app.multilingual.browser.setup import SetupMultilingualSite
-    from plone.app.multilingual.setuphandlers import (
-        enable_translatable_behavior,
-    )
+    from plone.app.multilingual.setuphandlers import enable_translatable_behavior
 
     HAS_MULTILINGUAL = True
 except pkg_resources.DistributionNotFound:

@@ -59,7 +59,7 @@ setup(
         "plone.api",
         "Products.GenericSetup",
         "setuptools",
-        "plone.restapi>=8.13.0",
+        "plone.restapi>=8.40.1.dev0",
         "plone.app.vocabularies>=4.3.0",
         "collective.monkeypatcher",
     ],

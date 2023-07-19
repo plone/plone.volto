@@ -63,44 +63,30 @@
       name="plone.volto.summary_serializer_metadata"
       />
 
-  <configure zcml:condition="have plonerestapi-7">
-    <subscriber
-        factory=".transforms.NestedResolveUIDDeserializer"
-        provides="plone.restapi.interfaces.IBlockFieldDeserializationTransformer"
-        />
-    <subscriber
-        factory=".transforms.NestedResolveUIDDeserializerRoot"
-        provides="plone.restapi.interfaces.IBlockFieldDeserializationTransformer"
-        />
-    <subscriber
-        factory=".transforms.NestedResolveUIDSerializer"
-        provides="plone.restapi.interfaces.IBlockFieldSerializationTransformer"
-        />
-    <subscriber
-        factory=".transforms.NestedResolveUIDSerializerRoot"
-        provides="plone.restapi.interfaces.IBlockFieldSerializationTransformer"
-        />
-    <subscriber
-        factory=".transforms.PreviewImageResolveUIDDeserializer"
-        provides="plone.restapi.interfaces.IBlockFieldDeserializationTransformer"
-        />
-    <subscriber
-        factory=".transforms.PreviewImageResolveUIDDeserializerRoot"
-        provides="plone.restapi.interfaces.IBlockFieldDeserializationTransformer"
-        />
-    <subscriber
-        factory=".transforms.PreviewImageResolveUIDSerializer"
-        provides="plone.restapi.interfaces.IBlockFieldSerializationTransformer"
-        />
-    <subscriber
-        factory=".transforms.PreviewImageResolveUIDSerializerRoot"
-        provides="plone.restapi.interfaces.IBlockFieldSerializationTransformer"
-        />
+  <subscriber
+      factory=".transforms.NestedBlocksVisitor"
+      provides="plone.restapi.interfaces.IBlockVisitor"
+      />
+  <subscriber
+      factory=".transforms.PreviewImageResolveUIDDeserializer"
+      provides="plone.restapi.interfaces.IBlockFieldDeserializationTransformer"
+      />
+  <subscriber
+      factory=".transforms.PreviewImageResolveUIDDeserializerRoot"
+      provides="plone.restapi.interfaces.IBlockFieldDeserializationTransformer"
+      />
+  <subscriber
+      factory=".transforms.PreviewImageResolveUIDSerializer"
+      provides="plone.restapi.interfaces.IBlockFieldSerializationTransformer"
+      />
+  <subscriber
+      factory=".transforms.PreviewImageResolveUIDSerializerRoot"
+      provides="plone.restapi.interfaces.IBlockFieldSerializationTransformer"
+      />
 
-    <subscriber
-        factory=".linkintegrity.NestedBlockLinkRetriever"
-        provides="plone.restapi.interfaces.IBlockFieldLinkIntegrityRetriever"
-        />
-  </configure>
+  <subscriber
+      factory=".linkintegrity.NestedBlockLinkRetriever"
+      provides="plone.restapi.interfaces.IBlockFieldLinkIntegrityRetriever"
+      />
 
 </configure>

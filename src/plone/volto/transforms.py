@@ -2,16 +2,37 @@ from plone.restapi.behaviors import IBlocks
 from plone.restapi.deserializer.blocks import ResolveUIDDeserializerBase
 from plone.restapi.interfaces import IBlockFieldDeserializationTransformer
 from plone.restapi.interfaces import IBlockFieldSerializationTransformer
+from plone.restapi.interfaces import IBlockVisitor
 from plone.restapi.serializer.blocks import ResolveUIDSerializerBase
 from Products.CMFPlone.interfaces import IPloneSiteRoot
 from zope.component import adapter
 from zope.component import subscribers
 from zope.interface import implementer
+from zope.interface import Interface
 from zope.publisher.interfaces.browser import IBrowserRequest
+
+
+@implementer(IBlockVisitor)
+@adapter(Interface, IBrowserRequest)
+class NestedBlocksVisitor:
+    """Visit nested blocks in columns, hrefList, or slides."""
+
+    def __init__(self, context, request):
+        pass
+
+    def __call__(self, block_value):
+        for nested_name in ("columns", "hrefList", "slides"):
+            nested_blocks = block_value.get(nested_name, [])
+            if not isinstance(nested_blocks, list):
+                continue
+            yield from nested_blocks
 
 
 class NestedResolveUIDDeserializerBase(object):
     """The "url" smart block field for nested blocks
+
+    [Deprecated -- replaced by NestedBlocksVisitor above,
+    but the base class is still here in case someone extended it.]
 
     This is a generic handler. In all blocks, it converts any "url"
     field from using resolveuid to an "absolute" URL
@@ -51,19 +72,12 @@ class NestedResolveUIDDeserializerBase(object):
         return block
 
 
-@adapter(IBlocks, IBrowserRequest)
-@implementer(IBlockFieldDeserializationTransformer)
-class NestedResolveUIDDeserializer(NestedResolveUIDDeserializerBase):
-    """Deserializer for content-types that implements IBlocks behavior"""
-
-
-@adapter(IPloneSiteRoot, IBrowserRequest)
-@implementer(IBlockFieldDeserializationTransformer)
-class NestedResolveUIDDeserializerRoot(NestedResolveUIDDeserializerBase):
-    """Deserializer for site root"""
-
-
 class NestedResolveUIDSerializerBase(object):
+    """
+    [Deprecated -- replaced by NestedBlocksVisitor above,
+    but the base class is still here in case someone extended it.]
+    """
+
     order = 1
     block_type = None
 
@@ -96,18 +110,6 @@ class NestedResolveUIDSerializerBase(object):
             for nested_block in nested_blocks:
                 self._transform(nested_block)
         return block
-
-
-@adapter(IBlocks, IBrowserRequest)
-@implementer(IBlockFieldDeserializationTransformer)
-class NestedResolveUIDSerializer(NestedResolveUIDSerializerBase):
-    """Deserializer for content-types that implements IBlocks behavior"""
-
-
-@adapter(IPloneSiteRoot, IBrowserRequest)
-@implementer(IBlockFieldDeserializationTransformer)
-class NestedResolveUIDSerializerRoot(NestedResolveUIDSerializerBase):
-    """Deserializer for site root"""
 
 
 @adapter(IBlocks, IBrowserRequest)

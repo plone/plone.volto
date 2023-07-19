@@ -8,6 +8,16 @@ Changelog
 
 .. towncrier release notes start
 
+4.0.10 (2023-07-14)
+-------------------
+
+Bug fixes:
+
+
+- Use the plone.app.multilingual conditionally so as is not an explicit dependency
+  [@foxtrot-01] (#119)
+
+
 4.0.9 (2023-06-22)
 ------------------
 

@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2022-08-11 23:31+0000\n"
+"POT-Creation-Date: 2023-08-07 18:19+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,96 +17,97 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: plone.volto\n"
 
-#: plone/volto/behaviors/configure.zcml:31
+#: plone/volto/behaviors/configure.zcml:42
 msgid "Adds Head title field"
 msgstr ""
 
-#: plone/volto/profiles.zcml:15
+#: plone/volto/profiles.zcml:16
 msgid "Configures the Plone backend to work with Volto, the new default frontend for Plone 6."
 msgstr ""
 
-#: plone/volto/profiles.zcml:33
+#: plone/volto/profiles.zcml:34
 msgid "Creates a default page for the site"
 msgstr ""
 
-#: plone/volto/profiles.zcml:42
+#: plone/volto/profiles.zcml:43
 msgid "Creates a default page for the site using (legacy) draftJS blocks"
 msgstr ""
 
-#: plone/volto/profiles.zcml:51
+#: plone/volto/profiles.zcml:52
 msgid "Creates a default page for the site using slate blocks"
 msgstr ""
 
-#: plone/volto/behaviors/configure.zcml:31
+#: plone/volto/behaviors/configure.zcml:42
 msgid "Head title field"
 msgstr ""
 
-#: plone/volto/behaviors/headtitle.py:13
-msgid "Header title"
-msgstr ""
-
-#: plone/volto/behaviors/headtitle.py:15
-msgid "Header title should consist of year and number of the report"
-msgstr ""
-
-#: plone/volto/behaviors/configure.zcml:24
+#: plone/volto/behaviors/configure.zcml:35
 #: plone/volto/behaviors/navtitle.py:12
 msgid "Navigation title"
 msgstr "Navigation title"
 
-#: plone/volto/behaviors/configure.zcml:24
+#: plone/volto/behaviors/configure.zcml:35
 msgid "Navigation title used in sections, menus and doormats"
 msgstr ""
 
-#: plone/volto/profiles.zcml:42
+#: plone/volto/profiles.zcml:43
 msgid "Plone 6 Frontend (Default content on homepage with draftJS blocks)"
 msgstr ""
 
-#: plone/volto/profiles.zcml:51
+#: plone/volto/profiles.zcml:52
 msgid "Plone 6 Frontend (Default content on homepage with slate blocks)"
 msgstr ""
 
-#: plone/volto/profiles.zcml:33
+#: plone/volto/profiles.zcml:34
 msgid "Plone 6 Frontend (Default content on homepage)"
 msgstr ""
 
-#: plone/volto/profiles.zcml:15
+#: plone/volto/profiles.zcml:16
 msgid "Plone 6 Frontend (plone.volto)"
 msgstr ""
 
-#: plone/volto/profiles.zcml:24
+#: plone/volto/profiles.zcml:25
 msgid "Plone 6 Frontend (plone.volto): uninstall"
 msgstr ""
 
-#: plone/volto/behaviors/configure.zcml:17
+#: plone/volto/behaviors/configure.zcml:18
 msgid "Preview Image"
 msgstr ""
 
+#: plone/volto/behaviors/configure.zcml:26
+msgid "Preview Image Link"
+msgstr ""
+
 #: plone/volto/behaviors/preview.py:23
+#: plone/volto/behaviors/preview_link.py:43
 msgid "Preview image caption"
 msgstr "Preview image caption"
 
-#: plone/volto/behaviors/configure.zcml:17
+#: plone/volto/behaviors/configure.zcml:18
 msgid "Preview image for listings"
 msgstr ""
 
-#: plone/volto/profiles.zcml:60
+#: plone/volto/behaviors/configure.zcml:26
+msgid "Preview image for listings based on links"
+msgstr ""
+
+#: plone/volto/profiles.zcml:61
 msgid "Special requirements and setup for demo site"
 msgstr ""
 
-#: plone/volto/profiles.zcml:70
+#: plone/volto/profiles.zcml:71
 msgid "Special test fixture for coresandbox use cases"
 msgstr ""
 
-#: plone/volto/profiles.zcml:80
+#: plone/volto/profiles.zcml:82
 msgid "Special test fixture for multilingual use case"
 msgstr ""
 
-#: plone/volto/profiles.zcml:88
+#: plone/volto/profiles.zcml:90
 msgid "Specific profile for re-adding the richtext behavior"
 msgstr ""
 
-#: plone/volto/profiles.zcml:24
+#: plone/volto/profiles.zcml:25
 msgid "Uninstalls the plone.volto add-on."
 msgstr ""
 
@@ -120,28 +121,40 @@ msgstr ""
 msgid "heading_available_languages"
 msgstr ""
 
+#. Default: "The header title is shown above the title in teasers."
+#: plone/volto/behaviors/headtitle.py:15
+msgid "help_head_title"
+msgstr ""
+
 #. Default: "Insert an image that will be used in listing and teaser blocks."
 #: plone/volto/behaviors/preview.py:15
+#: plone/volto/behaviors/preview_link.py:25
 msgid "help_previewimage"
+msgstr ""
+
+#. Default: "Header title"
+#: plone/volto/behaviors/headtitle.py:13
+msgid "label_head_title"
 msgstr ""
 
 #. Default: "Preview image"
 #: plone/volto/behaviors/preview.py:14
+#: plone/volto/behaviors/preview_link.py:24
 msgid "label_previewimage"
 msgstr "Preview image"
 
-#: plone/volto/profiles.zcml:70
+#: plone/volto/profiles.zcml:71
 msgid "plone.volto coresandbox Cypress tests fixtures"
 msgstr ""
 
-#: plone/volto/profiles.zcml:60
+#: plone/volto/profiles.zcml:61
 msgid "plone.volto demo special requirements"
 msgstr ""
 
-#: plone/volto/profiles.zcml:80
+#: plone/volto/profiles.zcml:82
 msgid "plone.volto multilingual Cypress tests fixtures"
 msgstr ""
 
-#: plone/volto/profiles.zcml:88
+#: plone/volto/profiles.zcml:90
 msgid "plone.volto p51 profile"
 msgstr ""

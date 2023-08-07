@@ -1,1 +1,0 @@
-Change the implementation for finding nested blocks to use an IBlockVisitor adapter. @davisagli

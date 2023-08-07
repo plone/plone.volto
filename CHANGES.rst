@@ -8,6 +8,24 @@ Changelog
 
 .. towncrier release notes start
 
+4.1.0 (2023-08-07)
+------------------
+
+New features:
+
+
+- Add `block_types` index to zcatalog. By default it is only added for new Plone sites.
+  To add it to an existing site, run `plone.volto.upgrades.add_block_types_index` manually.
+  [margaridasp, davisagli] (#4778)
+
+
+Bug fixes:
+
+
+- Change the implementation for finding nested blocks to use an IBlockVisitor adapter. @davisagli (#127)
+- Fix missing translations for head_title field. @davisagli (#130)
+
+
 4.0.10 (2023-07-14)
 -------------------
 

@@ -15,8 +15,8 @@ GREEN=`tput setaf 2`
 RESET=`tput sgr0`
 YELLOW=`tput setaf 3`
 
-PLONE5=5.2.9
-PLONE6=6.0.0b1
+PLONE5=5.2.10
+PLONE6=6.0.6
 
 CODE_QUALITY_VERSION=1.0.1
 LINT=docker run --rm -v "$(PWD)":/github/workspace plone/code-quality:${CODE_QUALITY_VERSION} check

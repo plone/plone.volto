@@ -13,3 +13,4 @@ Contributors
 - Rodrigo Ferreira de Souza
 - Alin Voinea
 - Steve Piercy
+- Tiberiu Ichim

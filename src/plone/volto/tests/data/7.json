@@ -1,0 +1,16 @@
+[
+  {
+    "children": [
+      { "text": "test " },
+      {
+        "children": [{ "text": "AT" }],
+        "data": {
+          "column": "country_code",
+          "provider_url": "/data/conservation-status-habitats-directive"
+        },
+        "type": "dataentity"
+      }
+    ],
+    "type": "p"
+  }
+]

@@ -1,0 +1,24 @@
+[
+  {
+    "children": [
+      {
+        "children": [
+          {
+            "children": [
+              { "children": [{ "text": "28.06(percent) " }], "type": "i" }
+            ],
+            "data": {
+              "column": "Land%cov",
+              "provider_url": "/data/statsforcountryprofile_bise.csv"
+            },
+            "type": "dataentity"
+          },
+          { "text": "%" }
+        ],
+        "type": "b"
+      },
+      { "text": " of land," }
+    ],
+    "type": "p"
+  }
+]

@@ -1,0 +1,161 @@
+# --- PLEASE EDIT THE LINES BELOW CORRECTLY ---
+# SOME DESCRIPTIVE TITLE.
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2023-11-07 19:27+0000\n"
+"PO-Revision-Date: 2021-11-21 16:58+0100\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Language-Code: pt-br\n"
+"Language-Name: Português do Brasil\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: plone.volto\n"
+"Language: pt_BR\n"
+"X-Generator: Poedit 2.3\n"
+
+#: plone/volto/behaviors/configure.zcml:42
+msgid "Adds Head title field"
+msgstr "Adiciona campo Título de cabeçalho"
+
+#: plone/volto/profiles.zcml:16
+msgid "Configures the Plone backend to work with Volto, the new default frontend for Plone 6."
+msgstr "Configura o backend do Plone para funcionar com o Volto, o novo frontend padrão do Plone 6."
+
+#: plone/volto/profiles.zcml:34
+msgid "Creates a default page for the site"
+msgstr "Cria uma página padrão para o site"
+
+#: plone/volto/profiles.zcml:43
+msgid "Creates a default page for the site using (legacy) draftJS blocks"
+msgstr "Cria uma página padrão para o site usando blocos draftJS (legado)"
+
+#: plone/volto/profiles.zcml:52
+msgid "Creates a default page for the site using slate blocks"
+msgstr "Cria uma página padrão para o site usando blocos slate"
+
+#: plone/volto/behaviors/configure.zcml:42
+msgid "Head title field"
+msgstr "Campo Título de cabeçalho"
+
+#: plone/volto/behaviors/configure.zcml:35
+#: plone/volto/behaviors/navtitle.py:12
+msgid "Navigation title"
+msgstr "Título de navegação"
+
+#: plone/volto/behaviors/configure.zcml:35
+msgid "Navigation title used in sections, menus and doormats"
+msgstr "Título de navegação usado em seções, menus e rodapés"
+
+#: plone/volto/profiles.zcml:43
+msgid "Plone 6 Frontend (Default content on homepage with draftJS blocks)"
+msgstr ""
+
+#: plone/volto/profiles.zcml:52
+msgid "Plone 6 Frontend (Default content on homepage with slate blocks)"
+msgstr "Plone 6 Frontend (conteúdo padrão na página inicial com blocos draftJS)"
+
+#: plone/volto/profiles.zcml:34
+msgid "Plone 6 Frontend (Default content on homepage)"
+msgstr "Plone 6 Frontend (conteúdo padrão na página inicial)"
+
+#: plone/volto/profiles.zcml:16
+msgid "Plone 6 Frontend (plone.volto)"
+msgstr ""
+
+#: plone/volto/profiles.zcml:25
+msgid "Plone 6 Frontend (plone.volto): uninstall"
+msgstr "Plone 6 Frontend (plone.volto): desinstalar"
+
+#: plone/volto/behaviors/configure.zcml:18
+msgid "Preview Image"
+msgstr "Imagem de Pré-visualização"
+
+#: plone/volto/behaviors/configure.zcml:26
+msgid "Preview Image Link"
+msgstr "Imagem de Pré-visualização de Link"
+
+#: plone/volto/behaviors/preview.py:23
+#: plone/volto/behaviors/preview_link.py:43
+msgid "Preview image caption"
+msgstr "Legenda da Imagem de Pré-visualização"
+
+#: plone/volto/behaviors/configure.zcml:18
+msgid "Preview image for listings"
+msgstr "Imagem de Pré-visualização para listagens"
+
+#: plone/volto/behaviors/configure.zcml:26
+msgid "Preview image for listings based on links"
+msgstr "Imagem de Pré-visualização para listagens baseada em links"
+
+#: plone/volto/profiles.zcml:61
+msgid "Special requirements and setup for demo site"
+msgstr "Requisitos especiais e configuração para o site de demonstração"
+
+#: plone/volto/profiles.zcml:71
+msgid "Special test fixture for coresandbox use cases"
+msgstr "Teste fixture especial para casos de uso do codesandbox"
+
+#: plone/volto/profiles.zcml:82
+msgid "Special test fixture for multilingual use case"
+msgstr "Teste fixture especial para caso de uso multilíngue"
+
+#: plone/volto/profiles.zcml:90
+msgid "Specific profile for re-adding the richtext behavior"
+msgstr "Profile específico para re-adicionar o comportamento de texto rico"
+
+#: plone/volto/profiles.zcml:25
+msgid "Uninstalls the plone.volto add-on."
+msgstr "Desintalar o complemento plone.volto."
+
+#. Default: "The languages in which the site should be translatable."
+#: plone/volto/coresandbox/example.py:811
+msgid "description_available_languages"
+msgstr "Idiomas nos quais o site deve ser traduzível."
+
+#. Default: "Available languages"
+#: plone/volto/coresandbox/example.py:810
+msgid "heading_available_languages"
+msgstr "Idiomas disponíveis"
+
+#. Default: "The header title is shown above the title in teasers."
+#: plone/volto/behaviors/headtitle.py:15
+msgid "help_head_title"
+msgstr "O título de cabeçalho é exibido acima do título nos teasers"
+
+#. Default: "Insert an image that will be used in listing and teaser blocks."
+#: plone/volto/behaviors/preview.py:15
+#: plone/volto/behaviors/preview_link.py:25
+msgid "help_previewimage"
+msgstr "Inserir uma imagem que será utilizada em blocos de listagem e teaser"
+
+#. Default: "Header title"
+#: plone/volto/behaviors/headtitle.py:13
+msgid "label_head_title"
+msgstr "Título de cabeçalho"
+
+#. Default: "Preview image"
+#: plone/volto/behaviors/preview.py:14
+#: plone/volto/behaviors/preview_link.py:24
+msgid "label_previewimage"
+msgstr "Imagem de Pré-visualização"
+
+#: plone/volto/profiles.zcml:71
+msgid "plone.volto coresandbox Cypress tests fixtures"
+msgstr ""
+
+#: plone/volto/profiles.zcml:61
+msgid "plone.volto demo special requirements"
+msgstr "Requisitos especiais para a demonstração do plone.volto"
+
+#: plone/volto/profiles.zcml:82
+msgid "plone.volto multilingual Cypress tests fixtures"
+msgstr ""
+
+#: plone/volto/profiles.zcml:90
+msgid "plone.volto p51 profile"
+msgstr ""

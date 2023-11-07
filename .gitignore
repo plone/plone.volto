@@ -5,6 +5,7 @@
 *.mo
 *.py?
 *.swp
+.*project
 .Python
 # dirs
 bin/

@@ -25,6 +25,13 @@ PACKAGE_NAME=plone.volto
 PACKAGE_PATH=src/
 CHECK_PATH=setup.py $(PACKAGE_PATH)
 
+# We use Python 3.11 by default. You can use another version by specifying the
+# PYTHON_VERSION parameter in make command. For example:
+# make build PYTHON_VERSION=3
+PYTHON_VERSION=3.11
+
+PYTHON_VERSOIN ?=
+
 all: build
 
 # Add the following 'help' target to your Makefile
@@ -35,7 +42,7 @@ help: ## This help message
 
 bin/pip:
 	@echo "$(GREEN)==> Setup Virtual Env$(RESET)"
-	python3 -m venv .
+	python$(PYTHON_VERSION) -m venv .
 	bin/pip install -U pip wheel
 
 bin/black bin/isort bin/pyroma bin/zpretty: bin/pip

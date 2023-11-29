@@ -57,6 +57,7 @@
       template="voltobackendwarning.pt"
       permission="zope2.View"
       layer="plone.volto.interfaces.IPloneVoltoCoreLayer"
+      zcml:condition="have plone-60"
       />
 
 </configure>

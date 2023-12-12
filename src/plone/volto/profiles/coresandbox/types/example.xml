@@ -35,6 +35,7 @@
     <element value="plone.versioning" />
     <element value="plone.tableofcontents" />
     <element value="plone.locking" />
+    <element value="volto.preview_image_link" />
   </property>
   <property name="model_source" />
   <property name="model_file" />

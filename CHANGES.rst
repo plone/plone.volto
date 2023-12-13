@@ -8,6 +8,22 @@ Changelog
 
 .. towncrier release notes start
 
+4.2.0 (2023-12-13)
+------------------
+
+New features:
+
+
+- Add pt_BR translations. @wesleybl (#133)
+- Add `preview_image_link` behavior to the Example content type for testing @sneridagh (#136)
+
+
+Bug fixes:
+
+
+- Add guard for template used in the Volto installed status message that is Plone 6 only @sneridagh (#135)
+
+
 4.1.0 (2023-08-07)
 ------------------
 

@@ -28,6 +28,7 @@
   <property name="klass">plone.volto.coresandbox.example.Example</property>
   <property name="schema">plone.volto.coresandbox.example.IExample</property>
   <property name="behaviors">
+    <element value="volto.preview_image_link" />
     <element value="plone.namefromtitle" />
     <element value="plone.allowdiscussion" />
     <element value="plone.excludefromnavigation" />

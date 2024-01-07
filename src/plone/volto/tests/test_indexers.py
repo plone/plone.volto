@@ -77,3 +77,15 @@ class TestBlockTypesIndexer(TestCase):
         self.portal.doc1.reindexObject(idxs=["block_types"])
         brains = self.catalog(block_types="teaser")
         self.assertEqual(len(brains), 1)
+
+    def test_block_types_not_acquired(self):
+        """Ensure that block_types is not acquired"""
+        blocks = {
+            "1": {"@type": "image", "url": ""},
+            "2": {"@type": "teaser", "styles": {"align": "left"}},
+        }
+        self.portal.doc1.blocks = blocks
+        self.portal.doc1.reindexObject(idxs=["block_types"])
+        self.portal.doc1.invokeFactory("Image", "image-1")
+        brains = self.catalog(block_types="image")
+        self.assertEqual(len(brains), 1)

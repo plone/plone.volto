@@ -94,6 +94,19 @@ Volto Blocks Support
 plone.volto enables the new Volto Blocks editor on ``Document``, ``Language Root Folder`` and ``Site Root``.
 
 
+Block Types Index
+-----------------
+
+plone.volto adds a ``block_types`` index to the Plone catalog.
+It can be used to query for items that use a particular type of block::
+
+  portal_catalog.searchResults(block_types="image")
+
+The ``block_types`` index was added in plone.volto 4.1.0.
+By default it is only added for new Plone sites.
+To add it to an existing site, run ``plone.volto.upgrades.add_block_types_index`` manually.
+
+
 Multilingual Support
 --------------------
 

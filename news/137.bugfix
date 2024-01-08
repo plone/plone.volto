@@ -1,1 +1,1 @@
-Avoid accidental acquisition in block_types indexer. @davisagli
+Avoid accidental acquisition in ``block_types`` indexer. @davisagli

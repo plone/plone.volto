@@ -102,6 +102,8 @@ It can be used to query for items that use a particular type of block.
 
 .. code-block:: python
 
+    from plone import api
+    portal_catalog = api.portal.get_tool("portal_catalog")
     portal_catalog.searchResults(block_types="image")
 
 The ``block_types`` index was added in plone.volto 4.1.0.

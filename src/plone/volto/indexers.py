@@ -39,6 +39,7 @@ def image_field_indexer(obj):
 @indexer(IDexterityContent)
 def block_types_indexer(obj):
     """Indexer for all block types included in a page."""
+    obj = aq_base(obj)
     block_types = set()
     for block in visit_blocks(obj, obj.blocks):
         block_type = block.get("@type")

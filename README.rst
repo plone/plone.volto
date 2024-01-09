@@ -55,7 +55,7 @@ You can still use 2.x in p.restapi 7.0.0 based installations but the transforms 
 
 Volto only supports the latest plone.restapi branch, therefore it is recommended to always use the latest version in your Volto projects.
 
-Plone 6 Architecture
+Plone 6 architecture
 ====================
 
 Architectural Diagram of Plone 6::
@@ -88,13 +88,30 @@ Features
 plone.volto provides the following features:
 
 
-Volto Blocks Support
+Volto blocks support
 --------------------
 
 plone.volto enables the new Volto Blocks editor on ``Document``, ``Language Root Folder`` and ``Site Root``.
 
 
-Multilingual Support
+Block types index
+-----------------
+
+plone.volto adds a ``block_types`` index to the Plone catalog.
+It can be used to query for items that use a particular type of block.
+
+.. code-block:: python
+
+    from plone import api
+    portal_catalog = api.portal.get_tool("portal_catalog")
+    portal_catalog.searchResults(block_types="image")
+
+The ``block_types`` index was added in plone.volto 4.1.0.
+By default it is only added for new Plone sites.
+To add it to an existing site, run ``plone.volto.upgrades.add_block_types_index`` manually.
+
+
+Multilingual support
 --------------------
 
 plone.volto supports multilingual websites.
@@ -102,7 +119,7 @@ Install PAM before installing this package and demo homepages will be created in
 Currently only support for EN/DE.
 
 
-Volto Blocks for Plone Site Root
+Volto blocks for Plone site root
 --------------------------------
 
 plone.volto contains a hack to make the Plone site Volto blocks-enabled with some demo content.
@@ -128,7 +145,7 @@ corresponding Language Root Folders) is "draftJS" text block. ``plone.volto`` pr
 profile if you want to create Slate blocks: you need to use the ``default-homepage-slate``
 profile.
 
-Document Content Type
+Document content type
 ---------------------
 
 plone.volto disables the ``Richtext`` and ``Table of Contents`` behaviors for the ``Document`` content type.
@@ -136,7 +153,7 @@ Rich Text functionality is provided by the new Volto Blocks editor.
 The ``Table of Contents`` functionality is provided by the ``Table of Contents Block`` in Volto.
 
 
-CORS Profile
+CORS profile
 ------------
 
 A quick helper for enable CORS for development config is also provided in the
@@ -152,7 +169,7 @@ productions sites.
 It's planned that Volto will feature a development pass-through proxy to the backend in
 the future. It will be addressed in next sprints.
 
-ZLog Patch
+ZLog patch
 ----------
 
 p.restapi low level errors are routed through the ancient ZLog and are ``plone_error``
@@ -161,7 +178,7 @@ using helpers like Sentry. This patch removes the UUID so the same error is cate
 all together. This is planned to be addressed in next sprints.
 
 
-Patch for ``subject`` Field
+Patch for ``subject`` field
 ---------------------------
 
 There are some problems of serialization on special characters derivated from how the
@@ -170,7 +187,7 @@ addressed in order to make it work properly with Volto (and other systems that a
 Plone). This will be fixed in core in upcoming sprints.
 
 
-Preview Image Behavior
+Preview image behavior
 ----------------------
 
 The preview image behavior makes content types provide a ``preview_image`` field that can store a preview image that Volto views can pick up.
@@ -195,7 +212,7 @@ The ``volto.preview_image`` behavior can be enabled in the generic setup XML def
 There is also another variation of the preview image behavior called ``volto.preview_image_link``.
 This one stores preview images using a relation to an Image content type, rather than in an image field. This might be preferable if many content items use the same preview image.
 
-Navigation Title Behavior
+Navigation title behavior
 -------------------------
 
 The navigation title makes content types provide a nav_title field that is used by Volto in the main navigation, the breadcrumbs and the navigation portlet.
@@ -217,7 +234,7 @@ The "volto.navtitle behavior can be enabled in the generic setup XML definition 
    </object>
 
 
-Head Title Behavior
+Head title behavior
 -------------------
 
 The headtitle makes content types provide a headtitle field that can be used by Volto in teasers and alikes.
@@ -239,7 +256,7 @@ The "volto.head_title" behavior can be enabled in the generic setup XML definiti
    </object>
 
 
-Image Scales
+Image scales
 ------------
 
 This package introduces new Plone image scales in Plone and redefines a couple of
@@ -260,7 +277,7 @@ existing ones. These are know to work well with Volto layout and grid system::
 sure your add-on's profiles are applied AFTER this one.**
 
 
-Credits and History
+Credits and history
 -------------------
 
 .. image:: https://kitconcept.com/logo.svg

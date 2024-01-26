@@ -1,3 +1,3 @@
 Fix changed behavior and marker interfaces for plone.leadimage and plone.richtext.
 See: https://github.com/plone/plone.app.contenttypes/pull/480
-[thet]
+@thet

@@ -53,7 +53,7 @@ def construct_url(self, randomstring):
 
         registry = getUtility(IRegistry)
         settings = registry.forInterface(IVoltoSettings, prefix="volto", check=False)
-        settings_frontend_domain = os.environ["VOLTO_FRONTEND_DOMAIN"] or getattr(
+        settings_frontend_domain = os.environ.get("VOLTO_FRONTEND_DOMAIN") or getattr(
             settings, "frontend_domain", None
         )
         if settings_frontend_domain:

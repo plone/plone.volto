@@ -8,6 +8,18 @@ Changelog
 
 .. towncrier release notes start
 
+4.2.1 (2024-01-26)
+------------------
+
+Bug fixes:
+
+
+- Fix changed behavior and marker interfaces for plone.leadimage and plone.richtext.
+  See: https://github.com/plone/plone.app.contenttypes/pull/480
+  @thet (#133)
+- Avoid accidental acquisition in ``block_types`` indexer. @davisagli (#137)
+
+
 4.2.0 (2023-12-13)
 ------------------
 

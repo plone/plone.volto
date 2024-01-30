@@ -11,6 +11,7 @@ from Products.SiteErrorLog.SiteErrorLog import _rate_restrict_pool
 from zope.component import getUtility
 
 import logging
+import os
 
 
 LOG = logging.getLogger("Zope.SiteErrorLog")
@@ -52,7 +53,9 @@ def construct_url(self, randomstring):
 
         registry = getUtility(IRegistry)
         settings = registry.forInterface(IVoltoSettings, prefix="volto", check=False)
-        settings_frontend_domain = getattr(settings, "frontend_domain", None)
+        settings_frontend_domain = os.environ.get("VOLTO_FRONTEND_DOMAIN") or getattr(
+            settings, "frontend_domain", None
+        )
         if settings_frontend_domain:
             frontend_domain = settings_frontend_domain
         if frontend_domain.endswith("/"):

@@ -8,6 +8,16 @@ Changelog
 
 .. towncrier release notes start
 
+4.3.0 (2024-01-30)
+------------------
+
+New features:
+
+
+- Add `VOLTO_FRONTEND_DOMAIN` as env var for `volto.frontend_domain` registry setting
+  [@sneridagh] (#139)
+
+
 4.2.1 (2024-01-26)
 ------------------
 

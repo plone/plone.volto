@@ -1,0 +1,1 @@
+Use Python 3.11 by default in Makefile and add option to change this version using the PYTHON_VERSION parameter in make command. @wesleybl

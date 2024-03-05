@@ -41,4 +41,11 @@
       provides=".kicker.IKicker"
       />
 
+  <plone:behavior
+      name="volto.head_title"
+      title="Head title field"
+      description="Adds Head title field"
+      provides=".kicker.IHeadTitle"
+      />
+
 </configure>

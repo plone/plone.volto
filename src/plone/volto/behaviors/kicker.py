@@ -17,3 +17,6 @@ class IKicker(model.Schema):
             default="The kicker is shown above the title in teasers.",
         ),
     )
+
+
+IHeadTitle = IKicker

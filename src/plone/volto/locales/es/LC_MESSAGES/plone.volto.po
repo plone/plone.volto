@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2023-08-07 18:19+0000\n"
+"POT-Creation-Date: 2024-03-04 15:08+0000\n"
 "PO-Revision-Date: 2021-11-21 16:58+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -20,8 +20,8 @@ msgstr ""
 "X-Generator: Poedit 2.3\n"
 
 #: plone/volto/behaviors/configure.zcml:42
-msgid "Adds Head title field"
-msgstr "Añade el campo de título de cabecera"
+msgid "Adds kicker field"
+msgstr ""
 
 #: plone/volto/profiles.zcml:16
 msgid "Configures the Plone backend to work with Volto, the new default frontend for Plone 6."
@@ -40,8 +40,8 @@ msgid "Creates a default page for the site using slate blocks"
 msgstr ""
 
 #: plone/volto/behaviors/configure.zcml:42
-msgid "Head title field"
-msgstr "Campo de título de cabecera"
+msgid "Kicker field"
+msgstr ""
 
 #: plone/volto/behaviors/configure.zcml:35
 #: plone/volto/behaviors/navtitle.py:12
@@ -123,10 +123,10 @@ msgstr ""
 msgid "heading_available_languages"
 msgstr ""
 
-#. Default: "The header title is shown above the title in teasers."
-#: plone/volto/behaviors/headtitle.py:15
-msgid "help_head_title"
-msgstr "El título del cabecera se muestra encima del título en los bloques teaser."
+#. Default: "The kicker is shown above the title in teasers."
+#: plone/volto/behaviors/kicker.py:15
+msgid "help_kicker"
+msgstr ""
 
 #. Default: "Insert an image that will be used in listing and teaser blocks."
 #: plone/volto/behaviors/preview.py:15
@@ -134,10 +134,10 @@ msgstr "El título del cabecera se muestra encima del título en los bloques tea
 msgid "help_previewimage"
 msgstr "Introduzca la imagen que se utilizará en los listados y otros bloques"
 
-#. Default: "Header title"
-#: plone/volto/behaviors/headtitle.py:13
-msgid "label_head_title"
-msgstr "Título de cabecera"
+#. Default: "Kicker"
+#: plone/volto/behaviors/kicker.py:13
+msgid "label_kicker"
+msgstr ""
 
 #. Default: "Preview image"
 #: plone/volto/behaviors/preview.py:14

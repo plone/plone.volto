@@ -19,4 +19,5 @@ class IKicker(model.Schema):
     )
 
 
-IHeadTitle = IKicker
+class IHeadTitle(IKicker):
+    """alias for backwards-compatibility"""

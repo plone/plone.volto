@@ -1,0 +1,1 @@
+profile "plone.volto:multilingual": Add language german. @ksuess

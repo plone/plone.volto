@@ -1,14 +1,14 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <registry>
   <record field="default_language"
-          interface="Products.CMFPlone.interfaces.controlpanel.ILanguageSchema"
+          interface="plone.i18n.interfaces.ILanguageSchema"
           name="plone.default_language"
   >
     <value>en</value>
   </record>
   <!-- Set language to it/en -->
   <record field="available_languages"
-          interface="Products.CMFPlone.interfaces.controlpanel.ILanguageSchema"
+          interface="plone.i18n.interfaces.ILanguageSchema"
           name="plone.available_languages"
   >
     <value>

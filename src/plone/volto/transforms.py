@@ -4,7 +4,7 @@ from plone.restapi.interfaces import IBlockFieldDeserializationTransformer
 from plone.restapi.interfaces import IBlockFieldSerializationTransformer
 from plone.restapi.interfaces import IBlockVisitor
 from plone.restapi.serializer.blocks import ResolveUIDSerializerBase
-from Products.CMFPlone.interfaces import IPloneSiteRoot
+from plone.volto.bbb import IPloneSiteRoot
 from zope.component import adapter
 from zope.component import subscribers
 from zope.interface import implementer

@@ -3,12 +3,12 @@ from plone import api
 from plone.app.testing import setRoles
 from plone.app.testing import TEST_USER_ID
 from plone.app.textfield.value import RichTextValue
+from plone.volto.bbb import get_installer
 from plone.volto.content import FolderishDocument
 from plone.volto.content import FolderishEvent
 from plone.volto.content import FolderishNewsItem
 from plone.volto.testing import PLONE_6
 from plone.volto.testing import PLONE_VOLTO_MIGRATION_FUNCTIONAL_TESTING
-from Products.CMFPlone.utils import get_installer
 
 import json
 import responses

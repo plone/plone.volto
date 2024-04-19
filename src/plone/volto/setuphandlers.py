@@ -2,12 +2,12 @@
 from importlib import import_module
 from plone import api
 from plone.dexterity.interfaces import IDexterityFTI
+from plone.volto.bbb import get_installer
 from plone.volto.default_homepage.default import default_home
 from plone.volto.default_homepage.demo import demo_home_page
 from plone.volto.default_homepage.lrf import default_lrf_home
 from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone.interfaces import INonInstallable
-from Products.CMFPlone.utils import get_installer
 from zope.component import queryUtility
 from zope.interface import implementer
 

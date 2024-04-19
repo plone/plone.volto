@@ -8,12 +8,12 @@ from plone.app.linkintegrity.utils import referencedRelationship
 from plone.app.redirector.interfaces import IRedirectionStorage
 from plone.app.textfield.value import RichTextValue
 from plone.dexterity.interfaces import IDexterityFTI
+from plone.volto.bbb import get_installer
 from plone.volto.browser.migrate_richtext import get_blocks_from_richtext
 from plone.volto.browser.migrate_richtext import migrate_richtext_to_blocks
 from Products.BTreeFolder2.BTreeFolder2 import BTreeFolder2Base
 from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone.relationhelper import restore_relations
-from Products.CMFPlone.utils import get_installer
 from Products.Five import BrowserView
 from uuid import uuid4
 from zope.component import getUtility

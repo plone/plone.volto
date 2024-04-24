@@ -8,11 +8,16 @@ from Products.CMFPlone import utils
 from Products.CMFPlone.browser.interfaces import INavigationTabs
 from Products.CMFPlone.browser.navigation import get_id
 from Products.CMFPlone.browser.navigation import get_view_url
-from Products.CMFPlone.interfaces import INavigationSchema
 from Products.Five import BrowserView
 from zope.component import getMultiAdapter
 from zope.component import getUtility
 from zope.interface import implementer
+
+
+try:
+    from plone.base.interfaces import INavigationSchema
+except ImportError:
+    from Products.CMFPlone.interfaces import INavigationSchema
 
 
 @implementer(INavigationTabs)

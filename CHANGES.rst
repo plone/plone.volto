@@ -8,6 +8,22 @@ Changelog
 
 .. towncrier release notes start
 
+4.4.0 (2024-04-25)
+------------------
+
+New features:
+
+
+- Import ILanguageSchema from plone.i18n.interfaces instead of Products.CMFPlone.interfaces.controlpanel. @ksuess
+  profile "plone.volto:multilingual": Add language german. @ksuess (#144)
+
+
+Bug fixes:
+
+
+- Avoid a deprecated import warnings in Plone 6. @davisagli (#147)
+
+
 4.3.0 (2024-01-30)
 ------------------
 

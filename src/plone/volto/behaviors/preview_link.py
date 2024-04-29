@@ -70,3 +70,5 @@ class PreviewImageScalesFieldAdapter:
                     for value in values:
                         value["base_path"] = base_path
                 return values
+
+        return []

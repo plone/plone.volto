@@ -6,6 +6,7 @@
 *.py?
 *.swp
 .*project
+.settings
 .Python
 # dirs
 bin/

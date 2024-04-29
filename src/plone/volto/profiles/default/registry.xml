@@ -1,11 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <registry>
-  <records interface="Products.CMFPlone.interfaces.controlpanel.INavigationSchema"
-           prefix="plone"
-  >
-    <value key="nonfolderish_tabs">False</value>
-  </records>
-
   <!-- This is for the elements in the root, not show the current item in navigation-->
   <record field="show_excluded_items"
           interface="Products.CMFPlone.interfaces.controlpanel.INavigationSchema"

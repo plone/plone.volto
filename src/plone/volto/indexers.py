@@ -24,13 +24,13 @@ def image_field_indexer(obj):
     base_obj = aq_base(obj)
 
     image_field = ""
-    if getattr(base_obj, "preview_image", False):
-        image_field = "preview_image"
-    elif (
+    if (
         getattr(base_obj, "preview_image_link", False)
         and not base_obj.preview_image_link.isBroken()
     ):
         image_field = "preview_image_link"
+    elif getattr(base_obj, "preview_image", False):
+        image_field = "preview_image"
     elif getattr(base_obj, "image", False):
         image_field = "image"
     return image_field

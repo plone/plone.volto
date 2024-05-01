@@ -56,16 +56,19 @@ class PreviewImageScalesFieldAdapter:
 
     def __call__(self):
         value = self.field.get(self.context)
-        linked_image = value.to_object
-        primary_field = IPrimaryFieldInfo(linked_image).field
-        serializer = queryMultiAdapter(
-            (primary_field, linked_image, self.request), IImageScalesFieldAdapter
-        )
-        if serializer is not None:
-            values = serializer()
-            if values:
-                portal_url = api.portal.get().absolute_url()
-                base_path = linked_image.absolute_url().replace(portal_url, "")
-                for value in values:
-                    value["base_path"] = base_path
-            return values
+        if value:
+            linked_image = value.to_object
+            primary_field = IPrimaryFieldInfo(linked_image).field
+            serializer = queryMultiAdapter(
+                (primary_field, linked_image, self.request), IImageScalesFieldAdapter
+            )
+            if serializer is not None:
+                values = serializer()
+                if values:
+                    portal_url = api.portal.get().absolute_url()
+                    base_path = linked_image.absolute_url().replace(portal_url, "")
+                    for value in values:
+                        value["base_path"] = base_path
+                return values
+
+        return []

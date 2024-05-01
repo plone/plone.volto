@@ -1,3 +1,3 @@
-Fix for parent summary serializer when the parent has a but it's empty.
+Fix for preview_image_link image_scales adapter when the field is empty.
 Swap condition for `image_field` indexer, `preview_image_link` first, then the default `preview_image`
 [sneridagh]

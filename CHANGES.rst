@@ -8,6 +8,18 @@ Changelog
 
 .. towncrier release notes start
 
+4.4.1 (2024-05-16)
+------------------
+
+Bug fixes:
+
+
+- Do not set the nonfolderish_tabs registry to False. @wesleybl (#145)
+- Fix for preview_image_link image_scales adapter when the field is empty.
+  Swap condition for `image_field` indexer, `preview_image_link` first, then the default `preview_image`
+  [sneridagh] (#148)
+
+
 4.4.0 (2024-04-25)
 ------------------
 

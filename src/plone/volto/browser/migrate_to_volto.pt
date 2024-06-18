@@ -1,52 +1,75 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
       xmlns:metal="http://xml.zope.org/namespaces/metal"
       xmlns:tal="http://xml.zope.org/namespaces/tal"
-      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      metal:use-macro="context/main_template/macros/master"
       i18n:domain="plone"
-      metal:use-macro="context/main_template/macros/master">
+>
 
-<div metal:fill-slot="main">
-<tal:main-macro metal:define-macro="main">
+  <div metal:fill-slot="main">
+    <tal:main-macro metal:define-macro="main">
 
-    <h1 class="documentFirstHeading" i18n:translate="">Migrate to Volto</h1>
+      <h1 class="documentFirstHeading"
+          i18n:translate=""
+      >Migrate to Volto</h1>
 
-    <p class="lead" i18n:translate="">Here you can prepare this site for Volto.</p>
+      <p class="lead"
+         i18n:translate=""
+      >Here you can prepare this site for Volto.</p>
 
-    <h3 i18n:translate="">What is Volto?</h3>
-    <p i18n:translate="">Volto is a React-based frontend for Plone. It is the default UI for Plone 6. Volto is a separate server-side application.</p>
+      <h3 i18n:translate="">What is Volto?</h3>
+      <p i18n:translate="">Volto is a React-based frontend for Plone. It is the default UI for Plone 6. Volto is a separate server-side application.</p>
 
-    <h3 i18n:translate="">What do you need for Volto?</h3>
-    <p i18n:translate="">Volto needs to run continuously alongside the current Plone backend service from which you access this wizard. The Volto 
+      <h3 i18n:translate="">What do you need for Volto?</h3>
+      <p i18n:translate="">Volto needs to run continuously alongside the current Plone backend service from which you access this wizard. The Volto 
                          server performs initial server-side rendering (SSR) of the React application for pages. It also delivers the JavaScript frontend
                          to your browser. Without a Volto frontend prepared for this website and the means to host it, continuing this migration makes no
-                         sense! Read the <a href="https://6.docs.plone.org/volto/index.html">Volto Frontend documentation</a> for more information.</p>
+                         sense! Read the
+        <a href="https://6.docs.plone.org/volto/index.html">Volto Frontend documentation</a>
+        for more information.</p>
 
-    <h3 i18n:translate="">What will happen?</h3>
-    <p i18n:translate="">When you click on "Migrate to Volto" at the end of the form, the following things will happen:</p>
-    <ol>
-        <li i18n:translate="">Install the package <code>plone.volto</code> and <code>plone.restapi</code>.</li>
+      <h3 i18n:translate="">What will happen?</h3>
+      <p i18n:translate="">When you click on "Migrate to Volto" at the end of the form, the following things will happen:</p>
+      <ol>
+        <li i18n:translate="">Install the package
+          <code>plone.volto</code>
+          and
+          <code>plone.restapi</code>.</li>
         <li i18n:translate="">The HTML of RichText fields (previously edited using TinyMCE) is converted into Volto blocks so you can edit it in Volto.</li>
         <li i18n:translate="">Pages, News Items, and Events are made folderish. That means they can contain other content, such as Images or Pages.</li>
         <li i18n:translate="">Default Pages of Folders are merged with the Folderish Pages that replace the Folder wherever that is possible.
-            This works well with Pages and Collections where the text and/or query are added to the folderish page that replaces the Folder.</li>
+          This works well with Pages and Collections where the text and/or query are added to the folderish page that replaces the Folder.</li>
         <li i18n:translate="">Collections are migrated to Pages with Listing Blocks configured like the Collection.</li>
-    </ol>
+      </ol>
 
-    <p i18n:translate="">A site migrated to Volto in this Plone backend will still be accessible through the Plone Classic User Interface but with
+      <p i18n:translate="">A site migrated to Volto in this Plone backend will still be accessible through the Plone Classic User Interface but with
                          limited functionality. The core content types will have all their GUI RichText fields replaced by the blocks behavior for
-                         the composition of the main content. So after migration you can only edit this content using the Volto UI.</p>
+        the composition of the main content. So after migration you can only edit this content using the Volto UI.</p>
 
-    <form id="migrate_to_volto" action="@@migrate_to_volto" tal:attributes="action request/URL" method="post" enctype="multipart/form-data">
+      <form id="migrate_to_volto"
+            action="@@migrate_to_volto"
+            enctype="multipart/form-data"
+            method="post"
+            tal:attributes="
+              action request/URL;
+            "
+      >
 
 
 
-        <h3 i18n:translate="" class="mt-5">Requirements for this migration wizard</h3>
+        <h3 class="mt-5"
+            i18n:translate=""
+        >Requirements for this migration wizard</h3>
         <ul>
-            <li i18n:translate="">
-            To migrate RichText to Volto Blocks you need to have <code>blocks-conversion-tool</code> running on an accessible URL.
-            The easiest way to have that running on your machine is: <code>docker run -it -p 5000:5000 plone/blocks-conversion-tool:latest</code>.
-            More for options read <a href="https://github.com/plone/blocks-conversion-tool">https://github.com/plone/blocks-conversion-tool</a>.
-            </li>
+          <li i18n:translate="">
+            To migrate RichText to Volto Blocks you need to have
+            <code>blocks-conversion-tool</code>
+             running on an accessible URL.
+            The easiest way to have that running on your machine is:
+            <code>docker run -it -p 5000:5000 plone/blocks-conversion-tool:latest</code>.
+            More for options read
+            <a href="https://github.com/plone/blocks-conversion-tool">https://github.com/plone/blocks-conversion-tool</a>.
+          </li>
         </ul>
 
         <h3 i18n:translate="">Advanced settings</h3>
@@ -55,78 +78,117 @@
         </p>
 
         <div class="form-check mb-3">
-            <input name="migrate_folders:boolean:default" type="hidden" value="" />
-            <input
-                class="form-check-input"
-                type="checkbox"
-                name="migrate_folders:boolean"
-                id="migrate_folders"
-                tal:attributes="checked python:view.migrate_folders"
-                />
-            <label class="form-check-label" for="migrate_folders">
+          <input name="migrate_folders:boolean:default"
+                 type="hidden"
+                 value=""
+          />
+          <input class="form-check-input"
+                 id="migrate_folders"
+                 name="migrate_folders:boolean"
+                 type="checkbox"
+                 tal:attributes="
+                   checked python:view.migrate_folders;
+                 "
+          />
+          <label class="form-check-label"
+                 for="migrate_folders"
+          >
             Migrate Folders to Folderish Pages
-            </label>
+          </label>
         </div>
 
         <div class="form-check mb-3 ms-4">
-            <input name="migrate_default_pages:boolean:default" type="hidden" value="" />
-            <input
-                class="form-check-input"
-                type="checkbox"
-                name="migrate_default_pages:boolean"
-                id="migrate_default_pages"
-                tal:attributes="checked python:view.migrate_default_pages"
-                />
-            <label class="form-check-label" for="migrate_default_pages">
+          <input name="migrate_default_pages:boolean:default"
+                 type="hidden"
+                 value=""
+          />
+          <input class="form-check-input"
+                 id="migrate_default_pages"
+                 name="migrate_default_pages:boolean"
+                 type="checkbox"
+                 tal:attributes="
+                   checked python:view.migrate_default_pages;
+                 "
+          />
+          <label class="form-check-label"
+                 for="migrate_default_pages"
+          >
             Migrate default Pages into the Folderish Pages if possible
-            </label>
-            <div class="form-text" i18n:translate="">
+          </label>
+          <div class="form-text"
+               i18n:translate=""
+          >
             Collections and Pages that are the default-page of a Folder will be applied on the migrated Folderish Page.
             For Collections that means adding a listing block with the same query.
             This only happens if you also you migrate Folders to Folderish Pages.
-            </div>
+          </div>
         </div>
 
         <div class="form-check mb-3">
-            <input name="purge_richtext:boolean:default" type="hidden" value="" />
-            <input
-                class="form-check-input"
-                type="checkbox"
-                name="purge_richtext:boolean"
-                id="purge_richtext"
-                tal:attributes="checked python:view.purge_richtext"
-                />
-            <label class="form-check-label" for="purge_richtext">
+          <input name="purge_richtext:boolean:default"
+                 type="hidden"
+                 value=""
+          />
+          <input class="form-check-input"
+                 id="purge_richtext"
+                 name="purge_richtext:boolean"
+                 type="checkbox"
+                 tal:attributes="
+                   checked python:view.purge_richtext;
+                 "
+          />
+          <label class="form-check-label"
+                 for="purge_richtext"
+          >
             Purge old Richtext-fields after migrating to Volto blocks
-            </label>
-            <div class="form-text" i18n:translate="">
+          </label>
+          <div class="form-text"
+               i18n:translate=""
+          >
             The RichtextValue objects will be removed from the migrated objects. The old fields (from the behavior plone.volto) are no longer available.
-            </div>
+          </div>
 
         </div>
 
         <div class="field mb-3">
-            <label for="service_url" class="form-label">
+          <label class="form-label"
+                 for="service_url"
+          >
             URL of blocks-conversion-tool.
-            </label>
-            <input class="form-control" type="text" name="service_url" id="service_url" value=""
-                    tal:attributes="value python:view.service_url">
-            <div class="form-text" i18n:translate="">
+          </label>
+          <input class="form-control"
+                 id="service_url"
+                 name="service_url"
+                 type="text"
+                 value=""
+                 tal:attributes="
+                   value python:view.service_url;
+                 "
+          />
+          <div class="form-text"
+               i18n:translate=""
+          >
             The migration requires a service to run. See https://github.com/plone/blocks-conversion-tool for details.
-            </div>
+          </div>
 
         </div>
 
         <div class="formControls form-group">
-            <input type="hidden" name="form.submitted" value="1"/>
-            <button class="btn btn-primary submit-widget button-field context"
-                    type="submit" name="submit" value="export">Migrate to Volto
-            </button>
+          <input name="form.submitted"
+                 type="hidden"
+                 value="1"
+          />
+          <button class="btn btn-primary submit-widget button-field context"
+                  name="submit"
+                  type="submit"
+                  value="export"
+          >Migrate to Volto
+          </button>
         </div>
 
-    </form>
+      </form>
 
-</tal:main-macro>
-</div>
+    </tal:main-macro>
+  </div>
 
 </html>

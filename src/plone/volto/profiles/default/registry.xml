@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <registry>
   <!-- This is for the elements in the root, not show the current item in navigation-->
   <record field="show_excluded_items"
@@ -11,7 +11,7 @@
   <records interface="plone.volto.interfaces.IVoltoSettings"
            prefix="volto"
   >
-  </records>
+</records>
 
   <record field="types_use_view_action_in_listings"
           interface="Products.CMFPlone.interfaces.controlpanel.ITypesSchema"

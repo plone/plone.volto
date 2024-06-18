@@ -5,6 +5,15 @@
 template = "default"
 commit-id = "a89af8f2"
 
+[github]
+jobs = [
+    "qa",
+    "test",
+    "coverage",
+    "release_ready",
+    "circular",
+    ]
+
 [pyproject]
 check_manifest_ignores = """
     "scripts/update_translations.sh",

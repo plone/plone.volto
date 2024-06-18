@@ -32,23 +32,25 @@
       zcml:condition="have plone-5"
       />
 
-  <browser:page
-      name="migrate_richtext"
-      for="zope.interface.Interface"
-      class=".migrate_richtext.MigrateRichTextToVoltoBlocks"
-      template="migrate_richtext.pt"
-      permission="cmf.ManagePortal"
-      zcml:condition="have plone-60"
-      />
+  <configure zcml:condition="installed requests">
+    <browser:page
+        name="migrate_richtext"
+        for="zope.interface.Interface"
+        class=".migrate_richtext.MigrateRichTextToVoltoBlocks"
+        template="migrate_richtext.pt"
+        permission="cmf.ManagePortal"
+        zcml:condition="have plone-60"
+        />
 
-  <browser:page
-      name="migrate_to_volto"
-      for="zope.interface.Interface"
-      class=".migrate_to_volto.MigrateToVolto"
-      template="migrate_to_volto.pt"
-      permission="cmf.ManagePortal"
-      zcml:condition="have plone-60"
-      />
+    <browser:page
+        name="migrate_to_volto"
+        for="zope.interface.Interface"
+        class=".migrate_to_volto.MigrateToVolto"
+        template="migrate_to_volto.pt"
+        permission="cmf.ManagePortal"
+        zcml:condition="have plone-60"
+        />
+  </configure>
 
   <browser:viewlet
       name="voltobackendwarning"

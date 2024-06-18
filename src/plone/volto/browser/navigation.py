@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 from Acquisition import aq_inner
 from Missing import Missing
 from plone.app.layout.navigation.root import getNavigationRoot

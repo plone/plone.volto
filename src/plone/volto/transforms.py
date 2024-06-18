@@ -28,7 +28,7 @@ class NestedBlocksVisitor:
             yield from nested_blocks
 
 
-class NestedResolveUIDDeserializerBase(object):
+class NestedResolveUIDDeserializerBase:
     """The "url" smart block field for nested blocks
 
     [Deprecated -- replaced by NestedBlocksVisitor above,
@@ -72,7 +72,7 @@ class NestedResolveUIDDeserializerBase(object):
         return block
 
 
-class NestedResolveUIDSerializerBase(object):
+class NestedResolveUIDSerializerBase:
     """
     [Deprecated -- replaced by NestedBlocksVisitor above,
     but the base class is still here in case someone extended it.]

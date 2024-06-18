@@ -37,7 +37,7 @@ class DuplicatedBlocksUUIDFixer(BrowserView):
 
             output.append("\n")
             output.append(
-                "New blocks for {}\n  {}\n".format(obj.absolute_url(), new_blocks)
+                f"New blocks for {obj.absolute_url()}\n  {new_blocks}\n"
             )
             output.append(
                 "New layout for {}\n  {}\n".format(

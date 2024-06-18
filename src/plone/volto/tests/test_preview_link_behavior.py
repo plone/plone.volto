@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 from plone.dexterity.schema import invalidate_cache
 from plone.namedfile.file import NamedBlobImage
 from plone.restapi.interfaces import ISerializeToJsonSummary

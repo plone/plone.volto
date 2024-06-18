@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 from plone.dexterity.interfaces import IDexterityFTI
 from plone.volto.scripts.listingaddsummary import migrate_listing_block_to_summary
 from plone.volto.scripts.searchscalesinimageblocks import remove_image_scales

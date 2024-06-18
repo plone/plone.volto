@@ -35,7 +35,7 @@ class MigrateRichTextToVoltoBlocks(BrowserView):
             slate=self.slate,
         )
         api.portal.show_message(
-            "Migrated {} items from richtext to blocks".format(results),
+            f"Migrated {results} items from richtext to blocks",
             request=self.request,
         )
         return self.index()

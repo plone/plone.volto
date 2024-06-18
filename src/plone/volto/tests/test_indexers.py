@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 from plone.volto.testing import PLONE_VOLTO_CORE_INTEGRATION_TESTING
 from unittest import TestCase
 

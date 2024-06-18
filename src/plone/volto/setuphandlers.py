@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 from importlib import import_module
 from plone import api
 from plone.dexterity.interfaces import IDexterityFTI
@@ -39,7 +38,7 @@ NO_RICHTEXT_BEHAVIOR_CONTENT_TYPES = [
 
 
 @implementer(INonInstallable)
-class HiddenProfiles(object):
+class HiddenProfiles:
     def getNonInstallableProfiles(self):
         """Hide uninstall profile from site-creation and quickinstaller"""
         return [
@@ -259,7 +258,7 @@ def create_default_homepage(context, default_home=default_lrf_home, block_type=N
                 or getattr(portal[lang], "blocks_layout", {}).get("items") == []
             ):
                 logger.info(
-                    "Creating default homepage for {} - PAM enabled".format(lang)
+                    f"Creating default homepage for {lang} - PAM enabled"
                 )
                 portal[lang].blocks = home_data["blocks"]
                 portal[lang].blocks_layout = home_data["blocks_layout"]

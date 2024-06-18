@@ -20,14 +20,14 @@ def save_csv(data, filename):
 
 def print_error(error_string):  # RED
     # removed error string
-    print("\033[31m{}\033[0m".format(error_string))
+    print(f"\033[31m{error_string}\033[0m")
 
 
 def print_info(info_string):  # YELLOW
-    print("\033[33m{}\033[0m".format(info_string))
-    logger.info("{}".format(info_string))
+    print(f"\033[33m{info_string}\033[0m")
+    logger.info(f"{info_string}")
 
 
 def print_ok(info_string):  # GREEN
-    print("\033[32m{}\033[0m".format(info_string))
-    logger.info("{}".format(info_string))
+    print(f"\033[32m{info_string}\033[0m")
+    logger.info(f"{info_string}")

@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 from plone.dexterity.interfaces import IDexterityFTI
 from plone.dexterity.utils import iterSchemata
 from plone.restapi.interfaces import IDeserializeFromJson
@@ -71,11 +69,11 @@ class TestBlocksTransforms(unittest.TestCase):
 
         self.assertEqual(
             self.portal.doc1.blocks["123"]["columns"][0]["href"],
-            "../resolveuid/{}".format(doc_uid),
+            f"../resolveuid/{doc_uid}",
         )
         self.assertEqual(
             self.portal.doc1.blocks["123"]["columns"][0]["preview_image"],
-            "../resolveuid/{}".format(image_uid),
+            f"../resolveuid/{image_uid}",
         )
 
     def test_deserialize_nested_fields_arrayed_resolveuid(self):
@@ -91,7 +89,7 @@ class TestBlocksTransforms(unittest.TestCase):
 
         self.assertEqual(
             self.portal.doc1.blocks["123"]["columns"][0]["href"][0],
-            "../resolveuid/{}".format(doc_uid),
+            f"../resolveuid/{doc_uid}",
         )
 
     def test_deserialize_nested_fields_arrayed_object_browser_resolveuid(self):
@@ -107,7 +105,7 @@ class TestBlocksTransforms(unittest.TestCase):
 
         self.assertEqual(
             self.portal.doc1.blocks["123"]["columns"][0]["href"][0]["@id"],
-            "../resolveuid/{}".format(doc_uid),
+            f"../resolveuid/{doc_uid}",
         )
 
     def test_serialize_nested_fields_resolveuid(self):
@@ -120,8 +118,8 @@ class TestBlocksTransforms(unittest.TestCase):
                     "@type": "teaserGrid",
                     "columns": [
                         {
-                            "href": "../resolveuid/{}".format(doc_uid),
-                            "preview_image": "../resolveuid/{}".format(image_uid),
+                            "href": f"../resolveuid/{doc_uid}",
+                            "preview_image": f"../resolveuid/{image_uid}",
                         }
                     ],
                 }
@@ -142,7 +140,7 @@ class TestBlocksTransforms(unittest.TestCase):
             blocks={
                 "123": {
                     "@type": "teaserGrid",
-                    "columns": [{"href": ["../resolveuid/{}".format(doc_uid)]}],
+                    "columns": [{"href": [f"../resolveuid/{doc_uid}"]}],
                 }
             },
         )
@@ -159,7 +157,7 @@ class TestBlocksTransforms(unittest.TestCase):
                 "123": {
                     "@type": "teaserGrid",
                     "columns": [
-                        {"href": [{"@id": "../resolveuid/{}".format(doc_uid)}]}
+                        {"href": [{"@id": f"../resolveuid/{doc_uid}"}]}
                     ],
                 }
             },

@@ -33,7 +33,7 @@ def _do_copy_to_zlog(self, now, strtype, entry_id, url, tb_text):
         next_when += _rate_restrict_period
         _rate_restrict_pool[strtype] = next_when
 
-        LOG.error("%s: %s\n%s" % (strtype, url, tb_text.rstrip()))
+        LOG.error("{}: {}\n{}".format(strtype, url, tb_text.rstrip()))
 
 
 def construct_url(self, randomstring):
@@ -60,4 +60,4 @@ def construct_url(self, randomstring):
             frontend_domain = settings_frontend_domain
         if frontend_domain.endswith("/"):
             frontend_domain = frontend_domain[:-1]
-    return "%s/passwordreset/%s" % (frontend_domain, randomstring)
+    return "{}/passwordreset/{}".format(frontend_domain, randomstring)

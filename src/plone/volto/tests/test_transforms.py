@@ -156,9 +156,7 @@ class TestBlocksTransforms(unittest.TestCase):
             blocks={
                 "123": {
                     "@type": "teaserGrid",
-                    "columns": [
-                        {"href": [{"@id": f"../resolveuid/{doc_uid}"}]}
-                    ],
+                    "columns": [{"href": [{"@id": f"../resolveuid/{doc_uid}"}]}],
                 }
             },
         )

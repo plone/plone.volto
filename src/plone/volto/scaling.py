@@ -38,9 +38,8 @@ class VoltoImageScalingFactory:
         height=None,
         width=None,
         scale=None,
-        **parameters
+        **parameters,
     ):
-
         """Factory for image scales`."""
         orig_value = getattr(self.context, fieldname, None)
         if orig_value is None:
@@ -78,7 +77,7 @@ class VoltoImageScalingFactory:
                     direction=direction,
                     height=height,
                     width=width,
-                    **parameters
+                    **parameters,
                 )
             except (ConflictError, KeyboardInterrupt):
                 raise

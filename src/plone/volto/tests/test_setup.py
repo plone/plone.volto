@@ -1,4 +1,5 @@
 """Setup tests for this package."""
+
 from importlib import import_module
 from plone import api
 from plone.volto.bbb import get_installer

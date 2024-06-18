@@ -257,9 +257,7 @@ def create_default_homepage(context, default_home=default_lrf_home, block_type=N
                 getattr(portal[lang], "blocks_layout", {}).get("items") is None
                 or getattr(portal[lang], "blocks_layout", {}).get("items") == []
             ):
-                logger.info(
-                    f"Creating default homepage for {lang} - PAM enabled"
-                )
+                logger.info(f"Creating default homepage for {lang} - PAM enabled")
                 portal[lang].blocks = home_data["blocks"]
                 portal[lang].blocks_layout = home_data["blocks_layout"]
 

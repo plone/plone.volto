@@ -65,6 +65,10 @@ setup(
     extras_require={
         "test": [
             "plone.app.testing",
+            "plone.restapi[test]",
+            # plone.app.iterate is temporary until plone.restapi[test]
+            # contains it in all versions we care about.
+            "plone.app.iterate",
             "plone.testing",
             "plone.app.contenttypes",
             "plone.app.robotframework[debug]",

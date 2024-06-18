@@ -302,7 +302,7 @@ New features:
 - Use slate as default text block in default contents for ``default-homepage`` and
   ``multilingual`` profile.
   [sneridagh] (#77)
-  
+
 
 4.0.0a7 (2022-07-22)
 --------------------
@@ -578,7 +578,7 @@ Breaking Change:
 2.4.0 (2021-07-19)
 ------------------
 
-- Fix German translation for "Navigation title" ("Navigation titel" -> "Navigationstitel")
+- Fix German translation for "Navigation title".
   [timo]
 
 - Fix and complete upgrade step from Volto 12 to Volto 13

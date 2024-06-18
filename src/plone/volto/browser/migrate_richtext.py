@@ -127,7 +127,7 @@ def migrate_richtext_to_blocks(
             logger.debug(f"Migrated richtext to blocks for: {obj.absolute_url()}")
 
             if not index % 1000:
-                logger.info(f"Commiting after {index} items...")
+                logger.info(f"Committing after {index} items...")
                 transaction.commit()
         msg = f"Migrated {index} {portal_type} to blocks"
         logger.info(msg)

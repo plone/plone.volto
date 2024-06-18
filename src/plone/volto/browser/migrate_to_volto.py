@@ -299,7 +299,7 @@ def make_document(obj, service_url="http://localhost:5000/html", slate=True):
         blocks_layout["items"].insert(1, uuid)
 
     fti = getUtility(IDexterityFTI, name=obj.portal_type)
-    # When volto.blocks is there was alrady done by migrate_richtext
+    # When volto.blocks is there was already done by migrate_richtext
     # This happens with Collections
     if "volto.blocks" not in fti.behaviors:
         text = getattr(obj.aq_base, "text", None)

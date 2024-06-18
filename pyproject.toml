@@ -139,6 +139,7 @@ ignore = [
     "dependabot.yml",
     "mx.ini",
     "tox.ini",
+    "scripts/update_translations.sh",
 
 ]
 

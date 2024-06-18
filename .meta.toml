@@ -4,3 +4,8 @@
 [meta]
 template = "default"
 commit-id = "a89af8f2"
+
+[pyproject]
+check_manifest_ignores = """
+    "scripts/update_translations.sh",
+"""

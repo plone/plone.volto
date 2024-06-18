@@ -71,7 +71,6 @@ setup(
             "plone.app.iterate",
             "plone.testing",
             "plone.app.contenttypes",
-            "plone.app.robotframework[debug]",
             "collective.MockMailHost",
             "responses",
         ]

@@ -46,6 +46,7 @@ local.cfg
 /venv/
 .installed.txt
 
+scripts.log
 
 ##
 # Add extra configuration options in .meta.toml:

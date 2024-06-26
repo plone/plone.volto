@@ -15,21 +15,23 @@
 
   <include package=".behaviors" />
   <include package=".browser" />
+  <include package=".indexers" />
 
   <include file="profiles.zcml" />
   <include file="patches.zcml" />
   <include file="upgrades.zcml" />
+  <include file="distributions.zcml" />
 
   <browser:page
       name="blocksuuidfixer"
-      for=".bbb.IPloneSiteRoot"
+      for="plone.base.interfaces.IPloneSiteRoot"
       class=".blocksuuidfixer.DuplicatedBlocksUUIDFixer"
       permission="cmf.ManagePortal"
       />
 
   <browser:page
       name="volto_settings"
-      for=".bbb.IPloneSiteRoot"
+      for="plone.base.interfaces.IPloneSiteRoot"
       class=".controlpanel.VoltoSettingsControlPanel"
       permission="cmf.ManagePortal"
       />
@@ -37,25 +39,6 @@
   <adapter
       factory=".controlpanel.VoltoControlpanel"
       name="volto-settings"
-      />
-
-  <adapter
-      factory=".scaling.VoltoImageScalingFactory"
-      for="plone.app.contenttypes.interfaces.IImage"
-      zcml:condition="not-have plone-60"
-      />
-
-  <adapter
-      factory=".indexers.hasPreviewImage"
-      name="hasPreviewImage"
-      />
-  <adapter
-      factory=".indexers.image_field_indexer"
-      name="image_field"
-      />
-  <adapter
-      factory=".indexers.block_types_indexer"
-      name="block_types"
       />
 
   <utility

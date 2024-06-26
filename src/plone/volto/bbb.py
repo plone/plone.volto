@@ -4,17 +4,6 @@ from types import ModuleType
 import sys
 
 
-try:
-    from plone.base.interfaces import IPloneSiteRoot
-except ImportError:
-    from Products.CMFPlone.interfaces import IPloneSiteRoot
-
-try:
-    from plone.base.utils import get_installer
-except ImportError:
-    from Products.CMFPlone.utils import get_installer
-
-
 # This was copied from plone.app.upgrade
 # to avoid a hard dependency on it.
 def alias_module(name, target):

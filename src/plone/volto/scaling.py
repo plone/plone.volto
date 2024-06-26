@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 from Acquisition import aq_base
 from plone.namedfile.file import FILECHUNK_CLASSES
 from plone.scale.interfaces import IImageScaleFactory
@@ -16,7 +15,7 @@ _marker = object()
 
 
 @implementer(IImageScaleFactory)
-class VoltoImageScalingFactory(object):
+class VoltoImageScalingFactory:
     def __init__(self, context):
         self.context = context
 
@@ -39,9 +38,8 @@ class VoltoImageScalingFactory(object):
         height=None,
         width=None,
         scale=None,
-        **parameters
+        **parameters,
     ):
-
         """Factory for image scales`."""
         orig_value = getattr(self.context, fieldname, None)
         if orig_value is None:
@@ -79,13 +77,13 @@ class VoltoImageScalingFactory(object):
                     direction=direction,
                     height=height,
                     width=width,
-                    **parameters
+                    **parameters,
                 )
             except (ConflictError, KeyboardInterrupt):
                 raise
             except Exception:
                 logger.exception(
-                    'Could not scale "{0!r}" of {1!r}'.format(
+                    'Could not scale "{!r}" of {!r}'.format(
                         orig_value, self.context.absolute_url()
                     )
                 )
@@ -96,7 +94,7 @@ class VoltoImageScalingFactory(object):
             result = orig_data.read(), "svg+xml", (width, height)
 
         data, format_, dimensions = result
-        mimetype = "image/{0}".format(format_.lower())
+        mimetype = f"image/{format_.lower()}"
         value = orig_value.__class__(
             data, contentType=mimetype, filename=orig_value.filename
         )

@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 from plone.app.linkintegrity.interfaces import IRetriever
 from plone.uuid.interfaces import IUUID
 from plone.volto.testing import PLONE_VOLTO_CORE_INTEGRATION_TESTING

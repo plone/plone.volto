@@ -95,11 +95,11 @@ i18n: bin/i18ndude ## update translations
 lint: lint-isort lint-black lint-flake8 lint-zpretty ## check code style
 
 .PHONY: lint-black
-lint-black: ## validate black formating
+lint-black: ## validate black formatting
 	$(LINT) black "$(CHECK_PATH)"
 
 .PHONY: lint-flake8
-lint-flake8: ## validate black formating
+lint-flake8: ## validate black formatting
 	$(LINT) flake8 "$(CHECK_PATH)"
 
 .PHONY: lint-isort

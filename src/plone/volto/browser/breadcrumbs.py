@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 from Acquisition import aq_base
 from Acquisition import aq_inner
 from plone.app.layout.navigation.interfaces import INavigationRoot
@@ -36,7 +35,7 @@ class PhysicalNavigationBreadcrumbs(BrowserView):
         if container is None:
             return (last_crumb,)
 
-        # Replicate Products.CMFPlone.browser.navigaton.RootPhysicalNavigationBreadcrumbs.breadcrumbs()
+        # Replicate Products.CMFPlone.browser.navigation.RootPhysicalNavigationBreadcrumbs.breadcrumbs()
         # cause it is not registered during tests
         if INavigationRoot.providedBy(context):
             return ()

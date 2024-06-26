@@ -191,7 +191,7 @@ Preview image behavior
 ----------------------
 
 The preview image behavior makes content types provide a ``preview_image`` field that can store a preview image that Volto views can pick up.
-This is especially userful for listings (e.g. listing block customizations) and teaser elements (e.g. teaser blocks such as [volto-blocks-grid](https://github.com/kitconcept/volto-blocks-grid)).
+This is especially useful for listings (e.g. listing block customizations) and teaser elements (e.g. teaser blocks such as [volto-blocks-grid](https://github.com/kitconcept/volto-blocks-grid)).
 
 The ``volto.preview_image`` behavior can be enabled in the generic setup XML definition of a content type (e.g. ``/profiles/default/types/MyContentType.xml``)::
 
@@ -237,7 +237,7 @@ The "volto.navtitle behavior can be enabled in the generic setup XML definition 
 Head title behavior
 -------------------
 
-The headtitle makes content types provide a headtitle field that can be used by Volto in teasers and alikes.
+The headtitle makes content types provide a headtitle field that can be used by Volto in teasers and the likes.
 
 The "volto.head_title" behavior can be enabled in the generic setup XML definition of a content type (e.g. "/profiles/default/types/MyContentType.xml")::
 

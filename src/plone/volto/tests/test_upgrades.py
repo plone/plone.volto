@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 from plone.dexterity.interfaces import IDexterityFTI
 from plone.dexterity.utils import iterSchemata
 from plone.restapi.interfaces import IDeserializeFromJson

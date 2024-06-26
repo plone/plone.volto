@@ -8,6 +8,20 @@ Changelog
 
 .. towncrier release notes start
 
+4.4.2 (2024-06-26)
+------------------
+
+Bug fixes:
+
+
+- Remove runtime dependency on plone.app.upgrade. @davisagli (#142)
+- Do not fail on startup when the ``requests`` library is missing.
+  Conditionally load the views to migrate to Volto: only when the ``requests`` library is available.
+  We don't want to make this a hard dependency.
+  If you need the migration views, you should include the ``requests`` package yourself.
+  [maurits] (#152)
+
+
 4.4.1 (2024-05-16)
 ------------------
 

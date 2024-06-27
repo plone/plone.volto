@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 from plone.autoform.interfaces import IFormFieldProvider
 from plone.namedfile import field as namedfile
 from plone.supermodel import model

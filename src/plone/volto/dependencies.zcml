@@ -16,6 +16,7 @@
       package="plone.restapi"
       file="meta.zcml"
       />
+  <include package="plone.distribution" />
   <include package="plone.restapi" />
   <include package="plone.api" />
 

@@ -1,0 +1,22 @@
+# Generated from:
+# https://github.com/plone/meta/tree/main/config/default
+# See the inline comments on how to expand/tweak this configuration file
+[meta]
+template = "default"
+commit-id = "721299ce"
+
+[gitignore]
+extra_lines = """
+.venv
+"""
+
+[pyproject]
+codespell_skip = "*.min.js,*lock.yaml"
+codespell_ignores = "vew"
+dependencies_ignores = "['plone.app.iterate', 'plone.app.upgrade', 'plone.volto', 'zestreleaser.towncrier', 'zest.releaser', 'pytest', 'pytest-cov', 'pytest-plone', 'plone.testing', 'plone.app.testing']"
+
+[tox]
+test_runner = "pytest"
+test_path = "/tests"
+use_mxdev = true
+test_deps_additional = ""

@@ -35,10 +35,17 @@
       />
 
   <plone:behavior
+      name="volto.kicker"
+      title="Kicker field"
+      description="Adds kicker field"
+      provides=".kicker.IKicker"
+      />
+
+  <plone:behavior
       name="volto.head_title"
       title="Head title field"
       description="Adds Head title field"
-      provides=".headtitle.IHeadTitle"
+      provides=".kicker.IHeadTitle"
       />
 
 </configure>

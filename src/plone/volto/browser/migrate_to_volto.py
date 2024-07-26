@@ -271,7 +271,7 @@ def generate_listing_block_from_collection(obj, move_relative_path=False):
         "summary_view": "summary",
         "album_view": "imageGallery",
     }
-    variation = variation_mapping.get(obj.getLayout, "default")
+    variation = variation_mapping.get(obj.getLayout(), "default")
     block = {
         "@type": "listing",
         "querystring": qs,

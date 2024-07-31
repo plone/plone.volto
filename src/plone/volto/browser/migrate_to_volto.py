@@ -7,8 +7,8 @@ from plone.app.contenttypes.utils import get_portal_type_name_string
 from plone.app.linkintegrity.utils import referencedRelationship
 from plone.app.redirector.interfaces import IRedirectionStorage
 from plone.app.textfield.value import RichTextValue
+from plone.base.utils import get_installer
 from plone.dexterity.interfaces import IDexterityFTI
-from plone.volto.bbb import get_installer
 from plone.volto.browser.migrate_richtext import get_blocks_from_richtext
 from plone.volto.browser.migrate_richtext import migrate_richtext_to_blocks
 from Products.BTreeFolder2.BTreeFolder2 import BTreeFolder2Base
@@ -299,7 +299,7 @@ def make_document(obj, service_url="http://localhost:5000/html", slate=True):
         blocks_layout["items"].insert(1, uuid)
 
     fti = getUtility(IDexterityFTI, name=obj.portal_type)
-    # When volto.blocks is there was alrady done by migrate_richtext
+    # When volto.blocks is there was already done by migrate_richtext
     # This happens with Collections
     if "volto.blocks" not in fti.behaviors:
         text = getattr(obj.aq_base, "text", None)

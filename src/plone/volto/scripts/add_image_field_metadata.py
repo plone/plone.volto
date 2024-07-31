@@ -1,6 +1,7 @@
 """
 bin/instance -O Plone run scripts/add_image_field_metadata.py
 """
+
 from plone import api
 from plone.app.contenttypes.behaviors.leadimage import ILeadImage
 from plone.volto.behaviors.preview import IPreview

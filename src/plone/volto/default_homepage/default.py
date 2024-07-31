@@ -60,7 +60,7 @@ default_home = {
                             ],
                             "inlineStyleRanges": [],
                             "key": "behki",
-                            "text": "Plone is a CMS built on Python with over 19 years of experience. Plone has very interesting features that appeal to developers and users alike, such as customizable content types, hierarchical URL object traversing and a sophisticated content workflow powered by a granular permissions model. This allows you to build anything from simple websites to enterprise-grade intranets. Volto exposes all these features and communicates with Plone via its mature REST API. Volto can be esily themed and is highly customizable.",
+                            "text": "Plone is a CMS built on Python with over 19 years of experience. Plone has very interesting features that appeal to developers and users alike, such as customizable content types, hierarchical URL object traversing and a sophisticated content workflow powered by a granular permissions model. This allows you to build anything from simple websites to enterprise-grade intranets. Volto exposes all these features and communicates with Plone via its mature REST API. Volto can be easily themed and is highly customizable.",
                             "type": "unstyled",
                         }
                     ],
@@ -585,7 +585,7 @@ default_home = {
             },
             "b4193840-3c95-4b28-a088-f679c11e2dcb": {
                 "@type": "slate",
-                "plaintext": " Volto is the frontent for Plone written in React. It exposes all these features and communicates with Plone via its mature REST API . Volto can be easily themed and is highly customizable.",
+                "plaintext": " Volto is the frontend for Plone written in React. It exposes all these features and communicates with Plone via its mature REST API . Volto can be easily themed and is highly customizable.",
                 "value": [
                     {
                         "children": [
@@ -598,7 +598,7 @@ default_home = {
                                 "type": "link",
                             },
                             {
-                                "text": " is the frontent for Plone written in React. It exposes all these features and communicates with Plone via its mature "
+                                "text": " is the frontend for Plone written in React. It exposes all these features and communicates with Plone via its mature "
                             },
                             {
                                 "children": [{"text": "REST API"}],

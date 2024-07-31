@@ -1,25 +1,29 @@
-<tal:statusmsg tal:define="icons nocall: context/@@iconresolver"
-               i18n:domain="plone">
+<tal:statusmsg tal:define="
+                 icons nocall: context/@@iconresolver;
+               "
+               i18n:domain="plone.volto"
+>
 
-    <div class="portalMessage statusmessage statusmessage-warning alert alert-warning"
-         role="alert">
-        <tal:icon tal:replace="structure python:icons.tag('plone-statusmessage-warning', tag_alt='warning', tag_class='statusmessage-icon mb-1 me-2')" />
-        <strong i18n:translate="">Warning</strong>:
-        <span class="content">
-            <tal:warning i18n:translate="volto_backend_warning">You have accessed the Plone backend through its Classic UI frontend.</tal:warning>
-            <br />
-            <br />
-            <tal:warning i18n:translate="volto_backend_warning_link">If you want to use Plone's new frontend Volto instead:
-              <ul>
-                <li>Install Volto, if not already installed.</li>
-                <li>Start Volto, if not already started.</li>
-                <li>Visit the Volto frontend.</li>
-              </ul>
+  <div class="portalMessage statusmessage statusmessage-warning alert alert-warning"
+       role="alert"
+  >
+    <tal:icon tal:replace="structure python:icons.tag('plone-statusmessage-warning', tag_alt='warning', tag_class='statusmessage-icon mb-1 me-2')" />
+    <strong i18n:translate="">Warning</strong>:
+    <span class="content">
+      <tal:warning i18n:translate="volto_backend_warning">You have accessed the Plone backend through its Classic UI frontend.</tal:warning>
+      <br />
+      <br />
+      <tal:warning i18n:translate="volto_backend_warning_link">If you want to use Plone's new frontend Volto instead:
+        <ul>
+          <li>Install Volto, if not already installed.</li>
+          <li>Start Volto, if not already started.</li>
+          <li>Visit the Volto frontend.</li>
+        </ul>
               For more information, please read the documentation for how to
-              <a href="https://6.docs.plone.org/install/install-from-packages.html">Install Plone from its packages</a>
+        <a href="https://6.docs.plone.org/install/install-from-packages.html">Install Plone from its packages</a>
               and refer to the full Volto documentation
-              <a href="https://6.docs.plone.org/volto/index.html">Frontend</a>.</tal:warning>
-        </span>
-    </div>
+        <a href="https://6.docs.plone.org/volto/index.html">Frontend</a>.</tal:warning>
+    </span>
+  </div>
 
 </tal:statusmsg>

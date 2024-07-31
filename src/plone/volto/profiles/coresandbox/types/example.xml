@@ -1,8 +1,8 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="utf-8"?>
 <object xmlns:i18n="http://xml.zope.org/namespaces/i18n"
         meta_type="Dexterity FTI"
         name="example"
-        i18n:domain="plone"
+        i18n:domain="plone.volto"
 >
   <property name="title"
             i18n:translate=""

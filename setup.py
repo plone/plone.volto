@@ -57,6 +57,7 @@ setup(
             "plone.app.robotframework",
             "plone.app.testing",
             "plone.app.upgrade",
+            "plone.restapi[test]",
             "plone.testing",
             "Products.CMFPlacefulWorkflow",
             "pytest-plone>=0.5.0",

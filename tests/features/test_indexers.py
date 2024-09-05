@@ -10,6 +10,9 @@ def contents(portal) -> dict:
             "Manager",
         ]
     ):
+        portal.blocks = {}
+        portal.blocks_layout = {"items": []}
+        portal.reindexObject()
         doc = api.content.create(
             container=portal,
             type="Document",

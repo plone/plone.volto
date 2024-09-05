@@ -2,14 +2,14 @@ from plone import api
 from plone.dexterity.utils import iterSchemata
 from plone.restapi.interfaces import IDeserializeFromJson
 from plone.restapi.interfaces import IFieldSerializer
-from plone.volto.testing import ACCEPTANCE_TESTING
-from plone.volto.testing import CORESANDBOX_ACCEPTANCE_TESTING
-from plone.volto.testing import CORESANDBOX_FUNCTIONAL_TESTING
-from plone.volto.testing import CORESANDBOX_INTEGRATION_TESTING
-from plone.volto.testing import FUNCTIONAL_TESTING
-from plone.volto.testing import INTEGRATION_TESTING
-from plone.volto.testing import MIGRATION_FUNCTIONAL_TESTING
-from plone.volto.testing import MIGRATION_INTEGRATION_TESTING
+from plone.volto.testing import PLONE_VOLTO_CORE_ACCEPTANCE_TESTING
+from plone.volto.testing import PLONE_VOLTO_CORE_FUNCTIONAL_TESTING
+from plone.volto.testing import PLONE_VOLTO_CORE_INTEGRATION_TESTING
+from plone.volto.testing import PLONE_VOLTO_CORESANDBOX_ACCEPTANCE_TESTING
+from plone.volto.testing import PLONE_VOLTO_CORESANDBOX_FUNCTIONAL_TESTING
+from plone.volto.testing import PLONE_VOLTO_CORESANDBOX_INTEGRATION_TESTING
+from plone.volto.testing import PLONE_VOLTO_MIGRATION_FUNCTIONAL_TESTING
+from plone.volto.testing import PLONE_VOLTO_MIGRATION_INTEGRATION_TESTING
 from pytest_plone import fixtures_factory
 from z3c.form.interfaces import IDataManager
 from zope.component import getMultiAdapter
@@ -24,14 +24,14 @@ pytest_plugins = ["pytest_plone"]
 globals().update(
     fixtures_factory(
         (
-            (ACCEPTANCE_TESTING, "acceptance"),
-            (FUNCTIONAL_TESTING, "functional"),
-            (INTEGRATION_TESTING, "integration"),
-            (CORESANDBOX_ACCEPTANCE_TESTING, "coresandbox_acceptance"),
-            (CORESANDBOX_FUNCTIONAL_TESTING, "coresandbox_functional"),
-            (CORESANDBOX_INTEGRATION_TESTING, "coresandbox_integration"),
-            (MIGRATION_FUNCTIONAL_TESTING, "migration_functional"),
-            (MIGRATION_INTEGRATION_TESTING, "migration_integration"),
+            (PLONE_VOLTO_CORE_ACCEPTANCE_TESTING, "acceptance"),
+            (PLONE_VOLTO_CORE_FUNCTIONAL_TESTING, "functional"),
+            (PLONE_VOLTO_CORE_INTEGRATION_TESTING, "integration"),
+            (PLONE_VOLTO_CORESANDBOX_ACCEPTANCE_TESTING, "coresandbox_acceptance"),
+            (PLONE_VOLTO_CORESANDBOX_FUNCTIONAL_TESTING, "coresandbox_functional"),
+            (PLONE_VOLTO_CORESANDBOX_INTEGRATION_TESTING, "coresandbox_integration"),
+            (PLONE_VOLTO_MIGRATION_FUNCTIONAL_TESTING, "migration_functional"),
+            (PLONE_VOLTO_MIGRATION_INTEGRATION_TESTING, "migration_integration"),
         )
     )
 )

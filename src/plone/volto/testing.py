@@ -53,22 +53,22 @@ class PloneVoltoCoreLayer(PloneSandboxLayer):
     defaultBases = (BASE_FIXTURE,)
 
 
-CORE_FIXTURE = PloneVoltoCoreLayer()
+PLONE_VOLTO_CORE_FIXTURE = PloneVoltoCoreLayer()
 
 
-INTEGRATION_TESTING = IntegrationTesting(
-    bases=(CORE_FIXTURE,), name="PloneVoltoCoreLayer:IntegrationTesting"
+PLONE_VOLTO_CORE_INTEGRATION_TESTING = IntegrationTesting(
+    bases=(PLONE_VOLTO_CORE_FIXTURE,), name="PloneVoltoCoreLayer:IntegrationTesting"
 )
 
 
-FUNCTIONAL_TESTING = FunctionalTesting(
-    bases=(CORE_FIXTURE, z2.ZSERVER_FIXTURE),
+PLONE_VOLTO_CORE_FUNCTIONAL_TESTING = FunctionalTesting(
+    bases=(PLONE_VOLTO_CORE_FIXTURE, z2.ZSERVER_FIXTURE),
     name="PloneVoltoCoreLayer:FunctionalTesting",
 )
 
 
-ACCEPTANCE_TESTING = FunctionalTesting(
-    bases=(CORE_FIXTURE, REMOTE_LIBRARY_BUNDLE_FIXTURE, z2.ZSERVER_FIXTURE),
+PLONE_VOLTO_CORE_ACCEPTANCE_TESTING = FunctionalTesting(
+    bases=(PLONE_VOLTO_CORE_FIXTURE, REMOTE_LIBRARY_BUNDLE_FIXTURE, z2.ZSERVER_FIXTURE),
     name="PloneVoltoCoreLayer:AcceptanceTesting",
 )
 
@@ -98,24 +98,24 @@ class PloneVoltoCoreSandboxLayer(PloneSandboxLayer):
         applyProfile(portal, "plone.volto:coresandbox")
 
 
-CORESANDBOX_FIXTURE = PloneVoltoCoreSandboxLayer()
+PLONE_VOLTO_CORESANDBOX_FIXTURE = PloneVoltoCoreSandboxLayer()
 
 
-CORESANDBOX_INTEGRATION_TESTING = IntegrationTesting(
-    bases=(CORESANDBOX_FIXTURE,),
+PLONE_VOLTO_CORESANDBOX_INTEGRATION_TESTING = IntegrationTesting(
+    bases=(PLONE_VOLTO_CORESANDBOX_FIXTURE,),
     name="PloneVoltoCoreSandboxLayer:IntegrationTesting",
 )
 
 
-CORESANDBOX_FUNCTIONAL_TESTING = FunctionalTesting(
-    bases=(CORESANDBOX_FIXTURE, z2.ZSERVER_FIXTURE),
+PLONE_VOLTO_CORESANDBOX_FUNCTIONAL_TESTING = FunctionalTesting(
+    bases=(PLONE_VOLTO_CORESANDBOX_FIXTURE, z2.ZSERVER_FIXTURE),
     name="PloneVoltoCoreSandboxLayer:FunctionalTesting",
 )
 
 
-CORESANDBOX_ACCEPTANCE_TESTING = FunctionalTesting(
+PLONE_VOLTO_CORESANDBOX_ACCEPTANCE_TESTING = FunctionalTesting(
     bases=(
-        CORESANDBOX_FIXTURE,
+        PLONE_VOLTO_CORESANDBOX_FIXTURE,
         REMOTE_LIBRARY_BUNDLE_FIXTURE,
         z2.ZSERVER_FIXTURE,
     ),
@@ -134,16 +134,16 @@ class PloneVoltoMigrationLayer(PloneSandboxLayer):
         setRoles(portal, TEST_USER_ID, ["Manager"])
 
 
-MIGRATION_FIXTURE = PloneVoltoMigrationLayer()
+PLONE_VOLTO_MIGRATION_FIXTURE = PloneVoltoMigrationLayer()
 
 
-MIGRATION_INTEGRATION_TESTING = IntegrationTesting(
-    bases=(MIGRATION_FIXTURE,),
+PLONE_VOLTO_MIGRATION_INTEGRATION_TESTING = IntegrationTesting(
+    bases=(PLONE_VOLTO_MIGRATION_FIXTURE,),
     name="PloneVoltoMigrationLayer:IntegrationTesting",
 )
 
 
-MIGRATION_FUNCTIONAL_TESTING = FunctionalTesting(
-    bases=(MIGRATION_FIXTURE, z2.ZSERVER_FIXTURE),
+PLONE_VOLTO_MIGRATION_FUNCTIONAL_TESTING = FunctionalTesting(
+    bases=(PLONE_VOLTO_MIGRATION_FIXTURE, z2.ZSERVER_FIXTURE),
     name="PloneVoltoMigrationLayer:FunctionalTesting",
 )

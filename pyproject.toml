@@ -122,7 +122,9 @@ Zope = [
 ]
 python-dateutil = ['dateutil']
 pytest-plone = ['pytest', 'zope.pytestlayer', 'plone.testing', 'plone.app.testing']
-ignore-packages = ['plone.app.iterate', 'plone.app.upgrade', 'plone.volto', 'zestreleaser.towncrier', 'zest.releaser', 'pytest', 'pytest-cov', 'pytest-plone', 'plone.testing', 'plone.app.testing']
+'Products.CMFPlone' = ['Acquisition', 'BTrees', 'Missing', 'OFS', 'plone.app.contenttypes', 'plone.app.layout', 'plone.app.linkintegrity', 'plone.app.redirector', 'plone.app.registry', 'plone.app.textfield', 'plone.app.vocabularies', 'plone.app.z3cform', 'plone.autoform', 'plone.base', 'plone.behavior', 'plone.dexterity', 'plone.indexer', 'plone.namedfile', 'plone.protect', 'plone.registry', 'plone.rfc822', 'plone.schema', 'plone.supermodel', 'Products.BTreeFolder2', 'Products.CMFCore', 'Products.Five', 'Products.GenericSetup', 'Products.SiteErrorLog', 'transaction', 'z3c.form', 'z3c.relationfield', 'zope.component', 'zope.i18n', 'zope.i18nmessageid', 'zope.interface', 'zope.lifecycleevent', 'zope.publisher', 'zope.schema', 'Zope']
+'plone.restapi' = ['plone.rest']
+ignore-packages = ['requests', 'responses', 'scripts.utils', 'zest.releaser', 'zestreleaser.towncrier']
 
 ##
 # Add extra configuration options in .meta.toml:

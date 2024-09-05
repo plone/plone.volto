@@ -42,6 +42,7 @@ setup(
     install_requires=[
         "collective.monkeypatcher",
         "plone.api",
+        "plone.app.caching",
         "plone.app.multilingual",
         "plone.distribution",
         "plone.restapi>=8.41.0",
@@ -51,7 +52,6 @@ setup(
     extras_require={
         "test": [
             "responses",
-            "plone.app.caching",
             "plone.app.discussion",
             "plone.app.iterate",
             "plone.app.robotframework",

@@ -9,6 +9,14 @@
 
 <!-- towncrier release notes start -->
 
+## 4.4.3 (2024-08-01)
+
+Bug fixes:
+
+
+- Fix getting the the variation when migrating collections to listing blocks. @pbauer (#158)
+
+
 ## 4.4.2 (2024-06-26)
 
 ### Bug fixes:

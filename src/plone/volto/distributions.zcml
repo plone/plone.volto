@@ -8,7 +8,7 @@
   <plone:distribution
       name="default"
       title="Plone Site"
-      description="A Plone Site with to be used with a Volto frontend"
+      description="A Plone Site to be used with a Volto frontend"
       directory="distributions/default"
       post_handler="plone.distribution.handler.post_handler"
       />

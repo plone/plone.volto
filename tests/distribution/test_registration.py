@@ -23,7 +23,7 @@ class TestRegistration:
             ["title", "Plone Site"],
             [
                 "description",
-                "A Plone Site with to be used with a Volto frontend",
+                "A Plone Site to be used with a Volto frontend",
             ],
         ],
     )

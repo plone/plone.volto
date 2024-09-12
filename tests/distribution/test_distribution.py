@@ -9,7 +9,7 @@ class TestDistribution:
         "attr,expected",
         [
             ("title", "Plone Site"),
-            ("description", "A Plone Site with to be used with a Volto frontend"),
+            ("description", "A Plone Site to be used with a Volto frontend"),
             ("exclude_from_nav", False),
         ],
     )

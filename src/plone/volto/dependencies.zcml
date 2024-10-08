@@ -3,10 +3,6 @@
     xmlns:zcml="http://namespaces.zope.org/zcml"
     >
 
-  <configure zcml:condition="installed plone.app.imaging">
-    <include package="plone.app.imaging" />
-  </configure>
-
   <include
       package="Products.GenericSetup"
       file="meta.zcml"
@@ -16,6 +12,7 @@
       package="plone.restapi"
       file="meta.zcml"
       />
+  <include package="plone.distribution" />
   <include package="plone.restapi" />
   <include package="plone.api" />
 

@@ -1,0 +1,15 @@
+<configure xmlns="http://namespaces.zope.org/zope">
+
+  <adapter
+      factory=".indexers.hasPreviewImage"
+      name="hasPreviewImage"
+      />
+  <adapter
+      factory=".indexers.image_field_indexer"
+      name="image_field"
+      />
+  <adapter
+      factory=".indexers.block_types_indexer"
+      name="block_types"
+      />
+</configure>

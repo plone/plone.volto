@@ -1,10 +1,10 @@
+from plone.base.interfaces import IPloneSiteRoot
 from plone.restapi.behaviors import IBlocks
 from plone.restapi.deserializer.blocks import ResolveUIDDeserializerBase
 from plone.restapi.interfaces import IBlockFieldDeserializationTransformer
 from plone.restapi.interfaces import IBlockFieldSerializationTransformer
 from plone.restapi.interfaces import IBlockVisitor
 from plone.restapi.serializer.blocks import ResolveUIDSerializerBase
-from plone.volto.bbb import IPloneSiteRoot
 from zope.component import adapter
 from zope.component import subscribers
 from zope.interface import implementer
@@ -28,7 +28,7 @@ class NestedBlocksVisitor:
             yield from nested_blocks
 
 
-class NestedResolveUIDDeserializerBase(object):
+class NestedResolveUIDDeserializerBase:
     """The "url" smart block field for nested blocks
 
     [Deprecated -- replaced by NestedBlocksVisitor above,
@@ -72,7 +72,7 @@ class NestedResolveUIDDeserializerBase(object):
         return block
 
 
-class NestedResolveUIDSerializerBase(object):
+class NestedResolveUIDSerializerBase:
     """
     [Deprecated -- replaced by NestedBlocksVisitor above,
     but the base class is still here in case someone extended it.]

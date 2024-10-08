@@ -1,42 +1,57 @@
-.coverage
-.vscode
+# Generated from:
+# https://github.com/plone/meta/tree/main/config/default
+# See the inline comments on how to expand/tweak this configuration file
+# python related
 *.egg-info
-*.log
+*.pyc
+*.pyo
+
+# translation related
 *.mo
-*.py?
-*.swp
+
+# tools related
+build/
+.coverage
 .*project
-.settings
-.Python
-# dirs
+coverage.xml
+dist/
+docs/_build
+__pycache__/
+.tox
+.vscode/
+node_modules/
+
+# venv / buildout related
 bin/
-buildout-cache/
 develop-eggs/
 eggs/
+.eggs/
 etc/
-htmlcov/
+.installed.cfg
 include/
 lib/
-local/
-parts/
-test.plone_addon/
-var/
-node_modules
-# files
-.installed.cfg
-.mr.developer.cfg
 lib64
-log.html
-output.xml
-pip-selfcheck.json
-report.html
-# excludes
-!.coveragerc
-!.editorconfig
-!.gitattributes
-!.gitignore
-!.gitkeep
-!.travis.yml
+.mr.developer.cfg
+parts/
 pyvenv.cfg
-extras
-inituser
+var/
+local.cfg
+
+# mxdev
+/instance/
+/.make-sentinels/
+/*-mxdev.txt
+/reports/
+/sources/
+/venv/
+.installed.txt
+
+.venv
+
+##
+# Add extra configuration options in .meta.toml:
+#  [gitignore]
+#  extra_lines = """
+#  _your own configuration lines_
+#  """
+##

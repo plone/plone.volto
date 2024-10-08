@@ -1,4 +1,3 @@
-# -*- coding: UTF-8 -*-
 from plone.app.registry.browser.controlpanel import ControlPanelFormWrapper
 from plone.app.registry.browser.controlpanel import RegistryEditForm
 from plone.restapi.controlpanels import RegistryConfigletPanel
@@ -13,10 +12,10 @@ class VoltoSettingsEditForm(RegistryEditForm):
     schema_prefix = "volto"
 
     def updateFields(self):
-        super(VoltoSettingsEditForm, self).updateFields()
+        super().updateFields()
 
     def updateWidgets(self):
-        super(VoltoSettingsEditForm, self).updateWidgets()
+        super().updateWidgets()
 
 
 class VoltoSettingsControlPanel(ControlPanelFormWrapper):

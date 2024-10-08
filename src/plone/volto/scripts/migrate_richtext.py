@@ -6,6 +6,7 @@ bin/instance -O Plone run scripts/migrate-richtext.py
     For more control use the form @@migrate_richtext
 
 """
+
 from plone import api
 from plone.volto.browser.migrate_richtext import migrate_richtext_to_slate
 

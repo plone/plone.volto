@@ -1,0 +1,2 @@
+setup.py: specify the encoding, otherwise it fails on Windows.
+[maurits]

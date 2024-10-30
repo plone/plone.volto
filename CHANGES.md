@@ -9,6 +9,26 @@
 
 <!-- towncrier release notes start -->
 
+## 5.0.0b1 (2024-10-30)
+
+
+### Breaking changes:
+
+- Drop support for Plone 5.2 and Plone 6.0 [@ericof] #155
+- The following GenericSetup profiles were removed: `default-homepage`,
+  `default-homepage-drafjs`, `default-homepage-slate`, `demo` and `richtext`. @davisagli #155
+
+
+### New features:
+
+- This package now contains a Plone distribution named "default". @ericof #155
+
+
+### Internal:
+
+- setup.py: specify the encoding, otherwise it fails on Windows.
+  [maurits] 
+
 ## 4.4.3 (2024-08-01)
 
 Bug fixes:

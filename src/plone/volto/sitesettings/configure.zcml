@@ -11,7 +11,7 @@
 
   <!-- Plugin: Default permissions for site settings attributes -->
   <adapter
-      factory=".plugin.SettingsPermissionsPlugin"
+      factory=".plugins.SettingsPermissionsPlugin"
       name="plone.sitesettings.permissions"
       />
 

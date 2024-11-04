@@ -1,0 +1,16 @@
+<configure xmlns:zcml="http://namespaces.zope.org/zcml">
+
+  <!-- Finalize all Settings Schemas -->
+  <zcml:customAction
+      handler=".finalizeSettingsSchemas"
+      order="9999999"
+      />
+
+  <!-- Plugin: Default permissions for site settings attributes -->
+  <adapter
+      name="plone.sitesettings.permissions"
+      factory=".plugin.SettingsPermissionsPlugin"
+      />
+
+
+</configure>

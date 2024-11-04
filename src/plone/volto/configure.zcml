@@ -16,6 +16,7 @@
   <include package=".behaviors" />
   <include package=".browser" />
   <include package=".indexers" />
+  <include package=".sitesettings" />
 
   <include file="profiles.zcml" />
   <include file="patches.zcml" />

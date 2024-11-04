@@ -1,5 +1,6 @@
 """Module where all interfaces, events and exceptions live."""
 
+from plone.supermodel.interfaces import ISchema
 from zope import schema
 from zope.interface import Interface
 from zope.publisher.interfaces.browser import IDefaultBrowserLayer
@@ -37,3 +38,7 @@ class IFolderishEvent(IFolderishType):
 
 class IFolderishNewsItem(IFolderishType):
     """Marker interface"""
+
+
+class ISiteSettingsSchema(ISchema):
+    """Site settings schema interface."""

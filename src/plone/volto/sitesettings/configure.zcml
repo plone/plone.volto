@@ -1,4 +1,7 @@
-<configure xmlns:zcml="http://namespaces.zope.org/zcml">
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:zcml="http://namespaces.zope.org/zcml"
+    >
 
   <!-- Finalize all Settings Schemas -->
   <zcml:customAction
@@ -8,8 +11,8 @@
 
   <!-- Plugin: Default permissions for site settings attributes -->
   <adapter
-      name="plone.sitesettings.permissions"
       factory=".plugin.SettingsPermissionsPlugin"
+      name="plone.sitesettings.permissions"
       />
 
 

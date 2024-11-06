@@ -148,6 +148,7 @@ def add_block_types_index(context):
 
 def rename_distribution(context):
     from plone.distribution.api.distribution import get_creation_report
+
     portal = getUtility(IPloneSiteRoot)
     report = get_creation_report(portal)
     if report is not None:

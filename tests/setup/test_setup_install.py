@@ -16,7 +16,7 @@ class TestSetupInstall:
 
     def test_latest_version(self, profile_last_version):
         """Test latest version of default profile."""
-        assert profile_last_version(f"{PACKAGE_NAME}:default") == "1017"
+        assert profile_last_version(f"{PACKAGE_NAME}:default") == "1018"
 
     @pytest.mark.parametrize(
         "portal_type,behavior",

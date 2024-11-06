@@ -1,6 +1,7 @@
 from copy import deepcopy
 from OFS.interfaces import IOrderedContainer
 from plone import api
+from plone.base.interfaces import IPloneSiteRoot
 from plone.registry import field
 from plone.registry.interfaces import IRegistry
 from plone.registry.record import Record
@@ -143,3 +144,14 @@ def add_block_types_index(context):
         if index % 250 == 0:
             logger.info(f"Reindexed {index}/{total} objects")
             transaction.commit()
+
+
+def rename_distribution(context):
+    from plone.distribution.api.distribution import get_creation_report
+    portal = getUtility(IPloneSiteRoot)
+    report = get_creation_report(portal)
+    if report is not None:
+        if report.name == "default":
+            report.name = "volto"
+        if report.answers.get("distribution") == "default":
+            report.answers["distribution"] = "volto"

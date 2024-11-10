@@ -6,10 +6,10 @@
     >
 
   <plone:distribution
-      name="default"
-      title="Plone Site"
+      name="volto"
+      title="Plone Site (Volto)"
       description="A Plone Site to be used with a Volto frontend"
-      directory="distributions/default"
+      directory="distributions/volto"
       post_handler="plone.distribution.handler.post_handler"
       />
 

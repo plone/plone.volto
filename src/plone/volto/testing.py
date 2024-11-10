@@ -32,7 +32,7 @@ ANSWERS = {
 
 class BaseFixture(PloneDistributionFixture):
     PACKAGE_NAME = "plone.volto"
-    SITES = (("default", ANSWERS),)
+    SITES = (("volto", ANSWERS),)
     _distribution_products = (
         ("plone.app.contenttypes", {"loadZCML": True}),
         ("plone.app.caching", {"loadZCML": True}),

@@ -20,7 +20,7 @@ class TestRegistration:
     @pytest.mark.parametrize(
         "attr,expected",
         [
-            ["title", "Plone Site"],
+            ["title", "Plone Site (Volto)"],
             [
                 "description",
                 "A Plone Site to be used with a Volto frontend",

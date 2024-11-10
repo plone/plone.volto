@@ -40,7 +40,7 @@ globals().update(
 @pytest.fixture
 def distribution_name() -> str:
     """Distribution name."""
-    return "default"
+    return "volto"
 
 
 @pytest.fixture

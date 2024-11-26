@@ -6,13 +6,16 @@ from zope.interface import provider
 
 
 @provider(IFormFieldProvider)
-class IHeadTitle(model.Schema):
+class IKicker(model.Schema):
 
     head_title = schema.TextLine(
-        title=_("label_head_title", default="Header title"),
+        title=_("label_kicker", default="Kicker"),
         required=False,
         description=_(
-            "help_head_title",
-            default="The header title is shown above the title in teasers.",
+            "help_kicker",
+            default="The kicker is shown above the title in teasers.",
         ),
     )
+
+class IHeadTitle(IKicker):
+    """alias for backwards-compatibility"""

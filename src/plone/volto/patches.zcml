@@ -1,7 +1,6 @@
 <configure
     xmlns="http://namespaces.zope.org/zope"
     xmlns:monkey="http://namespaces.plone.org/monkey"
-    xmlns:zcml="http://namespaces.zope.org/zcml"
     i18n_domain="plone.volto"
     >
 
@@ -20,7 +19,6 @@
       class="Products.CMFPlone.browser.login.password_reset.PasswordResetToolView"
       docstringWarning="True"
       description="Patch password reset tool construct URL to cater for different frontend domain"
-      zcml:condition="have plone-52"
       />
 
 </configure>

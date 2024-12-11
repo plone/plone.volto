@@ -1,0 +1,1 @@
+Fix plone.app.multilingual dependency to be a dependency for tests only. @davisagli

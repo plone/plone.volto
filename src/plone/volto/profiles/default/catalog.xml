@@ -1,7 +1,12 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="utf-8"?>
 <object name="portal_catalog">
   <column value="nav_title" />
   <column value="head_title" />
   <column value="hasPreviewImage" />
   <column value="image_field" />
+  <index meta_type="KeywordIndex"
+         name="block_types"
+  >
+    <indexed_attr value="block_types" />
+  </index>
 </object>

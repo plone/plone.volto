@@ -2,6 +2,7 @@
     xmlns="http://namespaces.zope.org/zope"
     xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
     xmlns:i18n="http://namespaces.zope.org/i18n"
+    xmlns:zcml="http://namespaces.zope.org/zcml"
     i18n_domain="plone.volto"
     >
 
@@ -23,42 +24,6 @@
       post_handler=".setuphandlers.uninstall"
       />
 
-  <genericsetup:registerProfile
-      name="default-homepage"
-      title="Plone 6 Frontend (Default content on homepage)"
-      description="Creates a default page for the site"
-      provides="Products.GenericSetup.interfaces.EXTENSION"
-      directory="profiles/homepage"
-      post_handler=".setuphandlers.create_default_homepage"
-      />
-
-  <genericsetup:registerProfile
-      name="default-homepage-drafjs"
-      title="Plone 6 Frontend (Default content on homepage with draftJS blocks)"
-      description="Creates a default page for the site using (legacy) draftJS blocks"
-      provides="Products.GenericSetup.interfaces.EXTENSION"
-      directory="profiles/homepage"
-      post_handler=".setuphandlers.create_default_homepage_draftjs"
-      />
-
-  <genericsetup:registerProfile
-      name="default-homepage-slate"
-      title="Plone 6 Frontend (Default content on homepage with slate blocks)"
-      description="Creates a default page for the site using slate blocks"
-      provides="Products.GenericSetup.interfaces.EXTENSION"
-      directory="profiles/homepage"
-      post_handler=".setuphandlers.create_default_homepage_slate"
-      />
-
-  <genericsetup:registerProfile
-      name="demo"
-      title="plone.volto demo special requirements"
-      description="Special requirements and setup for demo site"
-      provides="Products.GenericSetup.interfaces.EXTENSION"
-      directory="profiles/demo"
-      post_handler=".setuphandlers.create_demo_homepage"
-      />
-
   <!-- Fixture for coresandbox Cypress tests in Volto repo -->
   <genericsetup:registerProfile
       name="coresandbox"
@@ -77,14 +42,7 @@
       provides="Products.GenericSetup.interfaces.EXTENSION"
       directory="profiles/multilingual"
       post_handler=".setuphandlers.post_install_multilingual"
-      />
-
-  <genericsetup:registerProfile
-      name="richtext"
-      title="plone.volto p51 profile"
-      description="Specific profile for re-adding the richtext behavior"
-      provides="Products.GenericSetup.interfaces.EXTENSION"
-      directory="profiles/richtext"
+      zcml:condition="installed plone.app.multilingual"
       />
 
   <utility

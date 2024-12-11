@@ -19,7 +19,6 @@
       allowed_attributes="breadcrumbs"
       permission="zope.Public"
       layer="plone.volto.interfaces.IPloneVoltoCoreLayer"
-      zcml:condition="have plone-5"
       />
 
   <browser:page
@@ -29,26 +28,25 @@
       allowed_attributes="topLevelTabs"
       permission="zope.Public"
       layer="plone.volto.interfaces.IPloneVoltoCoreLayer"
-      zcml:condition="have plone-5"
       />
 
-  <browser:page
-      name="migrate_richtext"
-      for="zope.interface.Interface"
-      class=".migrate_richtext.MigrateRichTextToVoltoBlocks"
-      template="migrate_richtext.pt"
-      permission="cmf.ManagePortal"
-      zcml:condition="have plone-60"
-      />
+  <configure zcml:condition="installed requests">
+    <browser:page
+        name="migrate_richtext"
+        for="zope.interface.Interface"
+        class=".migrate_richtext.MigrateRichTextToVoltoBlocks"
+        template="migrate_richtext.pt"
+        permission="cmf.ManagePortal"
+        />
 
-  <browser:page
-      name="migrate_to_volto"
-      for="zope.interface.Interface"
-      class=".migrate_to_volto.MigrateToVolto"
-      template="migrate_to_volto.pt"
-      permission="cmf.ManagePortal"
-      zcml:condition="have plone-60"
-      />
+    <browser:page
+        name="migrate_to_volto"
+        for="zope.interface.Interface"
+        class=".migrate_to_volto.MigrateToVolto"
+        template="migrate_to_volto.pt"
+        permission="cmf.ManagePortal"
+        />
+  </configure>
 
   <browser:viewlet
       name="voltobackendwarning"

@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 from plone.app.textfield import RichText
 from plone.app.vocabularies.catalog import CatalogSource
 from plone.app.vocabularies.catalog import StaticCatalogVocabulary

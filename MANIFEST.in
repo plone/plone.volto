@@ -1,25 +1,12 @@
-graft src/plone/volto
+graft src/plone
 graft docs
-include *.rst
-include *.txt
-recursive-include requirements *.txt
-exclude *.cfg
-exclude *.yml
-exclude *.in
-exclude *.jmx
-exclude *.yaml
-exclude .coveragerc
-exclude .editorconfig
-exclude .flake8
-exclude Dockerfile
-exclude Makefile
-exclude CODEOWNERS
-exclude docs/make.bat
-recursive-exclude docs/doctrees *
-recursive-exclude docs/html *
-recursive-exclude performance *
-exclude docs/Makefile
-prune docs/Makefile
+graft scripts
+graft tests
 prune news
+include *.yaml
+include Makefile
+include *.md
+include *.rst
+exclude *.txt
+exclude *.cfg
 global-exclude *.pyc
-include pyproject.toml

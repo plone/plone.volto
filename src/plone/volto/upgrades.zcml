@@ -75,4 +75,15 @@
         />
   </genericsetup:upgradeSteps>
 
+  <genericsetup:upgradeSteps
+      profile="plone.volto:default"
+      source="1017"
+      destination="1018"
+      >
+    <genericsetup:upgradeStep
+        title="Rename default distribution to volto"
+        handler=".upgrades.rename_distribution"
+        />
+  </genericsetup:upgradeSteps>
+
 </configure>

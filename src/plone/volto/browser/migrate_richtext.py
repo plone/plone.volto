@@ -1,7 +1,7 @@
 from logging import getLogger
 from operator import itemgetter
 from plone import api
-from plone.app.contenttypes.behaviors.leadimage import ILeadImage
+from plone.app.contenttypes.behaviors.leadimage import ILeadImageBehavior
 from plone.app.textfield.value import RichTextValue
 from Products.Five import BrowserView
 from uuid import uuid4
@@ -35,7 +35,7 @@ class MigrateRichTextToVoltoBlocks(BrowserView):
             slate=self.slate,
         )
         api.portal.show_message(
-            "Migrated {} items from richtext to blocks".format(results),
+            f"Migrated {results} items from richtext to blocks",
             request=self.request,
         )
         return self.index()
@@ -102,7 +102,7 @@ def migrate_richtext_to_blocks(
                 blocks[uuid] = {"@type": "description"}
                 blocks_layout["items"].append(uuid)
 
-            if ILeadImage(obj, None) and ILeadImage(obj).image:
+            if ILeadImageBehavior(obj, None) and ILeadImageBehavior(obj).image:
                 uuid = str(uuid4())
                 blocks[uuid] = {"@type": "leadimage"}
                 blocks_layout["items"].append(uuid)
@@ -127,7 +127,7 @@ def migrate_richtext_to_blocks(
             logger.debug(f"Migrated richtext to blocks for: {obj.absolute_url()}")
 
             if not index % 1000:
-                logger.info(f"Commiting after {index} items...")
+                logger.info(f"Committing after {index} items...")
                 transaction.commit()
         msg = f"Migrated {index} {portal_type} to blocks"
         logger.info(msg)
@@ -161,7 +161,7 @@ def get_blocks_from_richtext(
 
 
 def types_with_blocks():
-    """A list of content types with volto.blocks behavior"""
+    """A list of content types with volto.blocks behavior."""
     portal_types = api.portal.get_tool("portal_types")
     results = []
     for fti in portal_types.listTypeInfo():

@@ -14,7 +14,7 @@ from zope.schema.vocabulary import SimpleVocabulary
 
 
 @implementer(ITokenizedTerm)
-class UnsafeSimpleSubjectTerm(object):
+class UnsafeSimpleSubjectTerm:
     """Simple tokenized term that allows unicode in the token"""
 
     def __init__(self, value, token, title):
@@ -50,7 +50,7 @@ safe_simplevocabulary_from_values = unsafe_simplevocabulary_from_values
 
 
 @implementer(IVocabularyFactory)
-class KeywordsVocabulary(object):
+class KeywordsVocabulary:
     """Override Keywords vocabulary to provide the real Keyword as the token."""
 
     # Allow users to customize the index to easily create

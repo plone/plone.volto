@@ -1,0 +1,279 @@
+# --- PLEASE EDIT THE LINES BELOW CORRECTLY ---
+# SOME DESCRIPTIVE TITLE.
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2024-12-11 17:41+0000\n"
+"PO-Revision-Date: 2021-11-21 16:58+0100\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Language-Code: pt-br\n"
+"Language-Name: Português do Brasil\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: plone.volto\n"
+"Language: pt_BR\n"
+"X-Generator: Poedit 2.3\n"
+
+#: plone/volto/browser/migrate_to_volto.pt:45
+msgid "A site migrated to Volto in this Plone backend will still be accessible through the Plone Classic User Interface but with limited functionality. The core content types will have all their GUI RichText fields replaced by the blocks behavior for the composition of the main content. So after migration you can only edit this content using the Volto UI."
+msgstr ""
+
+#: plone/volto/behaviors/configure.zcml:48
+msgid "Adds kicker field (text to be shown above the headline)"
+msgstr ""
+
+#: plone/volto/browser/migrate_to_volto.pt:75
+msgid "Advanced settings"
+msgstr ""
+
+#: plone/volto/browser/migrate_to_volto.pt:120
+msgid "Collections and Pages that are the default-page of a Folder will be applied on the migrated Folderish Page. For Collections that means adding a listing block with the same query. This only happens if you also you migrate Folders to Folderish Pages."
+msgstr ""
+
+#: plone/volto/browser/migrate_to_volto.pt:42
+msgid "Collections are migrated to Pages with Listing Blocks configured like the Collection."
+msgstr ""
+
+#: plone/volto/profiles.zcml:16
+msgid "Configures the Plone backend to work with Volto, the new default frontend for Plone 6."
+msgstr "Configura o backend do Plone para funcionar com o Volto, o novo frontend padrão do Plone 6."
+
+#: plone/volto/browser/migrate_richtext.pt:33
+msgid "Content Types to handle"
+msgstr ""
+
+#: plone/volto/browser/migrate_richtext.pt:83
+msgid "Convert to Slate (default)"
+msgstr ""
+
+#: plone/volto/browser/migrate_richtext.pt:97
+msgid "Convert to draftjs (a old format used until Volto 15)"
+msgstr ""
+
+#: plone/volto/browser/migrate_to_volto.pt:40
+msgid "Default Pages of Folders are merged with the Folderish Pages that replace the Folder wherever that is possible. This works well with Pages and Collections where the text and/or query are added to the folderish page that replaces the Folder."
+msgstr ""
+
+#: plone/volto/behaviors/configure.zcml:42
+msgid "Deprecated (use volto.kicker instead)"
+msgstr ""
+
+#: plone/volto/profiles/coresandbox/types/example.xml
+msgid "Example"
+msgstr ""
+
+#: plone/volto/behaviors/configure.zcml:42
+msgid "Head title field"
+msgstr "Campo Título de cabeçalho"
+
+#: plone/volto/browser/migrate_to_volto.pt:16
+msgid "Here you can prepare this site for Volto."
+msgstr ""
+
+#: plone/volto/browser/migrate_to_volto.pt:34
+msgid "Install the package <code>plone.volto</code> and <code>plone.restapi</code>."
+msgstr ""
+
+#: plone/volto/browser/migrate_to_volto.pt:76
+msgid "It is recommendet to use the default settings but here you can disable some of the migration-steps."
+msgstr ""
+
+#: plone/volto/behaviors/configure.zcml:48
+msgid "Kicker field"
+msgstr ""
+
+#: plone/volto/browser/migrate_richtext.pt:130
+msgid "Migrate"
+msgstr ""
+
+#: plone/volto/browser/migrate_to_volto.pt:93
+msgid "Migrate Folders to Folderish Pages"
+msgstr ""
+
+#: plone/volto/browser/migrate_richtext.pt:12
+msgid "Migrate Richtext to Slate Block"
+msgstr ""
+
+#: plone/volto/browser/migrate_to_volto.pt:114
+msgid "Migrate default Pages into the Folderish Pages if possible"
+msgstr ""
+
+#: plone/volto/browser/migrate_richtext.pt:16
+msgid "Migrate text from RichText-fields to text in the Volto Editor"
+msgstr ""
+
+#: plone/volto/browser/migrate_to_volto.pt:12
+msgid "Migrate to Volto"
+msgstr ""
+
+#: plone/volto/behaviors/configure.zcml:35
+#: plone/volto/behaviors/navtitle.py:11
+msgid "Navigation title"
+msgstr "Título de navegação"
+
+#: plone/volto/behaviors/configure.zcml:35
+msgid "Navigation title used in sections, menus and doormats"
+msgstr "Título de navegação usado em seções, menus e rodapés"
+
+#: plone/volto/browser/migrate_to_volto.pt:39
+msgid "Pages, News Items, and Events are made folderish. That means they can contain other content, such as Images or Pages."
+msgstr ""
+
+#: plone/volto/profiles.zcml:16
+msgid "Plone 6 Frontend (plone.volto)"
+msgstr ""
+
+#: plone/volto/profiles.zcml:25
+msgid "Plone 6 Frontend (plone.volto): uninstall"
+msgstr "Plone 6 Frontend (plone.volto): desinstalar"
+
+#: plone/volto/behaviors/configure.zcml:18
+msgid "Preview Image"
+msgstr "Imagem de Pré-visualização"
+
+#: plone/volto/behaviors/configure.zcml:26
+msgid "Preview Image Link"
+msgstr "Imagem de Pré-visualização de Link"
+
+#: plone/volto/behaviors/preview.py:22
+#: plone/volto/behaviors/preview_link.py:42
+msgid "Preview image caption"
+msgstr "Legenda da Imagem de Pré-visualização"
+
+#: plone/volto/behaviors/configure.zcml:18
+msgid "Preview image for listings"
+msgstr "Imagem de Pré-visualização para listagens"
+
+#: plone/volto/behaviors/configure.zcml:26
+msgid "Preview image for listings based on links"
+msgstr "Imagem de Pré-visualização para listagens baseada em links"
+
+#: plone/volto/browser/migrate_richtext.pt:115
+msgid "Purge Richtext-fields after migrating to Slate"
+msgstr ""
+
+#: plone/volto/browser/migrate_to_volto.pt:142
+msgid "Purge old Richtext-fields after migrating to Volto blocks"
+msgstr ""
+
+#: plone/volto/browser/migrate_to_volto.pt:60
+msgid "Requirements for this migration wizard"
+msgstr ""
+
+#: plone/volto/profiles.zcml:35
+msgid "Special test fixture for coresandbox use cases"
+msgstr "Teste fixture especial para casos de uso do codesandbox"
+
+#: plone/volto/profiles.zcml:46
+msgid "Special test fixture for multilingual use case"
+msgstr "Teste fixture especial para caso de uso multilíngue"
+
+#: plone/volto/browser/migrate_to_volto.pt:38
+msgid "The HTML of RichText fields (previously edited using TinyMCE) is converted into Volto blocks so you can edit it in Volto."
+msgstr ""
+
+#: plone/volto/browser/migrate_to_volto.pt:148
+msgid "The RichtextValue objects will be removed from the migrated objects. The old fields (from the behavior plone.volto) are no longer available."
+msgstr ""
+
+#: plone/volto/browser/migrate_to_volto.pt:172
+msgid "The migration requires a service to run. See https://github.com/plone/blocks-conversion-tool for details."
+msgstr ""
+
+#: plone/volto/browser/migrate_to_volto.pt:64
+msgid "To migrate RichText to Volto Blocks you need to have <code>blocks-conversion-tool</code> running on an accessible URL. The easiest way to have that running on your machine is: <code>docker run -it -p 5000:5000 plone/blocks-conversion-tool:latest</code>. More for options read <a href=\"https://github.com/plone/blocks-conversion-tool\">https://github.com/plone/blocks-conversion-tool</a>."
+msgstr ""
+
+#: plone/volto/browser/migrate_to_volto.pt:157
+msgid "URL of blocks-conversion-tool."
+msgstr ""
+
+#: plone/volto/browser/migrate_richtext.pt:57
+msgid "URL of blocks-conversion-tool. The migration requires a service to run. See https://github.com/plone/blocks-conversion-tool for details."
+msgstr ""
+
+#: plone/volto/profiles.zcml:25
+msgid "Uninstalls the plone.volto add-on."
+msgstr "Desintalar o complemento plone.volto."
+
+#: plone/volto/browser/migrate_to_volto.pt:21
+msgid "Volto is a React-based frontend for Plone. It is the default UI for Plone 6. Volto is a separate server-side application."
+msgstr ""
+
+#: plone/volto/browser/migrate_to_volto.pt:24
+msgid "Volto needs to run continuously alongside the current Plone backend service from which you access this wizard. The Volto server performs initial server-side rendering (SSR) of the React application for pages. It also delivers the JavaScript frontend to your browser. Without a Volto frontend prepared for this website and the means to host it, continuing this migration makes no sense! Read the <a href=\"https://6.docs.plone.org/volto/index.html\">Volto Frontend documentation</a> for more information."
+msgstr ""
+
+#: plone/volto/browser/voltobackendwarning.pt:11
+msgid "Warning"
+msgstr ""
+
+#: plone/volto/browser/migrate_to_volto.pt:23
+msgid "What do you need for Volto?"
+msgstr ""
+
+#: plone/volto/browser/migrate_to_volto.pt:20
+msgid "What is Volto?"
+msgstr ""
+
+#: plone/volto/browser/migrate_to_volto.pt:31
+msgid "What will happen?"
+msgstr ""
+
+#: plone/volto/browser/migrate_to_volto.pt:32
+msgid "When you click on \"Migrate to Volto\" at the end of the form, the following things will happen:"
+msgstr ""
+
+#. Default: "The languages in which the site should be translatable."
+#: plone/volto/coresandbox/example.py:810
+msgid "description_available_languages"
+msgstr "Idiomas nos quais o site deve ser traduzível."
+
+#. Default: "Available languages"
+#: plone/volto/coresandbox/example.py:809
+msgid "heading_available_languages"
+msgstr "Idiomas disponíveis"
+
+#. Default: "The kicker is a line of text shown above the title."
+#: plone/volto/behaviors/kicker.py:14
+msgid "help_kicker"
+msgstr "O título de cabeçalho é exibido acima do título nos teasers"
+
+#. Default: "Insert an image that will be used in listing and teaser blocks."
+#: plone/volto/behaviors/preview.py:14
+#: plone/volto/behaviors/preview_link.py:24
+msgid "help_previewimage"
+msgstr "Inserir uma imagem que será utilizada em blocos de listagem e teaser"
+
+#. Default: "Kicker"
+#: plone/volto/behaviors/kicker.py:12
+msgid "label_kicker"
+msgstr "Título de cabeçalho"
+
+#. Default: "Preview image"
+#: plone/volto/behaviors/preview.py:13
+#: plone/volto/behaviors/preview_link.py:23
+msgid "label_previewimage"
+msgstr "Imagem de Pré-visualização"
+
+#: plone/volto/profiles.zcml:35
+msgid "plone.volto coresandbox Cypress tests fixtures"
+msgstr ""
+
+#: plone/volto/profiles.zcml:46
+msgid "plone.volto multilingual Cypress tests fixtures"
+msgstr ""
+
+#. Default: "You have accessed the Plone backend through its Classic UI frontend."
+#: plone/volto/browser/voltobackendwarning.pt:13
+msgid "volto_backend_warning"
+msgstr ""
+
+#. Default: "If you want to use Plone's new frontend Volto instead: <ul> <li>Install Volto, if not already installed.</li> <li>Start Volto, if not already started.</li> <li>Visit the Volto frontend.</li> </ul> For more information, please read the documentation for how to <a href=\"https://6.docs.plone.org/install/install-from-packages.html\">Install Plone from its packages</a> and refer to the full Volto documentation <a href=\"https://6.docs.plone.org/volto/index.html\">Frontend</a>."
+#: plone/volto/browser/voltobackendwarning.pt:16
+msgid "volto_backend_warning_link"
+msgstr ""

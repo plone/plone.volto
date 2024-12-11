@@ -1,6 +1,7 @@
 from copy import deepcopy
 from OFS.interfaces import IOrderedContainer
 from plone import api
+from plone.base.interfaces import IPloneSiteRoot
 from plone.registry import field
 from plone.registry.interfaces import IRegistry
 from plone.registry.record import Record
@@ -9,7 +10,10 @@ from plone.volto import content
 from plone.volto import logger
 from plone.volto.setuphandlers import NO_RICHTEXT_BEHAVIOR_CONTENT_TYPES
 from plone.volto.setuphandlers import remove_behavior
+from Products.CMFCore.utils import getToolByName
 from zope.component import getUtility
+
+import transaction
 
 
 MIGRATION = {
@@ -123,3 +127,32 @@ def add_control_panel_classic_icon(context):
         field.TextLine(title="Plone Icon Volto Control Panel"),
     )
     registry["plone.icon.volto-settings"] = "++plone++plone.volto/volto.svg"
+
+
+def add_block_types_index(context):
+    catalog = getToolByName(context, "portal_catalog")
+    indexes = catalog.indexes()
+    if "block_types" not in indexes:
+        catalog.addIndex("block_types", "KeywordIndex")
+        logger.info("Added block_types index.")
+    brains = catalog(object_provides="plone.restapi.behaviors.IBlocks")
+    total = len(brains)
+    for index, brain in enumerate(brains):
+        obj = brain.getObject()
+        obj.reindexObject(idxs=["block_types"], update_metadata=0)
+        logger.info("Reindexing object %s.", brain.getPath())
+        if index % 250 == 0:
+            logger.info(f"Reindexed {index}/{total} objects")
+            transaction.commit()
+
+
+def rename_distribution(context):
+    from plone.distribution.api.distribution import get_creation_report
+
+    portal = getUtility(IPloneSiteRoot)
+    report = get_creation_report(portal)
+    if report is not None:
+        if report.name == "default":
+            report.name = "volto"
+        if report.answers.get("distribution") == "default":
+            report.answers["distribution"] = "volto"

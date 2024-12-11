@@ -15,15 +15,28 @@ GREEN=`tput setaf 2`
 RESET=`tput sgr0`
 YELLOW=`tput setaf 3`
 
-PLONE5=5.2.9
-PLONE6=6.0.0b1
+BASE_FOLDER=$(shell dirname $(realpath $(firstword $(MAKEFILE_LIST))))
+VENV_FOLDER=$(BASE_FOLDER)/.venv
+BIN_FOLDER=$(VENV_FOLDER)/bin
 
-CODE_QUALITY_VERSION=1.0.1
-LINT=docker run --rm -v "$(PWD)":/github/workspace plone/code-quality:${CODE_QUALITY_VERSION} check
 
-PACKAGE_NAME=plone.volto
-PACKAGE_PATH=src/
-CHECK_PATH=setup.py $(PACKAGE_PATH)
+# Python checks
+PYTHON?=python3
+
+# installed?
+ifeq (, $(shell which $(PYTHON) ))
+  $(error "PYTHON=$(PYTHON) not found in $(PATH)")
+endif
+
+# version ok?
+PYTHON_VERSION_MIN=3.8
+PYTHON_VERSION_OK=$(shell $(PYTHON) -c "import sys; print((int(sys.version_info[0]), int(sys.version_info[1])) >= tuple(map(int, '$(PYTHON_VERSION_MIN)'.split('.'))))")
+ifeq ($(PYTHON_VERSION_OK),0)
+  $(error "Need python $(PYTHON_VERSION) >= $(PYTHON_VERSION_MIN)")
+endif
+
+# Set distributions still in development
+DISTRIBUTIONS="volto"
 
 all: build
 
@@ -33,95 +46,81 @@ all: build
 help: ## This help message
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
 
-bin/pip:
-	@echo "$(GREEN)==> Setup Virtual Env$(RESET)"
-	python3 -m venv .
-	bin/pip install -U pip wheel
-
-bin/black bin/isort bin/pyroma bin/zpretty: bin/pip
-	@echo "$(GREEN)==> Install Code Quality tools$(RESET)"
-	bin/pip install -r https://raw.githubusercontent.com/plone/code-quality/v$(CODE_QUALITY_VERSION)/requirements.txt
-	@echo "$(GREEN)==> Install pre-commit hook$(RESET)"
-	echo -e '#!/usr/bin/env bash\nmake lint' > .git/hooks/pre-commit && chmod ug+x .git/hooks/pre-commit
-
-bin/i18ndude: bin/pip
-	@echo "$(GREEN)==> Install i18ndude$(RESET)"
-	bin/pip install i18ndude
-
-.PHONY: build-plone-5.2
-build-plone-5.2: bin/pip bin/black ## Build Plone 5.2
-	@echo "$(GREEN)==> Build with Plone 5.2$(RESET)"
-	bin/pip install Plone plone.app.testing -c https://dist.plone.org/release/$(PLONE5)/constraints.txt
-	bin/pip install -e ".[test]"
-	bin/mkwsgiinstance -d . -u admin:admin
-
-.PHONY: build-plone-6.0
-build-plone-6.0: bin/pip bin/black ## Build Plone 6.0
-	@echo "$(GREEN)==> Build with Plone 6.0$(RESET)"
-	bin/pip install Plone plone.app.testing -c https://dist.plone.org/release/$(PLONE6)/constraints.txt
-	bin/pip install -e ".[test]"
-	bin/pip install zest.releaser[recommended] zestreleaser.towncrier
-	bin/mkwsgiinstance -d . -u admin:admin
-
-.PHONY: build
-build: build-plone-6.0 ## Build Plone 6.0
-
 .PHONY: clean
-clean: ## Remove old virtualenv and creates a new one
-	@echo "$(RED)==> Cleaning environment and build$(RESET)"
-	rm -rf bin lib lib64 include share etc var inituser pyvenv.cfg .installed.cfg
+clean: clean-build clean-pyc clean-test clean-venv clean-instance ## remove all build, test, coverage and Python artifacts
 
-.PHONY: black
-black: bin/black ## Format codebase
-	bin/black $(CHECK_PATH)
+.PHONY: clean-instance
+clean-instance: ## remove existing instance
+	rm -fr instance etc inituser var
 
-.PHONY: isort
-isort: bin/isort ## Format imports in the codebase
-	bin/isort $(CHECK_PATH)
+.PHONY: clean-venv
+clean-venv: ## remove virtual environment
+	rm -fr $(BIN_FOLDER) env pyvenv.cfg .tox .pytest_cache requirements-mxdev.txt
 
-.PHONY: zpretty
-zpretty: bin/zpretty ## Format xml and zcml with zpretty
-	find "${PACKAGE_PATH}" -name '*.xml' | xargs bin/zpretty -x -i
-	find "${PACKAGE_PATH}" -name '*.zcml' | xargs bin/zpretty -z -i
+.PHONY: clean-build
+clean-build: ## remove build artifacts
+	rm -fr build/
+	rm -fr dist/
+	rm -fr .eggs/
+	find . -name '*.egg-info' -exec rm -fr {} +
+	find . -name '*.egg' -exec rm -rf {} +
 
-.PHONY: format
-format: black isort zpretty ## Format the codebase according to our standards
+.PHONY: clean-pyc
+clean-pyc: ## remove Python file artifacts
+	find . -name '*.pyc' -exec rm -f {} +
+	find . -name '*.pyo' -exec rm -f {} +
+	find . -name '*~' -exec rm -f {} +
+	find . -name '__pycache__' -exec rm -fr {} +
 
-.PHONY: i18n
-i18n: bin/i18ndude ## update translations
-	./scripts/update_translations.sh
+.PHONY: clean-test
+clean-test: ## remove test and coverage artifacts
+	rm -f .coverage
+	rm -fr htmlcov/
 
-.PHONY: lint
-lint: lint-isort lint-black lint-flake8 lint-zpretty ## check code style
+$(BIN_FOLDER)/pip $(BIN_FOLDER)/tox $(BIN_FOLDER)/mxdev:
+	@echo "$(GREEN)==> Setup Virtual Env$(RESET)"
+	$(PYTHON) -m venv $(VENV_FOLDER)
+	$(BIN_FOLDER)/pip install -U "pip" "pipx" "wheel" "cookiecutter" "mxdev" "tox" "pre-commit"
+	$(BIN_FOLDER)/pre-commit install
 
-.PHONY: lint-black
-lint-black: ## validate black formating
-	$(LINT) black "$(CHECK_PATH)"
+.PHONY: config
+config: $(BIN_FOLDER)/pip  ## Create instance configuration
+	@echo "$(GREEN)==> Create instance configuration$(RESET)"
+	$(BIN_FOLDER)/pipx run cookiecutter -f --no-input --config-file instance.yaml gh:plone/cookiecutter-zope-instance
 
-.PHONY: lint-flake8
-lint-flake8: ## validate black formating
-	$(LINT) flake8 "$(CHECK_PATH)"
+.PHONY: install-plone-6
+install-plone-6: config ## pip install Plone packages
+	@echo "$(GREEN)==> Setup Build$(RESET)"
+	$(BIN_FOLDER)/mxdev -c mx.ini
+	$(BIN_FOLDER)/pip install -r requirements-mxdev.txt
 
-.PHONY: lint-isort
-lint-isort: ## validate using isort
-	$(LINT) isort "$(CHECK_PATH)"
-
-.PHONY: lint-pyroma
-lint-pyroma: ## validate using pyroma
-	$(LINT) .
-
-.PHONY: lint-zpretty
-lint-zpretty: ## validate ZCML/XML using zpretty
-	$(LINT) zpretty "$(PACKAGE_PATH)"
-
-.PHONY: test
-test: ## run tests
-	PYTHONWARNINGS=ignore ./bin/zope-testrunner --auto-color --auto-progress --test-path $(PACKAGE_PATH)
+.PHONY: install
+install: install-plone-6 ## Install Plone 6
 
 .PHONY: start
 start: ## Start a Plone instance on localhost:8080
-	PYTHONWARNINGS=ignore ./bin/runwsgi etc/zope.ini
+	DEVELOP_DISTRIBUTIONS=$(DISTRIBUTIONS) PYTHONWARNINGS=ignore $(BIN_FOLDER)/runwsgi instance/etc/zope.ini
 
-.PHONY: release
-release: ## Make a release
-	./bin/fullrelease
+.PHONY: check
+check: $(BIN_FOLDER)/tox ## Format the codebase according to our standards
+	@echo "$(GREEN)==> Format codebase$(RESET)"
+	$(BIN_FOLDER)/tox -e lint
+
+# i18n
+$(BIN_FOLDER)/i18ndude:	$(BIN_FOLDER)/pip
+	@echo "$(GREEN)==> Install translation tools$(RESET)"
+	$(BIN_FOLDER)/pip install i18ndude
+
+.PHONY: i18n
+i18n: $(BIN_FOLDER)/i18ndude ## Update locales
+	@echo "$(GREEN)==> Updating locales$(RESET)"
+	$(BIN_FOLDER)/update_locale
+
+# Tests
+.PHONY: test
+test: $(BIN_FOLDER)/tox ## run tests
+	DEVELOP_DISTRIBUTIONS=$(DISTRIBUTIONS) $(BIN_FOLDER)/tox -e test
+
+.PHONY: test-coverage
+test-coverage: $(BIN_FOLDER)/tox ## run tests with coverage
+	DEVELOP_DISTRIBUTIONS=$(DISTRIBUTIONS) $(BIN_FOLDER)/tox -e coverage

@@ -206,11 +206,13 @@ The `volto.navtitle` behavior can be enabled in the generic setup XML definition
 </object>
 ```
 
-### Head title behavior
+### Kicker behavior
 
-The `headtitle` behavior makes content types provide a `headtitle` field that can be used by Volto in teasers and other content types.
+The `volto.kicker` behavior adds a Kicker field that can be used to display a line of text above the title.
 
-The `volto.head_title` behavior can be enabled in the generic setup XML definition of a content type, for example in `/profiles/default/types/MyContentType.xml`:
+(The internal name of the field is `head_title`, for backwards-compatibility reasons.)
+
+This behavior can be enabled in the generic setup XML definition of a content type, for example in `/profiles/default/types/MyContentType.xml`:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8" ?>
@@ -222,11 +224,14 @@ The `volto.head_title` behavior can be enabled in the generic setup XML definiti
   <!-- Enabled behaviors -->
   <property name="behaviors" purge="false">
     ...
-    <element value="volto.head_title" />
+    <element value="volto.kicker" />
   </property>
   ...
 </object>
 ```
+
+> [!NOTE]
+> The previous name of this behavior, `volto.head_title`, was deprecated in `plone.volto` 5.0.
 
 ### Image scales
 

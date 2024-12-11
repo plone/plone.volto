@@ -14,7 +14,7 @@ logger.setLevel(logging.DEBUG)
 
 PATTERN = r"^[a-z]{2}.*"
 cwd = Path.cwd()
-target_path = Path(__file__).parent.parent.resolve()
+target_path = Path(__file__).parent.parent.relative_to(cwd)
 locale_path = target_path / "locales"
 
 

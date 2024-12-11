@@ -18,6 +18,7 @@
     <element value="plone.dublincore" />
     <element value="plone.relateditems" />
     <element value="plone.locking" />
+    <element value="plone.versioning" />
     <element value="volto.blocks" />
     <element value="volto.preview_image" />
   </property>

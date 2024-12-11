@@ -9,6 +9,13 @@
 
 <!-- towncrier release notes start -->
 
+## 5.0.0b2 (2024-11-25)
+
+
+### Bug fixes:
+
+- Rename `default` distribution to `volto`. @davisagli #161
+
 ## 5.0.0b1 (2024-10-30)
 
 

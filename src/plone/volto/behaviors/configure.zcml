@@ -44,7 +44,7 @@
       name="volto.kicker"
       title="Kicker field"
       description="Adds kicker field (text to be shown above the headline)"
-       provides=".kicker.IKicker"
+      provides=".kicker.IKicker"
       />
 
 </configure>

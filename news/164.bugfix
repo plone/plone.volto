@@ -1,0 +1,4 @@
+The `volto.head_title` behavior has been renamed to `volto.kicker`.
+The old name still works, but is deprecated.
+Content types should be updated to use the new name.
+@iRohitSingh, @davisagli

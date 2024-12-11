@@ -37,8 +37,14 @@
   <plone:behavior
       name="volto.head_title"
       title="Head title field"
-      description="Adds Head title field"
-      provides=".headtitle.IHeadTitle"
+      description="Deprecated (use volto.kicker instead)"
+      provides=".kicker.IHeadTitle"
+      />
+  <plone:behavior
+      name="volto.kicker"
+      title="Kicker field"
+      description="Adds kicker field (text to be shown above the headline)"
+      provides=".kicker.IKicker"
       />
 
 </configure>

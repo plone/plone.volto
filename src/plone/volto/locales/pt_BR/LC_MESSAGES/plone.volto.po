@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2024-06-26 17:33+0000\n"
+"POT-Creation-Date: 2024-12-11 17:41+0000\n"
 "PO-Revision-Date: 2021-11-21 16:58+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -22,9 +22,9 @@ msgstr ""
 msgid "A site migrated to Volto in this Plone backend will still be accessible through the Plone Classic User Interface but with limited functionality. The core content types will have all their GUI RichText fields replaced by the blocks behavior for the composition of the main content. So after migration you can only edit this content using the Volto UI."
 msgstr ""
 
-#: plone/volto/behaviors/configure.zcml:42
-msgid "Adds Head title field"
-msgstr "Adiciona campo Título de cabeçalho"
+#: plone/volto/behaviors/configure.zcml:48
+msgid "Adds kicker field (text to be shown above the headline)"
+msgstr ""
 
 #: plone/volto/browser/migrate_to_volto.pt:75
 msgid "Advanced settings"
@@ -58,6 +58,10 @@ msgstr ""
 msgid "Default Pages of Folders are merged with the Folderish Pages that replace the Folder wherever that is possible. This works well with Pages and Collections where the text and/or query are added to the folderish page that replaces the Folder."
 msgstr ""
 
+#: plone/volto/behaviors/configure.zcml:42
+msgid "Deprecated (use volto.kicker instead)"
+msgstr ""
+
 #: plone/volto/profiles/coresandbox/types/example.xml
 msgid "Example"
 msgstr ""
@@ -76,6 +80,10 @@ msgstr ""
 
 #: plone/volto/browser/migrate_to_volto.pt:76
 msgid "It is recommendet to use the default settings but here you can disable some of the migration-steps."
+msgstr ""
+
+#: plone/volto/behaviors/configure.zcml:48
+msgid "Kicker field"
 msgstr ""
 
 #: plone/volto/browser/migrate_richtext.pt:130
@@ -230,9 +238,9 @@ msgstr "Idiomas nos quais o site deve ser traduzível."
 msgid "heading_available_languages"
 msgstr "Idiomas disponíveis"
 
-#. Default: "The header title is shown above the title in teasers."
-#: plone/volto/behaviors/headtitle.py:14
-msgid "help_head_title"
+#. Default: "The kicker is a line of text shown above the title."
+#: plone/volto/behaviors/kicker.py:14
+msgid "help_kicker"
 msgstr "O título de cabeçalho é exibido acima do título nos teasers"
 
 #. Default: "Insert an image that will be used in listing and teaser blocks."
@@ -241,9 +249,9 @@ msgstr "O título de cabeçalho é exibido acima do título nos teasers"
 msgid "help_previewimage"
 msgstr "Inserir uma imagem que será utilizada em blocos de listagem e teaser"
 
-#. Default: "Header title"
-#: plone/volto/behaviors/headtitle.py:12
-msgid "label_head_title"
+#. Default: "Kicker"
+#: plone/volto/behaviors/kicker.py:12
+msgid "label_kicker"
 msgstr "Título de cabeçalho"
 
 #. Default: "Preview image"

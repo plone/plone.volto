@@ -49,4 +49,12 @@
     <value key="resource">++plone++plone.volto/volto.svg</value>
   </record>
 
+  <record field="types_not_searched"
+          interface="plone.base.interfaces.controlpanel.ISearchSchema"
+          name="plone.types_not_searched"
+          purge="true"
+  >
+    <value />
+  </record>
+
 </registry>

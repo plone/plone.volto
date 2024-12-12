@@ -1,9 +1,10 @@
 from Acquisition import aq_inner
 from Missing import Missing
 from plone.app.layout.navigation.root import getNavigationRoot
+from plone.base import utils
+from plone.base.interfaces import INavigationSchema
 from plone.registry.interfaces import IRegistry
 from Products.CMFCore.utils import getToolByName
-from Products.CMFPlone import utils
 from Products.CMFPlone.browser.interfaces import INavigationTabs
 from Products.CMFPlone.browser.navigation import get_id
 from Products.CMFPlone.browser.navigation import get_view_url
@@ -11,12 +12,6 @@ from Products.Five import BrowserView
 from zope.component import getMultiAdapter
 from zope.component import getUtility
 from zope.interface import implementer
-
-
-try:
-    from plone.base.interfaces import INavigationSchema
-except ImportError:
-    from Products.CMFPlone.interfaces import INavigationSchema
 
 
 @implementer(INavigationTabs)

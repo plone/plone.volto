@@ -1,8 +1,11 @@
 from Acquisition import aq_base
 from Acquisition import aq_inner
+from Acquisition import aq_parent
 from plone.app.layout.navigation.interfaces import INavigationRoot
 from plone.app.layout.navigation.root import getNavigationRoot
-from Products.CMFPlone import utils
+from plone.base.defaultpage import check_default_page_via_view
+from plone.base.interfaces import IHideFromBreadcrumbs
+from plone.base.utils import pretty_title_or_id
 from Products.CMFPlone.browser.interfaces import INavigationBreadcrumbs
 from Products.CMFPlone.browser.navigation import get_view_url
 from Products.Five import BrowserView
@@ -10,25 +13,17 @@ from zope.component import getMultiAdapter
 from zope.interface import implementer
 
 
-try:
-    from plone.base.defaultpage import check_default_page_via_view
-    from plone.base.interfaces import IHideFromBreadcrumbs
-except ImportError:
-    from Products.CMFPlone.defaultpage import check_default_page_via_view
-    from Products.CMFPlone.interfaces import IHideFromBreadcrumbs
-
-
 @implementer(INavigationBreadcrumbs)
 class PhysicalNavigationBreadcrumbs(BrowserView):
     def breadcrumbs(self):
         context = aq_inner(self.context)
         request = self.request
-        container = utils.parent(context)
+        container = aq_parent(context)
 
         name, item_url = get_view_url(context)
         last_crumb = {
             "absolute_url": item_url,
-            "Title": utils.pretty_title_or_id(context, context),
+            "Title": pretty_title_or_id(context, context),
             "nav_title": getattr(aq_base(context), "nav_title", ""),
         }
 

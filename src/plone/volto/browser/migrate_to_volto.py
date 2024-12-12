@@ -4,6 +4,7 @@ from plone import api
 from plone.app.contenttypes.behaviors.collection import ICollection
 from plone.app.contenttypes.utils import get_old_class_name_string
 from plone.app.contenttypes.utils import get_portal_type_name_string
+from plone.app.contenttypes.utils import migrate_base_class_to_new_class
 from plone.app.linkintegrity.utils import referencedRelationship
 from plone.app.redirector.interfaces import IRedirectionStorage
 from plone.app.textfield.value import RichTextValue
@@ -19,14 +20,6 @@ from uuid import uuid4
 from zope.component import getUtility
 from zope.lifecycleevent import modified
 
-
-try:
-    from plone.app.contenttypes.utils import migrate_base_class_to_new_class
-except ImportError:
-    # BBB: Plone 5
-    from plone.app.contenttypes.migration.dxmigration import (
-        migrate_base_class_to_new_class,
-    )
 
 logger = getLogger(__name__)
 

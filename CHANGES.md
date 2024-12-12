@@ -9,6 +9,26 @@
 
 <!-- towncrier release notes start -->
 
+## 5.0.0 (2024-12-12)
+
+
+### Bug fixes:
+
+- Enable the `plone.versioning` behavior for the Page content type. @davisagli #143
+- Remove override of Plone's `plone.app.vocabularies.Keywords` vocabulary. @davisagli #157
+- The `volto.head_title` behavior has been renamed to `volto.kicker`.
+  The old name still works, but is deprecated.
+  Content types should be updated to use the new name.
+  @iRohitSingh, @davisagli #164
+- Don't exclude Plone Site from search results. @davisagli #165
+- Fix plone.app.multilingual dependency to be a dependency for tests only. @davisagli #168
+
+
+### Internal:
+
+- Fix deprecated imports. @petschki #128
+- Remove unused ZCML conditions. @davisagli #167
+
 ## 5.0.0b2 (2024-11-25)
 
 

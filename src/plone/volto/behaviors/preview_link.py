@@ -16,6 +16,16 @@ from zope.interface import provider
 from zope.schema import TextLine
 
 
+# Allow choosing preview images from a different language tree in a multi-lingual site.
+# See https://github.com/plone/plone.volto/issues/172
+try:
+    import plone.app.multilingual  # noqa
+
+    VOCAB = "plone.app.multilingual.RootCatalog"
+except ImportError:
+    VOCAB = "plone.app.vocabularies.Catalog"
+
+
 @provider(IFormFieldProvider)
 class IPreviewLink(model.Schema):
 
@@ -25,7 +35,7 @@ class IPreviewLink(model.Schema):
             "help_previewimage",
             default="Select an image that will be used in listing and teaser blocks.",
         ),
-        vocabulary="plone.app.vocabularies.Catalog",
+        vocabulary=VOCAB,
         required=False,
     )
 

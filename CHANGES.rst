@@ -8,6 +8,15 @@ Changelog
 
 .. towncrier release notes start
 
+4.4.4 (2024-12-17)
+------------------
+
+Bug fixes:
+
+
+- Allow setting `preview_image_link` to an image from a different language root folder. @davisagli (#172)
+
+
 4.4.3 (2024-08-01)
 ------------------
 

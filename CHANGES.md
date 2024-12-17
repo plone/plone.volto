@@ -9,6 +9,13 @@
 
 <!-- towncrier release notes start -->
 
+## 5.0.1 (2024-12-17)
+
+
+### Bug fixes:
+
+- Allow setting `preview_image_link` to an image from a different language root folder. @davisagli #172
+
 ## 5.0.0 (2024-12-12)
 
 

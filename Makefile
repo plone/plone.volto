@@ -15,7 +15,7 @@ GREEN=`tput setaf 2`
 RESET=`tput sgr0`
 YELLOW=`tput setaf 3`
 
-PLONE5=5.2.10
+PLONE5=5.2.15
 PLONE6=6.0.13
 
 CODE_QUALITY_VERSION=1.0.1

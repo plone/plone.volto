@@ -7,7 +7,7 @@ from plone.app.testing import PloneSandboxLayer
 from plone.app.testing import setRoles
 from plone.app.testing import TEST_USER_ID
 from plone.distribution.testing.layer import PloneDistributionFixture
-from plone.testing import z2
+from plone.testing import zope
 
 import plone.app.caching  # noQA
 import plone.app.discussion  # noQA
@@ -62,13 +62,17 @@ PLONE_VOLTO_CORE_INTEGRATION_TESTING = IntegrationTesting(
 
 
 PLONE_VOLTO_CORE_FUNCTIONAL_TESTING = FunctionalTesting(
-    bases=(PLONE_VOLTO_CORE_FIXTURE, z2.ZSERVER_FIXTURE),
+    bases=(PLONE_VOLTO_CORE_FIXTURE, zope.WSGI_SERVER_FIXTURE),
     name="PloneVoltoCoreLayer:FunctionalTesting",
 )
 
 
 PLONE_VOLTO_CORE_ACCEPTANCE_TESTING = FunctionalTesting(
-    bases=(PLONE_VOLTO_CORE_FIXTURE, REMOTE_LIBRARY_BUNDLE_FIXTURE, z2.ZSERVER_FIXTURE),
+    bases=(
+        PLONE_VOLTO_CORE_FIXTURE,
+        REMOTE_LIBRARY_BUNDLE_FIXTURE,
+        zope.WSGI_SERVER_FIXTURE,
+    ),
     name="PloneVoltoCoreLayer:AcceptanceTesting",
 )
 
@@ -108,7 +112,7 @@ PLONE_VOLTO_CORESANDBOX_INTEGRATION_TESTING = IntegrationTesting(
 
 
 PLONE_VOLTO_CORESANDBOX_FUNCTIONAL_TESTING = FunctionalTesting(
-    bases=(PLONE_VOLTO_CORESANDBOX_FIXTURE, z2.ZSERVER_FIXTURE),
+    bases=(PLONE_VOLTO_CORESANDBOX_FIXTURE, zope.WSGI_SERVER_FIXTURE),
     name="PloneVoltoCoreSandboxLayer:FunctionalTesting",
 )
 
@@ -117,7 +121,7 @@ PLONE_VOLTO_CORESANDBOX_ACCEPTANCE_TESTING = FunctionalTesting(
     bases=(
         PLONE_VOLTO_CORESANDBOX_FIXTURE,
         REMOTE_LIBRARY_BUNDLE_FIXTURE,
-        z2.ZSERVER_FIXTURE,
+        zope.WSGI_SERVER_FIXTURE,
     ),
     name="PloneVoltoCoreSandboxLayer:AcceptanceTesting",
 )
@@ -144,6 +148,6 @@ PLONE_VOLTO_MIGRATION_INTEGRATION_TESTING = IntegrationTesting(
 
 
 PLONE_VOLTO_MIGRATION_FUNCTIONAL_TESTING = FunctionalTesting(
-    bases=(PLONE_VOLTO_MIGRATION_FIXTURE, z2.ZSERVER_FIXTURE),
+    bases=(PLONE_VOLTO_MIGRATION_FIXTURE, zope.WSGI_SERVER_FIXTURE),
     name="PloneVoltoMigrationLayer:FunctionalTesting",
 )

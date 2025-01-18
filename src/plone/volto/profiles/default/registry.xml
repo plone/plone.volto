@@ -2,7 +2,7 @@
 <registry>
   <!-- This is for the elements in the root, not show the current item in navigation-->
   <record field="show_excluded_items"
-          interface="Products.CMFPlone.interfaces.controlpanel.INavigationSchema"
+          interface="plone.base.interfaces.INavigationSchema"
           name="plone.show_excluded_items"
   >
     <value>False</value>
@@ -14,7 +14,7 @@
 </records>
 
   <record field="types_use_view_action_in_listings"
-          interface="Products.CMFPlone.interfaces.controlpanel.ITypesSchema"
+          interface="plone.base.interfaces.ITypesSchema"
           name="plone.types_use_view_action_in_listings"
           purge="true"
   >
@@ -23,7 +23,7 @@
 
   <!-- Allowed sizes -->
   <record field="allowed_sizes"
-          interface="Products.CMFPlone.interfaces.controlpanel.IImagingSchema"
+          interface="plone.base.interfaces.IImagingSchema"
           name="plone.allowed_sizes"
           purge="True"
   >

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<registry>
+
+  <record field="show_excluded_items"
+          interface="plone.base.interfaces.controlpanel.INavigationSchema"
+          name="plone.show_excluded_items"
+  >
+    <value>False</value>
+  </record>
+
+</registry>

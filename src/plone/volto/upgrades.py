@@ -156,3 +156,37 @@ def rename_distribution(context):
             report.name = "volto"
         if report.answers.get("distribution") == "default":
             report.answers["distribution"] = "volto"
+
+
+ROBOTS_TXT = """Sitemap: {portal_url}/sitemap.xml.gz
+
+# Define access-restrictions for robots/spiders
+# http://www.robotstxt.org/wc/norobots.html
+
+User-agent: *
+Disallow: /search
+Disallow: /login
+
+# Add Googlebot-specific syntax extension to exclude forms
+# that are repeated for each piece of content in the site
+# the wildcard is only supported by Googlebot
+# http://www.google.com/support/webmasters/bin/answer.py?answer=40367&ctx=sibling
+
+User-Agent: Googlebot
+Disallow: /*login
+Disallow: /*search
+Disallow: /*edit
+"""
+
+
+def update_robots_txt(context):
+    from plone.base.interfaces.controlpanel import ROBOTS_TXT as CLASSIC_ROBOTS
+
+    current_value = api.portal.get_registry_record("plone.robots_txt")
+    if current_value == CLASSIC_ROBOTS:
+        api.portal.set_registry_record("plone.robots_txt", ROBOTS_TXT)
+        logger.info("Updated plone.robots_txt registry with sane value.")
+    else:
+        logger.info(
+            "Ignoring plone.robots_txt registry as it was modified in this portal."
+        )

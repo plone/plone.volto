@@ -6,6 +6,8 @@ from zope.interface import implementer
 class JSONSummarySerializerMetadata:
     def default_metadata_fields(self):
         return {
+            "head_title",
             "image_field",
             "image_scales",
+            "nav_title",
         }

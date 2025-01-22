@@ -5,7 +5,7 @@
           name="plone.robots_txt"
           purge="true"
   >
-    <value>Sitemap: {portal_url}/sitemap.xml.gz
+    <value>Sitemap: {portal_url}/sitemap-index.xml
 
 # Define access-restrictions for robots/spiders
 # http://www.robotstxt.org/wc/norobots.html

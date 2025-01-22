@@ -158,7 +158,7 @@ def rename_distribution(context):
             report.answers["distribution"] = "volto"
 
 
-ROBOTS_TXT = """Sitemap: {portal_url}/sitemap.xml.gz
+ROBOTS_TXT = """Sitemap: {portal_url}/sitemap-index.xml
 
 # Define access-restrictions for robots/spiders
 # http://www.robotstxt.org/wc/norobots.html

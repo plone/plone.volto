@@ -92,7 +92,7 @@
       destination="1019"
       >
     <genericsetup:upgradeStep
-        title="Rename default distribution to volto"
+        title="Update robots_txt setting for Volto"
         handler=".upgrades.update_robots_txt"
         />
   </genericsetup:upgradeSteps>

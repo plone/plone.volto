@@ -1,8 +1,8 @@
 from Acquisition import aq_inner
 from Missing import Missing
-from plone.app.layout.navigation.root import getNavigationRoot
 from plone.base import utils
 from plone.base.interfaces import INavigationSchema
+from plone.base.navigationroot import get_navigation_root
 from plone.registry.interfaces import IRegistry
 from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone.browser.interfaces import INavigationTabs
@@ -28,7 +28,7 @@ class CatalogNavigationTabs(BrowserView):
         else:
             query = {}
 
-        query["path"] = {"query": getNavigationRoot(self.context), "depth": 1}
+        query["path"] = {"query": get_navigation_root(self.context), "depth": 1}
         query["portal_type"] = [t for t in navigation_settings.displayed_types]
         query["sort_on"] = navigation_settings.sort_tabs_on
         if navigation_settings.sort_tabs_reversed:

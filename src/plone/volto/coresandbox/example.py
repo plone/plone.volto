@@ -1,9 +1,9 @@
 from plone.app.textfield import RichText
 from plone.app.vocabularies.catalog import CatalogSource
 from plone.app.vocabularies.catalog import StaticCatalogVocabulary
-from plone.app.z3cform.widget import AjaxSelectFieldWidget
-from plone.app.z3cform.widget import RelatedItemsFieldWidget
-from plone.app.z3cform.widget import SelectFieldWidget
+from plone.app.z3cform.widgets.relateditems import RelatedItemsFieldWidget
+from plone.app.z3cform.widgets.select import AjaxSelectFieldWidget
+from plone.app.z3cform.widgets.select import Select2FieldWidget
 from plone.autoform import directives
 from plone.dexterity.content import Container
 from plone.namedfile.field import NamedBlobFile
@@ -183,7 +183,7 @@ class IExample(model.Schema):
         required=False,
     )
 
-    directives.widget(choice_field_select=SelectFieldWidget)
+    directives.widget(choice_field_select=Select2FieldWidget)
     choice_field_select = schema.Choice(
         title="Choicefield with select2 widget",
         description="zope.schema.Choice",
@@ -214,7 +214,7 @@ class IExample(model.Schema):
         default=[],
     )
 
-    directives.widget(list_field_select=SelectFieldWidget)
+    directives.widget(list_field_select=Select2FieldWidget)
     list_field_select = schema.List(
         title="List field with select widget",
         description="zope.schema.List",
@@ -437,7 +437,7 @@ class IExample(model.Schema):
     )
     directives.widget(
         "relationchoice_field_select",
-        SelectFieldWidget,
+        Select2FieldWidget,
     )
 
     relationchoice_field_radio = RelationChoice(
@@ -465,7 +465,7 @@ class IExample(model.Schema):
     )
     directives.widget(
         "relationlist_field_select",
-        SelectFieldWidget,
+        Select2FieldWidget,
         pattern_options={
             "closeOnSelect": False,  # Select2 option to leave dropdown open for multiple selection
         },
@@ -620,7 +620,7 @@ class IExample(model.Schema):
     )
     directives.widget(
         "uuid_choice_field_select",
-        SelectFieldWidget,
+        Select2FieldWidget,
     )
 
     uuid_choice_field_radio = schema.Choice(
@@ -648,7 +648,7 @@ class IExample(model.Schema):
     )
     directives.widget(
         "uuid_list_field_select",
-        SelectFieldWidget,
+        Select2FieldWidget,
         pattern_options={
             "closeOnSelect": False,  # Select2 option to leave dropdown open for multiple selection
         },

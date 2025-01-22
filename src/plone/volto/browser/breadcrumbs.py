@@ -1,10 +1,10 @@
 from Acquisition import aq_base
 from Acquisition import aq_inner
 from Acquisition import aq_parent
-from plone.app.layout.navigation.interfaces import INavigationRoot
-from plone.app.layout.navigation.root import getNavigationRoot
 from plone.base.defaultpage import check_default_page_via_view
 from plone.base.interfaces import IHideFromBreadcrumbs
+from plone.base.interfaces import INavigationRoot
+from plone.base.navigationroot import get_navigation_root
 from plone.base.utils import pretty_title_or_id
 from Products.CMFPlone.browser.interfaces import INavigationBreadcrumbs
 from Products.CMFPlone.browser.navigation import get_view_url
@@ -42,7 +42,7 @@ class PhysicalNavigationBreadcrumbs(BrowserView):
         if IHideFromBreadcrumbs.providedBy(context):
             return base
 
-        rootPath = getNavigationRoot(context)
+        rootPath = get_navigation_root(context)
         itemPath = "/".join(context.getPhysicalPath())
 
         # don't show default pages in breadcrumbs or pages above the navigation

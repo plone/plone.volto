@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<registry>
+  <record field="types_use_view_action_in_listings"
+          interface="plone.base.interfaces.controlpanel.ITypesSchema"
+          name="plone.types_use_view_action_in_listings"
+          purge="true"
+  >
+    <value />
+  </record>
+</registry>

@@ -86,4 +86,14 @@
         />
   </genericsetup:upgradeSteps>
 
+  <genericsetup:upgradeSteps
+      profile="plone.volto:default"
+      source="1018"
+      destination="1019"
+      >
+    <genericsetup:upgradeStep
+        title="Update robots_txt setting for Volto"
+        handler=".upgrades.update_robots_txt"
+        />
+  </genericsetup:upgradeSteps>
 </configure>

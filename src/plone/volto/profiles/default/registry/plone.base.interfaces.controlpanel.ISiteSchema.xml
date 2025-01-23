@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<registry>
+  <record field="robots_txt"
+          interface="plone.base.interfaces.controlpanel.ISiteSchema"
+          name="plone.robots_txt"
+          purge="true"
+  >
+    <value>Sitemap: {portal_url}/sitemap-index.xml
+
+# Define access-restrictions for robots/spiders
+# http://www.robotstxt.org/wc/norobots.html
+
+User-agent: *
+Disallow: /search
+Disallow: /login
+
+# Add Googlebot-specific syntax extension to exclude forms
+# that are repeated for each piece of content in the site
+# the wildcard is only supported by Googlebot
+# http://www.google.com/support/webmasters/bin/answer.py?answer=40367&amp;ctx=sibling
+
+User-Agent: Googlebot
+Disallow: /*login
+Disallow: /*search
+Disallow: /*edit
+</value>
+  </record>
+</registry>

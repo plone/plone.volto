@@ -1,3 +1,0 @@
-Implement a specific robots.txt for Volto sites.
-There is an upgrade step which will update the existing plone.robots_txt registry setting unless it has been customized.
-@ericof

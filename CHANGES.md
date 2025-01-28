@@ -9,6 +9,17 @@
 
 <!-- towncrier release notes start -->
 
+## 5.0.2 (2025-01-27)
+
+
+### Bug fixes:
+
+- Implement a specific robots.txt for Volto sites.
+  There is an upgrade step which will update the existing plone.robots_txt registry setting unless it has been customized.
+  @ericof #178
+- Add nav_title and head_title to the default summary serializer metadata fields. @davisagli #181
+- Fix DeprecationWarnings. [maurits] #4090
+
 ## 5.0.1 (2024-12-17)
 
 

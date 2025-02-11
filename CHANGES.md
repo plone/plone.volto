@@ -9,6 +9,13 @@
 
 <!-- towncrier release notes start -->
 
+## 5.0.3 (2025-02-11)
+
+
+### Bug fixes:
+
+- Include `effective`, `end`, `getObjSize`, `mime_type`, and `start` in default summary serialization. @davisagli #184
+
 ## 5.0.2 (2025-01-27)
 
 

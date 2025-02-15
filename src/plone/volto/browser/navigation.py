@@ -4,6 +4,7 @@ from plone.base import utils
 from plone.base.interfaces import INavigationSchema
 from plone.base.navigationroot import get_navigation_root
 from plone.registry.interfaces import IRegistry
+from plone.restapi.serializer.utils import uid_to_url
 from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone.browser.interfaces import INavigationTabs
 from Products.CMFPlone.browser.navigation import get_id
@@ -84,7 +85,7 @@ class CatalogNavigationTabs(BrowserView):
 
         def _get_url(item):
             if item.getRemoteUrl and not member == item.Creator:
-                return (get_id(item), item.getRemoteUrl)
+                return (get_id(item), uid_to_url(item.getRemoteUrl))
             return get_view_url(item)
 
         context_path = "/".join(context.getPhysicalPath())

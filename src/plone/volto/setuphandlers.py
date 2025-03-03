@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 from importlib import import_module
+from importlib.metadata import distribution
+from importlib.metadata import PackageNotFoundError
 from plone import api
 from plone.dexterity.interfaces import IDexterityFTI
 from plone.volto.bbb import get_installer
@@ -13,17 +15,16 @@ from zope.interface import implementer
 
 import json
 import logging
-import pkg_resources
 import transaction
 
 
 try:
-    pkg_resources.get_distribution("plone.app.multilingual")
+    distribution("plone.app.multilingual")
     from plone.app.multilingual.browser.setup import SetupMultilingualSite
     from plone.app.multilingual.setuphandlers import enable_translatable_behavior
 
     HAS_MULTILINGUAL = True
-except pkg_resources.DistributionNotFound:
+except PackageNotFoundError:
     HAS_MULTILINGUAL = False
 
 PLONE_6 = getattr(import_module("Products.CMFPlone.factory"), "PLONE60MARKER", False)

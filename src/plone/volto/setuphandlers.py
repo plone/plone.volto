@@ -1,20 +1,21 @@
+from importlib.metadata import distribution
+from importlib.metadata import PackageNotFoundError
 from plone import api
 from plone.base.interfaces import INonInstallable
 from plone.dexterity.interfaces import IDexterityFTI
 from zope.component import queryUtility
 from zope.interface import implementer
 
-import pkg_resources
 import transaction
 
 
 try:
-    pkg_resources.get_distribution("plone.app.multilingual")
+    distribution("plone.app.multilingual")
     from plone.app.multilingual.browser.setup import SetupMultilingualSite
     from plone.app.multilingual.setuphandlers import enable_translatable_behavior
 
     HAS_MULTILINGUAL = True
-except pkg_resources.DistributionNotFound:
+except PackageNotFoundError:
     HAS_MULTILINGUAL = False
 
 

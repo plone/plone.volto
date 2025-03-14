@@ -9,6 +9,14 @@
 
 <!-- towncrier release notes start -->
 
+## 5.0.4 (2025-03-13)
+
+
+### Bug fixes:
+
+- Resolve UID-based internal links in navigation tabs. @ichim-david #159
+- Replace `pkg_resources` with `importlib.metadata` @gforcada #4126
+
 ## 5.0.3 (2025-02-11)
 
 

@@ -8,6 +8,15 @@ Changelog
 
 .. towncrier release notes start
 
+4.4.5 (2025-03-17)
+------------------
+
+Bug fixes:
+
+
+- Resolve UID-based internal links in navigation tabs. @ichim-david (#159)
+
+
 4.4.4 (2024-12-17)
 ------------------
 

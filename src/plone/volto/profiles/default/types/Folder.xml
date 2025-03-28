@@ -8,8 +8,4 @@
   <!-- Folders in Volto are disabled by default -->
   <property name="global_allow">False</property>
 
-  <property name="behaviors">
-    <element value="volto.navtitle" />
-  </property>
-
 </object>

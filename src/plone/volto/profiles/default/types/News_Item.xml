@@ -11,5 +11,6 @@
   >
     <element value="plone.constraintypes" />
     <element value="volto.blocks" />
+    <element value="volto.navtitle" />
   </property>
 </object>

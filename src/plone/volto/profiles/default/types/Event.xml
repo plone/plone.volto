@@ -6,12 +6,25 @@
 >
   <property name="filter_content_types">False</property>
   <property name="klass">plone.volto.content.FolderishEvent</property>
-  <property name="behaviors"
-            purge="false"
-  >
-    <element value="plone.constraintypes" />
-    <element value="volto.blocks" />
-    <element value="volto.preview_image" />
+  <property name="behaviors">
     <element value="volto.navtitle" />
+    <element value="volto.preview_image" />
+    <element value="plone.textindexer" />
+    <element value="plone.eventbasic" />
+    <element value="plone.eventrecurrence" />
+    <element value="plone.eventlocation" />
+    <element value="plone.eventattendees" />
+    <element value="plone.eventcontact" />
+    <element value="plone.dublincore" />
+    <element value="plone.namefromtitle" />
+    <element value="plone.allowdiscussion" />
+    <element value="plone.excludefromnavigation" />
+    <element value="plone.shortname" />
+    <element value="plone.relateditems" />
+    <element value="plone.versioning" />
+    <element value="plone.locking" />
+    <element value="plone.constraintypes" />
+    <element value="plone.translatable" />
+    <element value="volto.blocks" />
   </property>
 </object>

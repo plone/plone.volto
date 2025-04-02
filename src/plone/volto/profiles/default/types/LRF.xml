@@ -10,14 +10,15 @@
   <property name="behaviors"
             purge="false"
   >
+    <element value="volto.navtitle" />
+    <element value="volto.preview_image" />
     <element value="plone.dublincore" />
     <element value="plone.namefromtitle" />
     <element value="plone.constraintypes" />
-    <element value="plone.translatable" />
     <element value="plone.excludefromnavigation" />
     <element value="plone.navigationroot" />
+    <element value="plone.translatable" />
     <element value="volto.blocks" />
-    <element value="volto.navtitle" />
   </property>
 
 </object>

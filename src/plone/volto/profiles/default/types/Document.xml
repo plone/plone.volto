@@ -10,6 +10,8 @@
 
   <!-- Enabled behaviors -->
   <property name="behaviors">
+    <element value="volto.navtitle" />
+    <element value="volto.preview_image" />
     <element value="plone.constraintypes" />
     <element value="plone.namefromtitle" />
     <element value="plone.allowdiscussion" />
@@ -19,9 +21,8 @@
     <element value="plone.relateditems" />
     <element value="plone.locking" />
     <element value="plone.versioning" />
+    <element value="plone.translatable" />
     <element value="volto.blocks" />
-    <element value="volto.preview_image" />
-    <element value="volto.navtitle" />
   </property>
 
 </object>

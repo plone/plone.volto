@@ -442,7 +442,6 @@
   "creators": ["admin"],
   "description": "A Plone Site to be used with a Volto frontend",
   "effective": null,
-  "exclude_from_nav": false,
   "expires": null,
   "exportimport.constrains": {},
   "exportimport.conversation": [],

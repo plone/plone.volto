@@ -9,6 +9,12 @@ from zope.schema import TextLine
 @provider(IFormFieldProvider)
 class IPreview(model.Schema):
 
+    model.fieldset(
+        "preview_image",
+        _("label_previewimage", default="Preview image"),
+        fields=["preview_image", "preview_caption"],
+    )
+
     preview_image = namedfile.NamedBlobImage(
         title=_("label_previewimage", default="Preview image"),
         description=_(

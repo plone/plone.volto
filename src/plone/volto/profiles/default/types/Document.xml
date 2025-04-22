@@ -10,19 +10,22 @@
 
   <!-- Enabled behaviors -->
   <property name="behaviors">
-    <element value="volto.navtitle" />
-    <element value="volto.preview_image" />
-    <element value="plone.constraintypes" />
-    <element value="plone.namefromtitle" />
-    <element value="plone.allowdiscussion" />
-    <element value="plone.excludefromnavigation" />
-    <element value="plone.shortname" />
-    <element value="plone.dublincore" />
+    <element value="plone.basic" />
+    <element value="volto.preview_image_link" />
+    <element value="plone.categorization" />
+    <element value="plone.publication" />
+    <element value="plone.ownership" />
     <element value="plone.relateditems" />
-    <element value="plone.locking" />
-    <element value="plone.versioning" />
-    <element value="plone.translatable" />
+    <element value="plone.shortname" />
+    <element value="volto.navtitle" />
+    <element value="plone.excludefromnavigation" />
+    <element value="plone.allowdiscussion" />
+
     <element value="volto.blocks" />
+    <element value="plone.constraintypes" />
+    <element value="plone.locking" />
+    <element value="plone.namefromtitle" />
+    <element value="plone.translatable" />
   </property>
 
 </object>

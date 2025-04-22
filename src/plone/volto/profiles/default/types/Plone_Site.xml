@@ -6,13 +6,14 @@
 >
   <!-- Enabled behaviors -->
   <property name="behaviors">
-    <element value="volto.navtitle" />
-    <element value="volto.preview_image" />
-    <element value="plone.dublincore" />
+    <element value="plone.basic" />
+    <element value="plone.categorization" />
+    <element value="plone.publication" />
+    <element value="plone.ownership" />
     <element value="plone.relateditems" />
-    <element value="plone.locking" />
-    <element value="plone.excludefromnavigation" />
+
     <element value="volto.blocks" />
+    <element value="plone.locking" />
   </property>
 
 </object>

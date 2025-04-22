@@ -6,15 +6,15 @@
 >
   <!-- Enabled behaviors -->
   <property name="behaviors">
-    <element value="volto.navtitle" />
-    <element value="volto.preview_image" />
     <element value="plone.categorization" />
     <element value="plone.publication" />
     <element value="plone.ownership" />
     <element value="plone.shortname" />
-    <element value="plone.namefromfilename" />
+    <element value="volto.navtitle" />
     <element value="plone.excludefromnavigation" />
     <element value="plone.relateditems" />
+
+    <element value="plone.namefromfilename" />
   </property>
 
 </object>

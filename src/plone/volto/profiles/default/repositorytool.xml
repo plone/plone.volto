@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<repositorytool>
+  <policymap>
+    <type name="Document">
+      <policy name="at_edit_autoversion" />
+      <policy name="version_on_revert" />
+    </type>
+    <type name="Event">
+      <policy name="at_edit_autoversion" />
+      <policy name="version_on_revert" />
+    </type>
+    <type name="Link">
+      <policy name="at_edit_autoversion" />
+      <policy name="version_on_revert" />
+    </type>
+    <type name="News Item">
+      <policy name="at_edit_autoversion" />
+      <policy name="version_on_revert" />
+    </type>
+  </policymap>
+</repositorytool>

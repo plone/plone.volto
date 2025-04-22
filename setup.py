@@ -44,6 +44,7 @@ setup(
         "collective.monkeypatcher",
         "plone.api",
         "plone.app.caching",
+        "plone.app.dexterity",
         "plone.distribution",
         "plone.restapi>=8.41.0",
         "Products.CMFPlone",

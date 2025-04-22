@@ -7,16 +7,18 @@
 
   <property name="global_allow">False</property>
 
-  <property name="behaviors"
-            purge="false"
-  >
-    <element value="plone.dublincore" />
-    <element value="plone.namefromtitle" />
-    <element value="plone.constraintypes" />
-    <element value="plone.translatable" />
-    <element value="plone.excludefromnavigation" />
-    <element value="plone.navigationroot" />
+  <property name="behaviors">
+    <element value="plone.basic" />
+    <element value="volto.preview_image_link" />
+    <element value="plone.categorization" />
+    <element value="plone.publication" />
+    <element value="plone.ownership" />
+
     <element value="volto.blocks" />
+    <element value="plone.constraintypes" />
+    <element value="plone.namefromtitle" />
+    <element value="plone.navigationroot" />
+    <element value="plone.translatable" />
   </property>
 
 </object>

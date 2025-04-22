@@ -115,7 +115,7 @@ To add it to an existing site, run `plone.volto.upgrades.add_block_types_index` 
 ### Multilingual support
 
 `plone.volto` supports multilingual websites.
-Install PAM before installing this package, and demo homepages will be created in each enabled language.
+Install PAM before installing this package, and a Language Root Folder  will be created in each enabled language.
 Support is currently only for `EN` and `DE`.
 
 ### Document content type

@@ -29,6 +29,12 @@ except ImportError:
 @provider(IFormFieldProvider)
 class IPreviewLink(model.Schema):
 
+    model.fieldset(
+        "preview_image",
+        _("label_previewimage", default="Preview image"),
+        fields=["preview_image_link", "preview_caption_link"],
+    )
+
     preview_image_link = RelationChoice(
         title=_("label_previewimage", default="Preview image"),
         description=_(

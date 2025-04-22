@@ -22,9 +22,9 @@ class TestSetupInstall:
         "portal_type,behavior",
         [
             ["Document", "volto.blocks"],
-            ["Document", "volto.preview_image"],
+            ["Document", "volto.preview_image_link"],
             ["Event", "volto.blocks"],
-            ["Event", "volto.preview_image"],
+            ["Event", "volto.preview_image_link"],
             ["News Item", "volto.blocks"],
             ["Plone Site", "volto.blocks"],
         ],

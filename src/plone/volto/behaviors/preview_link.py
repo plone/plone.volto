@@ -1,4 +1,5 @@
 from plone import api
+from plone.app.contenttypes.interfaces import IImage
 from plone.app.z3cform.widgets.relateditems import RelatedItemsFieldWidget
 from plone.autoform import directives
 from plone.autoform.interfaces import IFormFieldProvider
@@ -13,6 +14,7 @@ from zope.component import queryMultiAdapter
 from zope.interface import implementer
 from zope.interface import Interface
 from zope.interface import provider
+from zope.lifecycleevent.interfaces import IObjectModifiedEvent
 from zope.schema import TextLine
 
 
@@ -87,3 +89,14 @@ class PreviewImageScalesFieldAdapter:
                 return values
 
         return []
+
+
+@adapter(IImage, IObjectModifiedEvent)
+def update_preview_image_scales(obj, event):
+    """When an image is modified, update the image_scales metadata
+    on other items that use it as a preview image.
+    """
+    for rel in api.relation.get(
+        target=obj, relationship="preview_image_link", unrestricted=True
+    ):
+        rel.from_object.reindexObject(idxs=["image_scales"], update_metadata=True)

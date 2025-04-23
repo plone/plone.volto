@@ -23,6 +23,7 @@
       provides=".preview_link.IPreviewLink"
       />
   <adapter factory=".preview_link.PreviewImageScalesFieldAdapter" />
+  <subscriber handler=".preview_link.update_preview_image_scales" />
 
   <plone:behavior
       name="volto.navtitle"

@@ -5,6 +5,7 @@ from plone.restapi.interfaces import ISerializeToJsonSummary
 from z3c.form.interfaces import IDataManager
 from zope.component import getMultiAdapter
 from zope.component.hooks import setSite
+from zope.lifecycleevent import modified
 
 import pytest
 
@@ -48,7 +49,7 @@ def contents(portal) -> dict:
         )
         dm = getMultiAdapter((doc, IPreviewLink["preview_image_link"]), IDataManager)
         dm.set(image)
-        doc.reindexObject()
+        modified(doc)
     return {"doc": doc, "image": image}
 
 
@@ -63,3 +64,11 @@ class TestPreviewLinkBehavior:
         brain = api.content.find(UID=self.doc.UID())[0]
         summary = getMultiAdapter((brain, http_request), ISerializeToJsonSummary)()
         assert "preview_image_link" in summary["image_scales"]
+
+        # Make sure scales are updated if image is edited
+        self.image.image = None
+        modified(self.image)
+
+        brain = api.content.find(UID=self.doc.UID())[0]
+        summary2 = getMultiAdapter((brain, http_request), ISerializeToJsonSummary)()
+        assert summary["image_scales"] != summary2["image_scales"]

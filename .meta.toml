@@ -13,7 +13,7 @@ extra_lines = """
 [pyproject]
 codespell_skip = "*.min.js,*lock.yaml"
 codespell_ignores = "vew"
-dependencies_ignores = "['collective.folderishtypes', 'plone.app.caching', 'plone.app.multilingual', 'requests', 'responses', 'zest.releaser', 'zestreleaser.towncrier']"
+dependencies_ignores = "['plone.app.caching', 'plone.app.multilingual', 'requests', 'responses']"
 dependencies_mappings = [
     "'Products.CMFPlone' = ['Acquisition', 'BTrees', 'Missing', 'OFS', 'plone.app.contenttypes', 'plone.app.layout', 'plone.app.linkintegrity', 'plone.app.redirector', 'plone.app.registry', 'plone.app.textfield', 'plone.app.vocabularies', 'plone.app.z3cform', 'plone.autoform', 'plone.base', 'plone.behavior', 'plone.dexterity', 'plone.indexer', 'plone.namedfile', 'plone.protect', 'plone.registry', 'plone.rfc822', 'plone.schema', 'plone.supermodel', 'Products.BTreeFolder2', 'Products.CMFCore', 'Products.Five', 'Products.GenericSetup', 'Products.SiteErrorLog', 'transaction', 'z3c.form', 'z3c.relationfield', 'zope.component', 'zope.i18n', 'zope.i18nmessageid', 'zope.interface', 'zope.lifecycleevent', 'zope.publisher', 'zope.schema', 'Zope']",
     "'plone.restapi' = ['plone.rest']",

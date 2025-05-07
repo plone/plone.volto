@@ -9,6 +9,27 @@
 
 <!-- towncrier release notes start -->
 
+## 5.1.0 (2025-05-07)
+
+
+### New features:
+
+- Enable automatic versioning for content types with blocks. @davisagli #191
+- Enable preview image link behavior by default for most content types. @davisagli #191
+- Put preview image fields in their own fieldset, and the navigation title field in the Settings fieldset. @davisagli #191
+- Enable navigation title by default for most content types. @ana-oprea #191
+
+
+### Bug fixes:
+
+- Update `image_scales` in catalog for items with a `preview_image_link` if the image is edited. @davisagli #192
+
+
+### Internal:
+
+- Don't depend on zest.releaser.
+  [thet] 
+
 ## 5.0.4 (2025-03-13)
 
 

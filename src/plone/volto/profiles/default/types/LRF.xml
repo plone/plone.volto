@@ -5,20 +5,11 @@
         i18n:domain="plone"
 >
 
-  <property name="global_allow">False</property>
-
-  <property name="behaviors">
-    <element value="plone.basic" />
-    <element value="volto.preview_image_link" />
-    <element value="plone.categorization" />
-    <element value="plone.publication" />
-    <element value="plone.ownership" />
-
+  <!-- Add to enabled behaviors -->
+  <property name="behaviors"
+            purge="false"
+  >
     <element value="volto.blocks" />
-    <element value="plone.constraintypes" />
-    <element value="plone.namefromtitle" />
-    <element value="plone.navigationroot" />
-    <element value="plone.translatable" />
   </property>
 
 </object>

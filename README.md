@@ -92,8 +92,7 @@ Architectural diagram of Plone 6:
 
 ### Volto blocks support
 
-
-`plone.volto` enables the new Volto blocks editor on `Document`, `Language Root Folder`, and `Site Root`.
+`plone.volto` enables the new Volto blocks editor on the `Document`, `News Item`, `Event`, `Language Root Folder`, and `Plone Site` content types.
 
 
 ### Block types index
@@ -117,6 +116,7 @@ To add it to an existing site, run `plone.volto.upgrades.add_block_types_index` 
 `plone.volto` supports multilingual websites.
 Install PAM before installing this package, and a Language Root Folder  will be created in each enabled language.
 Support is currently only for `EN` and `DE`.
+
 
 ### Document content type
 
@@ -148,14 +148,6 @@ the future. It will be addressed in next sprints.
 enabled, making it difficult to follow since all are marked with a UUID, specifically when
 using helpers like Sentry. This patch removes the UUID so the same error is categorized
 all together. This is planned to be addressed in next sprints.
-
-
-### Patch for `subject` field
-
-There are some problems of serialization on special characters derived from the
-current shape of the Plone's default Dexterity `subjects` field that have to be
-addressed in order to make it work properly with Volto (and other systems that are not
-Plone). This will be fixed in core in upcoming sprints.
 
 
 ### Preview image behavior

@@ -6,21 +6,13 @@
 >
   <property name="filter_content_types">False</property>
   <property name="klass">plone.volto.content.FolderishNewsItem</property>
-  <property name="behaviors">
-    <element value="plone.basic" />
-    <element value="volto.preview_image_link" />
-    <element value="plone.categorization" />
-    <element value="plone.publication" />
-    <element value="plone.ownership" />
-    <element value="plone.shortname" />
-    <element value="volto.navtitle" />
-    <element value="plone.excludefromnavigation" />
-    <element value="plone.relateditems" />
 
+  <!-- Add to enabled behaviors -->
+  <property name="behaviors"
+            purge="false"
+  >
+    <element value="volto.preview_image_link" />
+    <element value="volto.navtitle" />
     <element value="volto.blocks" />
-    <element value="plone.constraintypes" />
-    <element value="plone.locking" />
-    <element value="plone.namefromtitle" />
-    <element value="plone.translatable" />
   </property>
 </object>

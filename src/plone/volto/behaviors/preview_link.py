@@ -76,7 +76,7 @@ class PreviewImageScalesFieldAdapter:
         if value:
             linked_image = value.to_object
             if linked_image is None:
-                return
+                return []
             primary_field = IPrimaryFieldInfo(linked_image).field
             serializer = queryMultiAdapter(
                 (primary_field, linked_image, self.request), IImageScalesFieldAdapter

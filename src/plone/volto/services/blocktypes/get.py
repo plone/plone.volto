@@ -32,7 +32,6 @@ class BlockTypesGet(Service):
 
         if type:
             query["block_types"] = self.block_type
-            result.setdefault(self.block_type, [])
             brains = catalog.unrestrictedSearchResults(**query)
 
             for brain in brains:

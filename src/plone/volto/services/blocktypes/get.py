@@ -20,7 +20,7 @@ class BlockTypesGet(Service):
     def reply(self):
         catalog = api.portal.get_tool(name="portal_catalog")
         request_body = self.request.form
-        result = {"items": []}
+        result = {}
         type = self.block_type
 
         query = {
@@ -31,6 +31,7 @@ class BlockTypesGet(Service):
             query["path"] = request_body["path"]
 
         if type:
+            result.setdefault("items", [])
             query["block_types"] = self.block_type
             brains = catalog.unrestrictedSearchResults(**query)
 
@@ -43,6 +44,7 @@ class BlockTypesGet(Service):
                     }
                 )
         else:
+            result.setdefault("summary", {})
             brains = catalog.unrestrictedSearchResults(**query)
             block_types_total = collections.Counter()
 
@@ -50,6 +52,6 @@ class BlockTypesGet(Service):
                 block_types_total.update(brain.block_types)
 
             for block_type, count in block_types_total.items():
-                result["items"].append({block_type: count})
+                result["summary"][block_type] = count
 
         return result

@@ -1,1 +1,0 @@
-Fix error in `preview_image_link` image scales adapter if the image was deleted. @rohnsha0

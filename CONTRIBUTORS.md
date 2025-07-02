@@ -8,3 +8,4 @@
 - Rodrigo Ferreira de Souza
 - Alin Voinea
 - Steve Piercy
+- Leonardo J. Caballero G.

@@ -207,7 +207,7 @@ msgid "Uninstalls the plone.volto add-on."
 msgstr "Desinstalar plone.volto."
 
 #: plone/volto/interfaces.py:22
-msgid "Used for rewriting URL's sent in the password reset e-mail by Plone."
+msgid "Used for rewriting URLs sent in the password reset email by Plone."
 msgstr "Se utiliza para reescribir las URL enviadas en el correo electrónico de restablecimiento de contraseña por Plone."
 
 #: plone/volto/profiles.zcml:16

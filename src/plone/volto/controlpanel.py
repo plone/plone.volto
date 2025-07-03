@@ -1,6 +1,7 @@
 from plone.app.registry.browser.controlpanel import ControlPanelFormWrapper
 from plone.app.registry.browser.controlpanel import RegistryEditForm
 from plone.restapi.controlpanels import RegistryConfigletPanel
+from plone.volto import _
 from plone.volto.interfaces import IVoltoSettings
 from zope.component import adapter
 from zope.interface import Interface
@@ -8,7 +9,7 @@ from zope.interface import Interface
 
 class VoltoSettingsEditForm(RegistryEditForm):
     schema = IVoltoSettings
-    label = "Volto Settings"
+    label = _("Volto Settings")
     schema_prefix = "volto"
 
     def updateFields(self):

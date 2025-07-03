@@ -4,11 +4,10 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: plone.volto\n"
-"POT-Creation-Date: 2024-12-11 17:41+0000\n"
+"POT-Creation-Date: 2025-07-02 23:53+0000\n"
 "PO-Revision-Date: 2025-07-02 02:01+0200\n"
 "Last-Translator: Leonardo J. Caballero G. <leonardocaballero@gmail.com>\n"
 "Language-Team: ES <LL@li.org>\n"
-"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -17,6 +16,7 @@ msgstr ""
 "Language-Name: Español\n"
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: plone.volto\n"
+"Language: es\n"
 "X-Is-Fallback-For: es-ar es-bo es-cl es-co es-cr es-do es-ec es-es es-sv es-gt es-hn es-mx es-ni es-pa es-py es-pe es-pr es-us es-uy es-ve\n"
 "X-Generator: Poedit 3.6\n"
 
@@ -24,7 +24,7 @@ msgstr ""
 msgid "A site migrated to Volto in this Plone backend will still be accessible through the Plone Classic User Interface but with limited functionality. The core content types will have all their GUI RichText fields replaced by the blocks behavior for the composition of the main content. So after migration you can only edit this content using the Volto UI."
 msgstr "Un sitio migrado a Volto en este backend de Plone seguirá siendo accesible a través de la interfaz de usuario de Plone Classic, pero con una funcionalidad limitada. Los tipos de contenido principal tendrán todos sus campos de texto enriquecido de la GUI reemplazados por el comportamiento de bloques para la composición del contenido principal. Por lo tanto, después de la migración, solo puede editar este contenido mediante la interfaz de usuario de Volto."
 
-#: plone/volto/behaviors/configure.zcml:48
+#: plone/volto/behaviors/configure.zcml:46
 msgid "Adds kicker field (text to be shown above the headline)"
 msgstr "Agrega un campo de inicio (el texto se mostrará encima del título)"
 
@@ -40,9 +40,13 @@ msgstr "Las colecciones y páginas que son la página predeterminada de una carp
 msgid "Collections are migrated to Pages with Listing Blocks configured like the Collection."
 msgstr "Las colecciones se migran a páginas con bloques de listado configurados como la colección."
 
+#: plone/volto/profiles.zcml:24
+msgid "Configures a new site with Volto and standard content types."
+msgstr ""
+
 #: plone/volto/profiles.zcml:16
-msgid "Configures the Plone backend to work with Volto, the new default frontend for Plone 6."
-msgstr "Configura Plone para funcionar con Volto, el nuevo frontal de Plone 6."
+msgid "Configures the Plone backend to work with Volto."
+msgstr "Configura Plone para funcionar con Volto."
 
 #: plone/volto/browser/migrate_richtext.pt:33
 msgid "Content Types to handle"
@@ -60,7 +64,7 @@ msgstr "Convertir a draftjs (un formato antiguo utilizado hasta Volto 15)"
 msgid "Default Pages of Folders are merged with the Folderish Pages that replace the Folder wherever that is possible. This works well with Pages and Collections where the text and/or query are added to the folderish page that replaces the Folder."
 msgstr "Las páginas predeterminadas de las carpetas se combinan con las páginas de carpetas que reemplazan a la carpeta siempre que sea posible. Esto funciona bien con páginas y colecciones en las que el texto y/o la consulta se agregan a la página en forma de carpeta que reemplaza a la carpeta."
 
-#: plone/volto/behaviors/configure.zcml:42
+#: plone/volto/behaviors/configure.zcml:40
 msgid "Deprecated (use volto.kicker instead)"
 msgstr "Obsoleto (use volto.kicker en su lugar)"
 
@@ -68,7 +72,11 @@ msgstr "Obsoleto (use volto.kicker en su lugar)"
 msgid "Example"
 msgstr "Ejemplo"
 
-#: plone/volto/behaviors/configure.zcml:42
+#: plone/volto/interfaces.py:21
+msgid "Frontend domain"
+msgstr ""
+
+#: plone/volto/behaviors/configure.zcml:40
 msgid "Head title field"
 msgstr "Campo de título de cabecera"
 
@@ -80,11 +88,15 @@ msgstr "Aquí puedes preparar este sitio para Volto."
 msgid "Install the package <code>plone.volto</code> and <code>plone.restapi</code>."
 msgstr "Instale el paquete <code>plone.volto</code> y <code>plone.restapi</code>."
 
+#: plone/volto/profiles.zcml:24
+msgid "Installation profile for the Volto distribution"
+msgstr ""
+
 #: plone/volto/browser/migrate_to_volto.pt:76
 msgid "It is recommendet to use the default settings but here you can disable some of the migration-steps."
 msgstr "Se recomienda utilizar la configuración predeterminada, pero aquí puede deshabilitar algunos de los pasos de migración."
 
-#: plone/volto/behaviors/configure.zcml:48
+#: plone/volto/behaviors/configure.zcml:46
 msgid "Kicker field"
 msgstr "Campo de Kicker"
 
@@ -112,12 +124,12 @@ msgstr "Migrar texto de campos de texto enriquecido a texto en el Editor de Volt
 msgid "Migrate to Volto"
 msgstr "Migrar a Volto"
 
-#: plone/volto/behaviors/configure.zcml:35
-#: plone/volto/behaviors/navtitle.py:11
+#: plone/volto/behaviors/configure.zcml:33
+#: plone/volto/behaviors/navtitle.py:14
 msgid "Navigation title"
 msgstr "Título de la navegación"
 
-#: plone/volto/behaviors/configure.zcml:35
+#: plone/volto/behaviors/configure.zcml:33
 msgid "Navigation title used in sections, menus and doormats"
 msgstr "Título de la navegación utilizado en secciones, menús y acordeones"
 
@@ -125,32 +137,24 @@ msgstr "Título de la navegación utilizado en secciones, menús y acordeones"
 msgid "Pages, News Items, and Events are made folderish. That means they can contain other content, such as Images or Pages."
 msgstr "Las páginas, las noticias y los eventos se convierten en carpetas. Eso significa que pueden contener otro contenido, como imágenes o páginas."
 
-#: plone/volto/profiles.zcml:16
-msgid "Plone 6 Frontend (plone.volto)"
-msgstr "Frontal Plone 6 (plone.volto)"
-
-#: plone/volto/profiles.zcml:25
-msgid "Plone 6 Frontend (plone.volto): uninstall"
-msgstr "Frontal Plone 6 (plone.volto): desinstalar"
-
-#: plone/volto/behaviors/configure.zcml:18
+#: plone/volto/behaviors/configure.zcml:17
 msgid "Preview Image"
 msgstr "Imagen"
 
-#: plone/volto/behaviors/configure.zcml:26
+#: plone/volto/behaviors/configure.zcml:24
 msgid "Preview Image Link"
 msgstr "Enlace de imagen de vista previa"
 
-#: plone/volto/behaviors/preview.py:22
-#: plone/volto/behaviors/preview_link.py:42
+#: plone/volto/behaviors/preview.py:28
+#: plone/volto/behaviors/preview_link.py:60
 msgid "Preview image caption"
 msgstr "Preview image caption"
 
-#: plone/volto/behaviors/configure.zcml:18
+#: plone/volto/behaviors/configure.zcml:17
 msgid "Preview image for listings"
 msgstr "Imagen para listados"
 
-#: plone/volto/behaviors/configure.zcml:26
+#: plone/volto/behaviors/configure.zcml:24
 msgid "Preview image for listings based on links"
 msgstr "Vista previa de la imagen de los listados basados en enlaces"
 
@@ -166,11 +170,11 @@ msgstr "Purgar los antiguos campos de texto enriquecido después de migrar a los
 msgid "Requirements for this migration wizard"
 msgstr "Requisitos para este asistente de migración"
 
-#: plone/volto/profiles.zcml:35
+#: plone/volto/profiles.zcml:43
 msgid "Special test fixture for coresandbox use cases"
 msgstr "Accesorio de prueba especial para casos de uso de coresandbox"
 
-#: plone/volto/profiles.zcml:46
+#: plone/volto/profiles.zcml:54
 msgid "Special test fixture for multilingual use case"
 msgstr "Perfil especial para configurar los tests de un sitio multilingüe"
 
@@ -198,9 +202,25 @@ msgstr "URL de blocks-conversion-tool."
 msgid "URL of blocks-conversion-tool. The migration requires a service to run. See https://github.com/plone/blocks-conversion-tool for details."
 msgstr "URL de blocks-conversion-tool. La migración requiere que se ejecute un servicio. Consulte https://github.com/plone/blocks-conversion-tool para obtener más detalles."
 
-#: plone/volto/profiles.zcml:25
+#: plone/volto/profiles.zcml:33
 msgid "Uninstalls the plone.volto add-on."
 msgstr "Desinstalar plone.volto."
+
+#: plone/volto/interfaces.py:22
+msgid "Used for rewriting URL's sent in the password reset e-mail by Plone."
+msgstr ""
+
+#: plone/volto/profiles.zcml:16
+msgid "Volto Frontend (plone.volto)"
+msgstr "Frontal Volto (plone.volto)"
+
+#: plone/volto/profiles.zcml:33
+msgid "Volto Frontend (plone.volto): Uninstall"
+msgstr "Frontal Volto (plone.volto): desinstalar""
+
+#: plone/volto/controlpanel.py:12
+msgid "Volto Settings"
+msgstr ""
 
 #: plone/volto/browser/migrate_to_volto.pt:21
 msgid "Volto is a React-based frontend for Plone. It is the default UI for Plone 6. Volto is a separate server-side application."
@@ -241,31 +261,32 @@ msgid "heading_available_languages"
 msgstr "Idiomas disponibles"
 
 #. Default: "The kicker is a line of text shown above the title."
-#: plone/volto/behaviors/kicker.py:14
+#: plone/volto/behaviors/kicker.py:15
 msgid "help_kicker"
 msgstr "El título del cabecera se muestra encima del título en los bloques teaser."
 
 #. Default: "Insert an image that will be used in listing and teaser blocks."
-#: plone/volto/behaviors/preview.py:14
-#: plone/volto/behaviors/preview_link.py:24
+#: plone/volto/behaviors/preview.py:20
+#: plone/volto/behaviors/preview_link.py:42
 msgid "help_previewimage"
 msgstr "Introduzca la imagen que se utilizará en los listados y otros bloques"
 
 #. Default: "Kicker"
-#: plone/volto/behaviors/kicker.py:12
+#: plone/volto/behaviors/kicker.py:13
 msgid "label_kicker"
 msgstr "Título de cabecera"
 
 #. Default: "Preview image"
-#: plone/volto/behaviors/preview.py:13 plone/volto/behaviors/preview_link.py:23
+#: plone/volto/behaviors/preview.py:14
+#: plone/volto/behaviors/preview_link.py:36
 msgid "label_previewimage"
 msgstr "Imagen"
 
-#: plone/volto/profiles.zcml:35
+#: plone/volto/profiles.zcml:43
 msgid "plone.volto coresandbox Cypress tests fixtures"
 msgstr "prueba los accesorios Cypress plone.volto coresandbox"
 
-#: plone/volto/profiles.zcml:46
+#: plone/volto/profiles.zcml:54
 msgid "plone.volto multilingual Cypress tests fixtures"
 msgstr "prueba los accesorios Cypress plone.volto multilingüe"
 

@@ -209,11 +209,11 @@ msgstr ""
 
 #: plone/volto/profiles.zcml:16
 msgid "Volto Frontend (plone.volto)"
-msgstr ""
+msgstr "Volto Frontend (plone.volto)"
 
 #: plone/volto/profiles.zcml:33
 msgid "Volto Frontend (plone.volto): Uninstall"
-msgstr ""
+msgstr "Volto Frontend (plone.volto): uninstall"
 
 #: plone/volto/controlpanel.py:12
 msgid "Volto Settings"

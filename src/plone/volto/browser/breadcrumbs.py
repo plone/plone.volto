@@ -30,7 +30,7 @@ class PhysicalNavigationBreadcrumbs(BrowserView):
         if container is None:
             return (last_crumb,)
 
-        # Replicate Products.CMFPlone.browser.navigaton.RootPhysicalNavigationBreadcrumbs.breadcrumbs()
+        # Replicate Products.CMFPlone.browser.navigation.RootPhysicalNavigationBreadcrumbs.breadcrumbs()
         # cause it is not registered during tests
         if INavigationRoot.providedBy(context):
             return ()

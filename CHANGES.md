@@ -9,6 +9,28 @@
 
 <!-- towncrier release notes start -->
 
+## 5.2.1 (2025-09-11)
+
+
+### Internal:
+
+- Update configuration files @plone 
+
+## 5.2.0 (2025-06-16)
+
+
+### New features:
+
+- Create a separate `initial` profile which is used to set up the Volto distribution.
+  The existing `default` profile defines the Volto add-on, and makes minimal changes to existing content types.
+  The `initial` profile includes the `plone.app.contenttypes:default` profile and fully controls the behaviors for the included content types.
+  @davisagli 
+
+
+### Bug fixes:
+
+- Fix error in `preview_image_link` image scales adapter if the image was deleted. @rohnsha0 #4172
+
 ## 5.1.0 (2025-05-07)
 
 

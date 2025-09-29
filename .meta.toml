@@ -1,9 +1,9 @@
 # Generated from:
-# https://github.com/plone/meta/tree/main/config/default
+# https://github.com/plone/meta/tree/main/src/plone/meta/default
 # See the inline comments on how to expand/tweak this configuration file
 [meta]
 template = "default"
-commit-id = "721299ce"
+commit-id = "2.0.1.dev0"
 
 [gitignore]
 extra_lines = """
@@ -13,7 +13,7 @@ extra_lines = """
 [pyproject]
 codespell_skip = "*.min.js,*lock.yaml"
 codespell_ignores = "vew"
-dependencies_ignores = "['collective.folderishtypes', 'plone.app.caching', 'plone.app.multilingual', 'plonetheme.barceloneta', 'requests', 'responses']"
+dependencies_ignores = "['collective.folderishtypes', 'plone.app.caching', 'plone.app.multilingual', 'plonetheme.barceloneta', 'requests', 'responses', 'scripts.utils']"
 dependencies_mappings = [
     "'Products.CMFPlone' = ['Acquisition', 'BTrees', 'Missing', 'OFS', 'plone.app.contenttypes', 'plone.app.layout', 'plone.app.linkintegrity', 'plone.app.redirector', 'plone.app.registry', 'plone.app.textfield', 'plone.app.vocabularies', 'plone.app.z3cform', 'plone.autoform', 'plone.base', 'plone.behavior', 'plone.dexterity', 'plone.indexer', 'plone.namedfile', 'plone.protect', 'plone.registry', 'plone.rfc822', 'plone.schema', 'plone.supermodel', 'Products.BTreeFolder2', 'Products.CMFCore', 'Products.Five', 'Products.GenericSetup', 'Products.SiteErrorLog', 'transaction', 'z3c.form', 'z3c.relationfield', 'zope.component', 'zope.i18n', 'zope.i18nmessageid', 'zope.interface', 'zope.lifecycleevent', 'zope.publisher', 'zope.schema', 'Zope']",
     "'plone.restapi' = ['plone.rest']",
@@ -24,3 +24,4 @@ test_runner = "pytest"
 test_path = "/tests"
 use_mxdev = true
 test_deps_additional = ""
+test_matrix = { "6.2" = ["3.13", "3.12", "3.11", "3.10"], "6.1" = ["3.13", "3.12", "3.11", "3.10"] }

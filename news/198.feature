@@ -1,1 +1,0 @@
-Update Spanish translations and add missing i18n messages. @macagua

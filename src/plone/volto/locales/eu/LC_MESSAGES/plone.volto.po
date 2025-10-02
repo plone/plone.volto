@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2025-07-02 23:53+0000\n"
+"POT-Creation-Date: 2025-10-02 00:51+0000\n"
 "PO-Revision-Date: 2021-11-21 16:50+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -69,10 +69,6 @@ msgstr ""
 
 #: plone/volto/profiles/coresandbox/types/example.xml
 msgid "Example"
-msgstr ""
-
-#: plone/volto/interfaces.py:21
-msgid "Frontend domain"
 msgstr ""
 
 #: plone/volto/behaviors/configure.zcml:40
@@ -205,10 +201,6 @@ msgstr ""
 msgid "Uninstalls the plone.volto add-on."
 msgstr "plone.volto kendu"
 
-#: plone/volto/interfaces.py:22
-msgid "Used for rewriting URLs sent in the password reset email by Plone."
-msgstr ""
-
 #: plone/volto/profiles.zcml:16
 msgid "Volto Frontend (plone.volto)"
 msgstr "Volto Frontenda (plone.volto)"
@@ -259,6 +251,11 @@ msgstr ""
 msgid "heading_available_languages"
 msgstr ""
 
+#. Default: "Used for rewriting URLs sent in the password reset e-mail by Plone."
+#: plone/volto/interfaces.py:22
+msgid "help_frontend_domain"
+msgstr ""
+
 #. Default: "The kicker is a line of text shown above the title."
 #: plone/volto/behaviors/kicker.py:15
 msgid "help_kicker"
@@ -269,6 +266,11 @@ msgstr "Goiburukoan erabiliko den izenburua"
 #: plone/volto/behaviors/preview_link.py:42
 msgid "help_previewimage"
 msgstr "Kargatu zerrendetan eta destakatuen blokeetan defektuz erabiliko den irudia"
+
+#. Default: "Frontend domain"
+#: plone/volto/interfaces.py:21
+msgid "label_frontend_domain"
+msgstr ""
 
 #. Default: "Kicker"
 #: plone/volto/behaviors/kicker.py:13

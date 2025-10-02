@@ -18,8 +18,11 @@ class IVoltoSettings(Interface):
     """Volto settings necessary to store in the backend"""
 
     frontend_domain = schema.URI(
-        title=_("Frontend domain"),
-        description=_("Used for rewriting URLs sent in the password reset email by Plone."),
+        title=_("label_frontend_domain", default="Frontend domain"),
+        description=_(
+            "help_frontend_domain",
+            default="Used for rewriting URLs sent in the password reset e-mail by Plone.",
+        ),
         default="http://localhost:3000",
     )
 

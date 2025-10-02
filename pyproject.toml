@@ -1,8 +1,8 @@
 # Generated from:
-# https://github.com/plone/meta/tree/main/config/default
+# https://github.com/plone/meta/tree/main/src/plone/meta/default
 # See the inline comments on how to expand/tweak this configuration file
 [build-system]
-requires = ["setuptools>=68.2"]
+requires = ["setuptools>=68.2,<80", "wheel"]
 
 [tool.towncrier]
 directory = "news/"
@@ -39,7 +39,7 @@ showcontent = true
 
 [[tool.towncrier.type]]
 directory = "tests"
-name = "Tests"
+name = "Tests:"
 showcontent = true
 
 ##
@@ -73,7 +73,7 @@ target-version = ["py38"]
 ##
 
 [tool.codespell]
-ignore-words-list = "discreet,vew"
+ignore-words-list = "discreet,assertin,thet,vew"
 skip = "*.po,*.min.js,*lock.yaml"
 ##
 # Add extra configuration options in .meta.toml:
@@ -122,9 +122,9 @@ Zope = [
 ]
 python-dateutil = ['dateutil']
 pytest-plone = ['pytest', 'zope.pytestlayer', 'plone.testing', 'plone.app.testing']
+ignore-packages = ['collective.folderishtypes', 'plone.app.caching', 'plone.app.multilingual', 'plonetheme.barceloneta', 'requests', 'responses', 'scripts.utils']
 'Products.CMFPlone' = ['Acquisition', 'BTrees', 'Missing', 'OFS', 'plone.app.contenttypes', 'plone.app.layout', 'plone.app.linkintegrity', 'plone.app.redirector', 'plone.app.registry', 'plone.app.textfield', 'plone.app.vocabularies', 'plone.app.z3cform', 'plone.autoform', 'plone.base', 'plone.behavior', 'plone.dexterity', 'plone.indexer', 'plone.namedfile', 'plone.protect', 'plone.registry', 'plone.rfc822', 'plone.schema', 'plone.supermodel', 'Products.BTreeFolder2', 'Products.CMFCore', 'Products.Five', 'Products.GenericSetup', 'Products.SiteErrorLog', 'transaction', 'z3c.form', 'z3c.relationfield', 'zope.component', 'zope.i18n', 'zope.i18nmessageid', 'zope.interface', 'zope.lifecycleevent', 'zope.publisher', 'zope.schema', 'Zope']
 'plone.restapi' = ['plone.rest']
-ignore-packages = ['collective.folderishtypes', 'plone.app.caching', 'plone.app.multilingual', 'plonetheme.barceloneta', 'requests', 'responses', 'scripts.utils']
 
 ##
 # Add extra configuration options in .meta.toml:

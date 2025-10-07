@@ -10,6 +10,11 @@
 
   <i18n:registerTranslations directory="locales" />
 
+  <include
+      package="Products.CMFCore"
+      file="permissions.zcml"
+      />
+
   <include file="dependencies.zcml" />
 
   <include package=".behaviors" />
@@ -21,6 +26,7 @@
   <include file="patches.zcml" />
   <include file="upgrades.zcml" />
   <include file="distributions.zcml" />
+  <include file="permissions.zcml" />
 
   <browser:page
       name="blocksuuidfixer"

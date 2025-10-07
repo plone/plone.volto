@@ -8,7 +8,7 @@
       method="GET"
       factory=".get.BlockTypesGet"
       for="zope.interface.Interface"
-      permission="zope2.View"
+      permission="plone.volto.service.BlockTypes"
       name="@blocktypes"
       />
 

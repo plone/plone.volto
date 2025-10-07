@@ -9,6 +9,13 @@
 
 <!-- towncrier release notes start -->
 
+## 5.2.2 (2025-10-01)
+
+
+### New features:
+
+- Update Spanish translations and add missing i18n messages. @macagua #198
+
 ## 5.2.1 (2025-09-11)
 
 

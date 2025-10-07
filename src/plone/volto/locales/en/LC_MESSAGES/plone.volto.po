@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2024-12-11 17:41+0000\n"
+"POT-Creation-Date: 2025-10-02 00:51+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,7 +21,7 @@ msgstr ""
 msgid "A site migrated to Volto in this Plone backend will still be accessible through the Plone Classic User Interface but with limited functionality. The core content types will have all their GUI RichText fields replaced by the blocks behavior for the composition of the main content. So after migration you can only edit this content using the Volto UI."
 msgstr ""
 
-#: plone/volto/behaviors/configure.zcml:48
+#: plone/volto/behaviors/configure.zcml:46
 msgid "Adds kicker field (text to be shown above the headline)"
 msgstr ""
 
@@ -37,8 +37,12 @@ msgstr ""
 msgid "Collections are migrated to Pages with Listing Blocks configured like the Collection."
 msgstr ""
 
+#: plone/volto/profiles.zcml:24
+msgid "Configures a new site with Volto and standard content types."
+msgstr ""
+
 #: plone/volto/profiles.zcml:16
-msgid "Configures the Plone backend to work with Volto, the new default frontend for Plone 6."
+msgid "Configures the Plone backend to work with Volto."
 msgstr ""
 
 #: plone/volto/browser/migrate_richtext.pt:33
@@ -57,7 +61,7 @@ msgstr ""
 msgid "Default Pages of Folders are merged with the Folderish Pages that replace the Folder wherever that is possible. This works well with Pages and Collections where the text and/or query are added to the folderish page that replaces the Folder."
 msgstr ""
 
-#: plone/volto/behaviors/configure.zcml:42
+#: plone/volto/behaviors/configure.zcml:40
 msgid "Deprecated (use volto.kicker instead)"
 msgstr ""
 
@@ -65,7 +69,7 @@ msgstr ""
 msgid "Example"
 msgstr ""
 
-#: plone/volto/behaviors/configure.zcml:42
+#: plone/volto/behaviors/configure.zcml:40
 msgid "Head title field"
 msgstr ""
 
@@ -77,11 +81,15 @@ msgstr ""
 msgid "Install the package <code>plone.volto</code> and <code>plone.restapi</code>."
 msgstr ""
 
+#: plone/volto/profiles.zcml:24
+msgid "Installation profile for the Volto distribution"
+msgstr ""
+
 #: plone/volto/browser/migrate_to_volto.pt:76
 msgid "It is recommendet to use the default settings but here you can disable some of the migration-steps."
 msgstr ""
 
-#: plone/volto/behaviors/configure.zcml:48
+#: plone/volto/behaviors/configure.zcml:46
 msgid "Kicker field"
 msgstr ""
 
@@ -109,12 +117,12 @@ msgstr ""
 msgid "Migrate to Volto"
 msgstr ""
 
-#: plone/volto/behaviors/configure.zcml:35
-#: plone/volto/behaviors/navtitle.py:11
+#: plone/volto/behaviors/configure.zcml:33
+#: plone/volto/behaviors/navtitle.py:14
 msgid "Navigation title"
 msgstr "Navigation title"
 
-#: plone/volto/behaviors/configure.zcml:35
+#: plone/volto/behaviors/configure.zcml:33
 msgid "Navigation title used in sections, menus and doormats"
 msgstr ""
 
@@ -122,32 +130,24 @@ msgstr ""
 msgid "Pages, News Items, and Events are made folderish. That means they can contain other content, such as Images or Pages."
 msgstr ""
 
-#: plone/volto/profiles.zcml:16
-msgid "Plone 6 Frontend (plone.volto)"
-msgstr ""
-
-#: plone/volto/profiles.zcml:25
-msgid "Plone 6 Frontend (plone.volto): uninstall"
-msgstr ""
-
-#: plone/volto/behaviors/configure.zcml:18
+#: plone/volto/behaviors/configure.zcml:17
 msgid "Preview Image"
 msgstr ""
 
-#: plone/volto/behaviors/configure.zcml:26
+#: plone/volto/behaviors/configure.zcml:24
 msgid "Preview Image Link"
 msgstr ""
 
-#: plone/volto/behaviors/preview.py:22
-#: plone/volto/behaviors/preview_link.py:42
+#: plone/volto/behaviors/preview.py:28
+#: plone/volto/behaviors/preview_link.py:60
 msgid "Preview image caption"
 msgstr "Preview image caption"
 
-#: plone/volto/behaviors/configure.zcml:18
+#: plone/volto/behaviors/configure.zcml:17
 msgid "Preview image for listings"
 msgstr ""
 
-#: plone/volto/behaviors/configure.zcml:26
+#: plone/volto/behaviors/configure.zcml:24
 msgid "Preview image for listings based on links"
 msgstr ""
 
@@ -163,11 +163,11 @@ msgstr ""
 msgid "Requirements for this migration wizard"
 msgstr ""
 
-#: plone/volto/profiles.zcml:35
+#: plone/volto/profiles.zcml:43
 msgid "Special test fixture for coresandbox use cases"
 msgstr ""
 
-#: plone/volto/profiles.zcml:46
+#: plone/volto/profiles.zcml:54
 msgid "Special test fixture for multilingual use case"
 msgstr ""
 
@@ -195,8 +195,20 @@ msgstr ""
 msgid "URL of blocks-conversion-tool. The migration requires a service to run. See https://github.com/plone/blocks-conversion-tool for details."
 msgstr ""
 
-#: plone/volto/profiles.zcml:25
+#: plone/volto/profiles.zcml:33
 msgid "Uninstalls the plone.volto add-on."
+msgstr ""
+
+#: plone/volto/profiles.zcml:16
+msgid "Volto Frontend (plone.volto)"
+msgstr ""
+
+#: plone/volto/profiles.zcml:33
+msgid "Volto Frontend (plone.volto): Uninstall"
+msgstr ""
+
+#: plone/volto/controlpanel.py:12
+msgid "Volto Settings"
 msgstr ""
 
 #: plone/volto/browser/migrate_to_volto.pt:21
@@ -237,33 +249,43 @@ msgstr ""
 msgid "heading_available_languages"
 msgstr ""
 
+#. Default: "Used for rewriting URLs sent in the password reset e-mail by Plone."
+#: plone/volto/interfaces.py:22
+msgid "help_frontend_domain"
+msgstr ""
+
 #. Default: "The kicker is a line of text shown above the title."
-#: plone/volto/behaviors/kicker.py:14
+#: plone/volto/behaviors/kicker.py:15
 msgid "help_kicker"
 msgstr ""
 
 #. Default: "Insert an image that will be used in listing and teaser blocks."
-#: plone/volto/behaviors/preview.py:14
-#: plone/volto/behaviors/preview_link.py:24
+#: plone/volto/behaviors/preview.py:20
+#: plone/volto/behaviors/preview_link.py:42
 msgid "help_previewimage"
 msgstr ""
 
+#. Default: "Frontend domain"
+#: plone/volto/interfaces.py:21
+msgid "label_frontend_domain"
+msgstr ""
+
 #. Default: "Kicker"
-#: plone/volto/behaviors/kicker.py:12
+#: plone/volto/behaviors/kicker.py:13
 msgid "label_kicker"
 msgstr ""
 
 #. Default: "Preview image"
-#: plone/volto/behaviors/preview.py:13
-#: plone/volto/behaviors/preview_link.py:23
+#: plone/volto/behaviors/preview.py:14
+#: plone/volto/behaviors/preview_link.py:36
 msgid "label_previewimage"
 msgstr "Preview image"
 
-#: plone/volto/profiles.zcml:35
+#: plone/volto/profiles.zcml:43
 msgid "plone.volto coresandbox Cypress tests fixtures"
 msgstr ""
 
-#: plone/volto/profiles.zcml:46
+#: plone/volto/profiles.zcml:54
 msgid "plone.volto multilingual Cypress tests fixtures"
 msgstr ""
 

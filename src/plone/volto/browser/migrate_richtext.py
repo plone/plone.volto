@@ -149,7 +149,9 @@ def get_blocks_from_richtext(
     r = requests.post(service_url, headers=headers, json=payload)
     r.raise_for_status()
     slate_data = r.json()
-    slate_data = slate_data["data"]
+    # blocks-conversion-tool vs. collective.html2blocks
+    if isinstance(slate_data, dict) and "data" in slate_data:
+        slate_data = slate_data["data"]
     blocks = {}
     uuids = []
     # generate slate blocks

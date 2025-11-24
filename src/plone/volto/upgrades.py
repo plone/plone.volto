@@ -190,3 +190,16 @@ def update_robots_txt(context):
         logger.info(
             "Ignoring plone.robots_txt registry as it was modified in this portal."
         )
+
+
+def reindex_block_types(context):
+    catalog = getToolByName(context, "portal_catalog")
+    brains = catalog(object_provides="plone.restapi.behaviors.IBlocks")
+    total = len(brains)
+    for index, brain in enumerate(brains):
+        obj = brain.getObject()
+        obj.reindexObject(idxs=["block_types"], update_metadata=0)
+        logger.info("Reindexing object %s.", brain.getPath())
+        if index % 250 == 0:
+            logger.info(f"Reindexed {index}/{total} objects")
+            transaction.commit()

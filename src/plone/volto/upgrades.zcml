@@ -96,4 +96,15 @@
         handler=".upgrades.update_robots_txt"
         />
   </genericsetup:upgradeSteps>
+
+  <genericsetup:upgradeSteps
+      profile="plone.volto:default"
+      source="1019"
+      destination="1100"
+      >
+    <genericsetup:upgradeStep
+        title="Update robots_txt setting for Volto"
+        handler=".upgrades.add_large_image_scales"
+        />
+  </genericsetup:upgradeSteps>
 </configure>

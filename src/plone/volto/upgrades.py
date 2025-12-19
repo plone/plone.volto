@@ -190,3 +190,12 @@ def update_robots_txt(context):
         logger.info(
             "Ignoring plone.robots_txt registry as it was modified in this portal."
         )
+
+
+def add_large_image_scales(context):
+    value = api.portal.get_registry_record("plone.allowed_sizes")
+    if not any(item.startswith("2k ") for item in value):
+        value.append("2k 2000:65536")
+    if not any(item.startswith("4k ") for item in value):
+        value.append("4k 4000:65536")
+    api.portal.set_registry_record("plone.allowed_sizes", value)

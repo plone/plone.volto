@@ -103,7 +103,7 @@
       destination="1100"
       >
     <genericsetup:upgradeStep
-        title="Update robots_txt setting for Volto"
+        title="Add large image scales"
         handler=".upgrades.add_large_image_scales"
         />
   </genericsetup:upgradeSteps>

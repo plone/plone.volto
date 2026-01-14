@@ -9,6 +9,14 @@
 
 <!-- towncrier release notes start -->
 
+## 5.2.3 (2026-01-13)
+
+
+### Bug fixes:
+
+- Support collective.html2blocks to convert HTML to Volto blocks as a replacement for blocks-conversion-tool.
+  @pbauer #201
+
 ## 5.2.2 (2025-10-01)
 
 

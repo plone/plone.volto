@@ -18,4 +18,5 @@ class JSONSummarySerializerMetadata:
             "mime_type",
             "nav_title",
             "start",
+            "getRemoteUrl",
         }

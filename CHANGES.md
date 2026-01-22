@@ -9,6 +9,13 @@
 
 <!-- towncrier release notes start -->
 
+## 5.2.4 (2026-01-22)
+
+
+### Bug fixes:
+
+- Add getRemoteUrl to summary field serializer. @jackahl #207
+
 ## 5.2.3 (2026-01-13)
 
 

@@ -1,4 +1,3 @@
-from setuptools import find_packages
 from setuptools import setup
 
 
@@ -13,7 +12,7 @@ long_description = "\n\n".join(
 
 setup(
     name="plone.volto",
-    version="5.2.3.dev0",
+    version="6.0.0a2.dev0",
     description="Volto integration add-on for Plone",
     long_description=long_description,
     long_description_content_type="text/markdown",
@@ -21,7 +20,7 @@ setup(
         "Development Status :: 5 - Production/Stable",
         "Environment :: Web Environment",
         "Framework :: Plone",
-        "Framework :: Plone :: 6.1",
+        "Framework :: Plone :: 6.2",
         "Programming Language :: Python",
         "Programming Language :: Python :: 3.10",
         "Programming Language :: Python :: 3.11",
@@ -34,9 +33,6 @@ setup(
     author_email="tisto@plone.org",
     url="https://github.com/plone/plone.volto",
     license="GPL version 2",
-    packages=find_packages("src"),
-    namespace_packages=["plone"],
-    package_dir={"": "src"},
     include_package_data=True,
     zip_safe=False,
     python_requires=">=3.10",
@@ -48,7 +44,6 @@ setup(
         "plone.distribution",
         "plone.restapi>=8.41.0",
         "Products.CMFPlone",
-        "setuptools",
     ],
     extras_require={
         "test": [

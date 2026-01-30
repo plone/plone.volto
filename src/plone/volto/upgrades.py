@@ -192,6 +192,15 @@ def update_robots_txt(context):
         )
 
 
+def add_large_image_scales(context):
+    value = api.portal.get_registry_record("plone.allowed_sizes")
+    if not any(item.startswith("2k ") for item in value):
+        value.append("2k 2000:65536")
+    if not any(item.startswith("4k ") for item in value):
+        value.append("4k 4000:65536")
+    api.portal.set_registry_record("plone.allowed_sizes", value)
+
+
 def reindex_block_types(context):
     catalog = getToolByName(context, "portal_catalog")
     brains = catalog(object_provides="plone.restapi.behaviors.IBlocks")

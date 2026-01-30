@@ -9,6 +9,29 @@
 
 <!-- towncrier release notes start -->
 
+## 6.0.0a1 (2026-01-13)
+
+
+### Breaking changes:
+
+- Replace ``pkg_resources`` namespace with PEP 420 native namespace.
+  Support only Plone 6.2 and Python 3.10+. #3928
+
+
+### New features:
+
+- Add larger scales to `plone.allowed_sizes` for new sites. This helps avoid the
+  need to serve the original image which can be very large. @davisagli
+
+  - `2k` is large enough for a default-width image on a high-density display.
+  - `4k` is large enough for a full-width images on high-density viewports up to 2000 pixels wide. 
+
+
+### Bug fixes:
+
+- Support collective.html2blocks to convert HTML to Volto blocks as a replacement for blocks-conversion-tool.
+  @pbauer #201
+
 ## 5.2.2 (2025-10-01)
 
 

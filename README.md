@@ -111,6 +111,47 @@ By default it is only added for new Plone sites.
 To add it to an existing site, run `plone.volto.upgrades.add_block_types_index` manually.
 
 
+### Block types endpoint
+
+`plone.volto` exposes the `block_types` index via the `/@blocktypes` REST API endpoint.
+It can be used to get information about which and how many blocks are used where.
+
+```py
+import requests
+requests.get("http://localhost:8080/Plone/@blocktypes")
+```
+
+```json
+{
+  "title": 3,
+  "slate": 18,
+  "teaser": 6,
+}
+```
+
+It can also be used to get detailed information where a block is used and how often:
+
+```py
+import requests
+requests.get("http://localhost:8080/Plone/@blocktypes/teaser")
+```
+
+```json
+[
+  {
+    "@id": "http://localhost:8080/Plone",
+    "title": "Website",
+    "count": 2,
+  },
+  {
+    "@id": "http://localhost:8080/Plone/lorem-ipsum",
+    "title": "Lorem Ipsum",
+    "count": 4,
+  }
+]
+```
+
+
 ### Multilingual support
 
 `plone.volto` supports multilingual websites.

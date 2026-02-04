@@ -208,7 +208,9 @@ def reindex_block_types(context):
     for index, brain in enumerate(brains):
         obj = brain.getObject()
         obj.reindexObject(idxs=["block_types"], update_metadata=0)
-        logger.info("Reindexing object %s.", brain.getPath())
+        logger.info(f"Reindexing object {brain.getPath()}.")
         if index % 250 == 0:
             logger.info(f"Reindexed {index}/{total} objects")
             transaction.commit()
+    logger.info(f"Reindexed {total} objects")
+    transaction.commit()

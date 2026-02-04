@@ -9,9 +9,29 @@ def portal(portal_class):
     yield portal_class
 
 
+@pytest.fixture(scope="class")
+def contents(portal):
+    with api.env.adopt_roles(["Manager"]):
+        doc = api.content.create(portal, type="Document", id="lorem-ipsum")
+        doc.blocks = {
+            "1": {"@type": "title"},
+            "2": {"@type": "teaser"},
+            "3": {
+                "@type": "gridBlock",
+                "blocks": {
+                    "1": {"@type": "teaser"},
+                    "2": {"@type": "teaser"},
+                    "3": {"@type": "teaser"},
+                },
+            },
+        }
+        doc.reindexObject(idxs=["block_types"])
+        transaction.commit()
+
+
 class TestBlockTypesGet:
     @pytest.fixture(autouse=True)
-    def _setup(self, portal, api_manager_request):
+    def _setup(self, contents, portal, api_manager_request):
         self.portal = portal
         self.api_session = api_manager_request
 
@@ -26,23 +46,6 @@ class TestBlockTypesGet:
         assert isinstance(data, list)
 
     def test_filtered(self):
-        with api.env.adopt_roles(["Manager"]):
-            doc = api.content.create(self.portal, type="Document", id="lorem-ipsum")
-            doc.blocks = {
-                "1": {"@type": "title"},
-                "2": {"@type": "teaser"},
-                "3": {
-                    "@type": "gridBlock",
-                    "blocks": {
-                        "1": {"@type": "teaser"},
-                        "2": {"@type": "teaser"},
-                        "3": {"@type": "teaser"},
-                    },
-                },
-            }
-            doc.reindexObject(idxs=["block_types"])
-            transaction.commit()
-
         response = self.api_session.get("/@blocktypes?path=/plone/lorem-ipsum")
         data = response.json()
         assert len(data) == 3
@@ -50,4 +53,4 @@ class TestBlockTypesGet:
     def test_filtered_with_id(self):
         response = self.api_session.get("/@blocktypes/teaser?path=/plone/lorem-ipsum")
         data = response.json()
-        assert len(data) == 4
+        assert len(data) == 1

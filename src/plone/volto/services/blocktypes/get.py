@@ -32,7 +32,7 @@ class BlockTypesGet(Service):
         if type:
             result = []
             query["block_types"] = self.block_type
-            brains = catalog.unrestrictedSearchResults(**query)
+            brains = catalog.searchResults(**query)
 
             for brain in brains:
                 result.append(

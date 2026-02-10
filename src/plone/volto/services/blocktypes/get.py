@@ -44,7 +44,7 @@ class BlockTypesGet(Service):
                 )
         else:
             result = {}
-            brains = catalog.unrestrictedSearchResults(**query)
+            brains = catalog.searchResults(**query)
             block_types_total = collections.Counter()
 
             for brain in brains:

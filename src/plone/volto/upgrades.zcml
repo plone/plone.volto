@@ -110,11 +110,15 @@
 
   <genericsetup:upgradeSteps
       profile="plone.volto:default"
-      source="1019"
-      destination="1020"
+      source="1100"
+      destination="1101"
       >
+    <genericsetup:upgradeDepends
+        title="Add block_types metadata column and apply rolemap"
+        import_steps="catalog rolemap"
+        />
     <genericsetup:upgradeStep
-        title="Update robots_txt setting for Volto"
+        title="Reindex to populate the block_types metadata"
         handler=".upgrades.reindex_block_types"
         />
   </genericsetup:upgradeSteps>

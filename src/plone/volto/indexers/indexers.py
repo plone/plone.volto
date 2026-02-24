@@ -4,6 +4,8 @@ from plone.indexer.decorator import indexer
 from plone.restapi.blocks import visit_blocks
 from plone.volto.behaviors.preview import IPreview
 
+import collections
+
 
 @indexer(IPreview)
 def hasPreviewImage(obj):
@@ -40,9 +42,9 @@ def image_field_indexer(obj):
 def block_types_indexer(obj):
     """Indexer for all block types included in a page."""
     obj = aq_base(obj)
-    block_types = set()
+    block_types = collections.Counter()
     for block in visit_blocks(obj, obj.blocks):
         block_type = block.get("@type")
         if block_type:
-            block_types.add(block_type)
+            block_types[block_type] += 1
     return block_types

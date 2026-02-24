@@ -107,4 +107,19 @@
         handler=".upgrades.add_large_image_scales"
         />
   </genericsetup:upgradeSteps>
+
+  <genericsetup:upgradeSteps
+      profile="plone.volto:default"
+      source="1100"
+      destination="1101"
+      >
+    <genericsetup:upgradeDepends
+        title="Add block_types metadata column and apply rolemap"
+        import_steps="catalog rolemap"
+        />
+    <genericsetup:upgradeStep
+        title="Reindex to populate the block_types metadata"
+        handler=".upgrades.reindex_block_types"
+        />
+  </genericsetup:upgradeSteps>
 </configure>

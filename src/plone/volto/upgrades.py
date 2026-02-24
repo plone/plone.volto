@@ -199,3 +199,18 @@ def add_large_image_scales(context):
     if not any(item.startswith("4k ") for item in value):
         value.append("4k 4000:65536")
     api.portal.set_registry_record("plone.allowed_sizes", value)
+
+
+def reindex_block_types(context):
+    catalog = getToolByName(context, "portal_catalog")
+    brains = catalog(object_provides="plone.restapi.behaviors.IBlocks")
+    total = len(brains)
+    for index, brain in enumerate(brains):
+        obj = brain.getObject()
+        obj.reindexObject(idxs=["block_types"], update_metadata=1)
+        logger.info(f"Reindexing object {brain.getPath()}.")
+        if index % 250 == 0:
+            logger.info(f"Reindexed {index}/{total} objects")
+            transaction.commit()
+    logger.info(f"Reindexed {total} objects")
+    transaction.commit()

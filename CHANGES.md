@@ -9,6 +9,24 @@
 
 <!-- towncrier release notes start -->
 
+## 6.0.0a2 (2026-02-23)
+
+
+### New features:
+
+- Add `/@blocktypes` endpoint to expose `block_types` index. @jnptk 
+- Added a `block_types` metadata column to the catalog to include a count for each type. @jnptk 
+
+
+### Bug fixes:
+
+- Add getRemoteUrl to summary field serializer. @jackahl #207
+
+
+### Internal:
+
+- Update configuration files @plone 
+
 ## 6.0.0a1 (2026-01-13)
 
 

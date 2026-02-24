@@ -12,7 +12,7 @@ long_description = "\n\n".join(
 
 setup(
     name="plone.volto",
-    version="6.0.0a2",
+    version="6.0.0a3.dev0",
     description="Volto integration add-on for Plone",
     long_description=long_description,
     long_description_content_type="text/markdown",

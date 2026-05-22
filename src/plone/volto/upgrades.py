@@ -143,7 +143,7 @@ def add_block_types_index(context):
         logger.info("Reindexing object %s.", brain.getPath())
         if index % 250 == 0:
             logger.info(f"Reindexed {index}/{total} objects")
-            transaction.commit()
+            transaction.savepoint()
 
 
 def rename_distribution(context):
@@ -211,6 +211,6 @@ def reindex_block_types(context):
         logger.info(f"Reindexing object {brain.getPath()}.")
         if index % 250 == 0:
             logger.info(f"Reindexed {index}/{total} objects")
-            transaction.commit()
+            transaction.savepoint()
     logger.info(f"Reindexed {total} objects")
-    transaction.commit()
+    transaction.savepoint()

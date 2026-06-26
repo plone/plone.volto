@@ -9,6 +9,14 @@
 
 <!-- towncrier release notes start -->
 
+## 6.0.1 (2026-06-26)
+
+
+### Bug fixes:
+
+- Create savepoints instead of transactions in the `reindex_block_types`
+  upgrade step. @davisagli 
+
 ## 6.0.0 (2026-05-18)
 
 No significant changes.

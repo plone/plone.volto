@@ -1,2 +1,0 @@
-Create savepoints instead of transactions in the `reindex_block_types`
-upgrade step. @davisagli

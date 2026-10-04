@@ -8,7 +8,6 @@ from zope.interface import implementer
 
 import transaction
 
-
 try:
     distribution("plone.app.multilingual")
     from plone.app.multilingual.browser.setup import SetupMultilingualSite

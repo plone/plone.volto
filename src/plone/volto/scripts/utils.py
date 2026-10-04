@@ -1,7 +1,6 @@
 import csv
 import logging
 
-
 logger = logging.getLogger("plone.volto.scripts")
 fh = logging.FileHandler("scripts.log", mode="w")
 formatter = logging.Formatter(

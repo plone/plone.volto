@@ -17,7 +17,6 @@ from zope.component import getMultiAdapter
 import json
 import pytest
 
-
 pytest_plugins = ["pytest_plone"]
 
 

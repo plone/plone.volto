@@ -18,7 +18,6 @@ import plone.volto  # noQA
 import plone.volto.coresandbox  # noQA
 import Products.CMFPlacefulWorkflow  # noQA
 
-
 ANSWERS = {
     "site_id": "plone",
     "title": "Plone Site",

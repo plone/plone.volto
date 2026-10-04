@@ -1,6 +1,5 @@
 from setuptools import setup
 
-
 # We must specify the encoding, otherwise it fails on Windows as it defaults to cp1252.
 long_description = "\n\n".join(
     [
@@ -25,6 +24,8 @@ setup(
         "Programming Language :: Python :: 3.10",
         "Programming Language :: Python :: 3.11",
         "Programming Language :: Python :: 3.12",
+        "Programming Language :: Python :: 3.13",
+        "Programming Language :: Python :: 3.14",
         "Operating System :: OS Independent",
         "License :: OSI Approved :: GNU General Public License v2 (GPLv2)",
     ],

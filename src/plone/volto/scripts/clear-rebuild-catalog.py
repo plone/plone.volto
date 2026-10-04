@@ -6,7 +6,6 @@ from plone import api
 
 import transaction
 
-
 catalog = api.portal.get_tool("portal_catalog")
 catalog.clearFindAndRebuild()
 

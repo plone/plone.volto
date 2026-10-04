@@ -17,7 +17,6 @@ from zope.interface import provider
 from zope.lifecycleevent.interfaces import IObjectModifiedEvent
 from zope.schema import TextLine
 
-
 # Allow choosing preview images from a different language tree in a multi-lingual site.
 # See https://github.com/plone/plone.volto/issues/172
 try:

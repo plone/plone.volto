@@ -13,7 +13,6 @@ from zope.component import getUtility
 import logging
 import os
 
-
 LOG = logging.getLogger("Zope.SiteErrorLog")
 
 try:

@@ -14,7 +14,6 @@ import os
 import sys
 import transaction
 
-
 PATH = "/Plone"
 
 # Make other scripts in this folder available

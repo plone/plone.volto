@@ -1,6 +1,5 @@
 from setuptools import setup
 
-
 # We must specify the encoding, otherwise it fails on Windows as it defaults to cp1252.
 long_description = "\n\n".join(
     [

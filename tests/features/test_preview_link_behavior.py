@@ -9,7 +9,6 @@ from zope.lifecycleevent import modified
 
 import pytest
 
-
 TEST_GIF = (
     b"GIF89a\x01\x00\x01\x00\x00\xff\x00,\x00\x00\x00\x00\x01\x00\x01\x00\x00\x02\x00;"
 )

@@ -9,6 +9,13 @@
 
 <!-- towncrier release notes start -->
 
+## 6.0.2 (2026-11-03)
+
+
+### Bug fixes:
+
+- Fix upgrade step from 1100 to 1101 by bumping version in metadata.xml. @jnptk 
+
 ## 6.0.1 (2026-06-26)
 
 

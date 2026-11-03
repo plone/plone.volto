@@ -9,7 +9,6 @@ from plone.volto.scripts.utils import print_info
 
 import transaction
 
-
 catalog = api.portal.get_tool("portal_catalog")
 
 with api.env.adopt_roles(["Manager"]):

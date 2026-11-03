@@ -15,7 +15,6 @@ from zope.component import getUtility
 
 import transaction
 
-
 MIGRATION = {
     "Document": content.FolderishDocument,
     "Event": content.FolderishEvent,

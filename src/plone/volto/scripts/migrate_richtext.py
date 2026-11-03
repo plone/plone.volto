@@ -10,7 +10,6 @@ bin/instance -O Plone run scripts/migrate-richtext.py
 from plone import api
 from plone.volto.browser.migrate_richtext import migrate_richtext_to_slate
 
-
 if __name__ == "__main__":
     portal_types = api.portal.get_tool("portal_types")
     portal_types = []

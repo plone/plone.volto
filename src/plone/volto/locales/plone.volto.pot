@@ -86,7 +86,7 @@ msgid "Installation profile for the Volto distribution"
 msgstr ""
 
 #: plone/volto/browser/migrate_to_volto.pt:76
-msgid "It is recommendet to use the default settings but here you can disable some of the migration-steps."
+msgid "It is recommended to use the default settings but here you can disable some of the migration-steps."
 msgstr ""
 
 #: plone/volto/behaviors/configure.zcml:46

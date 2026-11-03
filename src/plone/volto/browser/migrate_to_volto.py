@@ -20,7 +20,6 @@ from uuid import uuid4
 from zope.component import getUtility
 from zope.lifecycleevent import modified
 
-
 logger = getLogger(__name__)
 
 

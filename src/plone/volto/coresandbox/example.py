@@ -24,7 +24,6 @@ from zope import schema
 from zope.i18nmessageid import MessageFactory
 from zope.interface import implementer
 
-
 _ = PloneMessageFactory = MessageFactory("plone")
 
 

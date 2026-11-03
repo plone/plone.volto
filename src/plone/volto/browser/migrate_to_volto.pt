@@ -74,7 +74,7 @@
 
         <h3 i18n:translate="">Advanced settings</h3>
         <p i18n:translate="">
-        It is recommendet to use the default settings but here you can disable some of the migration-steps.
+        It is recommended to use the default settings but here you can disable some of the migration-steps.
         </p>
 
         <div class="form-check mb-3">

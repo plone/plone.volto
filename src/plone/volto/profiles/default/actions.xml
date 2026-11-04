@@ -19,4 +19,68 @@
       <property name="url_expr">python:f"{plone_portal_state.navigation_root_url()}/contact-form"</property>
     </object>
   </object>
+  <object meta_type="CMF Action Category"
+          name="personal_tools"
+  >
+    <property name="title"
+              i18n:translate=""
+    >Personal tools</property>
+    <object meta_type="CMF Action"
+            name="profile"
+            i18n:domain="plone"
+    >
+      <property name="title"
+                i18n:translate=""
+      >Profile</property>
+      <property name="description"
+                i18n:translate=""
+      />
+      <property name="url_expr">string:/personal-information</property>
+      <property name="link_target" />
+      <property name="icon_expr">string:plone-user</property>
+      <property name="available_expr">python:member is not None</property>
+      <property name="permissions">
+        <element value="View" />
+      </property>
+      <property name="visible">True</property>
+    </object>
+    <object meta_type="CMF Action"
+            name="preferences"
+            i18n:domain="plone"
+    >
+      <property name="title"
+                i18n:translate=""
+      >Preferences</property>
+      <property name="description"
+                i18n:translate=""
+      />
+      <property name="url_expr">string:preferences</property>
+      <property name="link_target">component</property>
+      <property name="icon_expr">string:plone-user</property>
+      <property name="available_expr">python:member is not None</property>
+      <property name="permissions">
+        <element value="View" />
+      </property>
+      <property name="visible">True</property>
+    </object>
+    <object meta_type="CMF Action"
+            name="plone_setup"
+            i18n:domain="plone"
+    >
+      <property name="title"
+                i18n:translate=""
+      >Site Setup</property>
+      <property name="description"
+                i18n:translate=""
+      />
+      <property name="url_expr">string:/controlpanel</property>
+      <property name="link_target" />
+      <property name="icon_expr">string:plone-controlpanel</property>
+      <property name="available_expr" />
+      <property name="permissions">
+        <element value="Plone Site Setup: Overview" />
+      </property>
+      <property name="visible">True</property>
+    </object>
+  </object>
 </object>

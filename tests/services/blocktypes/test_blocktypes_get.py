@@ -4,15 +4,10 @@ import pytest
 import transaction
 
 
-@pytest.fixture(scope="class")
-def portal(portal_class):
-    yield portal_class
-
-
-@pytest.fixture(scope="class")
-def contents(portal):
+@pytest.fixture
+def contents(functional_portal):
     with api.env.adopt_roles(["Manager"]):
-        doc = api.content.create(portal, type="Document", id="lorem-ipsum")
+        doc = api.content.create(functional_portal, type="Document", id="lorem-ipsum")
         doc.blocks = {
             "1": {"@type": "title"},
             "2": {"@type": "teaser"},
@@ -31,9 +26,9 @@ def contents(portal):
 
 class TestBlockTypesGet:
     @pytest.fixture(autouse=True)
-    def _setup(self, contents, portal, api_manager_request):
-        self.portal = portal
-        self.api_session = api_manager_request
+    def _setup(self, contents, functional_portal, manager_request):
+        self.path = f"/{functional_portal.getId()}/lorem-ipsum"
+        self.api_session = manager_request
 
     def test_response_type(self):
         response = self.api_session.get("/@blocktypes")
@@ -46,11 +41,11 @@ class TestBlockTypesGet:
         assert isinstance(data, list)
 
     def test_filtered(self):
-        response = self.api_session.get("/@blocktypes?path=/plone/lorem-ipsum")
+        response = self.api_session.get(f"/@blocktypes?path={self.path}")
         data = response.json()
         assert len(data) == 3
 
     def test_filtered_with_id(self):
-        response = self.api_session.get("/@blocktypes/teaser?path=/plone/lorem-ipsum")
+        response = self.api_session.get(f"/@blocktypes/teaser?path={self.path}")
         data = response.json()
         assert len(data) == 1

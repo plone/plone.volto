@@ -1,3 +1,5 @@
+from plone import api
+from plone.volto import PACKAGE_NAME
 from plone.volto.upgrades import from12to13_migrate_listings
 
 import pytest
@@ -138,3 +140,31 @@ class TestUpgrades:
         from12to13_migrate_listings(self.app)
 
         assert self.doc.blocks["123"] == expected
+
+
+class TestUpgrade1101To1102:
+    profile_id = f"{PACKAGE_NAME}:default"
+
+    @pytest.fixture(autouse=True)
+    def _setup(self, portal):
+        self.setup_tool = api.portal.get_tool("portal_setup")
+        self.portal_actions = api.portal.get_tool("portal_actions")
+        # Simulate a site still at 1101, before personal_tools existed
+        self.portal_actions.manage_delObjects(["personal_tools"])
+        self.setup_tool.setLastVersionForProfile(self.profile_id, "1101")
+
+    def test_upgrade_adds_personal_tools(self):
+        assert "personal_tools" not in self.portal_actions.objectIds()
+        self.setup_tool.upgradeProfile(self.profile_id, dest="1102")
+        assert "personal_tools" in self.portal_actions.objectIds()
+        category = self.portal_actions["personal_tools"]
+        assert list(category.objectIds()) == [
+            "profile",
+            "preferences",
+            "plone_setup",
+        ]
+
+    def test_upgrade_sets_profile_version(self):
+        self.setup_tool.upgradeProfile(self.profile_id, dest="1102")
+        version = self.setup_tool.getLastVersionForProfile(self.profile_id)
+        assert version == ("1102",)

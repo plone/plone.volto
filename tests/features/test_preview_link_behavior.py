@@ -2,6 +2,7 @@ from plone import api
 from plone.dexterity.schema import invalidate_cache
 from plone.namedfile.file import NamedBlobImage
 from plone.restapi.interfaces import ISerializeToJsonSummary
+from plone.volto.testing import CORE_SITE_ID
 from z3c.form.interfaces import IDataManager
 from zope.component import getMultiAdapter
 from zope.component.hooks import setSite
@@ -17,7 +18,7 @@ TEST_GIF = (
 
 @pytest.fixture
 def portal(app, get_fti):
-    portal = app["plone"]
+    portal = app[CORE_SITE_ID]
     setSite(portal)
     fti = get_fti("Document")
     base_behaviors = fti.behaviors

@@ -122,4 +122,15 @@
         handler=".upgrades.reindex_block_types"
         />
   </genericsetup:upgradeSteps>
+
+  <genericsetup:upgradeSteps
+      profile="plone.volto:default"
+      source="1101"
+      destination="1102"
+      >
+    <genericsetup:upgradeDepends
+        title="Add personal_tools actions for the Volto toolbar"
+        import_steps="actions"
+        />
+  </genericsetup:upgradeSteps>
 </configure>

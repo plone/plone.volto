@@ -9,6 +9,18 @@
 
 <!-- towncrier release notes start -->
 
+## 6.1.0 (2026-11-08)
+
+
+### New features:
+
+- Add `personal_tools` actions (Profile, Preferences and Site Setup) for the Volto toolbar's Personal tools menu, with an upgrade step for existing sites. @ericof #217
+
+
+### Tests:
+
+- Give each test fixture its own site id, so all test layers can stay set up for the whole pytest-plone session: the core layers now use `volto` and the coresandbox layers `coresandbox`. Add-ons using the plone.volto acceptance layers find the site at `/volto` or `/coresandbox` instead of `/plone`. @ericof #217
+
 ## 6.0.2 (2026-11-03)
 
 

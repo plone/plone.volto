@@ -1,1 +1,0 @@
-Give each test fixture its own site id, so all test layers can stay set up for the whole pytest-plone session: the core layers now use `volto` and the coresandbox layers `coresandbox`. Add-ons using the plone.volto acceptance layers find the site at `/volto` or `/coresandbox` instead of `/plone`. @ericof

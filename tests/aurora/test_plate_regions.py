@@ -1,6 +1,5 @@
 from plone import api
 from plone.volto import aurora
-from plone.volto.scripts import migrate_plate_regions as script
 
 import pytest
 
@@ -121,18 +120,36 @@ class TestMigrateContent:
         setup_tool.runAllImportStepsFromProfile("profile-plone.volto:default")
         assert self.doc.blocks == legacy_blocks()
 
-    def test_script(self, app, monkeypatch):
+    def test_run_from_console(self, app, monkeypatch):
         calls = []
-        monkeypatch.setattr(script, "newSecurityManager", lambda *args: None)
-        monkeypatch.setattr(script.transaction, "commit", lambda: calls.append(1))
+        monkeypatch.setattr(aurora, "newSecurityManager", lambda *args: None)
+        monkeypatch.setattr(aurora.transaction, "commit", lambda: calls.append(1))
         site_id = self.portal.getId()
-        assert script.main(app, ["-O", site_id, "--site", site_id]) == 1
+        assert aurora.run_from_console(app, ["-O", site_id, "--site", site_id]) == 1
         assert self.doc.blocks == migrated_blocks()
         assert calls == [1]
 
-    def test_script_dry_run(self, app, monkeypatch):
-        monkeypatch.setattr(script, "newSecurityManager", lambda *args: None)
-        monkeypatch.setattr(script.transaction, "abort", lambda: None)
+    def test_run_from_console_dry_run(self, app, monkeypatch):
+        monkeypatch.setattr(aurora, "newSecurityManager", lambda *args: None)
+        monkeypatch.setattr(aurora.transaction, "abort", lambda: None)
         site_id = self.portal.getId()
-        assert script.main(app, ["--site", site_id, "--dry-run"]) == 1
+        assert aurora.run_from_console(app, ["--site", site_id, "--dry-run"]) == 1
         assert self.doc.blocks == legacy_blocks()
+
+    def test_script_file(self, app, monkeypatch):
+        """The script runs like ``bin/instance run`` runs it."""
+        from pathlib import Path
+
+        import plone.volto
+        import runpy
+        import sys
+
+        monkeypatch.setattr(aurora, "newSecurityManager", lambda *args: None)
+        monkeypatch.setattr(aurora.transaction, "commit", lambda: None)
+        script = (
+            Path(plone.volto.__file__).parent / "scripts" / "migrate_plate_regions.py"
+        )
+        site_id = self.portal.getId()
+        monkeypatch.setattr(sys, "argv", [str(script), "--site", site_id])
+        runpy.run_path(str(script), init_globals={"app": app}, run_name="__main__")
+        assert self.doc.blocks == migrated_blocks()

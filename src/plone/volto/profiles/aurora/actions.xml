@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<object meta_type="Plone Actions Tool"
+        name="portal_actions"
+>
+  <!--
+    Plone Aurora renders its own Personal tools links, and replaces them
+    with the personal_tools actions when that category has any.
+    Remove the Volto-specific actions added by the default profile.
+  -->
+  <object meta_type="CMF Action Category"
+          name="personal_tools"
+  >
+    <object meta_type="CMF Action"
+            name="profile"
+            remove="True"
+    />
+    <object meta_type="CMF Action"
+            name="preferences"
+            remove="True"
+    />
+    <object meta_type="CMF Action"
+            name="plone_setup"
+            remove="True"
+    />
+  </object>
+</object>

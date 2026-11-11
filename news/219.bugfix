@@ -1,0 +1,1 @@
+Added a `plone.volto:aurora` profile for sites that use Plone Aurora. It removes the Volto-specific `personal_tools` actions, so the Aurora Personal tools menu shows its own links again. @sneridagh

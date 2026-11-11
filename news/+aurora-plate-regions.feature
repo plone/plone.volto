@@ -1,0 +1,1 @@
+Added the `plone.volto:aurora` profile for Plone Aurora sites. Installing it migrates `blocks.__somersault__` to `blocks.main` with `"@type": "plate"` in place, see plone/aurora#379. The `scripts/migrate_plate_regions.py` script runs the same migration with `bin/instance run`. @sneridagh

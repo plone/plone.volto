@@ -16,6 +16,14 @@
       />
 
   <genericsetup:registerProfile
+      name="aurora"
+      title="Aurora Frontend (plone.volto)"
+      description="Configures the Plone backend to work with Plone Aurora."
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      directory="profiles/aurora"
+      />
+
+  <genericsetup:registerProfile
       name="initial"
       title="Installation profile for the Volto distribution"
       description="Configures a new site with Volto and standard content types."
@@ -51,6 +59,17 @@
       directory="profiles/multilingual"
       post_handler=".setuphandlers.post_install_multilingual"
       zcml:condition="installed plone.app.multilingual"
+      />
+
+  <!-- Aurora: rename blocks.__somersault__ to blocks.main (plone/aurora#379).
+       Runs on install of plone.volto:aurora, and can be run again from the
+       portal_setup Import tab. It only acts on profiles that ship the
+       marker file. -->
+  <genericsetup:importStep
+      name="plone.volto.aurora-plate-regions"
+      title="Aurora: migrate __somersault__ to the main plate region"
+      description="Moves blocks.__somersault__ to blocks.main with @type plate, in place."
+      handler=".aurora.import_plate_regions"
       />
 
   <utility

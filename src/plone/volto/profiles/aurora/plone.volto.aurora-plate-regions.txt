@@ -1,1 +1,0 @@
-Marker file: the plone.volto.aurora-plate-regions import step runs only for profiles that ship this file.

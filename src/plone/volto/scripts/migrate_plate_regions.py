@@ -23,7 +23,7 @@ Options:
     Only list the objects that would be migrated, and commit nothing.
 
 The logic lives in :func:`plone.volto.aurora.run_from_console`, next to the
-GenericSetup import step, and both call
+``post_handler`` of the ``plone.volto:aurora`` profile, and both call
 :func:`plone.volto.aurora.migrate_plate_regions`.
 """
 

@@ -11,8 +11,8 @@ names the region by its key and the format by its ``@type``::
 
 The migration can run:
 
-* on install of the ``plone.volto:aurora`` profile, and from the
-  ``portal_setup`` Import tab (import step ``plone.volto.aurora-plate-regions``);
+* on install of the ``plone.volto:aurora`` profile, from its ``post_handler``
+  :func:`post_install`;
 * from Python, by calling :func:`migrate_plate_regions`;
 * from the command line, with the ``scripts/migrate_plate_regions.py`` script
   run by ``bin/instance run`` or ``zconsole run``, which calls
@@ -42,8 +42,6 @@ PLATE_TYPE = "plate"
 
 # Indexes that depend on the block key or ``@type``.
 REINDEX_IDXS = ("SearchableText", "block_types")
-
-MARKER_FILE = "plone.volto.aurora-plate-regions.txt"
 
 
 def migrate_blocks(blocks: dict) -> dict | None:
@@ -158,15 +156,14 @@ def migrate_plate_regions(
     return migrated
 
 
-def import_plate_regions(context):
-    """GenericSetup import step: run the migration for the aurora profile.
+def post_install(context):
+    """``post_handler`` of the ``plone.volto:aurora`` profile.
 
-    It only runs for profiles that ship the marker file, so it does nothing
-    when other profiles are imported.
+    Runs after the profile's import steps, on install and whenever all of the
+    profile's steps are imported again. ``context`` is the ``portal_setup``
+    tool.
     """
-    if context.readDataFile(MARKER_FILE) is None:
-        return
-    migrate_plate_regions(context.getSite())
+    migrate_plate_regions(api.portal.get())
 
 
 def _parse_console_args(argv):

@@ -195,7 +195,7 @@ Installing the profile migrates every object with blocks, including the site roo
 - Every block with `"@type": "__somersault__"` gets `"@type": "plate"`.
 - `SearchableText` and `block_types` are reindexed. The modification date doesn't change.
 
-To run the migration again, run the import step "Aurora: migrate `__somersault__` to the main plate region" for the `plone.volto:aurora` profile from the `portal_setup` Import tab.
+The migration runs in the profile's `post_handler`, so it also runs again when you import all steps of the `plone.volto:aurora` profile from the `portal_setup` Import tab.
 
 Sites that don't install the profile can run the same migration with the instance script:
 

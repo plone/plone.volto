@@ -1,1 +1,1 @@
-Fixed the GitHub Actions test and coverage jobs on the Ubuntu 26.04 `ubuntu-latest` runner by making Playwright install its Ubuntu 24.04 browser builds. @sneridagh
+Pointed the test constraints at Plone 6.2-dev, so CI tests against Plone 6.2 and uses a Playwright release that supports the Ubuntu 26.04 `ubuntu-latest` runner. @sneridagh

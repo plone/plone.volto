@@ -1,0 +1,1 @@
+Fixed the GitHub Actions test and coverage jobs on the Ubuntu 26.04 `ubuntu-latest` runner by making Playwright install its Ubuntu 24.04 browser builds. @sneridagh

@@ -1,0 +1,1 @@
+Added Plone Aurora defaults for the `personal_tools` actions to the new `plone.volto:aurora` profile: Profile, Preferences, Site Setup and Log out now link to the URLs the Aurora Personal tools menu expects. Volto sites keep the defaults from the `plone.volto:default` profile. @sneridagh

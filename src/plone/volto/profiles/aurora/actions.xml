@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<object xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+        meta_type="Plone Actions Tool"
+        name="portal_actions"
+>
+  <!--
+    Plone Aurora builds its Personal tools menu from the personal_tools
+    actions, using each action's URL as the link. Set the URLs Aurora needs
+    on the actions that the default profile adds for Volto, and add Log out.
+  -->
+  <object meta_type="CMF Action Category"
+          name="personal_tools"
+  >
+    <property name="title"
+              i18n:translate=""
+    >Personal tools</property>
+    <object meta_type="CMF Action"
+            name="profile"
+            i18n:domain="plone"
+    >
+      <property name="title"
+                i18n:translate=""
+      >Profile</property>
+      <property name="description"
+                i18n:translate=""
+      />
+      <property name="url_expr">string:/@@personal-information</property>
+      <property name="link_target" />
+      <property name="icon_expr">string:plone-user</property>
+      <property name="available_expr">python:member is not None</property>
+      <property name="permissions">
+        <element value="View" />
+      </property>
+      <property name="visible">True</property>
+    </object>
+    <object meta_type="CMF Action"
+            name="preferences"
+            i18n:domain="plone"
+    >
+      <property name="title"
+                i18n:translate=""
+      >Preferences</property>
+      <property name="description"
+                i18n:translate=""
+      />
+      <property name="url_expr">string:/@@personal-preferences</property>
+      <property name="link_target" />
+      <property name="icon_expr">string:plone-user</property>
+      <property name="available_expr">python:member is not None</property>
+      <property name="permissions">
+        <element value="View" />
+      </property>
+      <property name="visible">True</property>
+    </object>
+    <object meta_type="CMF Action"
+            name="plone_setup"
+            i18n:domain="plone"
+    >
+      <property name="title"
+                i18n:translate=""
+      >Site Setup</property>
+      <property name="description"
+                i18n:translate=""
+      />
+      <property name="url_expr">string:/controlpanel</property>
+      <property name="link_target" />
+      <property name="icon_expr">string:plone-controlpanel</property>
+      <property name="available_expr" />
+      <property name="permissions">
+        <element value="Plone Site Setup: Overview" />
+      </property>
+      <property name="visible">True</property>
+    </object>
+    <object meta_type="CMF Action"
+            name="logout"
+            i18n:domain="plone"
+    >
+      <property name="title"
+                i18n:translate=""
+      >Log out</property>
+      <property name="description"
+                i18n:translate=""
+      />
+      <property name="url_expr">string:/logout</property>
+      <property name="link_target" />
+      <property name="icon_expr">string:plone-logout</property>
+      <property name="available_expr">python:member is not None</property>
+      <property name="permissions">
+        <element value="View" />
+      </property>
+      <property name="visible">True</property>
+    </object>
+  </object>
+</object>

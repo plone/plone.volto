@@ -16,6 +16,14 @@
       />
 
   <genericsetup:registerProfile
+      name="aurora"
+      title="Aurora Frontend (plone.volto)"
+      description="Configures the Plone backend to work with Plone Aurora."
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      directory="profiles/aurora"
+      />
+
+  <genericsetup:registerProfile
       name="initial"
       title="Installation profile for the Volto distribution"
       description="Configures a new site with Volto and standard content types."

@@ -9,6 +9,18 @@
 
 <!-- towncrier release notes start -->
 
+## 6.2.0 (2026-11-17)
+
+
+### New features:
+
+- Added Plone Aurora defaults for the `personal_tools` actions to the new `plone.volto:aurora` profile: Profile, Preferences, Site Setup and Log out now link to the URLs the Aurora Personal tools menu expects. Volto sites keep the defaults from the `plone.volto:default` profile. @sneridagh #219
+
+
+### Internal:
+
+- Pointed the test constraints at Plone 6.2-dev, so CI tests against Plone 6.2 and uses a Playwright release that supports the Ubuntu 26.04 `ubuntu-latest` runner. @sneridagh 
+
 ## 6.1.0 (2026-11-08)
 
 

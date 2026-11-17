@@ -53,7 +53,7 @@ class TestActionsGetPersonalToolsAurora:
         [
             ["profile", "Profile", "/@@personal-information", "plone-user"],
             ["preferences", "Preferences", "/@@personal-preferences", "plone-user"],
-            ["plone_setup", "Site Setup", "/controlpanel", "plone-controlpanel"],
+            ["plone_setup", "Site Setup", "/@@controlpanel", "plone-controlpanel"],
             ["logout", "Log out", "/logout", "plone-logout"],
         ],
     )

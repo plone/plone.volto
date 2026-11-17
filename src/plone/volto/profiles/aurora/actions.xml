@@ -62,7 +62,7 @@
       <property name="description"
                 i18n:translate=""
       />
-      <property name="url_expr">string:/controlpanel</property>
+      <property name="url_expr">string:/@@controlpanel</property>
       <property name="link_target" />
       <property name="icon_expr">string:plone-controlpanel</property>
       <property name="available_expr" />

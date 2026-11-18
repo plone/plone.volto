@@ -9,6 +9,13 @@
 
 <!-- towncrier release notes start -->
 
+## 6.2.1 (2026-11-17)
+
+
+### Bug fixes:
+
+- The Site Setup action of the `plone.volto:aurora` profile links to `/@@controlpanel`, the path of the site setup page in Plone Aurora. @sneridagh 
+
 ## 6.2.0 (2026-11-17)
 
 

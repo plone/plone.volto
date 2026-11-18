@@ -77,7 +77,7 @@ class TestPersonalToolsWithAuroraProfile:
             ["preferences", "available_expr", "python:member is not None"],
             ["preferences", "permissions", ("View",)],
             ["plone_setup", "title", "Site Setup"],
-            ["plone_setup", "url_expr", "string:/controlpanel"],
+            ["plone_setup", "url_expr", "string:/@@controlpanel"],
             ["plone_setup", "link_target", ""],
             ["plone_setup", "available_expr", ""],
             ["plone_setup", "permissions", ("Plone Site Setup: Overview",)],

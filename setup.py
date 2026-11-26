@@ -44,6 +44,7 @@ setup(
         "plone.distribution",
         "plone.restapi>=8.41.0",
         "Products.CMFPlone",
+        "Zope",
     ],
     extras_require={
         "test": [

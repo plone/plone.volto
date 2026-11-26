@@ -183,6 +183,35 @@ productions sites.
 It's planned that Volto will feature a development pass-through proxy to the backend in
 the future. It will be addressed in next sprints.
 
+### Aurora profile: migrate `__somersault__` to `main`
+
+Sites that use the Plone Aurora frontend can install the `plone.volto:aurora` profile ("Aurora Frontend (plone.volto)").
+
+Aurora's unified editor used to store the page as one Plate value in `blocks.__somersault__`, with `"@type": "__somersault__"`.
+The current shape stores it in `blocks.main`, with `"@type": "plate"` ([plone/aurora#379](https://github.com/plone/aurora/issues/379)).
+Installing the profile migrates every object with blocks, including the site root, in place:
+
+- `blocks.__somersault__` moves to `blocks.main`. If `main` already exists, it wins and the old value is dropped.
+- Every block with `"@type": "__somersault__"` gets `"@type": "plate"`.
+- `SearchableText` and `block_types` are reindexed. The modification date doesn't change.
+
+The migration runs in the profile's `post_handler`, so it also runs again when you import all steps of the `plone.volto:aurora` profile from the `portal_setup` Import tab.
+
+Sites that don't install the profile can run the same migration with the instance script:
+
+```shell
+bin/instance run src/plone/volto/scripts/migrate_plate_regions.py --site Plone --dry-run
+bin/instance run src/plone/volto/scripts/migrate_plate_regions.py --site Plone
+```
+
+`zconsole run instance/etc/zope.conf <script> --site Plone` works too.
+Leave out `--site` to migrate every Plone site in the database.
+The script commits the transaction, except with `--dry-run`.
+From Python code, call `plone.volto.aurora.migrate_plate_regions(portal, dry_run=False)`.
+
+`SearchableText` and link integrity only pick up the content in its new shape with a `plone.restapi` version that handles the `plate` `@type`.
+
+
 ### ZLog patch
 
 `plone.restapi` low level errors are routed through the ancient ZLog and are `plone_error`
